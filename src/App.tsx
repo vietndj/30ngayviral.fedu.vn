@@ -15,6 +15,7 @@ import { BeforeAfterSection } from "./sections/BeforeAfterSection";
 import { RoadmapSection } from "./sections/RoadmapSection";
 import { InstructorSection } from "./sections/InstructorSection";
 import { BonusSection } from "./sections/BonusSection";
+import { FaqSection } from "./sections/FaqSection";
 import { CtaSection } from "./sections/CtaSection";
 import LiveSocialProof from "./LiveSocialProof";
 import "./landing.css";
@@ -68,6 +69,9 @@ export default function App() {
       <Div />
 
       {!isHidden("bonus") && <BonusSection />}
+      <Div />
+
+      {!isHidden("faq") && <FaqSection />}
       <Div />
 
       {!isHidden("cta") && <CtaSection />}

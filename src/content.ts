@@ -63,7 +63,7 @@ export interface PageContent {
   discoveryLabel: string;
   discoveryHeading: string;
   discoverySub: string;
-  discoveryItems: { title: string; desc: string }[];
+  discoveryItems: { title: string; desc: string; gif?: string; placeholderLabel?: string }[];
 
   solutionLabel: string;
   solutionHeading: string;
@@ -95,6 +95,7 @@ export interface PageContent {
   roadmapIframeUrl?: string;
   roadmapChaptersHeading?: string;
   stages: Stage[];
+  roadmapChaptersGif?: string;
 
   instructorLabel: string;
   instructorHeading: string;
@@ -103,6 +104,7 @@ export interface PageContent {
   instructorTitle: string;
   instructorBio: string[];
   instructorInsight?: string;
+  instructorPhoto?: string;
 
   urgencyBar: string;
   ctaLabel: string;
@@ -121,6 +123,7 @@ export interface PageContent {
   bonusHeading: string;
   bonusSub: string;
   bonusItems: { id: string; title: string; desc: string; audioDemo?: string; youtubeDemo?: string; gifDemo?: string }[];
+  footerCopyright: string;
 
   blocksMeta: BlocksMeta;
 }
@@ -129,249 +132,233 @@ const CONTENT_SCHEMA_VERSION = 7;
 
 export const DEFAULT_CONTENT: PageContent = {
   _v: CONTENT_SCHEMA_VERSION,
-  price: "299.000",
-  value: "3.500.000",
+  price: "399.000",
+  value: "7.500.000",
 
   // ── Hero ──
-  heroBadge: "🔥 THỬ THÁCH 30 NGÀY VIDEO VIRAL — CHỈ VỚI 1 ĐIỆN THOẠI",
-  heroHeadline1: "THỬ THÁCH 30 NGÀY VIDEO VIRAL",
-  heroHeadline2: "Tự tay quay dựng 30 video bán hàng triệu view mượt mà chỉ bằng điện thoại.",
+  heroBadge: "🚨 DÀNH CHO CREATOR, FREELANCER VÀ CHỦ KINH DOANH MUỐN XÂY KÊNH TỪ CON SỐ 0",
+  heroHeadline1: "THOÁT KHỎI 'LỜI NGUYỀN 200 VIEW'.",
+  heroHeadline2: "Hệ Thống Edit Video Viral & Xây Kênh Tốc Độ Cao Trong 30 Ngày Tới.",
   heroPoem: [
-    "30 ngày biến đổi kênh thành công,",
-    "Tư duy điện ảnh, đơn hàng về ngập lòng."
+    "Thuật toán không bóp, nó đang chọn lọc,",
+    "Ai hiểu được cách, người đó bùng nổ."
   ],
-  heroAccentLine: "Bí quyết kết hợp giữa Kỹ Nghệ Điện Ảnh Đắt Giá (Nguyễn Đức Việt) & Lộ Trình 30 Ngày Content Matrix AI.",
-  heroSub: "Không cần đu trend nhảm, không lạm dụng kỹ xảo, không cần máy ảnh đắt tiền. Bạn sở hữu lộ trình thực chiến 30 ngày từng bước + 4 nguyên lý hình ảnh cuốn hút + bộ công cụ 3s Hook triệu view để tạo ra video bán hàng liên tục mỗi ngày.",
-  heroCta: "THAM GIA THỬ THÁCH 30 NGÀY NGAY — CHỈ 299.000Đ",
+  heroAccentLine: "Bạn không cần máy quay chục triệu, không cần ekip hay ngoại hình xuất chúng.",
+  heroSub: "Khám phá vũ khí thao túng thuật toán TikTok/Reels/Shorts bằng Cấu trúc Hook-Story-Offer và kỹ năng Edit giữ chân (Retention). Biến chiếc điện thoại của bạn thành cỗ máy hút 10.000+ Followers trung thành và tự động tạo ra chuyển đổi.",
+  heroCta: "THANH TOÁN & VÀO HỌC NGAY LẬP TỨC!",
   heroVideoYoutubeId: "CaDZiACYrV8",
-  heroSubPrice: "(Học Online mọi lúc, mọi nơi, xem lại trọn đời. Cam kết hoàn tiền 100% trong 7 ngày)",
+  heroSubPrice: "(🔒 Thanh toán bảo mật — Truy cập tức thì 24/7 không cần chờ duyệt)",
 
   // ── Pain (Nỗi đau) ──
-  painLabel: "DẤU HIỆU THẤT BẠI KHI XÂY KÊNH",
-  painHeading: "Bạn đăng video mỗi ngày nhưng view vẫn lẹt đẹt và không ra đơn?",
-  painQuote: "Sự mượt mà và khả năng bán hàng của video không đến từ hiệu ứng app hay máy ảnh đắt tiền — nó đến từ Tư duy hình ảnh điện ảnh + Lộ trình kịch bản có định hướng chuyển đổi.",
-  painSub: "4 căn bệnh phổ biến khiến video của bạn bị ngó lơ dù bạn đã cố gắng hết sức:",
+  painLabel: "SỰ THẬT TÀN KHỐC",
+  painHeading: "Thuật toán KHÔNG HỀ 'Bóp Tương Tác' của bạn. Nó chỉ bảo vệ người xem khỏi sự nhàm chán.",
+  painQuote: "Thời đại của việc 'cứ đăng là có view' đã kết thúc. Khoảng cách giữa bạn và những Top Creator không nằm ở thiết bị. Nó nằm ở Hệ Thống Giữ Chân (Retention).",
+  painSub: "Bạn có đang bị vắt kiệt sức lực trong vòng lặp bế tắc này?",
   pains: [
-    "❌ 01. Cắt cảnh giật cục, thô sượng — lạm dụng hiệu ứng lật trang 3D sến súa của CapCut khiến video trông nghiệp dư.",
-    "❌ 02. Cạn ý tưởng & không biết viết kịch bản — ngồi hàng giờ trước điện thoại nhưng không biết bắt đầu nói từ đâu.",
-    "❌ 03. 3 giây đầu bị trôi tuột — thiếu công thức Hook thu hút sự chú ý, khán giả lướt qua chỉ sau 1.5 giây.",
-    "❌ 04. Bối cảnh tối om phẳng lì — một góc máy đứng im gây nhàm chán, thiếu ánh sáng tôn khối chuyên nghiệp."
+    "❌ Ám ảnh bởi 'hiệu ứng': Bỏ ra 5 tiếng nhét đủ thứ transition chớp nhoáng, nhưng đăng lên lẹt đẹt 200 view vì người xem lướt qua ngay giây thứ 2.",
+    "❌ Lạc lối ý tưởng: Cầm máy lên là 'đơ', làm content tùy hứng nay hài hước mai triết lý. Kênh không có định vị rõ ràng.",
+    "❌ Follow cao nhưng KHÔNG CÓ TIỀN: Đu trend nhảy múa thì lên xu hướng, nhưng khi lồng ghép bán hàng thì không ai thèm mua.",
+    "❌ Đốt thời gian vô ích: Mất 3-5 tiếng cặm cụi edit 1 video, đăng lên 50 view, rồi mất niềm tin vào chính mình."
   ],
+  painConclusion: "", // Component handles conclusion
 
-  // ── Attention (3 cách gây chú ý) ──
-  attentionLabel: "BA CÁCH GÂY CHÚ Ý PHỔ BIẾN NHẤT",
-  attentionHeading: "Ba thứ khiến khán giả dừng lướt trong 3 giây đầu",
-  attentionPara: "Để biến người lướt qua thành người mua hàng, bạn cần kết hợp tư duy giữ chân khán giả và công thức Hook chuẩn thị giác.",
+  // ── Attention (Khoảng cách vô hình) ──
+  attentionLabel: "KHOẢNG CÁCH VÔ HÌNH",
+  attentionHeading: "Sự khác biệt giữa Video Nghiệp Dư và Video Viral có hệ thống",
+  attentionPara: "Viral không phải là may mắn. Nó là một bộ môn khoa học của Tâm lý hành vi, Nhịp điệu cắt dựng và Đọc vị thuật toán.",
   attentionItems: [
     {
-      icon: "✦",
-      title: "Hook Thị giác (Visual Cut-on-Action)",
-      desc: "Chuyển động tàng hình ngay 1 giây đầu kéo mắt khán giả vào câu chuyện. Mắt tự động bám theo hình ảnh trước khi não kịp bấm lướt."
+      icon: "❌",
+      title: "Mở đầu: 'Xin chào mọi người...'",
+      desc: "🏆 Mở đầu bằng HOOK 3 GIÂY đâm thẳng vào tử huyệt tò mò."
     },
     {
-      icon: "✦",
-      title: "Hook Vấn đề / Khát khao",
-      desc: "Chạm ngay vào nỗi đau hoặc mong muốn thầm kín của khách hàng mục tiêu bằng mẫu kịch bản AI đã tối ưu hóa."
+      icon: "❌",
+      title: "Một góc máy tĩnh buồn ngủ từ đầu đến cuối",
+      desc: "🏆 Chuyển cảnh dồn dập (J-Cut, L-Cut) bóp nghẹt sự nhàm chán."
     },
     {
-      icon: "✦",
-      title: "Đổi Cỡ Cảnh Nhanh (3s Rhythm)",
-      desc: "Thay đổi góc Toàn - Trung - Cận liên tục mỗi 3 giây tạo cảm giác điện ảnh mượt mà, ép khán giả xem hết video."
+      icon: "❌",
+      title: "Kịch bản tự nghĩ, cảm hứng đến đâu làm đến đó",
+      desc: "🏆 Áp dụng khung tâm lý Hook-Story-Offer chuẩn quốc tế."
+    },
+    {
+      icon: "❌",
+      title: "Đăng bài cầu may mong được đề xuất",
+      desc: "🏆 Hiểu rõ thuật toán để chủ động điều hướng Views."
     }
   ],
 
-  // ── Rule 7-11-4 ──
-  ruleLabel: "LUẬT CHƠI TIẾP THỊ SỐ 30 NGÀY",
-  ruleHeading: "Quy tắc 7-11-4 & Đòn Bẩy Video Viral 30 Ngày",
-  rulePara: "Một người lạ chỉ xuống tiền mua hàng khi họ đã tích lũy đủ 7 tiếng xem nội dung, qua 11 lần gặp trên 4 nền tảng. Thử thách 30 ngày giúp bạn:",
+  // ── Rule (Giải mã thuật toán) ──
+  ruleLabel: "GIẢI MÃ THUẬT TOÁN 2026",
+  ruleHeading: "3 Điều thuật toán TikTok/Reels/Shorts thực sự muốn ở bạn",
+  rulePara: "Nền tảng không bóp bạn. Nền tảng chỉ đang bảo vệ trải nghiệm người dùng. Hiểu được 3 điều này, bạn sẽ chủ động 'hack' đề xuất:",
   ruleItems: [
     { 
-      fail: "Phủ sóng 30 video chuyển đổi cao liên tục", 
-      why: "Tự động phủ TikTok, Facebook Reels, YouTube Shorts & Zalo mà không tốn chi phí quảng cáo." 
+      fail: "Retention Rate (Tỷ lệ giữ chân) > 70%", 
+      why: "Video giữ được khán giả càng lâu = thuật toán càng đẩy mạnh. Đây là chỉ số SỐ 1." 
     },
     { 
-      fail: "Bao bọc thương hiệu bằng bao bì điện ảnh đắt giá", 
-      why: "Góc máy sáng đẹp, vết cắt tàng hình nâng tầm uy tín cá nhân và sản phẩm gấp 5 lần." 
+      fail: "Hook 3 Giây đầu tiên", 
+      why: "80% người xem quyết định ở lại hay lướt đi trong 3 giây đầu. Hook quyết định sống còn." 
     },
     { 
-      fail: "AI Workflow rút ngắn 80% thời gian làm nội dung", 
-      why: "Lên ý tưởng, phân cảnh shot-list và chỉnh sửa video chỉ trong 15 phút mỗi ngày." 
+      fail: "Storytelling > Selling", 
+      why: "Video kể chuyện hay được share gấp 22 lần video bán hàng trực tiếp. Khung Hook-Story-Offer là vũ khí tối thượng." 
     }
   ],
-  ruleConclusion: "Không ai mua hàng từ một video mờ nhạt hay cắt ghép giật cục. Kết hợp Tư duy Quay Dựng Fedu & Lộ Trình 30 Ngày Viral chính là vũ khí giúp bạn đột phá doanh số!",
+  ruleConclusion: "Khóa học này dạy bạn làm chủ cả 3 yếu tố trên — biến mỗi video thành một cỗ máy hút view tự động.",
 
-  // ── Section 3: Đập tan ảo giác ──
-  cycleLabel: "ĐẬP TAN ẢO GIÁC LÀM VIDEO",
-  cycleHeading: "Sự thu hút không sinh ra từ thiết bị đắt tiền hay phần mềm xa xỉ.",
-  cyclePara: "Nhiều người nghĩ phải mua iPhone Pro Max hay máy ảnh hàng chục triệu mới làm được video đẹp. Thực tế hoàn toàn ngược lại!",
+  // ── Cycle (Vòng lặp bế tắc) ──
+  cycleLabel: "VÒNG LẶP BẾ TẮC",
+  cycleHeading: "Những 'lối tắt' vô tình đang giết chết kênh của bạn",
+  cyclePara: "Để đối phó với bế tắc, nhiều người chọn cách:",
   cycleItems: [
     { 
-      fail: "Khác biệt giữa 'Người đăng video ngẫu nhiên' và 'Master Video Viral'", 
-      why: "Master hiểu rõ nguyên lý Không gian & Nhịp điệu cắt cảnh. Họ dùng 1 chiếc điện thoại tầm trung nhưng biết cách mượn đà chuyển động vật lý thật để tạo thước phim cuốn hút." 
+      fail: "Xem tutorial dạy hiệu ứng giật gân", 
+      why: "Chỉ giải quyết phần nhìn, không tạo ra giá trị nội dung. Khán giả ấn tượng 1 lần rồi lướt." 
+    },
+    { 
+      fail: "Bắt chước y hệt video đang trend", 
+      why: "Kênh bị loãng, không định hình được chuyên môn. Thuật toán không biết phân loại bạn vào tệp nào." 
+    },
+    { 
+      fail: "Mua khóa học dạy bấm nút phần mềm", 
+      why: "Khi phần mềm cập nhật hoặc kịch bản thay đổi, lập tức mất phương hướng. Thiếu TƯ DUY gốc." 
     }
   ],
 
-  // ── Section 4: Công thức thị giác ──
-  discoveryLabel: "CÔNG THỨC THỊ GIÁC VIRAL",
-  discoveryHeading: "Làm chủ 3 tuyệt chiêu tạo nét điện ảnh ngay trên điện thoại",
-  discoverySub: "Đóng gói những lý thuyết nghệ thuật phức tạp nhất thành 3 bước đơn giản:",
+  // ── Discovery (Khoảnh khắc giác ngộ) ──
+  discoveryLabel: "KHOẢNH KHẮC GIÁC NGỘ",
+  discoveryHeading: "Viral KHÔNG phải may mắn. Nó là khoa học của Nhịp điệu, Tâm lý và Thuật toán.",
+  discoverySub: "Sau khi 'mổ xẻ' hàng ngàn video triệu view, tôi tìm ra 3 quy luật bất biến:",
   discoveryItems: [
     {
-      title: "Cơ học Chuyển động > Transition App sến",
-      desc: "Bỏ ngay các chuyển cảnh lật trang 3D sến súa. Mượn đà lướt tay hoặc di chuyển đồ vật để nối 10 clip thành 1 thước phim liền mạch vô lý.",
-      gif: "/gifs/mechanical-cut.gif",
-      placeholderLabel: "GIF Minh họa: Lướt tay che ống kính chuyển cảnh"
+      title: "Hook 3s quyết định sống còn",
+      desc: "80% khán giả quyết định trong 3 giây đầu. Không phải nội dung hay nhất thắng, mà là nội dung CUỐN NHẤT từ giây đầu tiên thắng."
     },
     {
-      title: "Luân chuyển Cỡ cảnh 3 giây",
-      desc: "Xóa sổ góc quay chết đứng im. Đổi điệu nghệ giữa Cảnh Toàn - Trung - Cận để dẫn dắt cảm xúc người xem liên tục.",
-      gif: "/gifs/spatial-direction.gif",
-      placeholderLabel: "GIF Minh họa: Video luân chuyển Toàn - Trung - Cận"
+      title: "Nhịp điệu cắt dựng > Hiệu ứng lấp lánh",
+      desc: "J-Cut, L-Cut, Jump Cut có nhịp điệu tạo cảm giác 'nghiện' xem tiếp. Hiệu ứng lật trang 3D chỉ gây mệt mắt."
     },
     {
-      title: "Ánh sáng 3D Tôn khối Đắt giá",
-      desc: "Sự 'sang trọng' của video đến từ ánh sáng bóc tách nhân vật khỏi phông nền với 2 chiếc đèn cơ bản, không phải camera đắt tiền.",
-      gif: "/gifs/lighting-art.gif",
-      placeholderLabel: "GIF Minh họa: Bật tắt đèn nền background tạo chiều sâu"
+      title: "Storytelling chuyển đổi gấp 22 lần Hard-sell",
+      desc: "Khung Hook-Story-Offer biến mỗi video thành phễu bán hàng tự nhiên. Khán giả mua mà không nhận ra họ đang bị bán hàng."
     }
   ],
 
-  // ── Section 5: Solution ──
-  solutionLabel: "VŨ KHÍ ĐỘC QUYỀN VƯỢT TRỘI",
-  solutionHeading: "Giải pháp hợp nhất 2-trong-1: Kỹ nghệ Điện ảnh + Lộ trình 30 Ngày Viral",
-  solutionSub: "Trang bị trọn gói hệ thống kiến thức giúp bạn tự tin làm chủ video ngắn:",
+  // ── Solution (Giải pháp toàn diện) ──
+  solutionLabel: "GIẢI PHÁP TOÀN DIỆN",
+  solutionHeading: "Bạn không chỉ mua khóa học. Bạn sở hữu toàn bộ 'Vũ Khí' để bắt đầu ngay lập tức.",
+  solutionSub: "Tôi đã đóng gói mọi thứ thành một 'Hệ sinh thái ăn sẵn' giúp bạn cắt giảm 80% khối lượng công việc:",
   solutionItems: [
-    "❌ Cắt ghép giật cục ➞ ✅ Cut-on-Action tàng hình: Nối cảnh mượt mà dựa theo chuyển động tự nhiên.",
-    "❌ Cạn ý tưởng nội dung ➞ ✅ AI Content Matrix: Tạo 30 kịch bản bán hàng chuẩn SEO trong 15 phút.",
-    "❌ Góc máy phẳng lì ➞ ✅ Ánh sáng 3D bóc tách: Phân lớp sáng tối rõ rệt cho bối cảnh phòng nhỏ.",
-    "❌ Người xem lướt qua ➞ ✅ Bộ 100+ Hook 3s Triệu View: Giữ chân khán giả ngay từ khoảnh khắc đầu tiên."
+    "❌ Edit 5 tiếng/clip ➞ ✅ Template CapCut 'One-Click': Thả video thô vào, hiệu ứng + text + âm thanh tự động khớp. Xuất file trong 15 phút.",
+    "❌ Bí ý tưởng kịch bản ➞ ✅ 20+ Prompt AI: Gõ 'Tôi bán mỹ phẩm', AI nhả ra cấu trúc Hook-Story-Offer chuẩn xác từng giây.",
+    "❌ Đăng bài tùy hứng ➞ ✅ Lịch Content Notion 30 ngày: Biết chính xác hôm nay quay gì, ngày mai đăng gì.",
+    "❌ Lo bản quyền nhạc ➞ ✅ Kho 500+ Nhạc & SFX bản quyền: Trend nhất, bốc nhất, không bao giờ bị đánh gậy."
   ],
 
-  skillsLabel: "4 NGUYÊN LÝ KHUNG HÌNH ĐIỆN ẢNH",
-  skillsHeading: "Bốn kỹ thuật cốt lõi giúp bạn tự tay sản xuất video cuốn hút:",
+  skillsLabel: "4 KỸ NĂNG THEN CHỐT TẠO VIDEO VIRAL",
+  skillsHeading: "Bốn kỹ năng cốt lõi mà các khóa học dạy bấm nút phần mềm không hề cung cấp:",
   skillCards: [
-    { n: "01", title: "Điểm nối tàng hình (Cut-on-Action)", desc: "Mượn các chuyển động vật lý tự nhiên (vung tay, lướt đồ vật, bước chân) làm cầu nối giữa hai bối cảnh. Khán giả bị cuốn theo nhịp điệu mà không hề thấy vết cắt.", gif: "/gifs/invisible-cut.gif" },
-    { n: "02", title: "Ánh sáng tôn khối 3D", desc: "Chỉ cần 2 chiếc đèn đặt góc Key & Back light, khuôn mặt và bối cảnh lập tức có chiều sâu nghệ thuật, giải quyết triệt để video bị phẳng lì.", gif: "/gifs/lighting-3d.gif" },
-    { n: "03", title: "Điều hướng Cỡ cảnh 3s", desc: "Luân chuyển Toàn - Trung - Cận có chủ đích để giữ mắt người xem không bị mỏi hay nhàm chán.", gif: "/gifs/shot-sizes.gif" },
-    { n: "04", title: "Bằng chứng thị giác (B-roll)", desc: "Lồng ghép các bối cảnh phụ B-roll vừa để che lỗi vấp nói, vừa tăng gấp đôi độ thuyết phục cho sản phẩm.", youtubeId: "Ew-yWd0riEQ", aspectRatio: "9 / 16" }
+    { n: "01", title: "Hook Sát Thủ 3 Giây", desc: "Giải phẫu ma trận Hook từ hàng ngàn video triệu view. Cách viết câu chào đầu khiến não bộ người xem phải đứng hình, không thể lướt qua.", gif: "/gifs/invisible-cut.gif" },
+    { n: "02", title: "Retention Editing (Dựng giữ chân)", desc: "Kỹ thuật J-Cut, L-Cut, Jump Cut dồn dập. Chèn B-roll, Kinetic Typography cuốn hút. Ép khán giả xem đến giây cuối cùng.", gif: "/gifs/lighting-3d.gif" },
+    { n: "03", title: "Sound Design (Thiết kế âm thanh)", desc: "Dùng Whoosh, Pop, Risers, Impact để điều hướng cảm xúc. Âm thanh đúng chỗ tăng Retention lên 40%. Kho 500+ SFX sẵn sàng.", gif: "/gifs/shot-sizes.gif" },
+    { n: "04", title: "Hook-Story-Offer (Chuyển đổi)", desc: "Nghệ thuật lồng Offer tinh tế. Biến khán giả thành khách hàng mà không gây phản cảm. Kênh vừa tăng follow vừa ra đơn.", youtubeId: "Ew-yWd0riEQ", aspectRatio: "9 / 16" }
   ],
 
-  // ── Section 7: Mid CTA ──
-  midCtaHeading: "Sẵn sàng chinh phục Thử thách 30 Ngày Video Viral ngay hôm nay!",
-  midCtaSub: "Sở hữu toàn bộ tư duy điện ảnh + kịch bản AI + công thức viral bán hàng chỉ với 1 điện thoại.",
-  midCtaBtn: "THAM GIA THỬ THÁCH CHỈ 299K",
+  // ── Mid CTA ──
+  midCtaHeading: "Sẵn sàng thoát khỏi 'Lời nguyền 200 view' trong 30 ngày tới?",
+  midCtaSub: "Sở hữu toàn bộ Hệ thống Viral + Template + Prompt AI + Cộng đồng Support. Bắt đầu ngay lập tức.",
+  midCtaBtn: "THANH TOÁN & VÀO HỌC NGAY — CHỈ 399K",
 
-  // ── Section 8: Before & After ──
-  baLabel: "SỰ LỚN MẠNH SAU 30 NGÀY",
-  baHeading: "Bảng so sánh trước và sau khi hoàn thành Thử thách 30 Ngày:",
+  // ── Before & After ──
+  baLabel: "KẾT QUẢ SAU 30 NGÀY",
+  baHeading: "Sự khác biệt TRƯỚC và SAU khi áp dụng Hệ Thống Viral:",
   baSub: "",
-  baBeforeMedia: "",
-  baAfterMedia: "",
-  beforeLabel: "Trước khi tham gia",
-  afterLabel: "Sau 30 ngày thử thách",
+  beforeLabel: "TRƯỚC (Đốt Thời Gian)",
+  afterLabel: "SAU (Tối Đa Kết Quả)",
   beforeItems: [
-    "Đăng video thất thường, cạn ý tưởng",
-    "Cắt ghép giật cục, lộ vết cắt thô sượng",
-    "Lạm dụng hiệu ứng lật trang 3D sến",
-    "Ánh sáng phẳng lì, bối cảnh nham nhở",
-    "3 giây đầu trôi tuột, 0 lượt chuyển đổi",
-    "Quay đi quay lại hàng chục lần vì nói vấp"
+    "Edit 3-5 tiếng mỗi video, đăng lên 50 view",
+    "Cạn ý tưởng, ngồi vò đầu bứt tai mỗi ngày",
+    "Follow tăng nhưng không ai mua hàng",
+    "Lạm dụng hiệu ứng lấp lánh, mắt khán giả mệt mỏi",
+    "Đăng bài tùy hứng, kênh không có định vị",
+    "Lo lắng bị đánh gậy bản quyền nhạc"
   ],
   afterItems: [
-    "Sở hữu Matrix 30 video sản xuất hàng loạt",
-    "Nối cảnh Cut-on-Action tàng hình mượt mà",
-    "Tư duy điện ảnh tinh tế, không cần kỹ xảo",
-    "Setup ánh sáng 3D đắt giá chỉ 10 phút",
-    "Bẫy chú ý 3s Hook chuẩn, tăng tỉ lệ chuyển đổi",
-    "B-roll che lỗi vấp mượt như đạo diễn chuyên nghiệp"
+    "Template One-Click: Xuất video chất lượng trong 45 phút",
+    "AI nhả kịch bản Hook-Story-Offer trong 10 giây",
+    "Lồng Offer tinh tế, follower chuyển đổi thành khách hàng",
+    "Nhịp J-Cut L-Cut dồn dập, Retention > 70%",
+    "Lịch Notion 30 ngày: Biết quay gì, đăng lúc nào",
+    "Kho 500+ nhạc & SFX sạch bản quyền vĩnh viễn"
   ],
 
-  // ── Section 9: Lộ trình tinh gọn ──
-  roadmapLabel: "LỘ TRÌNH THỰC CHIẾN 30 NGÀY",
-  roadmapHeading: "Cấu trúc Thử thách 30 Ngày Video Viral có gì?",
-  roadmapPreviewHeading: "Xem bài học trải nghiệm mẫu",
-  roadmapPreviewDesc: "Trực quan, thực chiến, không lý thuyết suông — xem xong áp dụng được ngay trên điện thoại.",
+  // ── Lộ trình tinh gọn ──
+  roadmapLabel: "LỘ TRÌNH LỘT XÁC 30 NGÀY",
+  roadmapHeading: "Không lý thuyết suông. Mỗi bài học XEM XONG → ÁP DỤNG NGAY.",
+  roadmapPreviewHeading: "Xem thử 1 bài học mẫu",
+  roadmapPreviewDesc: "Đây là video thực tế bên trong chương trình — trực quan, thực chiến, không lý thuyết suông.",
   roadmapIframeUrl: "https://www.youtube.com/embed/NmazSvfOs84?rel=0&modestbranding=1",
-  roadmapChaptersHeading: "4 Tuần chinh phục 30 Video Bán Hàng Triệu View:",
+  roadmapChaptersHeading: "3 Giai đoạn chinh phục từ Nghiệp Dư đến Video Viral:",
   stages: [
-    { n: "Tuần 1", title: "Setup Chuẩn Điện Ảnh & 4 Nguyên Lý Hình Ảnh", desc: "Chuẩn hóa góc quay điện thoại, setup ánh sáng tôn khối 3D phòng nhỏ và làm chủ kỹ thuật Cut-on-Action giấu vết cắt tàng hình.", sub: "Hoàn thành 7 video chuẩn kỹ thuật đầu tiên" },
-    { n: "Tuần 2", title: "AI Script Generator & Matrix 30 Ý Tưởng Content", desc: "Ứng dụng Prompt AI lên kịch bản bán hàng hàng loạt, làm chủ bộ 100+ Tiêu đề Hook 3s thu hút người xem từ giây đầu.", sub: "Đóng gói 14 kịch bản bán hàng thu hút" },
-    { n: "Tuần 3", title: "Dựng Video Mượt Mà & Bộ SFX Âm Thanh Điện Ảnh", desc: "Thực hành dựng CapCut chuyên nghiệp, chèn âm thanh SFX có lực, lồng ghép B-roll che lỗi vấp nói mượt mà.", sub: "Hoàn thiện 21 video chất lượng điện ảnh" },
-    { n: "Tuần 4", title: "Đóng Gói & Đòn Bẩy Chuyển Đổi Doanh Số", desc: "Tối ưu hóa đăng video đa kênh (TikTok, Reels, Shorts), gắn link sản phẩm/giỏ hàng và kích hoạt đòn bẩy đơn hàng.", sub: "Bứt phá 30 video viral & đo lường chuyển đổi" }
+    { n: "Phase 1", title: "🚀 THAO TÚNG SỰ CHÚ Ý (Ngày 1-10)", desc: "Setup 'Studio Bỏ Túi' chuẩn điện ảnh chỉ bằng điện thoại. Thấu hiểu thuật toán 2026. Giải phẫu ma trận Hook 3s — cách viết câu chào đầu khiến não bộ người xem phải đứng hình.", sub: "Kết quả: Xóa bỏ hình ảnh nghiệp dư. Khán giả bị 'thôi miên' không thể lướt qua." },
+    { n: "Phase 2", title: "🪄 MA THUẬT GIỮ CHÂN — RETENTION EDITING (Ngày 11-20)", desc: "Bàn tay phù thủy CapCut: J-Cut, L-Cut, Jump Cut dồn dập. Chèn B-roll, Kinetic Typography cuốn hút. Thiết kế âm thanh (Sound Design) điều hướng cảm xúc.", sub: "Kết quả: Edit nhanh gấp 3 lần. Video mượt mà, ép khán giả xem đến giây cuối." },
+    { n: "Phase 3", title: "💰 CỖ MÁY IN TIỀN — ĐÓNG GÓI & CHUYỂN ĐỔI (Ngày 21-30)", desc: "Xây Series Nội dung khiến khán giả 'cày' kênh như cày Netflix. Nghệ thuật lồng Offer tinh tế. Tối ưu Analytics: Đọc đồ thị Retention để tự phá kỷ lục view.", sub: "Kết quả: Kênh có nhân hiệu sắc bén, Follower trung thành tự động chuyển đổi." }
   ],
 
-  // ── Section 10: Instructor ──
-  instructorLabel: "GIẢNG VIÊN ĐỒNG HÀNH",
-  instructorHeading: "Tư duy đi trước, Kỹ nghệ theo sau\nKhóa học làm thay đổi cách bạn tạo ra video",
+  // ── Instructor ──
+  instructorLabel: "NGƯỜI DẪN ĐƯỜNG",
+  instructorHeading: "Tôi từng chuẩn bị bỏ cuộc...\nCho đến khi tìm ra 'Mã Code' của sự Viral.",
   instructorInitials: "NĐV",
   instructorName: "Nguyễn Đức Việt",
-  instructorTitle: "Kỹ sư Software (ĐH Bách Khoa HN). 15 năm Giảng viên Mỹ thuật đa phương tiện tại FPT Arena.",
+  instructorTitle: "Kỹ sư Bách Khoa · 15 năm Giảng viên FPT Arena · Founder Fedu.vn",
   instructorBio: [
-    "Với kinh nghiệm 15 năm đào tạo hàng ngàn học viên thiết kế và dựng phim, thầy Việt mang đến phương pháp đóng gói trực quan nhất: biến lý thuyết điện ảnh phức tạp thành lộ trình 30 ngày đơn giản, giúp bất kỳ ai cũng có thể làm chủ chiếc điện thoại để tạo ra những thước phim bán hàng cuốn hút."
+    "Tôi không bắt đầu bằng việc khoe nút Bạc hay Follower. Sự thật là, tôi đã từng thức tới 3h sáng cặm cụi cắt ghép từng frame hình, chèn đủ loại nhạc... để rồi sáng hôm sau đăng lên nhận về đúng 50 lượt xem.",
+    "Tôi lùi lại và 'mổ xẻ' hàng ngàn video triệu view. Và tôi ngộ ra: Viral không phải may mắn. Nó là khoa học. Tôi đóng gói mọi thứ thành một HỆ THỐNG — và giúp hàng ngàn người thoát khỏi vũng lầy bế tắc.",
+    "Tôi đã đi qua bãi mìn, tôi biết chỗ nào có bom. Việc của bạn rất đơn giản: Không cần đi đường vòng, hãy bước theo dấu chân của tôi."
   ],
 
   // ── Bonus (Quà tặng) ──
-  bonusLabel: "BỘ QUÀ TẶNG ĐỘC QUYỀN ĐI KÈM",
-  bonusHeading: "Nhận trọn bộ 6 công cụ nâng cấp video trị giá 1.500.000đ",
-  bonusSub: "Đặc quyền dành riêng cho học viên đăng ký trong chương trình Thử Thách 30 Ngày",
+  bonusLabel: "BỘ VŨ KHÍ BẠN SỞ HỮU NGAY LẬP TỨC",
+  bonusHeading: "Tổng giá trị thực tế: 7.500.000 VNĐ — Bạn chỉ trả 399.000đ",
+  bonusSub: "Mọi thứ đã được đóng gói thành 'Hệ sinh thái ăn sẵn' — cắt giảm 80% công sức",
   bonusItems: [
-    {
-      id: "01",
-      title: "Kho 50+ Âm Thanh Điện Ảnh (SFX Pro)",
-      desc: "Thư viện hiệu ứng âm thanh chuẩn cinema (Whoosh, Impact, Rise, Hit) giúp điểm cắt có lực và tạo cảm xúc mạnh mẽ cho video.<br/><ul style=\"margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;\"><li>🔥 <b>Sâu, đậm chất điện ảnh</b></li><li>🎧 <b>100% No Copyright - Sạch bản quyền</b></li><li>✂️ <b>Chỉ cần kéo thả vào CapCut</b></li></ul>"
-    },
-    {
-      id: "02",
-      title: "Kho Nhạc Nền 'MasterClass' AI Độc Bản",
-      desc: "Giai điệu sản xuất bằng AI chuyên dụng, hoàn toàn độc quyền không lo đánh gậy bản quyền trên TikTok/YouTube/Reels.",
-      audioDemo: "/boardroom-siege.mp3"
-    },
-    {
-      id: "03",
-      title: "Bộ 100+ Tiêu Đề Hook 3s 'Triệu View'",
-      desc: "Tổng hợp các mẫu câu Hook hạ gục thị giác và tâm lý người xem trong 3 giây đầu tiên, giúp tỉ lệ giữ chân khán giả tăng gấp 3 lần."
-    },
-    {
-      id: "04",
-      title: "Sơ Đồ Đánh Sáng 3 Điểm Cho Phòng Nhỏ",
-      desc: "Sơ đồ bố trí đèn cực chuẩn cho phòng ngủ hay phòng làm việc hẹp, tạo chiều sâu 3D sang trọng chỉ với 2 đèn cơ bản."
-    },
-    {
-      id: "05",
-      title: "Bộ Prompt AI Viết Kịch Bản & Shot-List Tự Động",
-      desc: "Chỉ cần nhập tên sản phẩm, ChatGPT/Claude sẽ tự phân chia phân cảnh Toàn - Trung - Cận chi tiết từng giây."
-    },
-    {
-      id: "06",
-      title: "Checklist Đăng Bài & Theo Dõi Tiến Độ 30 Ngày",
-      desc: "Bảng theo dõi và nhắc nhở lộ trình hàng ngày giúp bạn duy trì kỷ luật, sản xuất 30 video mà không bị bỏ cuộc giữa chừng.",
-      gifDemo: "/edit-ai-promo.gif"
-    }
+    { id: "01", title: "🎬 Masterclass '30 Ngày Viral' Toàn Tập", desc: "Lộ trình từ A-Z: 3 Phase hoàn chỉnh. Update trọn đời. Xem đi xem lại không giới hạn.<br/><b>Giá trị: 3.500.000 VNĐ</b>" },
+    { id: "02", title: "🪄 Bộ 50+ Template CapCut 'One-Click'", desc: "Đã setup sẵn hiệu ứng, text, âm thanh. Bạn chỉ cần thả video thô vào là xuất file! Tiết kiệm 80% thời gian edit.<br/><b>Giá trị: 1.500.000 VNĐ</b>" },
+    { id: "03", title: "🤖 Bộ 20+ Prompt AI Viết Kịch Bản", desc: "Bí ý tưởng? AI đóng vai biên kịch, nhả ra cấu trúc Hook-Story-Offer chuẩn xác trong 10 giây. Chỉ cần gõ chủ đề.<br/><b>Giá trị: 1.000.000 VNĐ</b>" },
+    { id: "04", title: "📅 Lịch Quản Trị Content 30 Ngày (Notion)", desc: "Biết chính xác hôm nay quay gì, ngày mai đăng gì. Không còn vò đầu bứt tai tìm ý tưởng.<br/><b>Giá trị: 500.000 VNĐ</b>" },
+    { id: "05", title: "🎵 Kho 500+ Nhạc & SFX Bản Quyền", desc: "Trend nhất, bốc nhất, không bao giờ lo bị đánh gậy. Cập nhật liên tục theo xu hướng mới nhất.<br/><b>Giá trị: 1.000.000 VNĐ</b>", audioDemo: "/boardroom-siege.mp3" },
+    { id: "06", title: "🤝 ĐẶC QUYỀN VIP: Cộng đồng Skool", desc: "Nơi Thầy Việt trực tiếp sửa bài, feedback video và support bạn mỗi ngày. Học hỏi từ Case Study thật của các học viên khác.<br/><b>Giá trị: VÔ GIÁ</b>", gifDemo: "/edit-ai-promo.gif" }
   ],
 
   // ── Section 11: Final CTA ──
-  urgencyBar: "⚠ ƯU ĐÃI ĐẶC QUYỀN CÓ HẠN — CHỈ CÒN 299.000 VNĐ",
+  urgencyBar: "⚠ HỌC PHÍ SẼ TỰ ĐỘNG TĂNG VỀ GIÁ GỐC KHI CỘNG ĐỒNG ĐẠT 200 THÀNH VIÊN",
   ctaLabel: "// ĐĂNG KÝ THAM GIA",
-  ctaHeading: "Bắt đầu Thử Thách 30 Ngày Video Viral ngay hôm nay!",
-  ctaSub: "Sở hữu tư duy quay dựng điện ảnh đắt giá + Lộ trình 30 ngày từng bước + Bộ công cụ AI hỗ trợ. Cam kết hoàn tiền 100% trong 7 ngày nếu không hài lòng.",
-  countdownLabel: "⏳ Ưu đãi kết thúc sau:",
-  valueStackTitle: "TỔNG GIÁ TRỊ TOÀN BỘ CHƯƠNG TRÌNH:",
+  ctaHeading: "Sẵn sàng để kênh của bạn bùng nổ trong 30 ngày tới?",
+  ctaSub: "Sự lựa chọn là của bạn: Tiếp tục mất thời gian với những video tàng hình, hay áp dụng hệ thống chuẩn mực để bứt phá!",
+  countdownLabel: "⏳ Ưu đãi Early Bird kết thúc sau:",
+  valueStackTitle: "TỔNG GIÁ TRỊ BẠN NHẬN ĐƯỢC:",
   valueStack: [
-    { label: "Khóa học Thử Thách 30 Ngày Video Viral", price: "2.000.000 VNĐ" },
-    { label: "Bộ 6 Quà Tặng Độc Quyền (Value Stack)", price: "1.500.000 VNĐ" }
+    { label: "Masterclass '30 Ngày Viral' Toàn Tập", price: "3.500.000 VNĐ" },
+    { label: "50+ Template CapCut One-Click", price: "1.500.000 VNĐ" },
+    { label: "20+ Prompt AI Viết Kịch Bản", price: "1.000.000 VNĐ" },
+    { label: "Lịch Content Notion 30 Ngày", price: "500.000 VNĐ" },
+    { label: "Kho 500+ Nhạc & SFX Bản Quyền", price: "1.000.000 VNĐ" }
   ],
-  guarantee: "Bảo hành chất lượng 100%: Xem xong bài đầu tiên là tự tin cầm điện thoại thực hành ngay!",
+  guarantee: "⚡ Quy trình 1-Chạm: Thanh toán → Vào học NGAY LẬP TỨC trên Skool. Không form, không chờ duyệt, không gọi điện.",
 
   // ── Footer ──
-  footerBrand: "FEDU",
+  footerBrand: "30NGÀY",
   footerDot: ".",
-  footerTagline: "\"Tư duy đi trước, Kỹ nghệ theo sau\n30 ngày làm chủ, đơn về dạt dào!\"",
+  footerTagline: "\"Viral không phải may mắn.\nNó là khoa học — và bạn đang cầm bản thiết kế.\"",
   footerLinks: [],
   footerCopyright: "COPYRIGHT 2026 | 30NGAYVIRAL.FEDU.VN — FEDU EDUCATION",
 
   blocksMeta: {
     order: ["hero", "pain", "attention", "rule", "cycle", "discovery", "solution", "skills", "midCta", "before-after", "roadmap", "instructor", "bonus", "cta", "footer"],
-    hidden: ["attention", "rule", "discovery", "solutions", "solution"],
+    hidden: [],
     media: {},
     custom: {},
   },

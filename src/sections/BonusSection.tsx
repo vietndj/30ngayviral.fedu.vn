@@ -10,16 +10,16 @@ export function BonusSection() {
     <Sec maxWidth={860} id="bonus">
       <FadeIn>
         <div style={{ textAlign: "center", marginBottom: 54 }}>
-          <Label>{(c as any).bonusLabel || c.bonusesLabel}</Label>
-          <SH typed>{(c as any).bonusHeading || c.bonusesHeading}</SH>
+          <Label>{c.bonusLabel}</Label>
+          <SH typed>{c.bonusHeading}</SH>
           <p style={{ fontSize: 18, color: "var(--cl-text-muted, #888)", maxWidth: 620, margin: "16px auto 0", lineHeight: 1.75 }}>
-            {(c as any).bonusSub || c.bonusesSub}
+            {c.bonusSub}
           </p>
         </div>
       </FadeIn>
       <FadeIn delay={100}>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          {((c as any).bonusItems || c.bonuses || []).map((item: any, i: number) => {
+          {c.bonusItems.map((item: any, i: number) => {
             const Icon = BONUS_ICONS[i % BONUS_ICONS.length];
             const hasSideGif = !!item.gifDemo;
 

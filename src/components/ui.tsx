@@ -79,7 +79,7 @@ export function ScrollTypewriter({ text, speed = 10, delay = 0, highlightText }:
   const currentLength = displayText.length;
 
   const highlightStart = highlightText ? text.indexOf(highlightText) : -1;
-  const highlightEnd = highlightStart !== -1 ? highlightStart + highlightText.length : -1;
+  const highlightEnd = highlightStart !== -1 && highlightText ? highlightStart + highlightText.length : -1;
 
   return (
     <span ref={ref} style={{ position: "relative", display: "inline", whiteSpace: "pre-line" }}>
@@ -179,10 +179,10 @@ export function Scarcity() {
   );
 }
 
-export function Sec({ children, style = {}, maxWidth = 820 }: { children: React.ReactNode; style?: React.CSSProperties; maxWidth?: number }) {
+export function Sec({ children, style = {}, maxWidth = 820, id }: { children: React.ReactNode; style?: React.CSSProperties; maxWidth?: number; id?: string }) {
   const cls = maxWidth >= 940 ? "cl-sec cl-sec--wide" : maxWidth <= 760 ? "cl-sec cl-sec--narrow" : "cl-sec";
   return (
-    <section className={cls} style={maxWidth !== 820 && maxWidth !== 940 && maxWidth !== 760 ? { maxWidth, ...style } : style}>
+    <section id={id} className={cls} style={maxWidth !== 820 && maxWidth !== 940 && maxWidth !== 760 ? { maxWidth, ...style } : style}>
       {children}
     </section>
   );

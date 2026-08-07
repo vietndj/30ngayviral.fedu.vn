@@ -160,7 +160,7 @@ export function HeroSection() {
                 Cắt Ghép Chỉn Chu
               </h3>
               <p style={{ fontSize: "clamp(15px, 3.8vw, 18px)", lineHeight: 1.75, color: "#e2e8f0", margin: 0 }}>
-                {c.products?.[0]?.desc ?? ""}
+                {(c as any).products?.[0]?.desc ?? ""}
               </p>
             </div>
 
@@ -180,7 +180,7 @@ export function HeroSection() {
                 Dựng Cảnh Có Gu
               </h3>
               <p style={{ fontSize: "clamp(15px, 3.8vw, 18px)", lineHeight: 1.75, color: "#e2e8f0", margin: 0 }}>
-                {c.products?.[1]?.desc ?? ""}
+                {(c as any).products?.[1]?.desc ?? ""}
               </p>
             </div>
           </div>

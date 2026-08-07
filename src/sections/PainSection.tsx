@@ -17,10 +17,10 @@ export function PainSection() {
       
       <FadeIn delay={100}>
         <p style={{ fontSize: "clamp(16px, 1.8vw, 18px)", lineHeight: 1.8, color: "var(--cl-text-body, #b0b0b0)", marginBottom: 36, textAlign: "center" }}>
-          {(c as any).painSub || c.painPara}
+          {c.painSub}
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 48 }}>
-          {((c as any).pains || c.painList)?.map((p: string, i: number) => (
+          {c.pains.map((p: string, i: number) => (
             <div key={i} style={{ 
               display: "flex", gap: 12, alignItems: "flex-start", background: "rgba(255, 255, 255, 0.01)",
               border: "1px solid rgba(255, 255, 255, 0.03)", borderRadius: 12, padding: "16px 20px", textAlign: "left",
@@ -41,7 +41,7 @@ export function PainSection() {
           fontWeight: t.blockquoteFontWeight ?? 400, fontSize: "clamp(16px, 3.8vw, 21px)", color: "#fff", 
           lineHeight: 1.7, textAlign: "left",
         }}>
-          “{(c as any).painQuote || c.painBlockquote}”
+          “{c.painQuote}”
         </blockquote>
       </FadeIn>
 

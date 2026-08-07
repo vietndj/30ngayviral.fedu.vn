@@ -19,32 +19,24 @@ const GREEN = "#10b981"; // Emerald green for success states
 
 const LANTAN_FAQS = [
   {
-    q: "1. \"Mình mù công nghệ, dùng điện thoại đời cũ thì có theo học được không?\"",
-    a: "Chắc chắn được. Khóa học này không dạy bạn các kỹ xảo phức tạp trên máy tính. Sự \"đắt tiền\" của video đến từ Tư duy Không gian. Mình sẽ hướng dẫn bạn tận dụng tối đa chiếc điện thoại đang có. Chỉ cần setup đúng góc máy và ánh sáng cơ bản, khung hình của bạn sẽ sắc nét và sang trọng không thua gì thợ quay chuyên nghiệp."
+    q: "1. \"Tôi mù công nghệ, thao tác cực chậm thì có theo được không?\"",
+    a: "Đừng lo. Lộ trình đi từ 'vỡ lòng'. Mọi thao tác được quay màn hình chi tiết 'Click-by-click'. Hơn nữa, với 50+ Template CapCut có sẵn, bạn chỉ việc 'Kéo-Thả' video vào là tự động khớp hiệu ứng."
   },
   {
-    q: "2. \"Mình rất ngại lên hình, cứ bật máy quay là đơ cứng và quên kịch bản?\"",
-    a: "Sự đơ cứng đến từ việc bạn đang tự tạo áp lực \"trả bài\" trước ống kính. Mình sẽ hướng dẫn bạn setup góc máy ngồi chéo trò chuyện cực kỳ tự nhiên; và đặc biệt là kỹ thuật dùng Cảnh trám (B-roll). Lỡ nói vấp? Không sao cả, B-roll sẽ đắp vào và che đi mọi vết cắt một cách êm ái. Bạn không cần phải cố gồng mình để \"diễn\"!"
+    q: "2. \"Tôi ngại ống kính, nói vấp, diễn đơ thì phải làm sao?\"",
+    a: "Không cần nhảy múa hay làm trò lố. Khóa học có module hướng dẫn làm video dạng 'Faceless' (Không lộ mặt) kết hợp AI Voice và B-roll cực kỳ cuốn hút. Ngoài ra, kỹ thuật góc chéo 3/4 giúp bạn thoải mái như đang trò chuyện."
   },
   {
-    q: "3. \"Tôi rất bận kinh doanh, sợ không có thời gian ngồi viết kịch bản?\"",
-    a: "Xây dựng hình ảnh là để tối ưu công việc kinh doanh, không phải để vắt kiệt sức lực của bạn! Khóa học đã tích hợp sẵn Bộ lệnh (Prompt) Trợ lý AI chuyên sâu. Bạn chỉ cần Copy-paste vào ChatGPT hoặc Gemini, AI sẽ tự động trả về kịch bản phân rã 2 cột chi tiết. Rút ngắn 80% thời gian chuẩn bị để bạn rảnh tay làm chuyên môn."
+    q: "3. \"Tôi bận đi làm cả ngày, sợ mua về vứt đó không học?\"",
+    a: "Lộ trình thiết kế dạng Micro-learning (10-15 phút/bài), đi thẳng vào thực hành. Kết hợp Prompt AI và Template có sẵn, thời gian làm 1 video giảm từ 3 tiếng xuống còn 45 phút."
   },
   {
-    q: "4. \"Tôi đã xem rất nhiều hướng dẫn CapCut trên mạng, khóa này có gì khác biệt?\"",
-    a: "Các video miễn phí chỉ dạy bạn \"mẹo vặt\" (bấm hiệu ứng chớp nháy, lật trang 3D). Những thứ đó làm mắt khách hàng mệt mỏi và hạ thấp giá trị thương hiệu. Ở đây, mình trao cho bạn một Khuôn mẫu Kiến trúc Thị giác. Hiểu được gốc rễ TẠI SAO phải dùng góc Cận Cảnh, TẠI SAO phải chuyển cảnh vật lý, bạn sẽ tự chủ sản xuất mà không bao giờ sợ bị nền tảng đổi thuật toán."
+    q: "4. \"Tôi không giỏi văn, sợ bí ý tưởng, không biết viết kịch bản?\"",
+    a: "Đó là lý do bạn được tặng kèm 20+ Prompt AI. Chỉ cần gõ: 'Tôi bán mỹ phẩm', AI sẽ đóng vai biên kịch, nhả ra cấu trúc Hook-Story-Offer chuẩn xác từng giây."
   },
   {
-    q: "5. \"Đầu tư số tiền này liệu có mang lại hiệu quả thực tế không?\"",
-    a: "Hãy làm một phép tính thực tế: Nếu bạn chạy Ads bằng những video lôm côm, phẳng lì, khách lướt qua trong 3 giây... bạn đang đốt tiền quảng cáo mỗi ngày một cách vô ích. Đầu tư khóa học này một lần, bạn đang xây dựng một \"Tấm khiên\" bảo vệ ngân sách chạy Ads, tiết kiệm chi phí thuê Media ngoài và tăng tỷ lệ chuyển đổi dài hạn."
-  },
-  {
-    q: "6. \"Tôi chuyển khoản xong thì bao lâu mới được vào học? Có sợ bị lỗi không?\"",
-    a: "Ngay lập tức. Hệ thống vận hành tự động 100%. Ngay khi bạn quét mã QR thanh toán thành công, tài khoản học sẽ được gửi qua Zalo và Email của bạn chỉ trong vòng 1-2 phút, bất kể là 12h đêm. Bạn có thể mở ra và bắt đầu học ngay lập tức."
-  },
-  {
-    q: "7. \"Nếu tôi học xong, làm theo mà video vẫn không đẹp lên thì sao?\"",
-    a: "Uy tín 15 năm làm nghề của mình được đặt lên hàng đầu. Khóa học có một Cam kết đồng hành bảo vệ rủi ro: Sau khi học, nếu bạn đã setup đúng góc máy, ánh sáng mà video vẫn chưa chuyên nghiệp, hãy gửi video đó qua Zalo. Đích thân mình sẽ quay màn hình \"bắt bệnh\" và sửa lỗi 1-1 cho bạn đến khi ưng ý. Mình nhận rủi ro về phần mình, để bạn yên tâm đầu tư!"
+    q: "5. \"Sợ AI phát triển sẽ thay thế con người làm content?\"",
+    a: "AI sinh ra để thay thế 'thợ bấm nút'. Nội dung công nghiệp vô hồn sẽ bị đào thải. Khóa học này dạy bạn 'Đứng trên vai AI' — dùng AI làm trợ lý và dùng tư duy Storytelling của bạn để thâu tóm sự chú ý."
   }
 ];
 
@@ -562,7 +554,7 @@ function CheckoutContent() {
   useEffect(() => {
     if (typeof window !== "undefined" && (window as any).fbq) {
       (window as any).fbq('track', 'InitiateCheckout', {
-        value: priceVal || 299000,
+        value: priceVal || 399000,
         currency: 'VND',
         content_name: 'Tư Duy Làm Video Điện Thoại: Quay Là Cuốn'
       });
@@ -575,7 +567,7 @@ function CheckoutContent() {
     // Bắn sự kiện Purchase Meta Pixel khi xác nhận thủ công
     if (typeof window !== "undefined" && (window as any).fbq) {
       (window as any).fbq('track', 'Purchase', {
-        value: priceVal || 299000,
+        value: priceVal || 399000,
         currency: 'VND',
         content_name: 'Tư Duy Làm Video Điện Thoại: Quay Là Cuốn'
       });
@@ -623,7 +615,7 @@ function CheckoutContent() {
           // Bắn sự kiện Purchase Meta Pixel khi tự động kiểm tra thấy thanh toán thành công
           if (typeof window !== "undefined" && (window as any).fbq) {
             (window as any).fbq('track', 'Purchase', {
-              value: priceVal || 299000,
+              value: priceVal || 399000,
               currency: 'VND',
               content_name: 'Tư Duy Làm Video Điện Thoại: Quay Là Cuốn'
             });

@@ -162,7 +162,7 @@ export function DiscoverySection() {
         <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
           {c.discoveryItems.map((item, i) => {
             const isEven = i % 2 === 1;
-            const isPlaceholder = item.gif.includes("unsplash.com");
+            const isPlaceholder = item.gif?.includes("unsplash.com") ?? true;
             return (
               <div key={i} style={{
                 background: "var(--cl-card)", border: `1px solid var(--cl-line)`,
@@ -187,7 +187,7 @@ export function DiscoverySection() {
                   position: "relative", background: "var(--cl-card2)", display: "flex",
                   alignItems: "center", justifyContent: "center", cursor: "pointer",
                 }} className="discovery-gif-container">
-                  <img src={item.gif} alt={item.placeholderLabel} loading="lazy" style={{
+                  <img src={item.gif || ""} alt={item.placeholderLabel || "Image"} loading="lazy" style={{
                     width: "100%", height: "100%", objectFit: "cover",
                     opacity: isPlaceholder ? 0.28 : 1, filter: isPlaceholder ? "grayscale(100%) contrast(1.1)" : "none",
                     transition: "all 0.4s ease"
