@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useContent } from "./content";
 import { useTheme } from "./theme";
-import { ThemeSyncer, Div } from "./components/ui";
+import { ThemeSyncer, Div, CtaButton } from "./components/ui";
 import { HeroSection } from "./sections/HeroSection";
 import { PainSection } from "./sections/PainSection";
 import { AttentionSection } from "./sections/AttentionSection";
@@ -19,6 +19,74 @@ import { FaqSection } from "./sections/FaqSection";
 import { CtaSection } from "./sections/CtaSection";
 import LiveSocialProof from "./LiveSocialProof";
 import "./landing.css";
+
+function StickyRegisterBar() {
+  const t = useTheme();
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 500) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  if (!show) return null;
+
+  return (
+    <div style={{
+      position: "fixed",
+      bottom: 20,
+      left: "50%",
+      transform: "translateX(-50%)",
+      zIndex: 99999,
+      maxWidth: "92%",
+      width: 520,
+      background: "rgba(17, 19, 26, 0.88)",
+      border: `1px solid ${t.accent}66`,
+      borderRadius: 100,
+      padding: "10px 16px",
+      backdropFilter: "blur(16px)",
+      boxShadow: `0 20px 40px -10px rgba(0,0,0,0.8), 0 0 25px ${t.accent}33`,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 12,
+      animation: "fadeInUp 0.3s ease",
+    }}>
+      <div style={{ paddingLeft: 8 }}>
+        <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", lineHeight: 1.2 }}>
+          THỬ THÁCH 30 NGÀY VIRAL
+        </div>
+        <div style={{ fontSize: 12, color: t.accent, fontWeight: 600 }}>
+          Ưu đãi Early Bird: 399.000đ <span style={{ textDecoration: "line-through", color: "#666", fontSize: 11 }}>7.500.000đ</span>
+        </div>
+      </div>
+      <a
+        href="/checkout"
+        style={{
+          background: `linear-gradient(135deg, ${t.accent}, #e05400)`,
+          color: "#fff",
+          padding: "10px 22px",
+          borderRadius: 100,
+          fontWeight: 700,
+          fontSize: 13,
+          textDecoration: "none",
+          boxShadow: `0 4px 15px ${t.accent}55`,
+          whiteSpace: "nowrap",
+          transition: "transform 0.2s ease"
+        }}
+      >
+        ĐĂNG KÝ NGAY →
+      </a>
+    </div>
+  );
+}
 
 export default function App() {
   const t = useTheme();
@@ -161,6 +229,7 @@ export default function App() {
           </p>
         </footer>
       )}
+      <StickyRegisterBar />
       <LiveSocialProof />
     </div>
   );
