@@ -24,10 +24,10 @@
   --cl-text-muted:  #787888;
   --cl-radius:      20px;
   --cl-radius-sm:   12px;
-  --cl-font-display:'Be Vietnam Pro', sans-serif;
-  --cl-font-body:   'Be Vietnam Pro', sans-serif;
+  --cl-font-display:'SVN-Acta', 'Acta Display', 'Acta', Georgia, serif;
+  --cl-font-body:   'Aeonik', 'Inter', sans-serif;
   --cl-font-mono:   'JetBrains Mono', monospace;
-  --cl-font-accent: 'Playfair Display', Georgia, serif;
+  --cl-font-accent: 'SVN-Acta', 'Acta Display', 'Acta', Georgia, serif;
 }
 
 /* ═══ VNCreative Utility Classes ═══════════════════════════════ */
