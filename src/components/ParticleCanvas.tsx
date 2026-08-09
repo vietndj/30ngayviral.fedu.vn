@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 
-// Màu Google & Antigravity palette (Google Electric Blue, Green, Red, Yellow, Cyan)
+// Màu Google & Antigravity Light palette (Google Blue, Green, Red, Yellow, Cyan)
 const COLORS = [
-  '#3186FF',   // Google Blue
-  '#00B95C',   // Google Green
-  '#FC413D',   // Google Red
-  '#FFE432',   // Google Yellow
-  '#38bdf8',   // Cyan Glow
-  '#818cf8',   // Indigo Glow
+  '#1a73e8',   // Google Blue
+  '#16a34a',   // Google Green
+  '#ea4335',   // Google Red
+  '#fbbc04',   // Google Yellow
+  '#0284c7',   // Deep Cyan
+  '#6366f1',   // Indigo Accent
 ];
 
 class Particle {

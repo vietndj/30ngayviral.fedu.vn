@@ -12,16 +12,16 @@
 
 /* ═══ DEFAULT FALLBACK TOKENS ══════════════════════════════════ */
 :root {
-  --cl-bg:          #0a0b0e;
-  --cl-card:        #13151a;
-  --cl-card2:       #171920;
-  --cl-accent:      #3186FF;
+  --cl-bg:          #ffffff;
+  --cl-card:        #f8f9fa;
+  --cl-card2:       #f1f3f4;
+  --cl-accent:      #1a73e8;
   --cl-accent-text: #ffffff;
-  --cl-line:        rgba(255, 255, 255, 0.08);
-  --cl-danger:      #FC413D;
-  --cl-text-base:   #f0f0f0;
-  --cl-text-body:   #b8b8c0;
-  --cl-text-muted:  #787888;
+  --cl-line:        rgba(0, 0, 0, 0.08);
+  --cl-danger:      #d93025;
+  --cl-text-base:   #111827;
+  --cl-text-body:   #374151;
+  --cl-text-muted:  #6b7280;
   --cl-radius:      20px;
   --cl-radius-sm:   12px;
   --cl-font-display:'SVN-Acta', 'Acta Display', 'Acta', Georgia, serif;
@@ -38,16 +38,16 @@
   color: var(--cl-accent);
 }
 .cl-glow-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(49, 134, 255, 0.22);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
-  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(49, 134, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 0 20px rgba(26, 115, 232, 0.06);
   backdrop-filter: blur(12px);
   transition: all 0.3s ease;
 }
 .cl-glow-card:hover {
-  border-color: rgba(49, 134, 255, 0.45);
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 35px 0px rgba(49, 134, 255, 0.25);
+  border-color: rgba(26, 115, 232, 0.3);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08), 0 0 30px rgba(26, 115, 232, 0.12);
   transform: translateY(-2px);
 }
 
