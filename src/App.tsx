@@ -60,11 +60,11 @@ function StickyRegisterBar() {
       animation: "fadeInUp 0.3s ease",
     }}>
       <div style={{ paddingLeft: 8 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", lineHeight: 1.2 }}>
-          THỬ THÁCH 30 NGÀY VIRAL
+        <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", lineHeight: 1.25 }}>
+          📱 Khóa Học Online Trọn Đời — Học Mọi Lúc Mọi Nơi
         </div>
         <div style={{ fontSize: 12, color: t.accent, fontWeight: 600 }}>
-          Ưu đãi Early Bird: 999.000đ <span style={{ textDecoration: "line-through", color: "#666", fontSize: 11 }}>7.500.000đ</span>
+          Trọn Gói 999.000đ — <span style={{ color: "#10b981" }}>Cam Kết Hoàn Tiền 100% Trong 7 Ngày</span>
         </div>
       </div>
       <a
@@ -72,7 +72,7 @@ function StickyRegisterBar() {
         style={{
           background: `linear-gradient(135deg, ${t.accent}, #e05400)`,
           color: "#fff",
-          padding: "10px 22px",
+          padding: "10px 20px",
           borderRadius: 100,
           fontWeight: 700,
           fontSize: 13,
@@ -82,7 +82,7 @@ function StickyRegisterBar() {
           transition: "transform 0.2s ease"
         }}
       >
-        ĐĂNG KÝ NGAY →
+        ĐĂNG KÝ HỌC ONLINE 999K →
       </a>
     </div>
   );
