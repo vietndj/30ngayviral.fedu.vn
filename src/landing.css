@@ -12,13 +12,13 @@
 
 /* ═══ DEFAULT FALLBACK TOKENS ══════════════════════════════════ */
 :root {
-  --cl-bg:          #08090c;
-  --cl-card:        #11131a;
-  --cl-card2:       #0d0f14;
-  --cl-accent:      #f36716;
+  --cl-bg:          #0a0b0e;
+  --cl-card:        #13151a;
+  --cl-card2:       #171920;
+  --cl-accent:      #3186FF;
   --cl-accent-text: #ffffff;
   --cl-line:        rgba(255, 255, 255, 0.08);
-  --cl-danger:      #ff3b30;
+  --cl-danger:      #FC413D;
   --cl-text-base:   #f0f0f0;
   --cl-text-body:   #b8b8c0;
   --cl-text-muted:  #787888;
@@ -26,7 +26,7 @@
   --cl-radius-sm:   12px;
   --cl-font-display:'SVN-Acta', 'Acta Display', 'Acta', Georgia, serif;
   --cl-font-body:   'Aeonik', 'Inter', sans-serif;
-  --cl-font-mono:   'JetBrains Mono', monospace;
+  --cl-font-mono:   'Google Sans Code', 'JetBrains Mono', monospace;
   --cl-font-accent: 'SVN-Acta', 'Acta Display', 'Acta', Georgia, serif;
 }
 
@@ -39,15 +39,15 @@
 }
 .cl-glow-card {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(243, 103, 22, 0.22);
+  border: 1px solid rgba(49, 134, 255, 0.22);
   border-radius: 20px;
-  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(243, 103, 22, 0.15);
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(49, 134, 255, 0.15);
   backdrop-filter: blur(12px);
   transition: all 0.3s ease;
 }
 .cl-glow-card:hover {
-  border-color: rgba(243, 103, 22, 0.45);
-  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 35px 0px rgba(243, 103, 22, 0.25);
+  border-color: rgba(49, 134, 255, 0.45);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 35px 0px rgba(49, 134, 255, 0.25);
   transform: translateY(-2px);
 }
 
