@@ -52,7 +52,7 @@ export function HeroSection() {
               </span>
             )}
             <span className="cl-hero__main-span" style={{ textTransform: "none", fontSize: "clamp(28px, 4.5vw, 54px)", lineHeight: 1.2, fontWeight: 800, letterSpacing: "-0.02em", color: "#ffffff", fontFamily: t.fontBody }}>
-              <ScrollTypewriter text={c.heroHeadline2 || ""} highlightText="Viral &amp; Xây Kênh" speed={5} />
+              <ScrollTypewriter text={c.heroHeadline2 || ""} highlightText="Học Bài Nào — Ra Video Chuẩn Bài Đó" speed={5} />
             </span>
           </h1>
 

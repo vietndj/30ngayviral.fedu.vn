@@ -138,7 +138,7 @@ export const DEFAULT_CONTENT: PageContent = {
   // ── Hero ──
   heroBadge: "🚨 DÀNH CHO CREATOR, FREELANCER VÀ CHỦ KINH DOANH MUỐN XÂY KÊNH TỪ CON SỐ 0",
   heroHeadline1: "THOÁT KHỎI 'LỜI NGUYỀN 200 VIEW'.",
-  heroHeadline2: "Hệ Thống Edit Video Viral & Xây Kênh Tốc Độ Cao Trong 30 Ngày Tới.",
+  heroHeadline2: "30 Ngày Đồng Hành Xây Kênh: Học Bài Nào — Ra Video Chuẩn Bài Đó.",
   heroPoem: [
     "Thuật toán không bóp, nó đang chọn lọc,",
     "Ai hiểu được cách, người đó bùng nổ."
@@ -296,7 +296,7 @@ export const DEFAULT_CONTENT: PageContent = {
   ],
 
   // ── Lộ trình tinh gọn ──
-  roadmapLabel: "LỘ TRÌNH LỘT XÁC 30 NGÀY",
+  roadmapLabel: "LỘ TRÌNH 30 NGÀY ĐỒNG HÀNH THỰC CHIẾN",
   roadmapHeading: "Không lý thuyết suông. Mỗi bài học XEM XONG → ÁP DỤNG NGAY.",
   roadmapPreviewHeading: "Xem thử 1 bài học mẫu",
   roadmapPreviewDesc: "Đây là video thực tế bên trong chương trình — trực quan, thực chiến, không lý thuyết suông.",
