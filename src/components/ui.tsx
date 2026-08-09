@@ -96,7 +96,9 @@ export function ScrollTypewriter({ text, speed = 10, delay = 0, highlightText }:
               <span key={idx} style={{ position: "relative", display: "inline" }}>
                 <span style={{
                   color: isTyped ? (isHighlighted ? "var(--cl-accent)" : "inherit") : "transparent",
-                  fontWeight: isHighlighted ? 600 : "inherit",
+                  fontFamily: isHighlighted ? "var(--cl-font-accent)" : "inherit",
+                  fontStyle: isHighlighted ? "italic" : "inherit",
+                  fontWeight: isHighlighted ? 300 : "inherit",
                   userSelect: isTyped ? "auto" : "none",
                   pointerEvents: isTyped ? "auto" : "none",
                 }}>

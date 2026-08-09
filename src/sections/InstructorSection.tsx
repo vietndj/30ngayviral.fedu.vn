@@ -76,7 +76,7 @@ export function InstructorSection() {
                 fontSize: "clamp(16px, 2.2vw, 19px)",
                 lineHeight: 1.6,
                 color: "#ffffff",
-                fontWeight: 600,
+                fontWeight: 300,
                 margin: 0,
               }}>
                 "Bán hàng giỏi cho bạn doanh thu hôm nay. Thương hiệu cá nhân &amp; Hệ thống Video Viral cho bạn sự lựa chọn cho ngày mai."
