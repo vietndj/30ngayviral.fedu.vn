@@ -19,40 +19,44 @@ export function HeroSection() {
           maskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
         }} />
         <div style={{ opacity: heroReady ? 1 : 0, transform: heroReady ? "translateY(0)" : "translateY(16px)", transition: "opacity 0.7s ease, transform 0.7s ease" }}>
-          {/* 🔴 [POSITION 1 BADGE] Bản Cập nhật Tháng 7/2026 */}
+          {/* 1 Clean Capsule Badge */}
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
-            border: "1px solid rgba(239, 68, 68, 0.4)",
-            background: "rgba(239, 68, 68, 0.08)",
-            borderRadius: 100, padding: "7px 18px", marginBottom: 14,
-            fontFamily: t.fontMono, fontSize: "clamp(10px, 2.8vw, 13px)", letterSpacing: "0.04em",
-            color: "#f87171", fontWeight: 600, boxShadow: "0 0 20px rgba(239, 68, 68, 0.15)",
-            maxWidth: "100%", boxSizing: "border-box" as const, textAlign: "center" as const
+            background: "rgba(26, 115, 232, 0.06)",
+            border: "1px solid rgba(26, 115, 232, 0.2)",
+            borderRadius: 100, padding: "8px 20px", marginBottom: 28,
+            boxShadow: "0 2px 12px rgba(26, 115, 232, 0.06)",
           }}>
+            <span style={{ fontSize: 13, color: "#1a73e8" }}>✨</span>
             <span style={{
-              width: 8, height: 8, borderRadius: "50%", background: "#ef4444",
-              boxShadow: "0 0 10px #ef4444", display: "inline-block"
-            }} />
-            <span>PHIÊN BẢN CẬP NHẬT THÁNG 7/2026 — TÍCH HỢP AI &amp; KỸ THUẬT MỚI</span>
+              fontFamily: t.fontMono, fontSize: 13, fontWeight: 600,
+              color: "#1a73e8", letterSpacing: "0.06em", textTransform: "uppercase",
+            }}>
+              TÍCH HỢP AI 2026 — DÀNH CHO CREATOR & CHỦ KINH DOANH
+            </span>
           </div>
-          <br />
 
-          <div style={{
-            display: "inline-block", border: `1px solid ${t.accent}44`,
-            borderRadius: 100, padding: "7px 18px", marginBottom: 36,
-            fontFamily: t.fontMono, fontSize: 13, letterSpacing: "0.15em",
-            color: "var(--cl-accent)", textTransform: "uppercase",
-          }}>
-            {c.heroBadge}
-          </div>
-          <h1 className="cl-hero__h1">
+          <h1 className="cl-hero__h1" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
             {c.heroHeadline1 && (
-              <span className="cl-hero__eyebrow-span" style={{ display: "block", fontSize: "clamp(24px, 4vw, 42px)", color: t.accent, fontFamily: t.fontAccent, fontStyle: "italic", fontWeight: 300, marginBottom: 12 }}>
+              <span className="cl-hero__eyebrow-span" style={{ display: "block", fontSize: "clamp(24px, 4vw, 42px)", color: "#1a73e8", fontFamily: t.fontAccent, fontStyle: "italic", fontWeight: 300, margin: 0, letterSpacing: "-0.01em" }}>
                 {c.heroHeadline1}
               </span>
             )}
-            <span className="cl-hero__main-span" style={{ textTransform: "none", fontSize: "clamp(28px, 4.5vw, 54px)", lineHeight: 1.2, fontWeight: 800, letterSpacing: "-0.02em", color: "var(--cl-text-base, #111827)", fontFamily: t.fontBody }}>
-              <ScrollTypewriter text={c.heroHeadline2 || ""} highlightText="Học Bài Nào — Ra Video Chuẩn Bài Đó" speed={5} />
+            <span style={{
+              fontSize: "clamp(28px, 4.5vw, 52px)", lineHeight: 1.25,
+              fontWeight: 800, letterSpacing: "-0.02em",
+              color: "var(--cl-text-base, #111827)", fontFamily: t.fontBody,
+              maxWidth: "24ch", textWrap: "balance", textAlign: "center",
+            }}>
+              30 Ngày Đồng Hành Xây Kênh:{" "}
+              <span style={{
+                fontFamily: t.fontAccent, fontStyle: "italic", fontWeight: 300,
+                color: "#1a73e8", display: "inline-block",
+                background: "rgba(26, 115, 232, 0.07)", border: "1px solid rgba(26, 115, 232, 0.18)",
+                borderRadius: 12, padding: "2px 14px", marginTop: 6,
+              }}>
+                Học Bài Nào — Ra Video Chuẩn Bài Đó.
+              </span>
             </span>
           </h1>
 
