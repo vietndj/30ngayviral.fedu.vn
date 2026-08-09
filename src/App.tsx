@@ -64,7 +64,7 @@ function StickyRegisterBar() {
           THỬ THÁCH 30 NGÀY VIRAL
         </div>
         <div style={{ fontSize: 12, color: t.accent, fontWeight: 600 }}>
-          Ưu đãi Early Bird: 399.000đ <span style={{ textDecoration: "line-through", color: "#666", fontSize: 11 }}>7.500.000đ</span>
+          Ưu đãi Early Bird: 999.000đ <span style={{ textDecoration: "line-through", color: "#666", fontSize: 11 }}>7.500.000đ</span>
         </div>
       </div>
       <a

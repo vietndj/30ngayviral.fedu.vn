@@ -132,7 +132,7 @@ const CONTENT_SCHEMA_VERSION = 7;
 
 export const DEFAULT_CONTENT: PageContent = {
   _v: CONTENT_SCHEMA_VERSION,
-  price: "399.000",
+  price: "999.000",
   value: "7.500.000",
 
   // ── Hero ──

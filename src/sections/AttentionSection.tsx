@@ -27,7 +27,7 @@ export function AttentionSection() {
     {
       badge: "Lựa chọn 3 — KHUYÊN DÙNG",
       title: "Thử Thách 30 Ngày Video Viral",
-      cost: "Chỉ 399.000 VNĐ (Tổng giá trị 7.5M)",
+      cost: "Chỉ 999.000 VNĐ (Tổng giá trị 7.5M)",
       desc: "Sở hữu toàn bộ Hệ thống Content Matrix + Bộ 50+ Template CapCut One-Click + 20+ Prompt AI + ĐẶC QUYỀN Thầy Việt feedback trực tiếp 1-1 trong cộng đồng Skool.",
       isBest: true,
       tag: "🏆 Tối Ưu Nhất"
