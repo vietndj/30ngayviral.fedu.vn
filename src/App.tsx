@@ -18,6 +18,7 @@ import { BonusSection } from "./sections/BonusSection";
 import { FaqSection } from "./sections/FaqSection";
 import { CtaSection } from "./sections/CtaSection";
 import LiveSocialProof from "./LiveSocialProof";
+import ParticleCanvas from "./components/ParticleCanvas";
 import "./landing.css";
 
 function StickyRegisterBar() {
@@ -94,8 +95,9 @@ export default function App() {
   const isHidden = (id: string) => c.blocksMeta?.hidden?.includes(id) ?? false;
 
   return (
-    <div style={{ background: t.bg, color: t.textBase ?? "#f0f0f0", fontFamily: t.fontBody, minHeight: "100vh", overflowX: "hidden" }}>
+    <div style={{ position: "relative", background: t.bg, color: t.textBase ?? "#f0f0f0", fontFamily: t.fontBody, minHeight: "100vh", overflowX: "hidden" }}>
       <ThemeSyncer />
+      <ParticleCanvas />
 
       {!isHidden("hero") && <HeroSection />}
       <Div />
