@@ -151,7 +151,7 @@ export function HeroSection() {
             display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 24,
             width: "100%", maxWidth: 820, margin: "48px auto 0", textAlign: "left",
           }}>
-            {/* Pillar 1 */}
+            {/* Foundation 1 */}
             <div style={{
               background: "var(--cl-card)", border: `1px solid var(--cl-line)`, borderLeft: `3px solid var(--cl-accent)`,
               borderRadius: t.cardRadius, padding: "clamp(20px, 5vw, 32px) clamp(16px, 4vw, 28px)", display: "flex", flexDirection: "column", gap: 12,
@@ -159,19 +159,19 @@ export function HeroSection() {
             }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <span style={{ fontSize: 20 }}>🎬</span>
-                <span style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--cl-accent)", fontWeight: 500 }}>
-                  TRỤ CỘT 1: QUAY DỰNG CUỐN HÚT
+                <span style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--cl-accent)", fontWeight: 600 }}>
+                  NỀN TẢNG 01: QUAY DỰNG CUỐN HÚT
                 </span>
               </div>
-              <h3 style={{ fontFamily: t.fontBody, fontSize: "clamp(19px, 5vw, 24px)", fontWeight: 500, color: "#fff", margin: "4px 0 0", letterSpacing: "-0.015em" }}>
+              <h3 style={{ fontFamily: t.fontBody, fontSize: "clamp(19px, 5vw, 24px)", fontWeight: 700, color: "var(--cl-text-base)", margin: "4px 0 0", letterSpacing: "-0.015em" }}>
                 Cắt Ghép Chỉn Chu
               </h3>
-              <p style={{ fontSize: "clamp(15px, 3.8vw, 18px)", lineHeight: 1.75, color: "#e2e8f0", margin: 0 }}>
-                {(c as any).products?.[0]?.desc ?? ""}
+              <p style={{ fontSize: "clamp(15px, 3.8vw, 17px)", lineHeight: 1.75, color: "var(--cl-text-body)", margin: 0 }}>
+                Làm chủ tư duy phân cảnh và nhịp điệu cắt ghép mượt mà, loại bỏ hoàn toàn các khoảng chết gây nhàm chán.
               </p>
             </div>
 
-            {/* Pillar 2 */}
+            {/* Foundation 2 */}
             <div style={{
               background: "var(--cl-card)", border: `1px solid var(--cl-line)`, borderLeft: `3px solid var(--cl-accent)`,
               borderRadius: t.cardRadius, padding: "clamp(20px, 5vw, 32px) clamp(16px, 4vw, 28px)", display: "flex", flexDirection: "column", gap: 12,
@@ -179,15 +179,15 @@ export function HeroSection() {
             }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <span style={{ fontSize: 20 }}>💡</span>
-                <span style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--cl-accent)", fontWeight: 500 }}>
-                  TRỤ CỘT 2: NÂNG TẦM THẨM MỸ
+                <span style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--cl-accent)", fontWeight: 600 }}>
+                  NỀN TẢNG 02: BỐI CẢNH & ÁNH SÁNG
                 </span>
               </div>
-              <h3 style={{ fontFamily: t.fontBody, fontSize: "clamp(19px, 5vw, 24px)", fontWeight: 500, color: "#fff", margin: "4px 0 0", letterSpacing: "-0.015em" }}>
-                Dựng Cảnh Có Gu
+              <h3 style={{ fontFamily: t.fontBody, fontSize: "clamp(19px, 5vw, 24px)", fontWeight: 700, color: "var(--cl-text-base)", margin: "4px 0 0", letterSpacing: "-0.015em" }}>
+                Góc Quay & Hướng Sáng Chuẩn
               </h3>
-              <p style={{ fontSize: "clamp(15px, 3.8vw, 18px)", lineHeight: 1.75, color: "#e2e8f0", margin: 0 }}>
-                {(c as any).products?.[1]?.desc ?? ""}
+              <p style={{ fontSize: "clamp(15px, 3.8vw, 17px)", lineHeight: 1.75, color: "var(--cl-text-body)", margin: 0 }}>
+                Tận dụng ánh sáng tự nhiên và cách đặt máy thông minh giúp khung hình điện thoại luôn nét căng, có chiều sâu.
               </p>
             </div>
           </div>
