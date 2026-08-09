@@ -42,46 +42,50 @@ function StickyRegisterBar() {
   return (
     <div style={{
       position: "fixed",
-      bottom: 20,
+      bottom: 24,
       left: "50%",
       transform: "translateX(-50%)",
       zIndex: 99999,
-      maxWidth: "92%",
-      width: 520,
-      background: "rgba(255, 255, 255, 0.92)",
-      border: `1px solid ${t.accent}44`,
+      maxWidth: "calc(100% - 32px)",
+      width: 560,
+      background: "rgba(255, 255, 255, 0.95)",
+      border: "1px solid rgba(0, 0, 0, 0.08)",
       borderRadius: 100,
-      padding: "10px 16px",
-      backdropFilter: "blur(16px)",
-      boxShadow: `0 12px 35px -10px rgba(0, 0, 0, 0.12), 0 0 25px ${t.accent}22`,
+      padding: "10px 14px 10px 22px",
+      backdropFilter: "blur(20px)",
+      WebkitBackdropFilter: "blur(20px)",
+      boxShadow: "0 16px 40px -10px rgba(0, 0, 0, 0.08), 0 0 24px rgba(26, 115, 232, 0.08)",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      gap: 12,
-      animation: "fadeInUp 0.3s ease",
+      gap: 16,
+      animation: "fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
     }}>
-      <div style={{ paddingLeft: 8 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "var(--cl-text-base, #111827)", lineHeight: 1.25 }}>
-          📱 Khóa Học Online Trọn Đời — Học Mọi Lúc Mọi Nơi
+      <div style={{ display: "flex", flexDirection: "column", gap: 3, minWidth: 0 }}>
+        <div style={{ fontSize: 13.5, fontWeight: 700, color: "#111827", lineHeight: 1.25, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+          📱 Khóa Học Online 999.000đ
         </div>
-        <div style={{ fontSize: 12, color: t.accent, fontWeight: 600 }}>
-          Trọn Gói 999.000đ — <span style={{ color: "#10b981" }}>Cam Kết Hoàn Tiền 100% Trong 7 Ngày</span>
+        <div style={{ fontSize: 12, color: "#16a34a", fontWeight: 600, display: "flex", alignItems: "center", gap: 4, whiteSpace: "nowrap" }}>
+          <span>🛡️</span> Cam kết hoàn tiền 100% trong 7 ngày
         </div>
       </div>
       <a
         href="/checkout"
         style={{
-          background: `linear-gradient(135deg, ${t.accent}, #e05400)`,
-          color: "#fff",
-          padding: "10px 20px",
+          background: "#1a73e8",
+          color: "#ffffff",
+          padding: "11px 22px",
           borderRadius: 100,
           fontWeight: 700,
           fontSize: 13,
           textDecoration: "none",
-          boxShadow: `0 4px 15px ${t.accent}55`,
+          boxShadow: "0 4px 16px rgba(26, 115, 232, 0.3)",
           whiteSpace: "nowrap",
-          transition: "transform 0.2s ease"
+          flexShrink: 0,
+          transition: "transform 0.2s ease, background-color 0.2s ease",
         }}
+        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#1557b0"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#1a73e8"; }}
       >
         ĐĂNG KÝ HỌC ONLINE 999K →
       </a>
