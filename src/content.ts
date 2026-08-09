@@ -320,17 +320,38 @@ export const DEFAULT_CONTENT: PageContent = {
     "Tôi đã đi qua bãi mìn, tôi biết chỗ nào có bom. Việc của bạn rất đơn giản: Không cần đi đường vòng, hãy bước theo dấu chân của tôi."
   ],
 
-  // ── Bonus (Quà tặng) ──
-  bonusLabel: "BỘ VŨ KHÍ BẠN SỞ HỮU NGAY LẬP TỨC",
-  bonusHeading: "Tổng giá trị thực tế: 7.500.000 VNĐ — Bạn chỉ trả 399.000đ",
-  bonusSub: "Mọi thứ đã được đóng gói thành 'Hệ sinh thái ăn sẵn' — cắt giảm 80% công sức",
+  // ── Bonus (Quà tặng từ video.fedu.vn) ──
+  bonusLabel: "QUÀ TẶNG ĐI KÈM KHÔNG THỂ BỎ QUA",
+  bonusHeading: 'Tặng kèm kho "đồ chơi" nâng tầm khung hình trị giá 1.250.000đ',
+  bonusSub: "Chỉ dành cho những ai đăng ký trong đợt này — không bán riêng lẻ",
   bonusItems: [
-    { id: "01", title: "🎬 Masterclass '30 Ngày Viral' Toàn Tập", desc: "Lộ trình từ A-Z: 3 Phase hoàn chỉnh. Update trọn đời. Xem đi xem lại không giới hạn.<br/><b>Giá trị: 3.500.000 VNĐ</b>" },
-    { id: "02", title: "🪄 Bộ 50+ Template CapCut 'One-Click'", desc: "Đã setup sẵn hiệu ứng, text, âm thanh. Bạn chỉ cần thả video thô vào là xuất file! Tiết kiệm 80% thời gian edit.<br/><b>Giá trị: 1.500.000 VNĐ</b>" },
-    { id: "03", title: "🤖 Bộ 20+ Prompt AI Viết Kịch Bản", desc: "Bí ý tưởng? AI đóng vai biên kịch, nhả ra cấu trúc Hook-Story-Offer chuẩn xác trong 10 giây. Chỉ cần gõ chủ đề.<br/><b>Giá trị: 1.000.000 VNĐ</b>" },
-    { id: "04", title: "📅 Lịch Quản Trị Content 30 Ngày (Notion)", desc: "Biết chính xác hôm nay quay gì, ngày mai đăng gì. Không còn vò đầu bứt tai tìm ý tưởng.<br/><b>Giá trị: 500.000 VNĐ</b>" },
-    { id: "05", title: "🎵 Kho 500+ Nhạc & SFX Bản Quyền", desc: "Trend nhất, bốc nhất, không bao giờ lo bị đánh gậy. Cập nhật liên tục theo xu hướng mới nhất.<br/><b>Giá trị: 1.000.000 VNĐ</b>", audioDemo: "/boardroom-siege.mp3" },
-    { id: "06", title: "🤝 ĐẶC QUYỀN VIP: Cộng đồng Skool", desc: "Nơi Thầy Việt trực tiếp sửa bài, feedback video và support bạn mỗi ngày. Học hỏi từ Case Study thật của các học viên khác.<br/><b>Giá trị: VÔ GIÁ</b>", gifDemo: "/edit-ai-promo.gif" }
+    {
+      id: "01",
+      title: "Kho 50+ Âm Thanh Điện Ảnh (SFX)",
+      desc: 'Nếu bạn chỉ đơn giản dùng tiếng Whoosh, Pop, Glitch, Impact có sẵn trong CapCut thì âm thanh sẽ không có lực, bị bẹt và cực kỳ đại trà.<br/><br/>Để video thực sự "xịn" như phim, bạn cần nhiều lớp âm thanh (layer) lồng ghép vào nhau. Trong thư viện này, mình đã tổng hợp sẵn:<br/><ul style="margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;"><li>🔥 <b>Âm thanh có lực, sâu, đậm chất điện ảnh</b></li><li>🎧 <b>Sử dụng thoải mái, 100% sạch bản quyền (No Copyright)</b></li><li>✂️ <b>Chỉ cần dán vào đúng điểm cắt, khung hình tự động thăng cấp!</b></li></ul>'
+    },
+    {
+      id: "02",
+      title: 'Kho Nhạc Nền "MasterClass" Độc Bản',
+      desc: 'Bạn có bao giờ chán nản vì dùng chung một bản nhạc nền với hàng ngàn video khác trên TikTok? Với thư viện nhạc nền "MasterClass" do chính tay mình sản xuất bằng AI chuyên dụng:<br/><ul style="margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;"><li>🎼 <b>Giai điệu ĐỘC BẢN:</b> Cảm xúc mãnh liệt, hoàn toàn không đụng hàng.</li><li>✅ <b>Sạch bản quyền 100%:</b> Không bao giờ lo đánh gậy trên YouTube, TikTok hay Facebook.</li><li>🔄 <b>Sẵn sàng sử dụng:</b> Chỉ cần tải về dùng ngay và được cập nhật nhạc mới thường xuyên!</li></ul>',
+      audioDemo: "/boardroom-siege.mp3"
+    },
+    {
+      id: "03",
+      title: "Bộ Template Chữ Chuyển Động Cao Cấp Cho CapCut PC",
+      desc: 'Giải pháp kéo - thả giúp tiêu đề video của bạn nổi bật tức thì mà không cần kiến thức kỹ xảo hay đặt keyframe phức tạp.<br/><br/>Trọn bộ Template đắt giá bao gồm:<br/><ul style="margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;"><li>🎬 <b>3 Ngách ngành tiêu biểu:</b> Bất động sản sang trọng, Công nghệ hiện đại, Ẩm thực bắt mắt.</li><li>🚀 <b>Kéo - Thả dùng ngay:</b> Thiết kế sẵn 100% trên CapCut PC, tương thích mọi tỉ lệ khung hình.</li><li>💡 <b>Tạo ấn tượng 3s đầu:</b> Giữ chân người xem lâu hơn, tăng tỷ lệ xem hết video đáng kể.</li><li>🔄 <b>Cập nhật liên tục & MIỄN PHÍ:</b> Thường xuyên bổ sung các style chữ mới theo xu hướng thị trường mà không tốn thêm bất kỳ chi phí nào!</li></ul>'
+    },
+    {
+      id: "04",
+      title: "Bộ Prompt AI Kịch Bản & Chia Phân Cảnh (Shot-list)",
+      desc: "Chỉ cần thả Prompt vào ChatGPT, AI sẽ tự động phân tách kịch bản của bạn thành các cỡ cảnh (Toàn - Trung - Cận) hợp lý nhất. Bạn chỉ việc vác máy lên quay."
+    },
+    {
+      id: "05",
+      title: "Cập Nhật Miễn Phí Kỹ Thuật Edit Video Bằng AI",
+      desc: "Liên tục cập nhật miễn phí các kỹ thuật và quy trình AI mới nhất — giúp bạn tự động hóa cắt ghép, tạo phụ đề và rút ngắn 80% thời gian dựng cho một số loại video phổ biến.",
+      gifDemo: "/edit-ai-promo.gif"
+    }
   ],
 
   // ── Section 11: Final CTA ──
