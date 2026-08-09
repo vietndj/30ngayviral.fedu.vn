@@ -146,7 +146,7 @@ export const DEFAULT_CONTENT: PageContent = {
   heroAccentLine: "Bạn không cần máy quay chục triệu, không cần ekip hay ngoại hình xuất chúng.",
   heroSub: "Khám phá vũ khí thao túng thuật toán TikTok/Reels/Shorts bằng Cấu trúc Hook-Story-Offer và kỹ năng Edit giữ chân (Retention). Biến chiếc điện thoại của bạn thành cỗ máy hút 10.000+ Followers trung thành và tự động tạo ra chuyển đổi.",
   heroCta: "KHÁM PHÁ LỘ TRÌNH 30 NGÀY →",
-  heroVideoYoutubeId: "CaDZiACYrV8",
+  heroVideoYoutubeId: "eg6T8-SekjQ",
   heroSubPrice: "Học Online trọn đời — Trọn gói 999.000đ (Thầy Việt đồng hành 1-1)",
 
   // ── Pain (Nỗi đau) ──
