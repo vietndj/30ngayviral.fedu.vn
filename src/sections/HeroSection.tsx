@@ -106,9 +106,16 @@ export function HeroSection() {
           )}
 
           <div className="cl-hero__cta-wrap">
-            <CtaButton label={`${c.heroCta} — ${c.price} VNĐ`} />
-            <p className="cl-hero__sub-price">
-              {c.heroSubPrice ?? `Giá gốc: ${c.value} VNĐ — Tiết kiệm 80% hôm nay`}
+            <a
+              href="#roadmap"
+              onClick={(e) => { e.preventDefault(); document.getElementById("roadmap")?.scrollIntoView({ behavior: "smooth" }); }}
+              className="cl-btn cl-btn--solid"
+              style={{ fontSize: 16, padding: "16px 36px" }}
+            >
+              {c.heroCta}
+            </a>
+            <p className="cl-hero__sub-price" style={{ marginTop: 12, fontSize: 14 }}>
+              {c.heroSubPrice}
             </p>
           </div>
         </div>
