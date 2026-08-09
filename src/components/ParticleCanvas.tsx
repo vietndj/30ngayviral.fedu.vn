@@ -29,15 +29,15 @@ class Particle {
 
   init(w: number, h: number, randomY = false) {
     this.x = Math.random() * w;
-    this.y = randomY ? Math.random() * h : h + Math.random() * 60;
-    this.vx = (Math.random() - 0.5) * 0.3;
-    this.vy = -(Math.random() * 0.55 + 0.18); // Float upward (Antigravity lift)
+    this.y = randomY ? Math.random() * h : h + Math.random() * 40;
+    this.vx = (Math.random() - 0.5) * 0.25;
+    this.vy = -(Math.random() * 0.45 + 0.15); // Float upward (Antigravity lift)
     this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-    this.w = Math.random() * 2.5 + 1.2;
-    this.h = Math.random() * 8 + 4;
+    this.w = Math.random() * 2.2 + 1.2;
+    this.h = Math.random() * 7 + 3.5;
     this.angle = Math.random() * Math.PI * 2;
-    this.spin = (Math.random() - 0.5) * 0.03;
-    this.alpha = Math.random() * 0.45 + 0.15;
+    this.spin = (Math.random() - 0.5) * 0.025;
+    this.alpha = Math.random() * 0.35 + 0.12;
     this.maxY = -20;
   }
 
@@ -70,7 +70,7 @@ class Particle {
   }
 }
 
-const PARTICLE_COUNT = 70;
+const PARTICLE_COUNT = 35; // Optimized count for 60fps viewport rendering
 
 interface ParticleCanvasProps {
   className?: string;
@@ -99,26 +99,25 @@ export function ParticleCanvas({ className = '', style }: ParticleCanvasProps) {
     const state = stateRef.current;
 
     const resize = () => {
-      const parent = canvas.parentElement;
-      const rect = parent ? parent.getBoundingClientRect() : { width: window.innerWidth, height: 800 };
-      const dpr = window.devicePixelRatio || 1;
-      state.w = canvas.width = rect.width * dpr;
-      state.h = canvas.height = rect.height * dpr;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2); // Cap dpr to 2 for 4K screen efficiency
+      state.w = canvas.width = w * dpr;
+      state.h = canvas.height = h * dpr;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
       ctx.scale(dpr, dpr);
     };
 
     resize();
     state.particles = Array.from(
       { length: PARTICLE_COUNT },
-      () => new Particle(state.w / (window.devicePixelRatio || 1), state.h / (window.devicePixelRatio || 1))
+      () => new Particle(window.innerWidth, window.innerHeight)
     );
 
     const tick = () => {
-      const dpr = window.devicePixelRatio || 1;
-      const W = state.w / dpr;
-      const H = state.h / dpr;
+      const W = window.innerWidth;
+      const H = window.innerHeight;
       ctx.clearRect(0, 0, W, H);
       state.particles.forEach((p) => {
         p.update(W, H);
@@ -129,14 +128,11 @@ export function ParticleCanvas({ className = '', style }: ParticleCanvasProps) {
 
     state.rafId = requestAnimationFrame(tick);
 
-    const ro = new ResizeObserver(resize);
-    if (canvas.parentElement) {
-      ro.observe(canvas.parentElement);
-    }
+    window.addEventListener('resize', resize, { passive: true });
 
     return () => {
       if (state.rafId) cancelAnimationFrame(state.rafId);
-      ro.disconnect();
+      window.removeEventListener('resize', resize);
     };
   }, []);
 
@@ -145,13 +141,14 @@ export function ParticleCanvas({ className = '', style }: ParticleCanvasProps) {
       ref={canvasRef}
       className={`particle-canvas ${className}`}
       style={{
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         left: 0,
-        width: '100%',
-        height: '100%',
+        width: '100vw',
+        height: '100vh',
         pointerEvents: 'none',
         zIndex: 0,
+        willChange: 'transform',
         ...style,
       }}
       aria-hidden="true"

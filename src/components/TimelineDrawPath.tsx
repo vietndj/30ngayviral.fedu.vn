@@ -25,13 +25,20 @@ export function TimelineDrawPath() {
     path.style.strokeDasharray = String(len);
     path.style.strokeDashoffset = String(len);
     path.style.opacity = "1";
+    let ticking = false;
     const update = () => {
-      const rect = container.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const elapsed = vh - rect.top;
-      const range = vh + rect.height * 0.85;
-      const progress = Math.max(0, Math.min(1, elapsed / range));
-      path.style.strokeDashoffset = String(len * (1 - progress));
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const rect = container.getBoundingClientRect();
+          const vh = window.innerHeight;
+          const elapsed = vh - rect.top;
+          const range = vh + rect.height * 0.85;
+          const progress = Math.max(0, Math.min(1, elapsed / range));
+          path.style.strokeDashoffset = String(len * (1 - progress));
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener("scroll", update, { passive: true });
     update();
