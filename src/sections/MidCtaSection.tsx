@@ -16,7 +16,7 @@ export function MidCtaSection() {
           borderRadius: t.cardRadius,
           padding: "clamp(24px, 6vw, 48px) clamp(16px, 4vw, 32px)"
         }}>
-          <h3 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(22px, 5vw, 32px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", color: "#fff", margin: "0 0 16px 0" }}>
+          <h3 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(22px, 5vw, 32px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", color: "var(--cl-text-base, #111827)", margin: "0 0 16px 0" }}>
             {c.midCtaHeading || "Sẵn sàng nâng cấp hình ảnh của bạn?"}
           </h3>
           <p style={{ fontSize: "clamp(15px, 3.8vw, 19px)", color: "var(--cl-text-muted, #888)", marginBottom: 32, lineHeight: 1.75 }}>

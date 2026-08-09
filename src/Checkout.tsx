@@ -212,7 +212,7 @@ function ConfirmBanner({ onReset }: { onReset: () => void }) {
         Cảm ơn bạn đã chuyển khoản!
       </h2>
       <p style={{ fontSize: 15, color: t.textBody ?? "#aaa", lineHeight: 1.75, maxWidth: 460, margin: "0 auto 24px" }}>
-        Chúng tôi đang xác minh giao dịch. Bạn sẽ nhận được tài liệu qua email <strong style={{ color: "#fff" }}>trong vòng 30 phút</strong> (giờ hành chính).
+        Chúng tôi đang xác minh giao dịch. Bạn sẽ nhận được tài liệu qua email <strong style={{ color: "var(--cl-text-base, #111827)" }}>trong vòng 30 phút</strong> (giờ hành chính).
       </p>
       <div style={{ display: "inline-flex", flexDirection: "column", gap: 10, background: t.card, border: `1px solid ${t.line}`, borderRadius: Math.max(8, t.cardRadius - 4), padding: "20px 24px", marginBottom: 20, textAlign: "left" }}>
         {["🎬 Khóa học Tư Duy Làm Video Điện Thoại: Quay Là Cuốn", `🎁 ${c.valueStack.length > 1 ? c.valueStack[1].label : "Quà Tặng Độc Quyền"}`, "♾ Sở hữu vĩnh viễn"].map((item) => (
@@ -257,7 +257,7 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
         <div style={{ fontSize: 12.5, fontWeight: 700, color: "#10b981", letterSpacing: "0.03em", textTransform: "uppercase" }}>
           ✨ PHIÊN BẢN CHÍNH THỨC CẬP NHẬT THÁNG 7/2026
         </div>
-        <div style={{ fontSize: 12, color: "#cbd5e1", marginTop: 3 }}>
+        <div style={{ fontSize: 12, color: "var(--cl-text-body, #374151)", marginTop: 3 }}>
           Bảo chứng chính chủ &amp; Hỗ trợ trực tiếp từ NGUYỄN ĐỨC VIỆT
         </div>
       </div>
@@ -285,14 +285,14 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
           {c.bonusItems.slice(0, 2).map((bonus, idx) => (
             <div key={idx} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
               <span style={{ color: "#f97316", fontSize: 15, lineHeight: 1.2 }}>✓</span>
-              <p style={{ fontSize: 13, color: "#fff", margin: 0, lineHeight: 1.4, fontWeight: 600 }}>
+              <p style={{ fontSize: 13, color: "var(--cl-text-base, #111827)", margin: 0, lineHeight: 1.4, fontWeight: 600 }}>
                 {bonus.title}
               </p>
             </div>
           ))}
         </div>
         <div style={{ borderTop: "1px dashed rgba(249, 115, 22, 0.2)", paddingTop: 10, textAlign: "center" }}>
-          <p style={{ fontSize: 12.5, color: "#e2e8f0", margin: "0 0 8px", fontWeight: 500 }}>
+          <p style={{ fontSize: 12.5, color: "var(--cl-text-body, #374151)", margin: "0 0 8px", fontWeight: 500 }}>
             Quà tặng sẽ tự động hủy sau:
           </p>
           <Countdown hideLabel />
@@ -311,7 +311,7 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
         <div style={{ fontSize: 14, fontWeight: 500, color: "#f97316", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 12, textAlign: "center" }}>
           🎁 HỖ TRỢ TRỰC TIẾP TỪ GIẢNG VIÊN (CHỈ CÒN 9 BẠN)
         </div>
-        <p style={{ fontSize: 13, color: "#fff", margin: "0 0 10px", lineHeight: 1.5, fontWeight: 500 }}>
+        <p style={{ fontSize: 13, color: "var(--cl-text-base, #111827)", margin: "0 0 10px", lineHeight: 1.5, fontWeight: 500 }}>
           Đợt này web mới ra mắt nên mình đặc biệt <strong>hỗ trợ Zalo 1-1</strong> cho anh em. Đăng ký xong cứ add Zalo mình, kẹt chỗ nào mình gỡ chỗ đó.
         </p>
         <p style={{ fontSize: 12, color: "#f97316", margin: 0, lineHeight: 1.5, fontStyle: "italic" }}>
@@ -370,7 +370,7 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           <span style={{ background: t.accent, color: t.accentText, fontSize: 12, fontWeight: 500, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>2</span>
           <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>
-            Nhập nội dung: <strong style={{ color: "#fff" }}>{prefix} + [Số điện thoại của bạn]</strong>
+            Nhập nội dung: <strong style={{ color: "var(--cl-text-base, #111827)" }}>{prefix} + [Số điện thoại của bạn]</strong>
           </span>
         </div>
       </div>

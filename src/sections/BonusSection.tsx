@@ -54,7 +54,7 @@ export function BonusSection() {
                         QUÀ TẶNG THỰC CHIẾN 0{i + 1}
                       </span>
                     </div>
-                    <h4 style={{ fontFamily: t.fontBody, fontSize: 20, fontWeight: 700, color: "#fff", margin: "0 0 10px 0", lineHeight: 1.3 }}>
+                    <h4 style={{ fontFamily: t.fontBody, fontSize: 20, fontWeight: 700, color: "var(--cl-text-base, #111827)", margin: "0 0 10px 0", lineHeight: 1.3 }}>
                       {item.title}
                     </h4>
                     <div style={{ fontSize: 15, lineHeight: 1.65, color: "var(--cl-text-body, #b8b8c0)", margin: 0 }} dangerouslySetInnerHTML={{ __html: item.desc }} />

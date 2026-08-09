@@ -48,12 +48,12 @@ function StickyRegisterBar() {
       zIndex: 99999,
       maxWidth: "92%",
       width: 520,
-      background: "rgba(17, 19, 26, 0.88)",
-      border: `1px solid ${t.accent}66`,
+      background: "rgba(255, 255, 255, 0.92)",
+      border: `1px solid ${t.accent}44`,
       borderRadius: 100,
       padding: "10px 16px",
       backdropFilter: "blur(16px)",
-      boxShadow: `0 20px 40px -10px rgba(0,0,0,0.8), 0 0 25px ${t.accent}33`,
+      boxShadow: `0 12px 35px -10px rgba(0, 0, 0, 0.12), 0 0 25px ${t.accent}22`,
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
@@ -61,7 +61,7 @@ function StickyRegisterBar() {
       animation: "fadeInUp 0.3s ease",
     }}>
       <div style={{ paddingLeft: 8 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", lineHeight: 1.25 }}>
+        <div style={{ fontSize: 13, fontWeight: 700, color: "var(--cl-text-base, #111827)", lineHeight: 1.25 }}>
           📱 Khóa Học Online Trọn Đời — Học Mọi Lúc Mọi Nơi
         </div>
         <div style={{ fontSize: 12, color: t.accent, fontWeight: 600 }}>

@@ -58,7 +58,7 @@ export function BeforeAfterSection() {
                 {c.afterItems.map((item, i) => (
                   <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", textAlign: "left" }}>
                     <span style={{ color: "var(--cl-accent)" }}>✓</span>
-                    <span style={{ fontSize: 15, color: "#fff", lineHeight: 1.5, fontWeight: 500 }}>{item}</span>
+                    <span style={{ fontSize: 15, color: "var(--cl-text-base, #111827)", lineHeight: 1.5, fontWeight: 500 }}>{item}</span>
                   </div>
                 ))}
               </div>

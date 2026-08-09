@@ -151,12 +151,12 @@ export function CtaSection() {
               </div>
             </div>
 
-            <div style={{ background: "#0a0a0c", border: `1px solid var(--cl-line)`, borderRadius: t.cardRadius, padding: "26px 24px", marginBottom: 32 }}>
-              <p style={{ fontSize: 13, fontWeight: 500, color: "var(--cl-text-base, #fff)", marginBottom: 18, textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--cl-font-mono)" }}>{c.valueStackTitle}</p>
+            <div style={{ background: "var(--cl-card)", border: `1px solid var(--cl-line)`, borderRadius: t.cardRadius, padding: "26px 24px", marginBottom: 32 }}>
+              <p style={{ fontSize: 13, fontWeight: 500, color: "var(--cl-text-base, #111827)", marginBottom: 18, textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--cl-font-mono)" }}>{c.valueStackTitle}</p>
 
               {c.valueStack.map(({ label, price }, i) => (
                 <div key={i} style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 12, alignItems: "baseline" }}>
-                  <span style={{ fontSize: 14, color: "var(--cl-text-body, #bbb)", lineHeight: 1.5 }}>{label}</span>
+                  <span style={{ fontSize: 14, color: "var(--cl-text-body, #374151)", lineHeight: 1.5 }}>{label}</span>
                   <span style={{ fontSize: 14, color: "var(--cl-text-muted, #777)", fontFamily: "var(--cl-font-mono)", flexShrink: 0 }}>{price}</span>
                 </div>
               ))}
@@ -165,11 +165,11 @@ export function CtaSection() {
                 <p style={{ fontSize: 11, fontWeight: 500, color: "var(--cl-accent)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12, fontFamily: "var(--cl-font-mono)" }}>🎁 KÈM THEO — CHỈ TRONG ĐỢT NÀY:</p>
                 {(c as any).bonusItems?.map((item: any, i: number) => (
                   <div key={i} style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 10, alignItems: "baseline" }}>
-                    <span style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.5, display: "flex", gap: 6 }}>
+                    <span style={{ fontSize: 13, color: "var(--cl-text-body, #374151)", lineHeight: 1.5, display: "flex", gap: 6 }}>
                       <span style={{ color: "var(--cl-accent)", flexShrink: 0 }}>✓</span>
                       {item.title}
                     </span>
-                    <span style={{ fontSize: 13, color: "#64748b", fontFamily: "var(--cl-font-mono)", flexShrink: 0, textDecoration: "line-through" }}>250.000đ</span>
+                    <span style={{ fontSize: 13, color: "var(--cl-text-muted, #888)", fontFamily: "var(--cl-font-mono)", flexShrink: 0, textDecoration: "line-through" }}>250.000đ</span>
                   </div>
                 ))}
               </div>

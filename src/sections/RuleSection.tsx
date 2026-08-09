@@ -40,7 +40,7 @@ export function RuleSection() {
       {c.ruleConclusion && (
         <FadeIn delay={180}>
           <div style={{ marginTop: 32, background: `${t.accent}12`, border: `1px solid ${t.accent}44`, borderRadius: t.cardRadius, padding: "20px 24px", textAlign: "center" }}>
-            <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--cl-accent-text, #fff)", fontStyle: "italic", margin: 0, fontWeight: 500 }}>
+            <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--cl-text-base, #111827)", fontStyle: "italic", margin: 0, fontWeight: 500 }}>
               {c.ruleConclusion}
             </p>
           </div>

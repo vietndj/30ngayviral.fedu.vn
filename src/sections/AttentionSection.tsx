@@ -82,12 +82,12 @@ export function AttentionSection() {
               <div style={{ fontSize: 12, fontWeight: 700, color: item.isBest ? t.accent : "#888", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
                 {item.badge}
               </div>
-              <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 12, lineHeight: 1.3 }}>
+              <h3 style={{ fontSize: 20, fontWeight: 700, color: "var(--cl-text-base, #111827)", marginBottom: 12, lineHeight: 1.3 }}>
                 {item.title}
               </h3>
               <div style={{
-                fontSize: 15, fontWeight: 700, color: item.isBest ? "#fff" : t.accent,
-                background: item.isBest ? `${t.accent}22` : "rgba(255, 255, 255, 0.05)",
+                fontSize: 15, fontWeight: 700, color: t.accent,
+                background: `${t.accent}15`,
                 padding: "8px 14px", borderRadius: 10, marginBottom: 16, display: "inline-block"
               }}>
                 {item.cost}
@@ -103,7 +103,7 @@ export function AttentionSection() {
       {/* ── Key Differences Checklist ── */}
       <FadeIn delay={200}>
         <div className="cl-glow-card" style={{ padding: "36px clamp(20px, 4vw, 40px)", maxWidth: 760, margin: "0 auto" }}>
-          <h4 style={{ textAlign: "center", fontSize: 18, fontWeight: 700, color: "#fff", marginBottom: 24 }}>
+          <h4 style={{ textAlign: "center", fontSize: 18, fontWeight: 700, color: "var(--cl-text-base, #111827)", marginBottom: 24 }}>
             Bảng So Sánh Kỹ Thuật: Video Nghiệp Dư vs Video Viral Có Hệ Thống
           </h4>
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -113,7 +113,7 @@ export function AttentionSection() {
                 alignItems: "flex-start",
                 gap: 16,
                 paddingBottom: 16,
-                borderBottom: i < c.attentionItems.length - 1 ? `1px solid rgba(255, 255, 255, 0.06)` : "none"
+                borderBottom: i < c.attentionItems.length - 1 ? `1px solid var(--cl-line)` : "none"
               }}>
                 <div style={{
                   padding: "6px 12px", borderRadius: 8, background: "rgba(239, 68, 68, 0.12)",
@@ -121,7 +121,7 @@ export function AttentionSection() {
                 }}>
                   {item.title}
                 </div>
-                <div style={{ fontSize: 15, lineHeight: 1.6, color: "#fff", fontWeight: 500 }}>
+                <div style={{ fontSize: 15, lineHeight: 1.6, color: "var(--cl-text-base, #111827)", fontWeight: 500 }}>
                   {item.desc}
                 </div>
               </div>

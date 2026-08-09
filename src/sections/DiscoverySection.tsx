@@ -174,7 +174,7 @@ export function DiscoverySection() {
                   <div style={{ fontFamily: t.fontMono, fontSize: 12, fontWeight: 500, color: "var(--cl-accent)", letterSpacing: "0.15em", textTransform: "uppercase" }}>
                     // NGUYÊN LÝ 0{i + 1}
                   </div>
-                  <h4 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(20px, 2.5vw, 24px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", color: "#fff", margin: 0 }}>
+                  <h4 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(20px, 2.5vw, 24px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", color: "var(--cl-text-base, #111827)", margin: 0 }}>
                     {item.title}
                   </h4>
                   <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--cl-text-body, #b0b0b0)", margin: 0 }}>
@@ -239,7 +239,7 @@ export function SolutionSection() {
           {c.solutionItems.map((item, i) => (
             <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
               <span style={{ color: "var(--cl-accent)", fontSize: 24, lineHeight: 1 }}>✓</span>
-              <p style={{ fontSize: 19, color: "#fff", lineHeight: 1.6, margin: 0 }}>{item}</p>
+              <p style={{ fontSize: 19, color: "var(--cl-text-base, #111827)", lineHeight: 1.6, margin: 0 }}>{item}</p>
             </div>
           ))}
           <div style={{ marginTop: 32, textAlign: "center" }}>

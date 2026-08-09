@@ -11,7 +11,7 @@ export function CycleSection() {
       <FadeIn>
         <div style={{ textAlign: "center", marginBottom: 54 }}>
           <Label>{c.cycleLabel}</Label>
-          <h2 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(26px, 6vw, 48px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", color: "#fff", margin: "16px 0" }}>
+          <h2 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(26px, 6vw, 48px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", color: "var(--cl-text-base, #111827)", margin: "16px 0" }}>
             {c.cycleHeading}
           </h2>
           <p style={{ fontSize: "clamp(15px, 3.8vw, 19px)", color: "var(--cl-text-muted, #888)", maxWidth: 720, margin: "0 auto", lineHeight: 1.75 }}>
@@ -48,7 +48,7 @@ export function CycleSection() {
               fontFamily: t.fontBody, 
               fontSize: "clamp(20px, 4.5vw, 26px)", 
               fontWeight: 500, 
-              color: "#fff", 
+              color: "var(--cl-text-base, #111827)", 
               marginBottom: 20,
               letterSpacing: "-0.02em",
               maxWidth: 500,
@@ -60,7 +60,7 @@ export function CycleSection() {
             <p style={{ 
               fontSize: "clamp(15px, 3.8vw, 19px)", 
               lineHeight: 1.85, 
-              color: "#cbd5e1", 
+              color: "var(--cl-text-body, #374151)", 
               margin: 0,
               fontWeight: 400 
             }}>

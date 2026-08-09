@@ -26,7 +26,7 @@ export function PainSection() {
               border: "1px solid rgba(255, 255, 255, 0.03)", borderRadius: 12, padding: "16px 20px", textAlign: "left",
             }}>
               <span style={{ color: "var(--cl-accent)", fontSize: 18, lineHeight: 1.2 }}>—</span>
-              <p style={{ fontSize: 17, lineHeight: 1.75, color: "#f1f5f9", margin: 0 }}>
+              <p style={{ fontSize: 17, lineHeight: 1.75, color: "var(--cl-text-base, #111827)", margin: 0 }}>
                 {p}
               </p>
             </div>
@@ -38,7 +38,7 @@ export function PainSection() {
         <blockquote style={{
           borderLeft: `3px solid var(--cl-accent)`, paddingLeft: "clamp(14px, 3.5vw, 24px)", margin: "0 auto", maxWidth: 680,
           fontFamily: t.blockquoteFontFamily ?? t.fontAccent, fontStyle: t.blockquoteFontStyle ?? "italic",
-          fontWeight: t.blockquoteFontWeight ?? 400, fontSize: "clamp(16px, 3.8vw, 21px)", color: "#fff", 
+          fontWeight: t.blockquoteFontWeight ?? 400, fontSize: "clamp(16px, 3.8vw, 21px)", color: "var(--cl-text-base, #111827)", 
           lineHeight: 1.7, textAlign: "left",
         }}>
           “{c.painQuote}”

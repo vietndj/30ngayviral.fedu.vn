@@ -63,7 +63,7 @@ export function FaqSection() {
               <div 
                 key={idx}
                 style={{
-                  background: "rgba(255, 255, 255, 0.03)",
+                  background: "var(--cl-card, #f8f9fa)",
                   border: `1px solid ${isOpen ? t.accent : t.line}`,
                   borderRadius: 16,
                   overflow: "hidden",
@@ -108,7 +108,7 @@ export function FaqSection() {
                   opacity: isOpen ? 1 : 0,
                   transition: "all 0.3s ease",
                   padding: isOpen ? "0 24px 20px 24px" : "0 24px",
-                  color: t.textMuted,
+                  color: "var(--cl-text-body, #374151)",
                   lineHeight: 1.6,
                   fontSize: 15,
                   paddingLeft: 56

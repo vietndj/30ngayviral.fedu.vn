@@ -47,7 +47,7 @@ export function InstructorSection() {
                 style={{ width: "100%", display: "block" }}
               />
             </div>
-            <div style={{ fontFamily: t.fontDisplay, fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 4 }}>
+            <div style={{ fontFamily: t.fontDisplay, fontSize: 22, fontWeight: 700, color: "var(--cl-text-base, #111827)", marginBottom: 4 }}>
               {c.instructorName}
             </div>
             <div style={{ fontSize: 13, color: t.accent, fontWeight: 600, marginBottom: 12 }}>
@@ -75,7 +75,7 @@ export function InstructorSection() {
                 fontStyle: "italic",
                 fontSize: "clamp(16px, 2.2vw, 19px)",
                 lineHeight: 1.6,
-                color: "#ffffff",
+                color: "var(--cl-text-base, #111827)",
                 fontWeight: 300,
                 margin: 0,
               }}>
