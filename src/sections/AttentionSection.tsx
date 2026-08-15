@@ -26,9 +26,9 @@ export function AttentionSection() {
     },
     {
       badge: "Lựa chọn 3 — KHUYÊN DÙNG",
-      title: "30 Ngày Đồng Hành Xây Kênh",
+      title: "Lộ Trình 30 Ngày Làm Chủ Video Ngắn",
       cost: "Chỉ 999.000 VNĐ (Tổng giá trị 7.5M)",
-      desc: "Sở hữu toàn bộ Hệ thống Content Matrix + Bộ 50+ Template CapCut One-Click + 20+ Prompt AI + ĐẶC QUYỀN Thầy Việt feedback trực tiếp 1-1 trong cộng đồng Skool.",
+      desc: "Sở hữu toàn bộ Bản thiết kế kịch bản + Bộ 50+ Template CapCut One-Click + 20+ Prompt AI + ĐẶC QUYỀN tham gia Skool Hub & được Thầy Việt review gỡ lỗi chuyên môn.",
       isBest: true,
       tag: "🏆 Tối Ưu Nhất"
     }

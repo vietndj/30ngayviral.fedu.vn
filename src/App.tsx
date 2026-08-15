@@ -63,7 +63,7 @@ function StickyRegisterBar() {
     }}>
       <div style={{ display: "flex", flexDirection: "column", gap: 3, minWidth: 0 }}>
         <div style={{ fontSize: 13.5, fontWeight: 700, color: "#111827", lineHeight: 1.25, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-          📱 Khóa Học Online 999.000đ
+          📱 Lộ Trình 30 Ngày Làm Chủ Video Ngắn
         </div>
         <div style={{ fontSize: 12, color: "#16a34a", fontWeight: 600, display: "flex", alignItems: "center", gap: 4, whiteSpace: "nowrap" }}>
           <span>🛡️</span> Cam kết hoàn tiền 100% trong 7 ngày
@@ -87,7 +87,7 @@ function StickyRegisterBar() {
         onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#1557b0"; }}
         onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#1a73e8"; }}
       >
-        ĐĂNG KÝ HỌC ONLINE 999K →
+        SỞ HỮU BẢN THIẾT KẾ 999K →
       </a>
     </div>
   );

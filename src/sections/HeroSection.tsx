@@ -36,27 +36,27 @@ export function HeroSection() {
             </span>
           </div>
 
-          <h1 className="cl-hero__h1" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+          <h1 className="cl-hero__h1" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
             {c.heroHeadline1 && (
-              <span className="cl-hero__eyebrow-span" style={{ display: "block", fontSize: "clamp(24px, 4vw, 42px)", color: "#1a73e8", fontFamily: t.fontAccent, fontStyle: "italic", fontWeight: 300, margin: 0, letterSpacing: "-0.01em" }}>
+              <span className="cl-hero__eyebrow-span" style={{ display: "block", fontSize: "clamp(22px, 3.8vw, 38px)", color: "#1a73e8", fontFamily: t.fontAccent, fontStyle: "italic", fontWeight: 300, margin: 0, letterSpacing: "-0.01em" }}>
                 {c.heroHeadline1}
               </span>
             )}
             <span style={{
-              fontSize: "clamp(28px, 4.5vw, 52px)", lineHeight: 1.25,
+              fontSize: "clamp(28px, 4.5vw, 50px)", lineHeight: 1.2,
               fontWeight: 800, letterSpacing: "-0.02em",
               color: "var(--cl-text-base, #111827)", fontFamily: t.fontBody,
               maxWidth: "24ch", textWrap: "balance", textAlign: "center",
             }}>
-              30 Ngày Đồng Hành Xây Kênh:{" "}
-              <span style={{
-                fontFamily: t.fontAccent, fontStyle: "italic", fontWeight: 300,
-                color: "#1a73e8", display: "inline-block",
-                background: "rgba(26, 115, 232, 0.07)", border: "1px solid rgba(26, 115, 232, 0.18)",
-                borderRadius: 12, padding: "2px 14px", marginTop: 6,
-              }}>
-                Học Bài Nào — Ra Video Chuẩn Bài Đó.
-              </span>
+              {c.heroHeadline2 || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"}
+            </span>
+            <span style={{
+              fontFamily: t.fontAccent, fontStyle: "italic", fontWeight: 400,
+              fontSize: "clamp(16px, 2.2vw, 22px)", color: "#1a73e8", display: "inline-block",
+              background: "rgba(26, 115, 232, 0.07)", border: "1px solid rgba(26, 115, 232, 0.18)",
+              borderRadius: 12, padding: "6px 18px", marginTop: 4, maxWidth: "34ch", textWrap: "balance",
+            }}>
+              Bản thiết kế từng bước biến điện thoại thành cỗ máy hút view & ra đơn
             </span>
           </h1>
 
