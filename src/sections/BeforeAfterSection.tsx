@@ -18,7 +18,7 @@ export function BeforeAfterSection() {
       <FadeIn delay={100}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 40 }}>
           <div style={{ maxWidth: 420, width: "100%", margin: "24px auto", borderRadius: 32, overflow: "hidden", border: `2px solid rgba(225, 29, 72, 0.35)`, boxShadow: `0 12px 36px -8px rgba(225, 29, 72, 0.25)` }}>
-            <AppYTEmbed url="https://youtube.com/shorts/0R4N2-z2tDI?feature=share" />
+            <AppYTEmbed url={`https://youtube.com/shorts/${c.baVideoYoutubeId || "0ivTU46mdcI"}`} />
           </div>
           <div style={{
             display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24,

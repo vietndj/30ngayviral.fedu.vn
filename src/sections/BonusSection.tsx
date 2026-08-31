@@ -64,6 +64,32 @@ export function BonusSection() {
                         <audio controls src={item.audioDemo} style={{ width: "100%", height: 38, outline: "none", borderRadius: 8 }} />
                       </div>
                     )}
+
+                    {item.youtubeDemo && (
+                      <div style={{ marginTop: 16 }}>
+                        <a
+                          href={`https://www.youtube.com/watch?v=${item.youtubeDemo}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 8,
+                            padding: "8px 16px",
+                            borderRadius: 8,
+                            background: "rgba(225, 29, 72, 0.08)",
+                            border: "1px solid rgba(225, 29, 72, 0.25)",
+                            color: "var(--cl-accent)",
+                            fontSize: 13,
+                            fontWeight: 600,
+                            textDecoration: "none",
+                          }}
+                        >
+                          <span style={{ fontSize: 14 }}>▶</span>
+                          <span>Xem Video Hướng Dẫn Thực Tế</span>
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
 

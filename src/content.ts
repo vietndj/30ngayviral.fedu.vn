@@ -83,6 +83,7 @@ export interface PageContent {
   baSub: string;
   baBeforeMedia?: string;
   baAfterMedia?: string;
+  baVideoYoutubeId?: string;
   beforeLabel: string;
   afterLabel: string;
   beforeItems: string[];
@@ -128,7 +129,7 @@ export interface PageContent {
   blocksMeta: BlocksMeta;
 }
 
-const CONTENT_SCHEMA_VERSION = 8;
+const CONTENT_SCHEMA_VERSION = 9;
 
 export const DEFAULT_CONTENT: PageContent = {
   _v: CONTENT_SCHEMA_VERSION,
@@ -146,7 +147,7 @@ export const DEFAULT_CONTENT: PageContent = {
   heroAccentLine: "Bạn không cần máy quay chục triệu, không cần ekip, không cần ngoại hình xuất chúng hay kỹ năng nói trước ống kính.",
   heroSub: "Chỉ cần 1 chiếc điện thoại và quy trình đúng — bạn sẽ tự quay, tự dựng, tự đăng video bán hàng chỉn chu trong 30 phút. Dù bạn bán Bất Động Sản, đồ ăn, mỹ phẩm, dạy học hay làm dịch vụ Spa — lộ trình này dành cho bạn.",
   heroCta: "XEM LỘ TRÌNH 30 NGÀY CỦA TÔI →",
-  heroVideoYoutubeId: "eg6T8-SekjQ",
+  heroVideoYoutubeId: "NmazSvfOs84",
   heroSubPrice: "Học online trọn đời — Có thầy chữa bài 1-1 qua Zalo & Zoom",
 
   // ── Pain (Nỗi đau) ──
@@ -264,7 +265,7 @@ export const DEFAULT_CONTENT: PageContent = {
     { n: "01", title: "Mở đầu video — 3 giây đầu quyết định tất cả", desc: "Học cách mở đầu khiến khách hàng dừng lại ngay giây đầu tiên. Không phải nói hay — mà nói đúng thứ họ đang quan tâm.", gif: "/gifs/invisible-cut.gif" },
     { n: "02", title: "Cắt ghép mượt — nói vấp thoải mái, chèn cảnh phụ đè lên", desc: "Quay xong, cắt bỏ chỗ vấp, chèn cảnh sản phẩm/cửa hàng đè lên. Video mượt mà như quay một lần. Ai xem cũng tưởng thuê người làm.", gif: "/gifs/lighting-3d.gif" },
     { n: "03", title: "Âm thanh có lực — thêm 1 tiếng 'bụp' nhỏ, video khác hẳn", desc: "Đặt đúng 1 tiếng động nhỏ vào điểm chuyển cảnh — video từ bình thường lên chuyên nghiệp ngay lập tức. Kho âm thanh có sẵn, kéo thả vào là xong.", gif: "/gifs/shot-sizes.gif" },
-    { n: "04", title: "Bán hàng không bán hàng — khách xem xong tự hỏi mua", desc: "Kể câu chuyện sản phẩm một cách tự nhiên, lồng ghép lời mời mua nhẹ nhàng. Khách thấy thật, tin tưởng và chủ động liên hệ.", youtubeId: "Ew-yWd0riEQ", aspectRatio: "9 / 16" }
+    { n: "04", title: "Bán hàng không bán hàng — khách xem xong tự hỏi mua", desc: "Kể câu chuyện sản phẩm một cách tự nhiên, lồng ghép lời mời mua nhẹ nhàng. Khách thấy thật, tin tưởng và chủ động liên hệ.", youtubeId: "0ivTU46mdcI", aspectRatio: "9 / 16" }
   ],
 
   // ── Mid CTA ──
@@ -276,6 +277,7 @@ export const DEFAULT_CONTENT: PageContent = {
   baLabel: "TRƯỚC VÀ SAU 30 NGÀY",
   baHeading: "Sự khác biệt rõ rệt sau khi có quy trình đúng:",
   baSub: "",
+  baVideoYoutubeId: "0ivTU46mdcI",
   beforeLabel: "TRƯỚC (Tự mày mò, tốn thời gian)",
   afterLabel: "SAU 30 NGÀY (Có quy trình, ra kết quả)",
   beforeItems: [
@@ -300,7 +302,7 @@ export const DEFAULT_CONTENT: PageContent = {
   roadmapHeading: "Không lý thuyết suông. Mỗi bài học: XEM XONG → CẦM MÁY LÊN QUAY NGAY.",
   roadmapPreviewHeading: "Xem thử không gian bài học bên trong",
   roadmapPreviewDesc: "Video thực tế bên trong chương trình — trực quan, thực chiến, từng thao tác rõ ràng.",
-  roadmapIframeUrl: "https://www.youtube.com/embed/NmazSvfOs84?rel=0&modestbranding=1",
+  roadmapIframeUrl: "https://www.youtube.com/embed/uedVbAZ0_zs?rel=0&modestbranding=1",
   roadmapChaptersHeading: "3 giai đoạn — từ chưa biết gì đến tự tin ra video bán hàng mỗi ngày:",
   stages: [
     { n: "Tuần 1-2", title: "📱 SETUP — Bật đèn, đặt máy, quay được video sạch đầu tiên", desc: "Cách setup góc quay và ánh sáng bằng đồ có sẵn trong nhà. Cách mở đầu video cuốn hút trong 3 giây. Cách đặt máy cho từng ngành: BĐS, F&B, Spa, Giáo dục.", sub: "Mục tiêu: Ra được video đầu tiên sạch sẽ, sáng rõ, mở đầu cuốn hút — chỉ bằng điện thoại." },
@@ -328,12 +330,14 @@ export const DEFAULT_CONTENT: PageContent = {
     {
       id: "01",
       title: "50+ Template CapCut \"Kéo-Thả-Xong\"",
-      desc: "Thả video thô vào template, chữ - nhạc - hiệu ứng tự khớp. Xuất video chỉn chu trong 15-30 phút.<br/><ul style=\"margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;\"><li>🎬 <b>Có sẵn template theo ngành:</b> BĐS, Ẩm Thực, Spa, Giáo Dục</li><li>🚀 <b>Kéo - Thả dùng ngay:</b> Không cần biết edit từ trước</li><li>💡 <b>Tiết kiệm 80% thời gian:</b> Việc 5 tiếng giờ xong trong 30 phút</li></ul>"
+      desc: "Thả video thô vào template, chữ - nhạc - hiệu ứng tự khớp. Xuất video chỉn chu trong 15-30 phút.<br/><ul style=\"margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;\"><li>🎬 <b>Có sẵn template theo ngành:</b> BĐS, Ẩm Thực, Spa, Giáo Dục</li><li>🚀 <b>Kéo - Thả dùng ngay:</b> Không cần biết edit từ trước</li><li>💡 <b>Tiết kiệm 80% thời gian:</b> Việc 5 tiếng giờ xong trong 30 phút</li></ul>",
+      youtubeDemo: "6Oiugt77imE"
     },
     {
       id: "02",
       title: "20+ Prompt AI \"Nhả Kịch Bản 10 Giây\"",
-      desc: "Dán thông tin sản phẩm/dịch vụ vào AI → Nhận kịch bản chi tiết 2 cột (Cảnh quay gì + Nói gì). Không cần giỏi văn, không cần nghĩ nhiều.<br/><ul style=\"margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;\"><li>🤖 <b>Prompt theo từng ngành:</b> BĐS, F&B, Spa, Thời trang, Giáo dục</li><li>⚡ <b>10 giây ra kịch bản:</b> Thay vì ngồi nghĩ cả buổi</li><li>📋 <b>Kịch bản 2 cột rõ ràng:</b> Cột trái = Cảnh quay, Cột phải = Lời nói</li></ul>"
+      desc: "Dán thông tin sản phẩm/dịch vụ vào AI → Nhận kịch bản chi tiết 2 cột (Cảnh quay gì + Nói gì). Không cần giỏi văn, không cần nghĩ nhiều.<br/><ul style=\"margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;\"><li>🤖 <b>Prompt theo từng ngành:</b> BĐS, F&B, Spa, Thời trang, Giáo dục</li><li>⚡ <b>10 giây ra kịch bản:</b> Thay vì ngồi nghĩ cả buổi</li><li>📋 <b>Kịch bản 2 cột rõ ràng:</b> Cột trái = Cảnh quay, Cột phải = Lời nói</li></ul>",
+      youtubeDemo: "xBQwAw6oJZ8"
     },
     {
       id: "03",
@@ -350,6 +354,7 @@ export const DEFAULT_CONTENT: PageContent = {
       id: "05",
       title: "🎁 TẶNG THÊM: 3 Bộ Công Cụ AI FEDU (Trị giá 499.000đ)",
       desc: "Bộ công cụ AI độc quyền chạy trên Google Gemini — chỉ có tại FEDU, không nơi nào khác:<br/><ul style=\"margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;\"><li>🔍 <b>AI Bóc Kịch Bản Clip Hay:</b> Dán link video viral bất kỳ → AI phân tích ra kịch bản 2 cột trong 5 phút. Bạn chỉ việc quay theo.</li><li>✂️ <b>AI Trợ Lý Dựng Video:</b> Tự gọt ngập ngừng, làm phụ đề tiếng Việt chuẩn, chèn cảnh trám tự động.</li><li>📝 <b>AI Viết Kịch Bản Bán Hàng Theo Ngành:</b> Nhập ngành nghề + sản phẩm → AI nhả kịch bản bán hàng riêng cho bạn.</li></ul>",
+      youtubeDemo: "CO9qM6BmVLo",
       gifDemo: "/edit-ai-promo.gif"
     }
   ],
