@@ -19,24 +19,24 @@ const GREEN = "#10b981"; // Emerald green for success states
 
 const LANTAN_FAQS = [
   {
-    q: "1. \"Tôi mù công nghệ, thao tác cực chậm thì có theo được không?\"",
-    a: "Đừng lo. Lộ trình đi từ 'vỡ lòng'. Mọi thao tác được quay màn hình chi tiết 'Click-by-click'. Hơn nữa, với 50+ Template CapCut có sẵn, bạn chỉ việc 'Kéo-Thả' video vào là tự động khớp hiệu ứng."
+    q: "1. \"Tôi mù công nghệ, 46 tuổi rồi, thao tác chậm lắm — có theo được không?\"",
+    a: "Hoàn toàn được. Bài học chỉ 10-15 phút, quay màn hình chi tiết từng bước bấm. Với 50+ Template CapCut có sẵn, bạn chỉ việc thả video vào là tự động khớp chữ, nhạc, hiệu ứng — không cần biết edit từ trước."
   },
   {
-    q: "2. \"Tôi ngại ống kính, nói vấp, diễn đơ thì phải làm sao?\"",
-    a: "Không cần nhảy múa hay làm trò lố. Khóa học có module hướng dẫn làm video dạng 'Faceless' (Không lộ mặt) kết hợp AI Voice và B-roll cực kỳ cuốn hút. Ngoài ra, kỹ thuật góc chéo 3/4 giúp bạn thoải mái như đang trò chuyện."
+    q: "2. \"Tôi ngại ống kính, nói trước camera bị đơ, gượng lắm — làm sao?\"",
+    a: "45% học viên của chúng tôi cũng vậy khi bắt đầu. Bạn sẽ được học kỹ thuật quay 'Không lộ mặt' (B-roll cận cảnh sản phẩm + Thu âm lồng tiếng). Nếu muốn lên hình, có bài hướng dẫn góc ngồi chéo 3/4 giúp bạn thoải mái như đang nói chuyện với bạn bè."
   },
   {
-    q: "3. \"Tôi bận đi làm cả ngày, sợ mua về vứt đó không học?\"",
-    a: "Lộ trình thiết kế dạng Micro-learning (10-15 phút/bài), đi thẳng vào thực hành. Kết hợp Prompt AI và Template có sẵn, thời gian làm 1 video giảm từ 3 tiếng xuống còn 45 phút."
+    q: "3. \"Tôi bận kinh doanh cả ngày, sợ mua về rồi vứt đó không học?\"",
+    a: "Mỗi bài chỉ 10-15 phút, xem xong là cầm máy quay ngay. Và quan trọng nhất: Bạn không tự bơi — thầy Việt sẽ xem video bạn quay và chỉ ra chỗ cần sửa qua Zalo. Học viên bận nhất vẫn ra video sau 3 ngày đầu."
   },
   {
-    q: "4. \"Tôi không giỏi văn, sợ bí ý tưởng, không biết viết kịch bản?\"",
-    a: "Đó là lý do bạn được tặng kèm 20+ Prompt AI. Chỉ cần gõ: 'Tôi bán mỹ phẩm', AI sẽ đóng vai biên kịch, nhả ra cấu trúc Hook-Story-Offer chuẩn xác từng giây."
+    q: "4. \"Khác gì mấy khóa học video trên mạng mà tôi từng mua rồi bỏ xó?\"",
+    a: "Khác hoàn toàn. Đây không phải kho video lý thuyết hàng trăm bài để bạn tự xem. Đây là lộ trình 30 ngày có thứ tự rõ ràng, có template kéo thả dùng ngay, có AI viết kịch bản hộ, và có thầy chữa bài 1-1. Mua về là làm được liền — không bị ngợp."
   },
   {
-    q: "5. \"Sợ AI phát triển sẽ thay thế con người làm content?\"",
-    a: "AI sinh ra để thay thế 'thợ bấm nút'. Nội dung công nghiệp vô hồn sẽ bị đào thải. Khóa học này dạy bạn 'Đứng trên vai AI' — dùng AI làm trợ lý và dùng tư duy Storytelling của bạn để thâu tóm sự chú ý."
+    q: "5. \"999K có đắt không? Học xong mà không hiệu quả thì sao?\"",
+    a: "999K = 2 bữa cà phê với đối tác. Nhưng kỹ năng làm video bán hàng thì dùng cả đời. Và chúng tôi cam kết: Hoàn tiền 100% trong 7 ngày nếu bạn không hài lòng. Không hỏi lý do."
   }
 ];
 
@@ -511,16 +511,16 @@ function GuaranteeBox() {
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
       {/* Box 1: Money Back */}
       <div style={{ background: t.card2, border: `1px solid ${GREEN}33`, borderRadius: Math.max(8, t.cardRadius - 4), padding: "16px 18px" }}>
-        <p style={{ fontSize: 15, fontWeight: 500, color: GREEN, marginBottom: 8 }}>💰 Cam kết hoàn tiền 100% — 24 giờ</p>
+        <p style={{ fontSize: 15, fontWeight: 500, color: GREEN, marginBottom: 8 }}>💰 Cam kết hoàn tiền 100% — trong 7 ngày</p>
         <p style={{ fontSize: 15, color: t.textBody ?? "#666", lineHeight: 1.65, margin: 0 }}>
-          Nếu bạn không hài lòng vì bất kỳ lý do gì, chúng tôi hoàn tiền 100% trong 24 giờ. Không hỏi lý do.
+          Học 7 ngày mà cảm thấy không phù hợp? Hoàn tiền 100%, không hỏi lý do. Chuyển khoản lại trong 24h.
         </p>
       </div>
       {/* Box 2: 1-1 Review Guarantee */}
       <div style={{ background: t.card2, border: `1px solid ${t.accent}33`, borderRadius: Math.max(8, t.cardRadius - 4), padding: "16px 18px" }}>
-        <p style={{ fontSize: 15, fontWeight: 500, color: t.accent, marginBottom: 8 }}>🛡️ Đồng hành & Gỡ rối 1-1 cùng giảng viên</p>
+        <p style={{ fontSize: 15, fontWeight: 500, color: t.accent, marginBottom: 8 }}>🛡️ Thầy Việt xem video bạn quay và chỉ ra chỗ cần sửa</p>
         <p style={{ fontSize: 15, color: t.textBody ?? "#666", lineHeight: 1.65, margin: 0 }}>
-          Bất kể bạn gặp khó khăn ở bước nào — từ setup góc máy, hướng đặt đèn, tối ưu thiết bị âm thanh đến lên kịch bản — hãy nhắn cho mình để nhận ngay lịch gọi Zoom trực tiếp gỡ rối và tối ưu hóa 1-1.
+          Bạn quay video xong gửi qua Zalo — thầy xem và phản hồi chỗ cần sửa về góc máy, ánh sáng, kịch bản. Không tự bơi. Có người đồng hành đến khi bạn tự tin.
         </p>
       </div>
     </div>
@@ -708,7 +708,7 @@ function CheckoutContent() {
       {/* ── HEADER ── */}
       <header style={{ borderBottom: `1px solid ${t.line}`, padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ fontFamily: t.fontDisplay, fontSize: 22, fontWeight: 500 }}>
-          VIDEO<span style={{ color: t.accent }}>.</span>
+          FEDU<span style={{ color: t.accent }}>.</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span style={{ fontSize: 18 }}>🔒</span>
@@ -772,8 +772,8 @@ function CheckoutContent() {
               <Lbl>Thông tin đơn hàng</Lbl>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
                 <div>
-                  <div style={{ fontWeight: 500, fontSize: 16, color: t.textBase ?? "#fff" }}>Khóa học Video The Creator</div>
-                  <div style={{ fontSize: 15, color: t.textMuted ?? "#666", marginTop: 4 }}>Tư duy quay dựng video bằng điện thoại</div>
+                  <div style={{ fontWeight: 500, fontSize: 16, color: t.textBase ?? "#fff" }}>Lộ trình 30 Ngày Video Bán Hàng</div>
+                  <div style={{ fontSize: 15, color: t.textMuted ?? "#666", marginTop: 4 }}>Tự quay, tự dựng, tự đăng — bằng điện thoại</div>
                 </div>
                 <div style={{ textAlign: "right" }}>
                   <div style={{ fontSize: 15, color: t.accent, fontWeight: 500 }}>Tiết kiệm {formattedSaving} VNĐ</div>
@@ -785,15 +785,16 @@ function CheckoutContent() {
             {/* WHAT YOU GET */}
             <Card>
               <Lbl>Bạn nhận được gì ngay hôm nay</Lbl>
-              <H>Truy cập ngay sau xác nhận</H>
+              <H>Truy cập ngay sau thanh toán</H>
               {((c as any).checkoutFeatures || [
-                "Khóa học Video The Creator: Tư duy quay dựng video bằng điện thoại",
-                "Quyền sở hữu vĩnh viễn — học mọi lúc, mọi nơi, mọi thiết bị",
-                "Kho 50+ âm thanh điện ảnh (SFX) bốc nhất",
-                "Kho Nhạc Nền \"MasterClass\" Độc Bản (mình tạo bằng AI chuyên dụng nên sử dụng sạch bản quyền nhé)",
-                "Sơ đồ đánh sáng 3 điểm cho phòng nhỏ",
-                "Bộ Prompt AI Kịch Bản & Chia Phân Cảnh (Shot-list)",
-                "Cập nhật miễn phí kỹ thuật Edit Video bằng AI",
+                "Lộ trình 30 ngày: Setup → Cắt dựng → Bán hàng bằng video",
+                "Thầy Việt chữa bài 1-1 qua Zalo & Zoom — không tự bơi",
+                "50+ Template CapCut kéo thả theo ngành (BĐS, F&B, Spa, Giáo dục)",
+                "20+ Prompt AI viết kịch bản bán hàng — 10 giây ra kịch bản",
+                "Lịch content Notion 30 ngày — không bao giờ bí ý tưởng",
+                "Kho 500+ nhạc & âm thanh sạch bản quyền vĩnh viễn",
+                "🎁 3 Bộ Công Cụ AI FEDU độc quyền (trị giá 499K)",
+                "Quyền sở hữu vĩnh viễn — học mọi lúc, mọi nơi",
               ]).map((item: string, i: number) => <Ck key={i}>{item}</Ck>)}
             </Card>
 
@@ -892,10 +893,10 @@ function CheckoutContent() {
         <div style={{ marginTop: 40, background: `linear-gradient(135deg, ${t.card}, ${t.card2})`, border: `1px solid ${t.accent}33`, borderRadius: t.cardRadius, padding: "32px 24px", textAlign: "center" }}>
           <Lbl>Bước cuối cùng</Lbl>
           <h2 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", margin: "0 0 12px", color: t.textBase ?? "#fff" }}>
-            Chuyển khoản ngay và bắt đầu<br /><span style={{ color: t.accent, fontWeight: 500 }}>lột xác hình ảnh chuyên gia hôm nay.</span>
+            999K một lần duy nhất —<br /><span style={{ color: t.accent, fontWeight: 500 }}>tự làm video bán hàng cả đời.</span>
           </h2>
           <p style={{ fontSize: 15, color: t.textBody ?? "#777", marginBottom: 24, lineHeight: 1.65 }}>
-            Trong khi những người khác vẫn chật vật với clip "phèn" và tuyệt vọng nhìn khách lướt qua — bạn sẽ thảnh thơi với dòng khách tự động chuyển đổi nhờ Tư Duy Làm Video Điện Thoại: Quay Là Cuốn.
+            Sau 30 ngày, bạn sẽ tự quay, tự dựng, tự đăng — mỗi ngày 30 phút ra 1 video bán hàng chuyên nghiệp. Không phụ thuộc ai.
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -909,17 +910,17 @@ function CheckoutContent() {
             ↑ QUAY LÊN ĐỂ THANH TOÁN
           </button>
           <p style={{ fontSize: 15, color: t.textMuted ?? "#555", marginTop: 16 }}>
-            Đảm bảo hoàn tiền 100% trong 24 giờ · Truy cập vĩnh viễn
+            Hoàn tiền 100% trong 7 ngày · Thầy chữa bài 1-1 · Sở hữu vĩnh viễn
           </p>
         </div>
 
         {/* ── FOOTER ── */}
         <div style={{ textAlign: "center", paddingTop: 48, borderTop: `1px solid ${t.line}`, marginTop: 40 }}>
           <div style={{ fontFamily: t.fontDisplay, fontSize: 20, fontWeight: 500, marginBottom: 12, color: t.textBase ?? "#fff" }}>
-            VIDEO<span style={{ color: t.accent }}>.</span>
+            FEDU<span style={{ color: t.accent }}>.</span>
           </div>
           <p style={{ fontSize: 15, color: t.textMuted ?? "#444", lineHeight: 1.8 }}>
-            © 2026 Tư Duy Làm Video Điện Thoại: Quay Là Cuốn · fedu.vn · Mọi quyền được bảo lưu.<br />
+            © 2026 Lộ trình 30 Ngày Video Bán Hàng · 30ngayviral.fedu.vn · Mọi quyền được bảo lưu.<br />
             <a href="mailto:vietndj@gmail.com" style={{ color: t.textMuted ?? "#555" }}>vietndj@gmail.com</a> | Zalo: 0934.688.632
           </p>
         </div>
