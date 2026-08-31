@@ -47,15 +47,15 @@ export function InstructorSection() {
                 style={{ width: "100%", display: "block" }}
               />
             </div>
-            <div style={{ fontFamily: t.fontDisplay, fontSize: 22, fontWeight: 700, color: "var(--cl-text-base, #111827)", marginBottom: 4 }}>
+            <div style={{ fontFamily: t.fontDisplay, fontSize: 22, fontWeight: 700, color: "var(--cl-text-base, #09090b)", marginBottom: 4 }}>
               {c.instructorName}
             </div>
             <div style={{ fontSize: 13, color: t.accent, fontWeight: 600, marginBottom: 12 }}>
               {c.instructorTitle}
             </div>
             <div style={{
-              display: "inline-block", background: "rgba(16, 185, 129, 0.12)", border: "1px solid rgba(16, 185, 129, 0.4)",
-              borderRadius: 30, padding: "4px 12px", fontSize: 12, color: "#10b981", fontWeight: 600,
+              display: "inline-block", background: "var(--cl-callout-success-bg, #f0fdf4)", border: "1px solid var(--cl-callout-success-border, #dcfce7)",
+              borderRadius: 30, padding: "4px 12px", fontSize: 12, color: "var(--cl-callout-success-accent, #16a34a)", fontWeight: 700,
             }}>
               ✨ Trực Tiếp Mentoring 1-1
             </div>
@@ -65,7 +65,7 @@ export function InstructorSection() {
           <div style={{ flex: 1, minWidth: 280, display: "flex", flexDirection: "column", gap: 20 }}>
             {/* Playfair Display Serif Quote */}
             <div style={{
-              background: "rgba(243, 103, 22, 0.05)",
+              background: "var(--cl-callout-accent-bg, #eff6ff)",
               borderLeft: `4px solid ${t.accent}`,
               padding: "16px 20px",
               borderRadius: "0 16px 16px 0",
@@ -75,8 +75,8 @@ export function InstructorSection() {
                 fontStyle: "italic",
                 fontSize: "clamp(16px, 2.2vw, 19px)",
                 lineHeight: 1.6,
-                color: "var(--cl-text-base, #111827)",
-                fontWeight: 300,
+                color: "var(--cl-text-base, #09090b)",
+                fontWeight: 400,
                 margin: 0,
               }}>
                 "Bán hàng giỏi cho bạn doanh thu hôm nay. Thương hiệu cá nhân &amp; Hệ thống Video Viral cho bạn sự lựa chọn cho ngày mai."
@@ -85,7 +85,7 @@ export function InstructorSection() {
 
             {/* Bio paragraphs */}
             {c.instructorBio.map((paragraph, i) => (
-              <p key={i} style={{ fontSize: 15, lineHeight: 1.7, color: "var(--cl-text-body, #b0b0b0)", margin: 0 }}>
+              <p key={i} style={{ fontSize: 15.5, lineHeight: 1.75, color: "var(--cl-text-body, #27272a)", margin: 0 }}>
                 {paragraph}
               </p>
             ))}
@@ -97,7 +97,7 @@ export function InstructorSection() {
               gap: 12,
               marginTop: 12,
               paddingTop: 20,
-              borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+              borderTop: "1px solid var(--cl-line)",
               textAlign: "center"
             }}>
               {stats.map((st, i) => (
@@ -105,7 +105,7 @@ export function InstructorSection() {
                   <div style={{ fontSize: "clamp(18px, 3vw, 24px)", fontWeight: 800, color: t.accent }}>
                     {st.num}
                   </div>
-                  <div style={{ fontSize: 11, color: "#888", marginTop: 2, lineHeight: 1.3 }}>
+                  <div style={{ fontSize: 12, color: "var(--cl-text-muted, #64748b)", marginTop: 2, lineHeight: 1.3, fontWeight: 500 }}>
                     {st.label}
                   </div>
                 </div>

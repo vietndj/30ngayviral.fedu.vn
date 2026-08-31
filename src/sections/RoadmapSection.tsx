@@ -18,10 +18,10 @@ export function RoadmapSection() {
 
       <FadeIn delay={80}>
         <div style={{ textAlign: "center", marginBottom: 28 }}>
-          <p style={{ fontSize: "clamp(18px, 4.5vw, 22px)", fontWeight: 500, color: "var(--cl-text-base, #f0f0f0)", marginBottom: 14 }}>
+          <p style={{ fontSize: "clamp(18px, 4.5vw, 22px)", fontWeight: 600, color: "var(--cl-text-base, #09090b)", marginBottom: 14 }}>
             {c.roadmapPreviewHeading ?? "Trải nghiệm trực quan không gian bên trong ấn phẩm"}
           </p>
-          <p style={{ fontSize: "clamp(14px, 3.5vw, 17px)", color: "var(--cl-text-muted, #888)", maxWidth: 600, margin: "0 auto 32px", lineHeight: 1.75 }}>
+          <p style={{ fontSize: "clamp(14px, 3.5vw, 17px)", color: "var(--cl-text-muted, #64748b)", maxWidth: 600, margin: "0 auto 32px", lineHeight: 1.75 }}>
             {c.roadmapPreviewDesc}
           </p>
         </div>
@@ -29,7 +29,7 @@ export function RoadmapSection() {
           <div style={{
             borderRadius: t.cardRadius, overflow: "hidden", border: `1px solid var(--cl-line)`, marginBottom: 52,
             aspectRatio: "9 / 16", position: "relative", maxWidth: 340, margin: "0 auto 52px auto",
-            boxShadow: `0 20px 40px -15px rgba(0,240,255,0.15)`
+            boxShadow: `0 20px 40px -15px rgba(225, 29, 72, 0.18)`
           }}>
             <iframe
               src={c.roadmapIframeUrl}
@@ -42,7 +42,7 @@ export function RoadmapSection() {
         ) : (
           <div style={{
             border: `2px dashed var(--cl-line)`, borderRadius: t.cardRadius, padding: "60px 24px",
-            textAlign: "center", marginBottom: 52, color: "var(--cl-text-muted, #555)",
+            textAlign: "center", marginBottom: 52, color: "var(--cl-text-muted, #64748b)",
           }}>
             <div style={{ fontSize: 32, marginBottom: 12 }}>🎬</div>
             <p style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: "0.1em" }}>
@@ -54,7 +54,7 @@ export function RoadmapSection() {
       </FadeIn>
 
       <FadeIn delay={160}>
-        <p style={{ fontSize: 19, fontWeight: 600, textAlign: "center", color: "var(--cl-text-base, #f0f0f0)", marginBottom: 48, letterSpacing: "0.01em" }}>
+        <p style={{ fontSize: 19, fontWeight: 600, textAlign: "center", color: "var(--cl-text-base, #09090b)", marginBottom: 48, letterSpacing: "0.01em" }}>
           {c.roadmapChaptersHeading ?? "Hệ thống hóa toàn bộ tư duy thiết kế của bạn:"}
         </p>
         <div className="cl-timeline">

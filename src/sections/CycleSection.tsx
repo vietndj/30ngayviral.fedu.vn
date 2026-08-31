@@ -14,7 +14,7 @@ export function CycleSection() {
           <h2 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(26px, 6vw, 48px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", color: "var(--cl-text-base, #111827)", margin: "16px 0" }}>
             {c.cycleHeading}
           </h2>
-          <p style={{ fontSize: "clamp(15px, 3.8vw, 19px)", color: "var(--cl-text-muted, #888)", maxWidth: 720, margin: "0 auto", lineHeight: 1.75 }}>
+          <p style={{ fontSize: "clamp(15px, 3.8vw, 19px)", color: "var(--cl-text-muted, #64748b)", maxWidth: 720, margin: "0 auto", lineHeight: 1.75 }}>
             {c.cyclePara}
           </p>
         </div>
@@ -48,7 +48,7 @@ export function CycleSection() {
               fontFamily: t.fontBody, 
               fontSize: "clamp(20px, 4.5vw, 26px)", 
               fontWeight: 500, 
-              color: "var(--cl-text-base, #111827)", 
+              color: "var(--cl-text-base, #09090b)", 
               marginBottom: 20,
               letterSpacing: "-0.02em",
               maxWidth: 500,
@@ -60,7 +60,7 @@ export function CycleSection() {
             <p style={{ 
               fontSize: "clamp(15px, 3.8vw, 19px)", 
               lineHeight: 1.85, 
-              color: "var(--cl-text-body, #374151)", 
+              color: "var(--cl-text-body, #27272a)", 
               margin: 0,
               fontWeight: 400 
             }}>

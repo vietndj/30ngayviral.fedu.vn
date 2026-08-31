@@ -16,17 +16,17 @@ export function PainSection() {
       </FadeIn>
       
       <FadeIn delay={100}>
-        <p style={{ fontSize: "clamp(16px, 1.8vw, 18px)", lineHeight: 1.8, color: "var(--cl-text-body, #b0b0b0)", marginBottom: 36, textAlign: "center" }}>
+        <p style={{ fontSize: "clamp(16px, 1.8vw, 18px)", lineHeight: 1.8, color: "var(--cl-text-body, #27272a)", marginBottom: 36, textAlign: "center" }}>
           {c.painSub}
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 48 }}>
           {c.pains.map((p: string, i: number) => (
-            <div key={i} style={{ 
-              display: "flex", gap: 12, alignItems: "flex-start", background: "rgba(255, 255, 255, 0.01)",
-              border: "1px solid rgba(255, 255, 255, 0.03)", borderRadius: 12, padding: "16px 20px", textAlign: "left",
+            <div key={i} className="cl-card" style={{ 
+              display: "flex", gap: 12, alignItems: "flex-start",
+              padding: "16px 20px", textAlign: "left",
             }}>
-              <span style={{ color: "var(--cl-accent)", fontSize: 18, lineHeight: 1.2 }}>—</span>
-              <p style={{ fontSize: 17, lineHeight: 1.75, color: "var(--cl-text-base, #111827)", margin: 0 }}>
+              <span style={{ color: "var(--cl-accent)", fontSize: 18, lineHeight: 1.2, fontWeight: 700 }}>—</span>
+              <p style={{ fontSize: 17, lineHeight: 1.75, color: "var(--cl-text-body, #27272a)", margin: 0 }}>
                 {p}
               </p>
             </div>
@@ -36,9 +36,9 @@ export function PainSection() {
 
       <FadeIn delay={160}>
         <blockquote style={{
-          borderLeft: `3px solid var(--cl-accent)`, paddingLeft: "clamp(14px, 3.5vw, 24px)", margin: "0 auto", maxWidth: 680,
+          borderLeft: `3.5px solid var(--cl-accent)`, paddingLeft: "clamp(14px, 3.5vw, 24px)", margin: "0 auto", maxWidth: 680,
           fontFamily: t.blockquoteFontFamily ?? t.fontAccent, fontStyle: t.blockquoteFontStyle ?? "italic",
-          fontWeight: t.blockquoteFontWeight ?? 400, fontSize: "clamp(16px, 3.8vw, 21px)", color: "var(--cl-text-base, #111827)", 
+          fontWeight: t.blockquoteFontWeight ?? 400, fontSize: "clamp(16px, 3.8vw, 21px)", color: "var(--cl-text-base, #09090b)", 
           lineHeight: 1.7, textAlign: "left",
         }}>
           “{c.painQuote}”
@@ -47,8 +47,8 @@ export function PainSection() {
 
       {c.painConclusion && (
         <FadeIn delay={220}>
-          <div style={{ marginTop: 32, background: `${t.danger}0d`, border: `1px solid ${t.danger}22`, borderRadius: t.cardRadius, padding: "20px 24px" }}>
-            <p style={{ fontSize: 18, lineHeight: 1.8, color: "var(--cl-text-body, #b0b0b0)", fontStyle: "italic" }}>
+          <div className="cl-callout cl-callout--danger" style={{ marginTop: 36, borderRadius: t.cardRadius, padding: "20px 24px" }}>
+            <p style={{ fontSize: 17.5, lineHeight: 1.8, margin: 0, fontStyle: "italic" }}>
               {c.painConclusion}
             </p>
           </div>

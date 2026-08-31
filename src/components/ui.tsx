@@ -167,8 +167,32 @@ export function CtaButton({ label }: { label: string }) {
       onClick={(e) => { e.preventDefault(); document.getElementById("dang-ky")?.scrollIntoView({ behavior: "smooth" }); }}
       className={`cl-btn ${isOutline ? "cl-btn--outline" : isGhost ? "cl-btn--ghost" : "cl-btn--solid"}`}
     >
-      {label}
+      <span style={{
+        width: 10,
+        height: 10,
+        borderRadius: "50%",
+        background: "#ffffff",
+        boxShadow: "0 0 10px #ffffff",
+        display: "inline-block",
+        flexShrink: 0,
+        animation: "tw-blink 1.2s ease infinite",
+      }} />
+      <span>{label}</span>
     </a>
+  );
+}
+
+export function RecCircleButton({ onClick }: { onClick?: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick || (() => document.getElementById("dang-ky")?.scrollIntoView({ behavior: "smooth" }))}
+      className="cl-rec-circle-btn"
+      title="Bấm để kích hoạt ưu đãi REC ngay"
+      aria-label="Record button"
+    >
+      <span className="cl-rec-circle-btn__inner" />
+    </button>
   );
 }
 
@@ -231,9 +255,9 @@ export function ThemeSyncer() {
     r.style.setProperty("--cl-accent-text",  t.accentText);
     r.style.setProperty("--cl-line",         t.line);
     r.style.setProperty("--cl-danger",       t.danger);
-    r.style.setProperty("--cl-text-base",    t.textBase  ?? "#f0f0f0");
-    r.style.setProperty("--cl-text-body",    t.textBody  ?? "#b0b0b0");
-    r.style.setProperty("--cl-text-muted",   t.textMuted ?? "#666666");
+    r.style.setProperty("--cl-text-base",    t.textBase  ?? "#09090b");
+    r.style.setProperty("--cl-text-body",    t.textBody  ?? "#27272a");
+    r.style.setProperty("--cl-text-muted",   t.textMuted ?? "#64748b");
     r.style.setProperty("--cl-radius",       `${t.cardRadius}px`);
     r.style.setProperty("--cl-radius-sm",    `${Math.max(6, t.cardRadius - 6)}px`);
     r.style.setProperty("--cl-font-display", t.fontDisplay);
@@ -242,6 +266,22 @@ export function ThemeSyncer() {
     r.style.setProperty("--cl-font-accent",  t.fontAccent);
   }, [t]);
   return null;
+}
+
+export function Callout({ children, variant = "danger" }: { children: React.ReactNode; variant?: "danger" | "success" | "accent" }) {
+  return (
+    <div className={`cl-callout cl-callout--${variant}`}>
+      {children}
+    </div>
+  );
+}
+
+export function MonoBadge({ children, variant = "accent" }: { children: React.ReactNode; variant?: "accent" | "danger" | "success" }) {
+  return (
+    <span className={`cl-badge--mono cl-badge--mono-${variant}`}>
+      {children}
+    </span>
+  );
 }
 
 export function AppYTEmbed({ url, caption }: { url: string; caption?: string }) {

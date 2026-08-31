@@ -1,31 +1,69 @@
+.cl-skills-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: relative;
+  width: 100%;
+}
+
+/* ── THẺ CARD BÀI HỌC SẠCH SẼ CHUẨN LINEAR ── */
 .cl-skill-card-alt {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 32px;
+  padding: 28px 24px;
+  position: relative;
+  background: var(--cl-card);
+  border: 1px solid var(--cl-line);
+  box-shadow: var(--cl-shadow-card);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.cl-skill-card-alt:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: var(--cl-shadow-hover);
+}
+
+.cl-skill-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.cl-skill-spec-tag {
+  font-family: var(--cl-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--cl-text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .cl-skill-content {
-  flex: 1;
+  flex: 1.15;
 }
 
 .cl-skill-media {
-  flex: 1;
+  flex: 0.85;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--cl-line);
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000;
+  background: #09090b;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 @media (min-width: 768px) {
   .cl-skill-card-alt {
     flex-direction: row;
     align-items: center;
-    padding: 48px;
-    gap: 48px;
+    padding: 36px 40px;
+    gap: 40px;
   }
   
   .cl-skill-card-alt--reversed {

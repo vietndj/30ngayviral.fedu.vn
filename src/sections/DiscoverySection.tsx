@@ -10,21 +10,21 @@ export function SolutionsSection() {
 
   const tabs = [
     {
-      title: "🤖 Chủ Shop / SMEs (Bán Ads)",
-      subtitle: "Thoát cảnh quảng cáo lôm côm không ra đơn",
+      title: "🤖 Chủ shop / Doanh nghiệp nhỏ",
+      subtitle: "Thoát cảnh quay video bán hàng lôm côm không ra đơn",
       pain: "Quay video bán hàng đặt máy chết một góc, review như đọc vẹt. Sản phẩm nhìn kém sang, 'hàng chợ', đổ tiền chạy quảng cáo là lỗ.",
-      solution: "Dạy Ma trận Cỡ Cảnh (Toàn - Trung - Cận) để điều hướng mắt khán giả. Dùng Cảnh Cận (Close-up - Nam châm chi tiết) để khoe giá trị tinh hoa của sản phẩm, kích thích sự khao khát. Dùng ánh sáng khối làm sản phẩm nhìn đắt tiền. Dùng B-roll làm bằng chứng chốt sale.",
+      solution: "Dạy ma trận cỡ cảnh (Toàn - Trung - Cận) để điều hướng mắt khán giả. Dùng cảnh cận (Close-up) để khoe giá trị tinh hoa của sản phẩm, kích thích sự khao khát. Dùng ánh sáng khối làm sản phẩm nhìn đắt tiền. Dùng B-roll làm bằng chứng chốt đơn.",
       leftLabel: "LÔM CÔM / HÀNG CHỢ",
       leftDesc: "Đặt máy từ xa góc tĩnh, nói đều đều, đánh sáng phòng phẳng lì rọi thẳng mặt.",
-      rightLabel: "CHỈN CHU / ĐẤT TIỀN",
-      rightDesc: "Luân chuyển cỡ cảnh theo nhịp nói, cận cảnh đặc tả giọt nước/đường nét sắc nét, setup ánh sáng ven nổi khối.",
+      rightLabel: "CHỈN CHU / ĐẮT TIỀN",
+      rightDesc: "Luân chuyển cỡ cảnh theo nhịp nói, cận cảnh đặc tả đường nét sắc nét, setup ánh sáng ven nổi khối.",
       icon: "🏪"
     },
     {
-      title: "🧠 Chuyên gia / KOC (Nhân hiệu)",
+      title: "🧠 Chuyên gia / Nhà sáng tạo",
       subtitle: "Hệ thống sản xuất nhàn hạ, tự nhiên",
       pain: "Tự nghĩ kịch bản, tự setup lỉnh kỉnh mỗi ngày dẫn đến kiệt sức rồi bỏ hoang kênh. Đứng trước ống kính là bị đơ cứng, gượng gạo.",
-      solution: "Setup định dạng Talking Head cố định bối cảnh 1 lần dùng mãi mãi. Dùng AI viết kịch bản 2 cột trong 1 phút. Áp dụng góc quay chéo 3/4 (giả lập cuộc hội thoại) kết hợp hành động vật lý (pha trà, lật sách) để cơ thể hát cùng ngôn từ tự nhiên, toát lên sự đĩnh đạc.",
+      solution: "Thiết lập định dạng Talking Head cố định bối cảnh 1 lần dùng mãi mãi. Dùng AI viết kịch bản 2 cột trong 1 phút. Áp dụng góc quay chéo 3/4 kết hợp hành động vật lý (pha trà, lật sách) để cơ thể chuyển động tự nhiên, toát lên sự đĩnh đạc.",
       leftLabel: "LÊN HÌNH ĐƠ CỨNG",
       leftDesc: "Mắt nhìn chằm chằm trực diện vào camera gây áp lực lớn cho người xem, nói vấp phải quay lại nhiều lần.",
       rightLabel: "ĐĨNH ĐẠC & TỰ NHIÊN",
@@ -32,10 +32,10 @@ export function SolutionsSection() {
       icon: "🧠"
     },
     {
-      title: "🎬 Editor / Tự học (Thẩm mỹ xịn)",
-      subtitle: "Có tư duy hình ảnh để x5 thu nhập",
+      title: "🎬 Người mới / Tự học làm video",
+      subtitle: "Có tư duy hình ảnh để nâng tầm chất lượng",
       pain: "Lầm tưởng video đẹp là lạm dụng nhiều hiệu ứng lật trang 3D, giật chớp. Kết quả làm video bị rối mắt, sến sẩm và mất định vị chuyên nghiệp.",
-      solution: "Đập tan ảo giác về phần mềm. Dạy kỹ thuật Cut on Action (chuyển cảnh vật lý tàng hình) và chuyển động cơ học tự nhiên (vung tay, lướt vật thể qua camera) giúp video mượt mà như một dòng chảy liên tục.",
+      solution: "Xóa bỏ ảo giác về phần mềm. Dạy kỹ thuật Cut on Action (chuyển cảnh vật lý tàng hình) và chuyển động cơ học tự nhiên (vung tay, lướt vật thể qua camera) giúp video mượt mà như một dòng chảy liên tục.",
       leftLabel: "HIỆU ỨNG SẾN SẨM",
       leftDesc: "Chèn hiệu ứng lật trang 3D lòe loẹt, chuyển cảnh giật cục phá vỡ sự thoải mái thị giác.",
       rightLabel: "CHUYỂN CẢNH TÀNG HÌNH",
@@ -49,9 +49,9 @@ export function SolutionsSection() {
       <FadeIn>
         <div style={{ textAlign: "center", marginBottom: 44 }}>
           <Label>Phân khúc nhu cầu</Label>
-          <SH>Chọn Giải Pháp Cho Vấn Đề Của Bạn</SH>
+          <SH>Chọn giải pháp cho vấn đề của bạn</SH>
           <p style={{ fontSize: 18, color: "var(--cl-text-muted, #888)", maxWidth: 620, margin: "-18px auto 0", lineHeight: 1.7 }}>
-            Không học chung chung. Hãy chọn đúng toa giải pháp giải quyết trực tiếp điểm nghẽn của bạn.
+            Không học chung chung. Hãy chọn đúng giải pháp giải quyết trực tiếp điểm nghẽn của bạn.
           </p>
         </div>
       </FadeIn>
@@ -91,39 +91,39 @@ export function SolutionsSection() {
           <p style={{ fontFamily: t.fontMono, fontSize: 12, color: "var(--cl-accent)", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 8 }}>
             GIẢI PHÁP CHI TIẾT
           </p>
-          <h3 style={{ fontFamily: t.fontDisplay, fontSize: 26, fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", marginBottom: 20, color: "var(--cl-text-base, #fff)" }}>
+          <h3 style={{ fontFamily: t.fontDisplay, fontSize: 26, fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", marginBottom: 20, color: "var(--cl-text-base, #111827)" }}>
             {tabs[activeTab].subtitle}
           </h3>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <div>
               <p style={{ fontSize: 13, fontWeight: 500, color: "var(--cl-danger)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8, fontFamily: t.fontMono }}>
-                ⚠ ĐIỂM ĐAU CỦA BẠN:
+                ⚠ VẤN ĐỀ BẠN GẶP PHẢI:
               </p>
-              <p style={{ fontSize: 18, lineHeight: 1.8, color: "var(--cl-text-body, #b0b0b0)", margin: 0 }}>
+              <p style={{ fontSize: 18, lineHeight: 1.8, color: "var(--cl-text-body, #374151)", margin: 0 }}>
                 {tabs[activeTab].pain}
               </p>
             </div>
 
             <div style={{ borderTop: `1px solid var(--cl-line)`, paddingTop: 20 }}>
               <p style={{ fontSize: 13, fontWeight: 500, color: "var(--cl-accent)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8, fontFamily: t.fontMono }}>
-                💡 TOA GIẢI PHÁP ĐÓNG GÓI:
+                💡 GIẢI PHÁP CỦA CHƯƠNG TRÌNH:
               </p>
-              <p style={{ fontSize: 18, lineHeight: 1.8, color: "var(--cl-text-base, #f0f0f0)", margin: 0 }}>
+              <p style={{ fontSize: 18, lineHeight: 1.8, color: "var(--cl-text-base, #111827)", margin: 0 }}>
                 {tabs[activeTab].solution}
               </p>
             </div>
 
             <div style={{
               marginTop: 16, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: 20, background: "#08080a", border: `1px solid var(--cl-line)`,
+              gap: 20, background: "var(--cl-card2, #f1f3f4)", border: `1px solid var(--cl-line)`,
               borderRadius: Math.max(8, t.cardRadius - 4), padding: "24px 20px"
             }}>
               <div>
                 <p style={{ fontSize: 12, fontWeight: 500, color: "var(--cl-danger)", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: t.fontMono }}>
                   ✗ {tabs[activeTab].leftLabel}
                 </p>
-                <p style={{ fontSize: 15, lineHeight: 1.6, color: "#666", margin: 0 }}>
+                <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--cl-text-muted, #6b7280)", margin: 0 }}>
                   {tabs[activeTab].leftDesc}
                 </p>
               </div>
@@ -131,7 +131,7 @@ export function SolutionsSection() {
                 <p style={{ fontSize: 12, fontWeight: 500, color: "var(--cl-accent)", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: t.fontMono }}>
                   ✓ {tabs[activeTab].rightLabel}
                 </p>
-                <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--cl-text-body, #aaa)", margin: 0 }}>
+                <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--cl-text-body, #374151)", margin: 0 }}>
                   {tabs[activeTab].rightDesc}
                 </p>
               </div>
@@ -177,7 +177,7 @@ export function DiscoverySection() {
                   <h4 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(20px, 2.5vw, 24px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", color: "var(--cl-text-base, #111827)", margin: 0 }}>
                     {item.title}
                   </h4>
-                  <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--cl-text-body, #b0b0b0)", margin: 0 }}>
+                  <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--cl-text-body, #374151)", margin: 0 }}>
                     {item.desc}
                   </p>
                 </div>
@@ -243,7 +243,7 @@ export function SolutionSection() {
             </div>
           ))}
           <div style={{ marginTop: 32, textAlign: "center" }}>
-            <CtaButton label="Nâng Cấp Gu Hình Ảnh Ngay" />
+            <CtaButton label="Sở Hữu Bản Thiết Kế 30 Ngày Ngay" />
           </div>
         </div>
       </FadeIn>

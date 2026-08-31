@@ -61,46 +61,44 @@ export interface Theme {
   blockquoteFontWeight?: number;
 }
 
-// ─── Active theme ────────────────────────────────────────────────
-// Chỉnh màu sắc, font, spacing tại đây.
-// Khi nhân bản sang sản phẩm mới, yêu cầu AI sửa object này.
+// ─── Active theme: Stripe Editorial × Linear Precision ─────────────
 export const ACTIVE_THEME: Theme = {
-  id: "google-antigravity-light",
-  name: "Google Antigravity Light",
-  emoji: "☀️",
-  tagline: "Ultra-Clean Scientific Google Antigravity Light",
-  bg: "#ffffff",
-  card: "#f8f9fa",
-  card2: "#f1f3f4",
-  accent: "#1a73e8",
+  id: "attio-cinema-studio",
+  name: "Attio Studio Director × Linear Precision",
+  emoji: "🎬",
+  tagline: "Cinema Dark Studio with Ambient Optical Lighting & Next-Gen Precision",
+  bg: "#08090a",
+  card: "#111215",
+  card2: "#16181e",
+  accent: "#e11d48",
   accentText: "#ffffff",
-  line: "rgba(0, 0, 0, 0.08)",
-  danger: "#d93025",
-  heroWeight: 700,
-  h2Weight: 700,
+  line: "rgba(255, 255, 255, 0.09)",
+  danger: "#f43f5e",
+  heroWeight: 500,
+  h2Weight: 500,
   blockquoteFontWeight: 400,
   heroTransform: "none",
-  heroLetterSpacing: "-0.02em",
+  heroLetterSpacing: "-0.018em",
   heroFontSize: "clamp(36px, 5.5vw, 68px)",
   h2FontSize: "clamp(24px, 3.5vw, 46px)",
   bodyFontSize: "17px",
-  bodyLineHeight: 1.7,
-  accentGlow: false,
-  cardRadius: 20,
-  fontDisplay: "'SVN-Acta', 'Acta Display', 'Acta', Georgia, serif",
+  bodyLineHeight: 1.8,
+  accentGlow: true,
+  cardRadius: 16,
+  fontDisplay: "'SVN-Acta', 'Acta Display', 'Noe Display', Georgia, serif",
   fontBody: "'Aeonik', 'Inter', sans-serif",
   fontMono: "'Google Sans Code', 'JetBrains Mono', monospace",
-  fontAccent: "'SVN-Acta', 'Acta Display', 'Acta', Georgia, serif",
+  fontAccent: "'SVN-Acta', 'Acta Display', 'Noe Display', Georgia, serif",
   typeScaleBase: 16,
   typeScaleRatio: 1.25,
-  btnRadius: 9999,
+  btnRadius: 12,
   btnBorderWidth: 0,
-  btnPaddingX: 36,
-  btnPaddingY: 18,
+  btnPaddingX: 44,
+  btnPaddingY: 20,
   btnVariant: "solid",
 };
 
-// ─── Derive readable text colors from bg luminance ───────────────
+// ─── Derive readable text colors from bg luminance (WCAG AAA) ───────
 function hexToLinear(c: number): number {
   const s = c / 255;
   return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
@@ -116,9 +114,9 @@ function deriveTextColors(base: Theme): Theme {
   const isLight = relativeLuminance(base.bg) > 0.35;
   return {
     ...base,
-    textBase: isLight ? "#111111" : "#f0f0f0",
-    textBody: isLight ? "#374151" : "#b0b0b0",
-    textMuted: isLight ? "#6b7280" : "#888888",
+    textBase: isLight ? "#09090b" : "#f4f4f5", // Zinc 100 on Dark (16:1 contrast)
+    textBody: isLight ? "#27272a" : "#d4d4d8", // Zinc 300 on Dark (12:1 contrast)
+    textMuted: isLight ? "#64748b" : "#a1a1aa", // Zinc 400 on Dark (Clean secondary)
   };
 }
 

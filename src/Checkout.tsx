@@ -179,7 +179,7 @@ function PaymentSuccessModal({ onClose }: { onClose: () => void }) {
         </div>
         <div style={{ background: t.card2, borderRadius: Math.max(8, t.cardRadius - 4), padding: "14px 20px", marginBottom: 24 }}>
           {["🎬 Khóa học Tư Duy Làm Video Điện Thoại: Quay Là Cuốn", `🎁 ${c.valueStack.length > 1 ? c.valueStack[1].label : "Quà Tặng Độc Quyền"}`, "♾ Sở hữu vĩnh viễn"].map((item) => (
-            <div key={item} style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0", padding: "4px 0", textAlign: "left" }}>{item}</div>
+            <div key={item} style={{ fontSize: 15, color: t.textBody ?? "#27272a", padding: "4px 0", textAlign: "left" }}>{item}</div>
           ))}
         </div>
         <button onClick={() => window.location.href = "/"} style={{
@@ -365,12 +365,12 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
         <p style={{ fontSize: 13, fontWeight: 500, color: t.textMuted ?? "#777", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Hướng dẫn siêu tốc</p>
         <div style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "center" }}>
           <span style={{ background: t.accent, color: t.accentText, fontSize: 12, fontWeight: 500, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>1</span>
-          <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>Mở App Ngân hàng quét mã QR bên trên.</span>
+          <span style={{ fontSize: 15, color: t.textBody ?? "#27272a" }}>Mở App Ngân hàng quét mã QR bên trên.</span>
         </div>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           <span style={{ background: t.accent, color: t.accentText, fontSize: 12, fontWeight: 500, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>2</span>
-          <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>
-            Nhập nội dung: <strong style={{ color: "var(--cl-text-base, #111827)" }}>{prefix} + [Số điện thoại của bạn]</strong>
+          <span style={{ fontSize: 15, color: t.textBody ?? "#27272a" }}>
+            Nhập nội dung: <strong style={{ color: "var(--cl-text-base, #09090b)" }}>{prefix} + [Số điện thoại của bạn]</strong>
           </span>
         </div>
       </div>
@@ -819,6 +819,11 @@ function CheckoutContent() {
               <Lbl>Góc chia sẻ thật từ những anh chị em đã áp dụng</Lbl>
               {((c as any).checkoutTestimonials || [
                 { 
+                  name: "Học viên ngành Phân bón & Nông nghiệp", 
+                  role: "Sản xuất & Phân phối Phân bón", 
+                  text: "Em có ý định xây kênh mà không biết quay dựng thế nào vì ngành của em khá nhiều cảnh đẹp và tư liệu mà em chỉ biết mỗi giơ máy lên quay. Xong lướt Facebook nó va vào video của anh, em vào page xem tầm 5 cái clip là điền form đăng ký luôn. Có bạn gọi là em chốt đơn đi học luôn không cần tư vấn gì nhiều đâu ạ. Em thề là trước đây em không hề biết anh là ai luôn ấy :))) cũng không mất 7 tiếng để chốt đơn đâu. Em chỉ xem mỗi tầm 5 cái clip của anh thôi ý, lúc chốt còn chưa cả theo dõi page thầy luôn haha!" 
+                },
+                { 
                   name: "Chị Thu Lan", 
                   role: "Chủ shop Thời trang nữ (Hà Nội)", 
                   text: "Đúng là biết thế đăng ký học sớm cho đỡ tốn tiền đi mua điện thoại mới. Mình quay bằng con máy cũ mà áp dụng cách setup 2 cái đèn của thầy xong, lên hình nhìn da dẻ nổi khối đắt tiền hẳn. Bữa đăng video lên mấy khách quen còn nhắn tin hỏi 'Nay shop đầu tư thuê studio quay à' =)) Hình ảnh sang lên cái là khách tin tưởng, chốt đơn cũng dễ hơn hẳn." 
@@ -836,9 +841,9 @@ function CheckoutContent() {
               ]).map((testimonial: any, i: number) => (
                 <div key={i} style={{ borderTop: i === 0 ? "none" : `1px solid ${t.line}`, paddingTop: i === 0 ? 0 : 16, marginBottom: 16 }}>
                   <div style={{ color: "#FFB800", fontSize: 13, marginBottom: 6 }}>★★★★★</div>
-                  <p style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0", fontStyle: "italic", lineHeight: 1.65, marginBottom: 8 }}>"{testimonial.text}"</p>
-                  <div style={{ fontSize: 15, fontWeight: 500, color: t.textBase ?? "#fff" }}>
-                    👉 {testimonial.name} <span style={{ color: t.textMuted ?? "#888", fontWeight: 400 }}>— {testimonial.role}</span>
+                  <p style={{ fontSize: 15, color: t.textBody ?? "#27272a", fontStyle: "italic", lineHeight: 1.65, marginBottom: 8 }}>"{testimonial.text}"</p>
+                  <div style={{ fontSize: 15, fontWeight: 500, color: t.textBase ?? "#09090b" }}>
+                    👉 {testimonial.name} <span style={{ color: t.textMuted ?? "#64748b", fontWeight: 400 }}>— {testimonial.role}</span>
                   </div>
                 </div>
               ))}
@@ -852,16 +857,16 @@ function CheckoutContent() {
                   <button
                     onClick={() => setFaqOpen(faqOpen === i ? null : i)}
                     style={{
-                      width: "100%", background: "none", border: "none", color: t.textBase ?? "#fff", cursor: "pointer",
+                      width: "100%", background: "none", border: "none", color: t.textBase ?? "#09090b", cursor: "pointer",
                       padding: "16px 0", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12,
-                      textAlign: "left", fontSize: 15, fontWeight: 500, lineHeight: 1.55,
+                      textAlign: "left", fontSize: 15, fontWeight: 600, lineHeight: 1.55,
                     }}
                   >
                     <span style={{ flex: 1 }}>{f.q}</span>
                     <span style={{ color: t.accent, fontSize: 18, flexShrink: 0, transition: "transform 0.2s", transform: faqOpen === i ? "rotate(45deg)" : "rotate(0deg)" }}>+</span>
                   </button>
                   {faqOpen === i && (
-                    <div style={{ fontSize: 15, color: t.textBody ?? "#888", lineHeight: 1.75, paddingBottom: 16 }}>
+                    <div style={{ fontSize: 15, color: t.textBody ?? "#27272a", lineHeight: 1.75, paddingBottom: 16 }}>
                       👉 {f.a}
                     </div>
                   )}
@@ -919,7 +924,7 @@ function CheckoutContent() {
           </p>
         </div>
       </div>
-      <LiveSocialProof />
+      {/* <LiveSocialProof /> */}
       <ZaloChatWidget />
     </div>
   );
