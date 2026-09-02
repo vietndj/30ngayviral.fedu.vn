@@ -456,14 +456,14 @@ export const content: ContentData = {
         id: "format-1",
         icon: "🎙️",
         title: "Voice Over",
-        subtitle: "Lồng tiếng đè hình (B-Roll)",
+        subtitle: "Định dạng \"hái ra tiền\" Affiliate & TikTok Shop",
         videoUrl: "/assets/formats/voiceover.mp4",
         poster: "/assets/formats/voiceover_poster.jpg",
-        youtubeId: "ZQ1Qfpln29o",
-        youtubeUrl: "https://www.youtube.com/watch?v=ZQ1Qfpln29o",
-        output: "100% hoàn thành video đầu tay trong 30 phút. Giữ chân người xem >65% nhờ nhịp cắt 1.5s, tỷ lệ inbox hỏi mua hàng đạt 8% - 12%.",
-        relief: "Không cần lộ mặt, không cần trang điểm hay set đèn. Cứ quay cảnh thao tác tay rồi thu voice tâm sự đè lên timeline CapCut.",
-        application: "Quy trình đóng gói, unbox sản phẩm, chia sẻ bài học nghề, review hậu trường."
+        youtubeId: "tjetAj9A-Ps",
+        youtubeUrl: "https://youtube.com/shorts/tjetAj9A-Ps",
+        output: "Định dạng phổ biến & dễ ăn đề xuất nhất trên TikTok/Shopee. Giữ chân người xem >68% nhờ nhịp cắt 1.5s, tỷ lệ click vào giỏ hàng/affiliate tăng 250%.",
+        relief: "Không cần lộ mặt, không cần nói hay trước cam. Chỉ cần quay cận cảnh thao tác tay/sản phẩm rồi thu voice tâm sự hoặc ghép giọng đọc đè lên.",
+        application: "Video review sản phẩm, Affiliate TikTok Shop/Shopee, unbox quà tặng, quy trình làm việc."
       },
       {
         id: "format-2",
