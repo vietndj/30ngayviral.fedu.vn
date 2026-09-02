@@ -472,8 +472,8 @@ export const content: ContentData = {
         subtitle: "Vừa đi vừa nói tự nhiên",
         videoUrl: "/assets/formats/walktalk.mp4",
         poster: "/assets/formats/walktalk_poster.jpg",
-        youtubeId: "pc-GH18dggg",
-        youtubeUrl: "https://www.youtube.com/watch?v=pc-GH18dggg",
+        youtubeId: "VCLHRm_3d-k",
+        youtubeUrl: "https://www.youtube.com/watch?v=VCLHRm_3d-k",
         output: "45 giây đi dạo là xong 1 clip. Khung cảnh chuyển động kéo thời lượng xem tăng 240%, tăng 300% lượt comment tranh luận.",
         relief: "Không cần studio hay kịch bản chi tiết. Cầm điện thoại đi dạo nói 1 góc nhìn ngắn như đang nói chuyện với bạn thân.",
         application: "Bàn luận chủ đề nóng, góc nhìn kinh doanh, chia sẻ trải nghiệm, gỡ rối cho khách."
