@@ -1,402 +1,768 @@
-import { createContext, useContext, createElement } from "react";
-import type { ReactNode } from "react";
-
-export interface BlocksMeta {
-  order: string[];
-  hidden: string[];
-  media: Record<string, any[]>;
-  custom: Record<string, { title: string; body: string }>;
+export interface ContentData {
+  hero: {
+    badge: string;
+    headline: string;
+    subheadline: string;
+    tags: string[];
+    meta: { label: string; value: string; desc: string }[];
+    cta: string;
+    ctaNote: string;
+  };
+  proof: {
+    badge: string;
+    headline: string;
+    revenue: string;
+    timeline: string;
+    dailyPeak: string;
+    description: string;
+    dashboardImg: string;
+    offlineClassImg: string;
+    mockups: {
+      fanpage: string;
+      tiktok: string;
+      leadsStats?: string;
+      tiktokStats: string;
+      fbReels: string;
+      tiktokVideo: string;
+    };
+  };
+  chart: {
+    badge: string;
+    headline: string;
+    description: string;
+    data: { month: string; marketing: number; normal: number }[];
+    bullets: { title: string; normal: string; marketing: string }[];
+  };
+  painPoints: {
+    badge: string;
+    headline: string;
+    subheadline: string;
+    tabs: {
+      id: string;
+      title: string;
+      subtitle: string;
+      points: string[];
+      outcome: string;
+      media: string;
+      videoId?: string;
+      videoTitle?: string;
+      videoSubtitle?: string;
+      cards: { title: string; desc: string }[];
+    }[];
+    brollVideos: {
+      id: string;
+      title: string;
+      subtitle: string;
+      youtubeUrl: string;
+      videoId: string;
+      poster: string;
+      desc: string;
+    }[];
+    scriptVideos: {
+      id: string;
+      title: string;
+      subtitle: string;
+      youtubeUrl: string;
+      videoId: string;
+      poster: string;
+      desc: string;
+    }[];
+    lightingVideos: {
+      id: string;
+      title: string;
+      subtitle: string;
+      youtubeUrl: string;
+      videoId: string;
+      poster: string;
+      desc: string;
+    }[];
+    processVideos: {
+      id: string;
+      title: string;
+      subtitle: string;
+      youtubeUrl: string;
+      videoId: string;
+      poster: string;
+      desc: string;
+    }[];
+  };
+  metaphors: {
+    badge: string;
+    headline: string;
+    subheadline: string;
+    items: {
+      id: string;
+      icon: string;
+      title: string;
+      subtitle: string;
+      videoUrl: string;
+      poster: string;
+      youtubeId: string;
+      youtubeUrl: string;
+      output: string;
+      relief: string;
+      application: string;
+      howTo?: string;
+      strength?: string;
+    }[];
+  };
+  curriculum: {
+    badge: string;
+    headline: string;
+    subheadline: string;
+    days: {
+      dayNumber: string;
+      timeRange: string;
+      title: string;
+      badgeCount: string;
+      goal: string;
+      morning: {
+        sessionName: string;
+        time: string;
+        title: string;
+        items: string[];
+      };
+      afternoon: {
+        sessionName: string;
+        time: string;
+        title: string;
+        items: string[];
+      };
+    }[];
+    bonus: {
+      tag: string;
+      title: string;
+      desc: string;
+    };
+  };
+  showcase: {
+    badge: string;
+    headline: string;
+    subheadline: string;
+    videos: {
+      id: string;
+      title: string;
+      author: string;
+      role: string;
+      desc: string;
+      poster: string;
+      youtubeUrl: string;
+    }[];
+  };
+  caseStudies: {
+    badge: string;
+    headline: string;
+    subheadline?: string;
+    items: {
+      name: string;
+      role: string;
+      niche: string;
+      stats: string;
+      story: string;
+      videoId?: string;
+      youtubeUrl?: string;
+      poster?: string;
+      highlights?: string[];
+    }[];
+  };
+  targetAudience: {
+    badge: string;
+    headline: string;
+    fit: { title: string; desc: string }[];
+    notFit: { title: string; desc: string }[];
+  };
+  instructor: {
+    badge: string;
+    name: string;
+    role: string;
+    avatar: string;
+    bio: string[];
+    stats: { number: string; label: string }[];
+    quote: string;
+  };
+  faqs: { q: string; a: string }[];
 }
 
-export interface SkillCard {
-  n: string;
-  title: string;
-  desc: string;
-  warn?: string;
-  gif?: string;
-  youtubeId?: string;
-  aspectRatio?: string;
-}
-export interface Stage { n: string; title: string; sub?: string; desc?: string; gif?: string }
-export interface ValueLine { label: string; price: string }
-
-export interface PageContent {
-  _v?: number;
-  price: string;
-  value: string;
-
-  heroBadge: string;
-  heroHeadline1: string;
-  heroHeadline2: string;
-  heroAccentLine: string;
-  heroSub: string;
-  heroCta: string;
-  heroSubPrice?: string;
-  heroVideoYoutubeId?: string;
-  heroPoem?: string[];
-
-  painLabel: string;
-  painHeading: string;
-  painQuote: string;
-  painSub: string;
-  pains: string[];
-  painConclusion?: string;
-
-  // ── Attention (3 cách gây chú ý) ──
-  attentionLabel: string;
-  attentionHeading: string;
-  attentionPara: string;
-  attentionItems: { icon: string; title: string; desc: string }[];
-
-  // ── Rule 7-11-4 ──
-  ruleLabel: string;
-  ruleHeading: string;
-  rulePara: string;
-  ruleItems: { fail: string; why: string }[];
-  ruleConclusion: string;
-
-  cycleLabel: string;
-  cycleHeading: string;
-  cyclePara: string;
-  cycleItems: { fail: string; why: string }[];
-  
-  discoveryLabel: string;
-  discoveryHeading: string;
-  discoverySub: string;
-  discoveryItems: { title: string; desc: string; gif?: string; placeholderLabel?: string }[];
-
-  solutionLabel: string;
-  solutionHeading: string;
-  solutionSub: string;
-  solutionItems: string[];
-
-  skillsLabel: string;
-  skillsHeading: string;
-  skillCards: SkillCard[];
-
-  midCtaHeading: string;
-  midCtaSub: string;
-  midCtaBtn: string;
-
-  baLabel: string;
-  baHeading: string;
-  baSub: string;
-  baBeforeMedia?: string;
-  baAfterMedia?: string;
-  baVideoYoutubeId?: string;
-  beforeLabel: string;
-  afterLabel: string;
-  beforeItems: string[];
-  afterItems: string[];
-
-  roadmapLabel: string;
-  roadmapHeading: string;
-  roadmapPreviewHeading?: string;
-  roadmapPreviewDesc?: string;
-  roadmapIframeUrl?: string;
-  roadmapChaptersHeading?: string;
-  stages: Stage[];
-  roadmapChaptersGif?: string;
-
-  instructorLabel: string;
-  instructorHeading: string;
-  instructorInitials: string;
-  instructorName: string;
-  instructorTitle: string;
-  instructorBio: string[];
-  instructorInsight?: string;
-  instructorPhoto?: string;
-
-  urgencyBar: string;
-  ctaLabel: string;
-  ctaHeading: string;
-  ctaSub: string;
-  countdownLabel: string;
-  valueStackTitle: string;
-  valueStack: ValueLine[];
-  guarantee: string;
-
-  footerBrand: string;
-  footerDot: string;
-  footerTagline: string;
-  footerLinks: string[];
-  bonusLabel: string;
-  bonusHeading: string;
-  bonusSub: string;
-  bonusItems: { id: string; title: string; desc: string; audioDemo?: string; youtubeDemo?: string; gifDemo?: string }[];
-  footerCopyright: string;
-
-  blocksMeta: BlocksMeta;
-}
-
-const CONTENT_SCHEMA_VERSION = 9;
-
-export const DEFAULT_CONTENT: PageContent = {
-  _v: CONTENT_SCHEMA_VERSION,
-  price: "999.000",
-  value: "7.500.000",
-
-  // ── Hero ──
-  heroBadge: "✨ DÀNH CHO NGƯỜI KINH DOANH MUỐN TỰ LÀM VIDEO BÁN HÀNG BẰNG ĐIỆN THOẠI",
-  heroHeadline1: "KHÔNG CẦN LỘ MẶT. KHÔNG CẦN NÓI HAY.",
-  heroHeadline2: "30 ngày — từ sợ ống kính đến tự tin ra video bán hàng mỗi ngày.",
-  heroPoem: [
-    "Không cần máy ảnh cồng kềnh,",
-    "Cầm điện thoại lên, ra kênh — ra tiền."
-  ],
-  heroAccentLine: "Bạn không cần máy quay chục triệu, không cần ekip, không cần ngoại hình xuất chúng hay kỹ năng nói trước ống kính.",
-  heroSub: "Chỉ cần 1 chiếc điện thoại và quy trình đúng — bạn sẽ tự quay, tự dựng, tự đăng video bán hàng chỉn chu trong 30 phút. Dù bạn bán Bất Động Sản, đồ ăn, mỹ phẩm, dạy học hay làm dịch vụ Spa — lộ trình này dành cho bạn.",
-  heroCta: "XEM LỘ TRÌNH 30 NGÀY CỦA TÔI →",
-  heroVideoYoutubeId: "NmazSvfOs84",
-  heroSubPrice: "Học online trọn đời — Có thầy chữa bài 1-1 qua Zalo & Zoom",
-
-  // ── Pain (Nỗi đau) ──
-  painLabel: "CÓ PHẢI BẠN ĐANG NHƯ THẾ NÀY?",
-  painHeading: "Bạn biết video quan trọng. Nhưng mỗi lần cầm điện thoại lên là... không biết bắt đầu từ đâu.",
-  painQuote: "Vấn đề không phải bạn dở. Vấn đề là chưa ai chỉ cho bạn quy trình đúng — từ nghĩ ra ý tưởng, đến cầm máy quay, đến cắt ghép xong trong 30 phút.",
-  painSub: "Nghe quen không? Đây là 4 bế tắc phổ biến nhất của người kinh doanh khi bắt đầu làm video:",
-  pains: [
-    "❌ Cầm máy lên là đơ: Nói trước ống kính bị gượng, quay đi quay lại 5-6 lần rồi nản bỏ. Hoặc ngại lộ mặt, sợ người quen đánh giá.",
-    "❌ Không biết hôm nay quay gì: Mở điện thoại ra rồi lại cất vào. Bí ý tưởng, không có kịch bản, làm nội dung tùy hứng nay hài hước mai triết lý.",
-    "❌ Có đăng video nhưng không ai hỏi mua: Bạn bè vào like ủng hộ, nhưng không ai gọi điện, không ai đặt hàng. Video không ra tiền.",
-    "❌ Sợ mua khóa học online rồi tự bơi: Từng mua khóa học video trên mạng, xem được 2 bài là bỏ xó vì không ai giải đáp, không biết áp dụng vào ngành mình."
-  ],
-  painConclusion: "", // Component handles conclusion
-
-  // ── Attention (Khoảng cách vô hình) ──
-  attentionLabel: "3 LỰA CHỌN TRƯỚC MẶT BẠN",
-  attentionHeading: "Bạn đang ở ngã ba đường. Mỗi lựa chọn cho kết quả rất khác nhau.",
-  attentionPara: "Hầu hết người kinh doanh khi muốn làm video đều rơi vào 1 trong 3 con đường này:",
-  attentionItems: [
-    {
-      icon: "❌",
-      title: "Tự mày mò trên YouTube, TikTok",
-      desc: "Mỗi người dạy 1 kiểu, càng xem càng rối. 6 tháng sau vẫn chưa đăng được clip nào tử tế. Tốn thời gian mà không ra kết quả."
-    },
-    {
-      icon: "❌",
-      title: "Thuê người quay — tốn 3-5 triệu/tháng",
-      desc: "Họ quay xong bạn không biết sửa, không biết định hướng nội dung. Ngày nào không thuê là ngày đó kênh im lặng. Phụ thuộc hoàn toàn."
-    },
-    {
-      icon: "✅",
-      title: "Lộ trình 30 ngày — 999K một lần duy nhất",
-      desc: "Có quy trình rõ ràng từ A đến Z. Sau 30 ngày bạn tự quay, tự dựng, tự đăng — mỗi ngày 30 phút ra 1 video bán hàng. Không phụ thuộc ai."
-    },
-    {
-      icon: "💡",
-      title: "So sánh nhanh: Video nghiệp dư vs Video có quy trình",
-      desc: "Nghiệp dư: Mở đầu 'Xin chào mọi người...', 1 góc máy buồn ngủ, kịch bản tùy hứng. → Có quy trình: Mở đầu cuốn hút trong 3 giây, chuyển cảnh mượt mà, lồng ghép bán hàng tự nhiên."
-    }
-  ],
-
-  // ── Rule (3 điều khách hàng quyết định trong 3 giây) ──
-  ruleLabel: "VÌ SAO VIDEO CỦA BẠN CHƯA RA ĐƠN?",
-  ruleHeading: "3 điều khách hàng quyết định trong 3 giây khi xem video của bạn",
-  rulePara: "Không phải thuật toán bóp bạn. Khách hàng tự quyết định có xem tiếp hay lướt đi — dựa trên 3 thứ rất đơn giản:",
-  ruleItems: [
-    { 
-      fail: "Giây 1-3: \"Cái này cho mình không?\"", 
-      why: "Nếu hình ảnh đầu tiên không liên quan đến họ — họ lướt. Vì sao bạn cần biết cách mở đầu video khiến khách dừng lại ngay." 
-    },
-    { 
-      fail: "Giây 3-7: \"Người này đáng tin không?\"", 
-      why: "Nếu ánh sáng tối, phông bừa bộn, giọng nói run — khách không tin. Vì sao bạn cần biết setup ánh sáng và góc quay đơn giản nhưng sạch sẽ." 
-    },
-    { 
-      fail: "Giây 7-15: \"Tôi có muốn mua / liên hệ không?\"", 
-      why: "Nếu video không có lời kêu gọi hành động tự nhiên — khách xem xong quên luôn. Vì sao bạn cần biết cách lồng ghép bán hàng mà không ép buộc." 
-    }
-  ],
-  ruleConclusion: "Lộ trình 30 ngày giải quyết trọn vẹn cả 3 điều trên — giúp bạn ra video mà khách hàng thấy là dừng lại, tin tưởng, và liên hệ mua hàng.",
-
-  // ── Cycle (Vòng lặp bế tắc) ──
-  cycleLabel: "CẠM BẪY PHỔ BIẾN",
-  cycleHeading: "3 cách làm video sai lầm khiến bạn càng cố càng nản",
-  cyclePara: "Khi bế tắc, đa số người kinh doanh thường chọn 1 trong 3 cách này — và cả 3 đều không ra kết quả:",
-  cycleItems: [
-    { 
-      fail: "Lên YouTube xem hàng trăm video dạy quay miễn phí", 
-      why: "Mỗi người dạy 1 kiểu, không ai chỉ quy trình đầu-cuối cho ngành của bạn. Xem xong càng rối hơn, cuối cùng vẫn không quay được video nào." 
-    },
-    { 
-      fail: "Bắt chước y hệt video đang trend trên TikTok", 
-      why: "Video trend của người khác không liên quan đến sản phẩm/dịch vụ của bạn. Khách hàng thật không tìm được bạn, chỉ thấy bạn đang đu trend." 
-    },
-    { 
-      fail: "Mua khóa học dạy bấm nút phần mềm", 
-      why: "Học xong biết bấm nút nhưng không biết quay gì, nói gì, kịch bản thế nào. Vẫn bí ý tưởng như cũ." 
-    }
-  ],
-
-  // ── Discovery (Giác ngộ) ──
-  discoveryLabel: "SỰ THẬT ĐƠN GIẢN",
-  discoveryHeading: "Video bán được hàng không cần kỹ xảo phức tạp. Chỉ cần 3 thứ này.",
-  discoverySub: "Sau khi phân tích hàng ngàn video bán hàng hiệu quả, tôi đúc kết thành 3 nguyên tắc bất biến:",
-  discoveryItems: [
-    {
-      title: "Mở đầu cuốn hút trong 3 giây",
-      desc: "Khách hàng quyết định xem tiếp hay lướt đi trong 3 giây đầu tiên. Không phải video dài nhất thắng — mà video cuốn nhất từ giây đầu tiên thắng."
-    },
-    {
-      title: "Cắt ghép mượt mà — nói vấp thoải mái",
-      desc: "Chèn cảnh phụ (B-roll) đè lên chỗ nói vấp. Video mượt như quay một lần duy nhất. Không cần nói hay — chỉ cần cắt đúng chỗ."
-    },
-    {
-      title: "Bán hàng mà không 'bán hàng'",
-      desc: "Kể câu chuyện thật về sản phẩm, chia sẻ kinh nghiệm, rồi gợi ý nhẹ nhàng. Khách xem xong tự hỏi mua — không ai thích bị ép."
-    }
-  ],
-
-  // ── Solution (Giải pháp) ──
-  solutionLabel: "QUY TRÌNH 30 PHÚT RA VIDEO",
-  solutionHeading: "Bạn không chỉ học kiến thức. Bạn nhận luôn bộ công cụ 'bấm nút là chạy'.",
-  solutionSub: "Mọi thứ đã được đóng gói sẵn — bạn chỉ việc thay nội dung của mình vào và xuất video:",
-  solutionItems: [
-    "❌ Bí ý tưởng, không biết nói gì ➞ ✅ Dán thông tin sản phẩm vào AI → Nhận kịch bản chi tiết trong 10 giây. Không cần giỏi văn.",
-    "❌ Cắt ghép mất 4-5 tiếng ➞ ✅ Template CapCut kéo thả: Thả video thô vào → chữ, nhạc, hiệu ứng tự động khớp. Xong trong 15-30 phút.",
-    "❌ Hôm nay đăng, mai lại bí ➞ ✅ Lịch content Notion 30 ngày: Mở ra biết rõ hôm nay quay gì, mai đăng gì. Không bao giờ bí.",
-    "❌ Sợ bị gỡ video vì nhạc ➞ ✅ Kho 500+ nhạc & âm thanh sạch bản quyền. Đăng TikTok, Reels, YouTube thoải mái."
-  ],
-
-  skillsLabel: "4 KỸ NĂNG CỐT LÕI BẠN SẼ LÀM CHỦ",
-  skillsHeading: "Sau 30 ngày, bạn sẽ tự tin làm được 4 điều này chỉ với điện thoại:",
-  skillCards: [
-    { n: "01", title: "Mở đầu video — 3 giây đầu quyết định tất cả", desc: "Học cách mở đầu khiến khách hàng dừng lại ngay giây đầu tiên. Không phải nói hay — mà nói đúng thứ họ đang quan tâm.", gif: "/gifs/invisible-cut.gif" },
-    { n: "02", title: "Cắt ghép mượt — nói vấp thoải mái, chèn cảnh phụ đè lên", desc: "Quay xong, cắt bỏ chỗ vấp, chèn cảnh sản phẩm/cửa hàng đè lên. Video mượt mà như quay một lần. Ai xem cũng tưởng thuê người làm.", gif: "/gifs/lighting-3d.gif" },
-    { n: "03", title: "Âm thanh có lực — thêm 1 tiếng 'bụp' nhỏ, video khác hẳn", desc: "Đặt đúng 1 tiếng động nhỏ vào điểm chuyển cảnh — video từ bình thường lên chuyên nghiệp ngay lập tức. Kho âm thanh có sẵn, kéo thả vào là xong.", gif: "/gifs/shot-sizes.gif" },
-    { n: "04", title: "Bán hàng không bán hàng — khách xem xong tự hỏi mua", desc: "Kể câu chuyện sản phẩm một cách tự nhiên, lồng ghép lời mời mua nhẹ nhàng. Khách thấy thật, tin tưởng và chủ động liên hệ.", youtubeId: "0ivTU46mdcI", aspectRatio: "9 / 16" }
-  ],
-
-  // ── Mid CTA ──
-  midCtaHeading: "Sẵn sàng tự làm video bán hàng chuyên nghiệp chỉ với điện thoại?",
-  midCtaSub: "Toàn bộ quy trình + template CapCut + kịch bản AI + thầy chữa bài 1-1. Một lần đầu tư — dùng cả đời.",
-  midCtaBtn: "SỞ HỮU LỘ TRÌNH 30 NGÀY — CHỈ 999K",
-
-  // ── Before & After ──
-  baLabel: "TRƯỚC VÀ SAU 30 NGÀY",
-  baHeading: "Sự khác biệt rõ rệt sau khi có quy trình đúng:",
-  baSub: "",
-  baVideoYoutubeId: "0ivTU46mdcI",
-  beforeLabel: "TRƯỚC (Tự mày mò, tốn thời gian)",
-  afterLabel: "SAU 30 NGÀY (Có quy trình, ra kết quả)",
-  beforeItems: [
-    "Cầm máy lên là đơ, quay đi quay lại 5-6 lần rồi bỏ",
-    "Bí ý tưởng, ngồi cả buổi không biết nói gì, quay gì",
-    "Có đăng video nhưng chỉ bạn bè like, không ai hỏi mua",
-    "Cắt ghép mất 4-5 tiếng, đăng lên vẫn bị sượng",
-    "Đăng bài tùy hứng, kênh không có định hướng rõ ràng",
-    "Sợ bản quyền nhạc, sợ bị gỡ video"
-  ],
-  afterItems: [
-    "Quay 1 lần, nói vấp thoải mái — chèn cảnh phụ đè lên là mượt",
-    "Dán thông tin sản phẩm vào AI → Có kịch bản chi tiết trong 10 giây",
-    "Lồng ghép bán hàng tự nhiên — khách xem xong chủ động hỏi mua",
-    "Template kéo thả: Thả video thô vào → Xuất video chỉn chu trong 30 phút",
-    "Lịch Notion 30 ngày: Mở ra biết hôm nay quay gì, đăng lúc nào",
-    "Kho 500+ nhạc & âm thanh sạch bản quyền — đăng thoải mái mọi nền tảng"
-  ],
-
-  // ── Lộ trình 30 ngày ──
-  roadmapLabel: "LỘ TRÌNH 30 NGÀY THỰC CHIẾN",
-  roadmapHeading: "Không lý thuyết suông. Mỗi bài học: XEM XONG → CẦM MÁY LÊN QUAY NGAY.",
-  roadmapPreviewHeading: "Xem thử không gian bài học bên trong",
-  roadmapPreviewDesc: "Video thực tế bên trong chương trình — trực quan, thực chiến, từng thao tác rõ ràng.",
-  roadmapIframeUrl: "https://www.youtube.com/embed/uedVbAZ0_zs?rel=0&modestbranding=1",
-  roadmapChaptersHeading: "3 giai đoạn — từ chưa biết gì đến tự tin ra video bán hàng mỗi ngày:",
-  stages: [
-    { n: "Tuần 1-2", title: "📱 SETUP — Bật đèn, đặt máy, quay được video sạch đầu tiên", desc: "Cách setup góc quay và ánh sáng bằng đồ có sẵn trong nhà. Cách mở đầu video cuốn hút trong 3 giây. Cách đặt máy cho từng ngành: BĐS, F&B, Spa, Giáo dục.", sub: "Mục tiêu: Ra được video đầu tiên sạch sẽ, sáng rõ, mở đầu cuốn hút — chỉ bằng điện thoại." },
-    { n: "Tuần 2-3", title: "✂️ CẮT DỰNG — Biến đoạn quay thô thành video mượt trong 30 phút", desc: "Cắt bỏ chỗ nói vấp, chèn cảnh phụ (B-roll) đè lên. Thêm chữ, nhạc, âm thanh bằng template CapCut kéo thả. Dùng AI viết kịch bản tự động.", sub: "Mục tiêu: Tự dựng video chỉn chu trong 30 phút — không cần biết edit từ trước." },
-    { n: "Tuần 3-4", title: "💰 BÁN HÀNG — Lồng ghép sản phẩm/dịch vụ vào video tự nhiên", desc: "Công thức kể chuyện sản phẩm khiến khách tự hỏi mua. Cách xây series nội dung để khách quay lại mỗi ngày. Đọc số liệu đơn giản để biết video nào đang hiệu quả và nhân bản.", sub: "Mục tiêu: Video ra đơn hàng thật, khách gọi điện hỏi mua, tuyển sinh được học viên." }
-  ],
-
-  // ── Instructor ──
-  instructorLabel: "NGƯỜI ĐỒNG HÀNH",
-  instructorHeading: "Tôi từng quay 50 video chỉ để nhận được... 50 lượt xem.\nCho đến khi tôi tìm ra quy trình.",
-  instructorInitials: "NĐV",
-  instructorName: "Nguyễn Đức Việt",
-  instructorTitle: "Kỹ sư Bách Khoa · 15 năm Giảng viên FPT Arena · Founder Fedu.vn",
-  instructorBio: [
-    "Sự thật là — tôi đã từng thức tới 3h sáng cặm cụi cắt ghép, chèn nhạc, chỉnh màu... để sáng hôm sau đăng lên nhận về đúng 50 lượt xem. Tôi hiểu cảm giác đó.",
-    "Tôi lùi lại, phân tích hàng ngàn video bán hàng hiệu quả, và nhận ra: Video ra đơn không cần kỹ xảo phức tạp. Nó cần quy trình đúng. Tôi đóng gói mọi thứ thành lộ trình rõ ràng — để bạn không phải mất thêm nhiều tháng tự mò.",
-    "Và tôi không chỉ đưa bài học rồi để bạn tự bơi. Tôi sẽ xem video bạn quay, chỉ ra chính xác cần sửa gì — qua Zalo và Zoom — cho đến khi bạn tự tin ra video bán hàng mỗi ngày."
-  ],
-
-  // ── Bonus (Quà tặng đóng gói lại) ──
-  bonusLabel: "HỘP CÔNG CỤ LÀM VIDEO 30 PHÚT",
-  bonusHeading: "Nhận trọn bộ công cụ trị giá 3.750.000đ — dùng ngay, không cần cài đặt phức tạp",
-  bonusSub: "Đi kèm miễn phí khi đăng ký hôm nay — Không bán lẻ, không bán riêng",
-  bonusItems: [
-    {
-      id: "01",
-      title: "50+ Template CapCut \"Kéo-Thả-Xong\"",
-      desc: "Thả video thô vào template, chữ - nhạc - hiệu ứng tự khớp. Xuất video chỉn chu trong 15-30 phút.<br/><ul style=\"margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;\"><li>🎬 <b>Có sẵn template theo ngành:</b> BĐS, Ẩm Thực, Spa, Giáo Dục</li><li>🚀 <b>Kéo - Thả dùng ngay:</b> Không cần biết edit từ trước</li><li>💡 <b>Tiết kiệm 80% thời gian:</b> Việc 5 tiếng giờ xong trong 30 phút</li></ul>",
-      youtubeDemo: "6Oiugt77imE"
-    },
-    {
-      id: "02",
-      title: "20+ Prompt AI \"Nhả Kịch Bản 10 Giây\"",
-      desc: "Dán thông tin sản phẩm/dịch vụ vào AI → Nhận kịch bản chi tiết 2 cột (Cảnh quay gì + Nói gì). Không cần giỏi văn, không cần nghĩ nhiều.<br/><ul style=\"margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;\"><li>🤖 <b>Prompt theo từng ngành:</b> BĐS, F&B, Spa, Thời trang, Giáo dục</li><li>⚡ <b>10 giây ra kịch bản:</b> Thay vì ngồi nghĩ cả buổi</li><li>📋 <b>Kịch bản 2 cột rõ ràng:</b> Cột trái = Cảnh quay, Cột phải = Lời nói</li></ul>",
-      youtubeDemo: "xBQwAw6oJZ8"
-    },
-    {
-      id: "03",
-      title: "Lịch Content Notion 30 Ngày",
-      desc: "Mở ra biết rõ hôm nay quay gì, mai đăng gì. Không bao giờ bí ý tưởng. Có sẵn chủ đề, góc quay gợi ý, và thời điểm đăng tối ưu cho từng ngày."
-    },
-    {
-      id: "04",
-      title: "Kho 500+ Nhạc & Âm Thanh sạch bản quyền",
-      desc: "Đăng TikTok, Reels, YouTube thoải mái — không lo bị gỡ, không lo bị phạt bản quyền. Âm thanh chất lượng cao, đậm chất chuyên nghiệp.",
-      audioDemo: "/boardroom-siege.mp3"
-    },
-    {
-      id: "05",
-      title: "🎁 TẶNG THÊM: 3 Bộ Công Cụ AI FEDU (Trị giá 499.000đ)",
-      desc: "Bộ công cụ AI độc quyền chạy trên Google Gemini — chỉ có tại FEDU, không nơi nào khác:<br/><ul style=\"margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;\"><li>🔍 <b>AI Bóc Kịch Bản Clip Hay:</b> Dán link video viral bất kỳ → AI phân tích ra kịch bản 2 cột trong 5 phút. Bạn chỉ việc quay theo.</li><li>✂️ <b>AI Trợ Lý Dựng Video:</b> Tự gọt ngập ngừng, làm phụ đề tiếng Việt chuẩn, chèn cảnh trám tự động.</li><li>📝 <b>AI Viết Kịch Bản Bán Hàng Theo Ngành:</b> Nhập ngành nghề + sản phẩm → AI nhả kịch bản bán hàng riêng cho bạn.</li></ul>",
-      youtubeDemo: "CO9qM6BmVLo",
-      gifDemo: "/edit-ai-promo.gif"
-    }
-  ],
-
-  // ── Section 11: Final CTA ──
-  urgencyBar: "⚠ SỐ LƯỢNG CÓ HẠN — HỌC PHÍ SẼ TĂNG KHI ĐỦ HỌC VIÊN",
-  ctaLabel: "// BẮT ĐẦU NGAY HÔM NAY",
-  ctaHeading: "Sẵn sàng tự làm video bán hàng — không cần thuê ai, không cần nói hay?",
-  ctaSub: "Bạn có 2 lựa chọn: Tiếp tục tự mày mò mất hàng tháng — hoặc bắt đầu đúng cách ngay hôm nay với quy trình đã được 1.000+ học viên kiểm chứng.",
-  countdownLabel: "⏳ Ưu đãi kết thúc sau:",
-  valueStackTitle: "TỔNG GIÁ TRỊ BẠN NHẬN ĐƯỢC:",
-  valueStack: [
-    { label: "Lộ trình 30 ngày + Thầy chữa bài 1-1", price: "3.500.000 VNĐ" },
-    { label: "50+ Template CapCut kéo thả theo ngành", price: "1.500.000 VNĐ" },
-    { label: "20+ Prompt AI viết kịch bản bán hàng", price: "1.000.000 VNĐ" },
-    { label: "Lịch content Notion 30 ngày", price: "500.000 VNĐ" },
-    { label: "Kho 500+ nhạc & âm thanh sạch bản quyền", price: "1.000.000 VNĐ" },
-    { label: "🎁 3 Bộ Công Cụ AI FEDU (Độc quyền)", price: "499.000 VNĐ" }
-  ],
-  guarantee: "⚡ Thanh toán → Vào học NGAY LẬP TỨC. Không chờ duyệt. Hoàn tiền 100% trong 7 ngày nếu không hài lòng.",
-
-  // ── Footer ──
-  footerBrand: "FEDU",
-  footerDot: ".",
-  footerTagline: "\"Bạn không cần trở thành chuyên gia dựng phim.\nBạn chỉ cần ra được video bán hàng mỗi ngày.\"",
-  footerLinks: [],
-  footerCopyright: "COPYRIGHT 2026 | 30NGAYVIRAL.FEDU.VN — FEDU EDUCATION",
-
-  blocksMeta: {
-    order: ["hero", "pain", "attention", "rule", "cycle", "discovery", "solution", "skills", "midCta", "before-after", "roadmap", "instructor", "bonus", "cta", "footer"],
-    hidden: [],
-    media: {},
-    custom: {},
+export const content: ContentData = {
+  hero: {
+    badge: "GẶP MẶT TRỰC TIẾP · HÀ NỘI · SĨ SỐ GIỚI HẠN",
+    headline: "Biến Chuyên Môn Của Bạn Thành Video Marketing Đắt Giá",
+    subheadline: "Khóa học offline 2 ngày cầm tay chỉ việc giúp chủ doanh nghiệp, chuyên gia, bác sĩ, giảng viên và người làm dịch vụ làm chủ toàn bộ quy trình: Viết kịch bản One-line, setup 2 góc quay điện thoại, edit video chuyên nghiệp và ứng dụng AI tự động hóa. Không cần giỏi kỹ thuật từ trước.",
+    tags: [
+      "KỊCH BẢN CHUYỂN ĐỔI",
+      "SETUP 2 GÓC QUAY",
+      "QUAY 2 CAM ĐIỆN THOẠI",
+      "EDIT CHUYÊN NGHIỆP",
+      "AI TỰ ĐỘNG HÓA"
+    ],
+    meta: [
+      { label: "THỜI GIAN", value: "2 Ngày Thực Chiến", desc: "Thứ 7 & Chủ Nhật (08:30 - 17:30)" },
+      { label: "ĐỊA ĐIỂM", value: "Hà Nội", desc: "Phòng Studio tiêu chuẩn chuyên nghiệp" },
+      { label: "QUY MÔ", value: "≤ 40 Học Viên", desc: "Kèm cặp 1-1 ra sản phẩm ngay tại lớp" }
+    ],
+    cta: "ĐĂNG KÝ GIỮ CHỖ NGAY",
+    ctaNote: "Chỉ nhận tối đa 40 học viên mỗi đợt để đảm bảo chất lượng cầm tay chỉ việc."
   },
+  proof: {
+    badge: "DỮ LIỆU ĐỐI SOÁT TỪ META BUSINESS",
+    headline: "Chuyển Đổi Thực Tế Từ Fanpage 30 Ngày Học Làm Nội Dung Viral",
+    revenue: "38.780+ Follower · 3.642 Leads",
+    timeline: "3.642 Khách Hàng Nhắn Tin Tư Vấn",
+    dailyPeak: "428 Số ĐT Để Lại Mua Khóa Học",
+    description: "Toàn bộ số liệu được đối soát trực tiếp từ Meta Business Suite của Fanpage '30 Ngày Học Làm Nội Dung Viral'. Không chạy tool, không mua follow ảo — toàn bộ học viên và số điện thoại đều đến từ các video ngắn có cấu trúc chuyển đổi.",
+    dashboardImg: "/assets/facebook_real_page_dashboard.png",
+    offlineClassImg: "/assets/image_1781257789234-CGDyQOer.png",
+    mockups: {
+      fanpage: "/assets/fanpage_nguyenducviet.png",
+      tiktok: "/assets/tiktok_nguyenducviet.png",
+      leadsStats: "/assets/facebook_leads_stats.png",
+      tiktokStats: "/assets/image_1781281379611-PpKU1pTE.png",
+      fbReels: "/assets/image_1781281388562-DGSN1Etr.png",
+      tiktokVideo: "/assets/image_1781281916199-DoWUR6eO.png"
+    }
+  },
+  chart: {
+    badge: "HIỆU SUẤT TĂNG TRƯỞNG",
+    headline: "Video Marketing Đem Lại Thu Nhập & Thương Hiệu Gấp 10 Lần",
+    description: "Khi làm video theo bản năng, bạn tốn rất nhiều thời gian nhưng người xem lướt qua nhanh và không có chuyển đổi. Khi có cấu trúc kịch bản và góc quay chuyển đổi, từng video đều trở thành cỗ máy thu hút khách hàng tiềm năng 24/7.",
+    data: [
+      { month: "Tháng 1", marketing: 20, normal: 18 },
+      { month: "Tháng 2", marketing: 28, normal: 20 },
+      { month: "Tháng 3", marketing: 64, normal: 30 },
+      { month: "Tháng 4", marketing: 56, normal: 35 },
+      { month: "Tháng 5", marketing: 75, normal: 48 },
+      { month: "Tháng 6", marketing: 90, normal: 52 }
+    ],
+    bullets: [
+      {
+        title: "Khả năng giữ chân người xem (Retention Rate)",
+        normal: "Lướt qua sau 1-2 giây vì mở đầu dài dòng, thiếu điểm nhấn",
+        marketing: "Hook 3 giây sắc bén bóc đúng nỗi đau, giữ chân >60% tới cuối video"
+      },
+      {
+        title: "Tỷ lệ chuyển đổi ra đơn (Conversion Rate)",
+        normal: "Nhiều lượt xem ảo nhưng không ai inbox mua hàng hay đăng ký",
+        marketing: "Điều hướng tự nhiên về phễu bán hàng, biến người xem thành khách hàng thực"
+      },
+      {
+        title: "Sự bền bỉ và tính nhất quán (Consistency)",
+        normal: "Làm vài video rồi cạn ý tưởng, nản lòng vì không có kết quả",
+        marketing: "Quy trình đóng gói kịch bản và kho tư liệu B-roll quay 1 lần dùng cả tháng"
+      }
+    ]
+  },
+  painPoints: {
+    badge: "BẠN ĐANG GẶP PHẢI ĐIỀU NÀY?",
+    headline: "Tháo Gỡ 4 Nút Thắt Khiến Video Của Bạn Không Có Chuyển Đổi",
+    subheadline: "Hầu hết mọi người bỏ cuộc không phải vì thiếu chuyên môn, mà vì mắc kẹt ở 4 cạm bẫy kỹ thuật và tư duy làm video sai cách.",
+    tabs: [
+      {
+        id: "tab-1",
+        title: "Bí Ý Khi Lên Hình",
+        subtitle: "Đứng trước camera bị gượng gạo, mặt đơ, quên sạch lời thoại",
+        points: [
+          "Càng cố học thuộc lòng kịch bản thì mặt càng đơ, mắt đảo lia lịa đọc chữ.",
+          "Nói vấp liên tục, quay đi quay lại cả chục lần vẫn không ưng ý.",
+          "Mất hàng giờ đồng hồ chỉ để hoàn thành 1 đoạn video ngắn ngủi 30 giây."
+        ],
+        outcome: "Giải pháp: Phương pháp kịch bản One-line 3 cột + Kỹ thuật B-roll Bank (chèn cảnh trám 2-3s đè timeline) giúp bạn nói tự nhiên, che 100% lỗi nói vấp và mắt đơ.",
+        media: "/assets/formats/voiceover_poster.jpg",
+        cards: [
+          { title: "Kịch bản One-line", desc: "Chỉ nhìn 1 từ khóa cốt lõi cho mỗi ý, nói chuyện như đang tâm sự với 1 người bạn thân." },
+          { title: "Kho B-Roll Bank Xử Lý", desc: "Băm nhỏ 10-15 cảnh thao tác tay ngắn 2-3s chèn đè lên nhịp nói, che sạch lỗi vấp và mắt đơ khi lên hình." }
+        ]
+      },
+      {
+        id: "tab-2",
+        title: "Lan Man Khi Viết Kịch Bản",
+        subtitle: "Viết kịch bản kín chữ, thu voice đều đều như trả bài khiến khán giả lướt qua sau 3s",
+        points: [
+          "Viết kịch bản kín đặc trang giấy: Cố nhồi nhét quá nhiều từ ngữ chuyên môn, đọc lên bị sượng miệng và mất trọn nhịp thở tự nhiên.",
+          "Hình ảnh bị ép khung theo lời đọc: Cố kéo dãn hoặc cắt vụn clip cho vừa khớp từng chữ, khiến video bị giật cục và thiếu cảm xúc.",
+          "Khán giả nhận ra mùi 'đọc bài': Nghe 2 giây đầu là nhận ra giọng đọc sáo rỗng, thiếu tính đời thường và lập tức lướt qua."
+        ],
+        outcome: "Giải pháp: Quy trình Kịch bản One-line 3 cột & Dựng phim câm: Bẻ nhỏ kịch bản thành từng câu 5s tương ứng cảnh B-roll → Dựng phim câm khóa nhịp 0.8s-2.5s trước → Nhìn timeline thu voice trực tiếp để giữ trọn cảm xúc thật.",
+        media: "/assets/showcase/vananh.jpg",
+        cards: [
+          { title: "Kịch bản One-line 3 cột", desc: "1 câu thoại ngắn đi kèm 1 hành động B-roll cụ thể, nhìn từ khóa là nói được ngay không lo lan man." },
+          { title: "Dựng phim câm trước khi thu voice", desc: "Cắt gọt hình ảnh B-roll đạt độ cuốn hút trước, sau đó nhìn chuyển động nói trực tiếp vào CapCut." }
+        ]
+      },
+      {
+        id: "tab-3",
+        title: "Quay Rồi Nhưng Chưa Chuyên Nghiệp",
+        subtitle: "Hình ảnh tối tăm, âm thanh rè, góc quay đơn điệu như camera an ninh",
+        points: [
+          "Góc máy chính diện đơn điệu như camera an ninh, người xem nhìn 3 giây là chán.",
+          "Mặt bị bóng dầu hoặc tối sầm vì không biết cách mượn ánh sáng tự nhiên và đèn cơ bản.",
+          "Âm thanh lẫn tạp âm, tiếng vọng phòng làm giảm 80% độ uy tín của chuyên gia."
+        ],
+        outcome: "Giải pháp: Kỹ thuật setup 2 góc quay điện thoại (Góc chính diện + Góc cận 45 độ) tạo chiều sâu điện ảnh kết hợp lọc âm trong vắt.",
+        media: "/assets/lighting/light_talkinghead.jpg",
+        cards: [
+          { title: "Setup 2 Cam Điện Thoại", desc: "Tận dụng ngay 2 chiếc smartphone có sẵn để tạo hiệu ứng chuyển góc như talkshow truyền hình." },
+          { title: "Ánh sáng & Lọc tạp âm", desc: "Kỹ thuật đánh sáng 3 điểm tối giản và lọc âm AI khử 100% tiếng ồn phòng." }
+        ]
+      },
+      {
+        id: "tab-4",
+        title: "Muốn Làm Đều Nhưng Không Biết Bắt Đầu",
+        subtitle: "Không có quy trình sản xuất bền bỉ, mất cả ngày làm 1 clip rồi bỏ bẵng cả tháng",
+        points: [
+          "Mỗi lần quay là một cực hình: Từ nghĩ ý tưởng, dựng bối cảnh đến cắt ghép mất nguyên cả ngày cuối tuần.",
+          "Không có kho tư liệu dự trữ: Cứ có việc bận kinh doanh là kênh bị bỏ hoang hàng tuần, mất sạch tương tác và đề xuất.",
+          "Không đo lường chuyển đổi: Làm video theo cảm tính, không biết clip nào kéo khách để nhân bản mô hình."
+        ],
+        outcome: "Giải pháp: Đóng gói quy trình sản xuất video 1 buổi/tuần: Quay 1 buổi tích lũy kho 50+ tư liệu B-roll dùng cho cả tháng, kết hợp phễu thu thập số điện thoại và data khách tự động.",
+        media: "/assets/showcase/multicam.jpg",
+        cards: [
+          { title: "Kho B-Roll Bank 50+ clip", desc: "Quay sẵn kho cảnh làm việc, tư vấn, đóng gói để ghép video quanh năm không bao giờ cạn ý tưởng." },
+          { title: "Tự động hóa phễu ra đơn", desc: "Gắn liên kết phễu tự động thu thập data khách hàng về Google Sheet & Telegram ngay sau khi xem video." }
+        ]
+      }
+    ],
+    brollVideos: [
+      {
+        id: "broll-1",
+        title: "Voice Over & B-Roll Đè Hình",
+        subtitle: "Không cần lộ mặt, thu voice đè lên cảnh quay đời thực",
+        youtubeUrl: "https://youtu.be/ZQ1Qfpln29o",
+        videoId: "ZQ1Qfpln29o",
+        poster: "/assets/formats/voiceover_poster.jpg",
+        desc: "Quay sẵn 10-15 cảnh thao tác tay ngắn 2-3s, dựng clip trước rồi thu âm đè lên như đang tâm sự."
+      },
+      {
+        id: "broll-2",
+        title: "B-Roll Cận Cảnh Thao Tác Tay",
+        subtitle: "Góc quay cận cảnh sản phẩm & thao tác làm việc",
+        youtubeUrl: "https://youtu.be/IEeClHjueyk",
+        videoId: "IEeClHjueyk",
+        poster: "/assets/showcase/nguyet.jpg",
+        desc: "Kỹ thuật quay Cutaway và Insert shot chi tiết, che sạch lỗi mắt đơ và tăng độ uy tín."
+      },
+      {
+        id: "broll-3",
+        title: "B-Roll Lifestyle Điện Ảnh",
+        subtitle: "Quay dôi dư 3s, dựng phim câm trước khi thu tiếng",
+        youtubeUrl: "https://youtu.be/alNkUUuE7fE",
+        videoId: "alNkUUuE7fE",
+        poster: "/assets/showcase/vananh.jpg",
+        desc: "Tận dụng ánh sáng tự nhiên và bối cảnh đời thường tạo cảm xúc chân thật chạm người xem."
+      }
+    ],
+    scriptVideos: [
+      {
+        id: "script-1",
+        title: "Kịch Bản One-Line & Dựng Phim Câm",
+        subtitle: "Bẻ nhỏ kịch bản 5s, dựng B-roll trước rồi thu voice",
+        youtubeUrl: "https://youtu.be/alNkUUuE7fE",
+        videoId: "alNkUUuE7fE",
+        poster: "/assets/showcase/vananh.jpg",
+        desc: "Kỹ thuật khóa nhịp cắt 0.8s-2.5s trước trên CapCut, thu âm trực tiếp để giữ nhịp thở tự nhiên."
+      },
+      {
+        id: "script-2",
+        title: "Ngắt Nhịp 5s Không Sợ Nói Vấp",
+        subtitle: "Nói từng câu ngắn độc lập, không cần học thuộc lòng",
+        youtubeUrl: "https://youtu.be/zcaVzUlj37s",
+        videoId: "zcaVzUlj37s",
+        poster: "/assets/showcase/phuong.jpg",
+        desc: "Chỉ nhìn 1 từ khóa cốt lõi cho mỗi câu, nói tự nhiên như đang tâm sự với bạn thân."
+      },
+      {
+        id: "script-3",
+        title: "Dựng Ghép B-Roll Hoàn Chỉnh Tại Lớp",
+        subtitle: "Kỹ thuật chèn cảnh trám và âm thanh SFX",
+        youtubeUrl: "https://youtu.be/fzKa6bZPw40",
+        videoId: "fzKa6bZPw40",
+        poster: "/assets/showcase/thuy.jpg",
+        desc: "Đồng bộ hình ảnh và câu nói, tự tay dựng xong video hoàn chỉnh ngay trong buổi học."
+      }
+    ],
+    lightingVideos: [
+      {
+        id: "light-1",
+        title: "Setup Ánh Sáng Talking Head",
+        subtitle: "Đèn thanh Keylight 45° + Đèn ven tóc + Máy ảnh",
+        youtubeUrl: "https://youtu.be/Pem27DMrkVE",
+        videoId: "Pem27DMrkVE",
+        poster: "/assets/lighting/light_talkinghead.jpg",
+        desc: "Kỹ thuật đánh sáng 3 điểm tối giản, mặt sáng đều, da nét mịn màng không bóng dầu."
+      },
+      {
+        id: "light-2",
+        title: "Setup Ánh Sáng 2 Đèn Spotlight",
+        subtitle: "1 đèn thanh + 1 đèn pin rọi phông màu tạo chiều sâu",
+        youtubeUrl: "https://youtu.be/vZUmtQA2Ryc",
+        videoId: "vZUmtQA2Ryc",
+        poster: "/assets/lighting/light_2den_spotlight.jpg",
+        desc: "Cách dùng đèn pin spotlight chiếu điểm tạo mảng màu nghệ thuật tách chủ thể khỏi nền."
+      },
+      {
+        id: "light-3",
+        title: "Setup Ánh Sáng Phỏng Vấn Podcast",
+        subtitle: "Lấy sáng chuẩn phỏng vấn talkshow truyền hình",
+        youtubeUrl: "https://youtu.be/Zw4Lav1FO1g",
+        videoId: "Zw4Lav1FO1g",
+        poster: "/assets/lighting/light_podcast_dt.jpg",
+        desc: "Cân bằng ánh sáng môi trường và đèn phụ trợ để khung hình có chiều sâu điện ảnh."
+      },
+      {
+        id: "light-4",
+        title: "Setup Đèn Mini Ulanzi & Smartphone",
+        subtitle: "Tối ưu cho quay di động, vlog thực chiến",
+        youtubeUrl: "https://youtu.be/jO0v5kDLnk4",
+        videoId: "jO0v5kDLnk4",
+        poster: "/assets/lighting/light_ulanzi_aida.jpg",
+        desc: "Dùng đèn LED bỏ túi kẹp trực tiếp vào smartphone để quay video sắc nét mọi lúc mọi nơi."
+      }
+    ],
+    processVideos: [
+      {
+        id: "proc-1",
+        title: "Quy Trình 5 Bước Sản Xuất 1 Buổi/Tuần",
+        subtitle: "Ý tưởng → Kịch bản → Bấm máy → Edit CapCut → Xuất bản đều đặn",
+        youtubeUrl: "https://youtu.be/-1ddyry_Qs0",
+        videoId: "-1ddyry_Qs0",
+        poster: "/assets/showcase/multicam.jpg",
+        desc: "Quy trình tinh gọn giúp bạn sản xuất 1 buổi có sẵn 15-20 video cho cả tháng mà không bị quá tải."
+      },
+      {
+        id: "proc-2",
+        title: "Edit Timeline CapCut Siêu Tốc",
+        subtitle: "Khóa nhịp cắt 0.8s-2.5s, chèn text động và âm thanh SFX",
+        youtubeUrl: "https://youtu.be/AqeJxr6W6Ws",
+        videoId: "AqeJxr6W6Ws",
+        poster: "/assets/lighting/light_talkinghead.jpg",
+        desc: "Thao tác cắt ghép trực tiếp trên màn hình, tối ưu thời gian dựng dưới 15 phút mỗi clip."
+      },
+      {
+        id: "proc-3",
+        title: "Thực Hành 1-1 Đóng Gói Tại Lớp K2",
+        subtitle: "Thầy Việt trực tiếp hướng dẫn bấm máy và hoàn thiện video",
+        youtubeUrl: "https://youtu.be/WV8rggcgmGA",
+        videoId: "WV8rggcgmGA",
+        poster: "/assets/showcase/lop_k2.jpg",
+        desc: "Học viên tự tay bấm máy, dựng và xuất bản video hoàn chỉnh ngay trong 2 ngày học."
+      }
+    ]
+  },
+  metaphors: {
+    badge: "4 ĐỊNH DẠNG VIDEO MARKETING THỰC CHIẾN",
+    headline: "Làm Chủ 4 Định Dạng Video Giúp Ra Đơn Bền Vững",
+    subheadline: "Không cần kỹ xảo phức tạp hay studio đắt tiền. Bạn chỉ cần chọn đúng 1 trong 4 định dạng phù hợp với tính cách và lĩnh vực của mình để bắt đầu quay ngay.",
+    items: [
+      {
+        id: "format-1",
+        icon: "🎙️",
+        title: "Voice Over",
+        subtitle: "Lồng tiếng đè hình (B-Roll)",
+        videoUrl: "/assets/formats/voiceover.mp4",
+        poster: "/assets/formats/voiceover_poster.jpg",
+        youtubeId: "ZQ1Qfpln29o",
+        youtubeUrl: "https://www.youtube.com/watch?v=ZQ1Qfpln29o",
+        output: "100% hoàn thành video đầu tay trong 30 phút. Giữ chân người xem >65% nhờ nhịp cắt 1.5s, tỷ lệ inbox hỏi mua hàng đạt 8% - 12%.",
+        relief: "Không cần lộ mặt, không cần trang điểm hay set đèn. Cứ quay cảnh thao tác tay rồi thu voice tâm sự đè lên timeline CapCut.",
+        application: "Quy trình đóng gói, unbox sản phẩm, chia sẻ bài học nghề, review hậu trường."
+      },
+      {
+        id: "format-2",
+        icon: "🚶‍♂️",
+        title: "Walk and Talk",
+        subtitle: "Vừa đi vừa nói tự nhiên",
+        videoUrl: "/assets/formats/walktalk.mp4",
+        poster: "/assets/formats/walktalk_poster.jpg",
+        youtubeId: "pc-GH18dggg",
+        youtubeUrl: "https://www.youtube.com/watch?v=pc-GH18dggg",
+        output: "45 giây đi dạo là xong 1 clip. Khung cảnh chuyển động kéo thời lượng xem tăng 240%, tăng 300% lượt comment tranh luận.",
+        relief: "Không cần studio hay kịch bản chi tiết. Cầm điện thoại đi dạo nói 1 góc nhìn ngắn như đang nói chuyện với bạn thân.",
+        application: "Bàn luận chủ đề nóng, góc nhìn kinh doanh, chia sẻ trải nghiệm, gỡ rối cho khách."
+      },
+      {
+        id: "format-3",
+        icon: "🎯",
+        title: "Talking Head",
+        subtitle: "Chia sẻ chuyên môn (2 góc máy)",
+        videoUrl: "/assets/formats/talkinghead.mp4",
+        poster: "/assets/formats/talkinghead_poster.jpg",
+        youtubeId: "bHzSw0csp3g",
+        youtubeUrl: "https://www.youtube.com/watch?v=bHzSw0csp3g",
+        output: "Tăng 400% uy tín chuyên gia từ 3s đầu. Khách hàng tin tưởng chủ động chốt các gói dịch vụ giá trị cao từ 10tr – 50tr+.",
+        relief: "Không cần học thuộc lòng, nói từng câu 5s theo kịch bản One-line. Nói vấp chỉ cần đổi góc máy là che 100% lỗi.",
+        application: "Bác sĩ, chủ doanh nghiệp, tư vấn tài chính, BĐS, khóa học & dịch vụ chuyên gia."
+      },
+      {
+        id: "format-4",
+        icon: "📖",
+        title: "Storytelling",
+        subtitle: "Kể chuyện chuyển đổi cảm xúc",
+        videoUrl: "/assets/formats/storytelling.mp4",
+        poster: "/assets/formats/storytelling_poster.jpg",
+        youtubeId: "hkumWP1gLmo",
+        youtubeUrl: "https://www.youtube.com/watch?v=hkumWP1gLmo",
+        output: "Dễ dàng cán mốc 100K – 500K views hữu cơ. Tỷ lệ chuyển đổi người xem thành khách hàng thực tế đạt 15% – 20%.",
+        relief: "Khách hàng tự nhìn thấy nỗi đau của chính mình trong câu chuyện và tự tìm đến mua, bạn không phải nài ép hay chào mời.",
+        application: "Tâm sự khởi nghiệp, case study khách hàng trước & sau, bán sản phẩm giá trị cao."
+      }
+    ]
+  },
+  curriculum: {
+    badge: "LỘ TRÌNH LỚP HỌC 2 NGÀY",
+    headline: "Nội Dung Chi Tiết Theo Từng Ngày",
+    subheadline: "Đi trọn quy trình sản xuất video marketing chuyển đổi cao: Từ viết kịch bản, quay 2 góc máy, làm chủ CapCut đến ứng dụng AI xây kênh tự động.",
+    days: [
+      {
+        dayNumber: "01",
+        timeRange: "09:00 – 17:00",
+        title: "Viết Kịch Bản Quảng Cáo · Setup Quay 2 Cam · Edit Video Thành Phẩm",
+        badgeCount: "14 nội dung chính",
+        goal: "Mục tiêu ngày 1 là giúp học viên đi trọn quy trình sản xuất một video quảng cáo: từ viết kịch bản one-line, phát triển nội dung, setup ánh sáng – máy quay, quay 2 cam và edit thành video hoàn chỉnh.",
+        morning: {
+          sessionName: "Ca sáng",
+          time: "09:00 – 12:00",
+          title: "Viết kịch bản video quảng cáo chuyển đổi cao",
+          items: [
+            "Phân tích video quảng cáo giáo dục vs. video giải trí",
+            "Các ví dụ video quảng cáo hiệu quả và lý do giữ chân",
+            "Công thức viết kịch bản one-line: vấn đề, đối tượng, kết quả",
+            "Cách phát triển kịch bản từ one-line thành video hoàn chỉnh",
+            "Cấu trúc video: Hook → Vấn đề → Insight → Giải pháp → CTA",
+            "Cách viết hook để người xem dừng lại trong 3 giây đầu",
+            "Cách viết CTA dẫn người xem comment, inbox hoặc đăng ký"
+          ]
+        },
+        afternoon: {
+          sessionName: "Ca chiều",
+          time: "12:00 – 17:00",
+          title: "Setup ánh sáng, quay 2 cam và edit video thành phẩm",
+          items: [
+            "Setup bối cảnh quay đơn giản nhưng chuyên nghiệp",
+            "Cách đặt ánh sáng để mặt sáng rõ, hình ảnh sạch và có chiều sâu",
+            "Cách set máy quay: khung hình, tiêu cự, góc máy, chiều cao camera",
+            "Quay 2 cam: góc chính và góc phụ để video sinh động hơn",
+            "Cách diễn trước camera: nói rõ ý, ngắt nhịp, giữ năng lượng",
+            "Import footage vừa quay và dựng bản edit đầu tiên",
+            "Cắt nhịp, thêm chữ, B-roll, âm thanh, CTA và xuất video"
+          ]
+        }
+      },
+      {
+        dayNumber: "02",
+        timeRange: "09:00 – 17:00",
+        title: "Làm Chủ Công Cụ Edit & Tư Duy Làm Video Đẹp",
+        badgeCount: "14 nội dung chính",
+        goal: "Mục tiêu ngày 2 là giúp học viên nắm được phần mềm edit cơ bản (CapCut), biết cách xử lý một video từ source có sẵn, đồng thời hiểu vì sao có những video nhìn 'cuốn', 'sạch', 'chuyên nghiệp' hơn dù cùng một nội dung.",
+        morning: {
+          sessionName: "Ca sáng",
+          time: "09:00 – 12:00",
+          title: "Thực hành edit với source có sẵn",
+          items: [
+            "Làm quen giao diện phần mềm edit CapCut",
+            "Import video, âm thanh, hình ảnh vào project",
+            "Cắt bỏ đoạn thừa, lỗi nói, khoảng lặng",
+            "Sắp xếp timeline để video có nhịp xem mượt hơn",
+            "Thêm chữ, phụ đề, tiêu đề và điểm nhấn",
+            "Thêm nhạc nền, hiệu ứng và điều chỉnh âm lượng",
+            "Xuất video đúng định dạng cho TikTok, Reels, Shorts"
+          ]
+        },
+        afternoon: {
+          sessionName: "Ca chiều",
+          time: "13:00 – 17:00",
+          title: "Biết edit rồi thì làm thế nào để video đẹp hơn?",
+          items: [
+            "Vì sao video edit xong vẫn nhìn 'thô' hoặc thiếu chuyên nghiệp?",
+            "Cách chọn bố cục khung hình để video dễ xem hơn",
+            "Cách dùng chữ trên video: font, size, màu, vị trí",
+            "Cách xử lý nhịp cắt để video không bị lê thê",
+            "Cách thêm B-roll, zoom, chuyển cảnh vừa đủ",
+            "Cách phối nhạc, tiếng nói, sound effect có cảm xúc",
+            "Checklist video đủ đẹp, đủ rõ và đủ chuyên nghiệp"
+          ]
+        }
+      }
+    ],
+    bonus: {
+      tag: "BONUS ĐẶC QUYỀN",
+      title: "Ứng dụng AI để edit video xây kênh chỉ 5 phút mỗi ngày",
+      desc: "Tự động hóa bóc tách ý tưởng, tạo hook viral, phụ đề tự động và nhân bản video đa kênh bằng công cụ AI thế hệ mới."
+    }
+  },
+  showcase: {
+    badge: "THÀNH PHẨM THỰC TẾ HỌC VIÊN",
+    headline: "Xem Video Do Chính Học Viên Sản Xuất Sau Khóa Học",
+    subheadline: "Từ những người chưa từng biết cầm máy hay edit, đây là những video thành phẩm được quay và dựng hoàn chỉnh 100%.",
+    videos: [
+      {
+        id: "zcaVzUlj37s",
+        title: "Tự Tin Nói Trước Camera 1 Chạm · Không Sợ Nói Vấp",
+        author: "Bạn Phương",
+        role: "Học Viên K2 · Bán Hàng & Đào Tạo",
+        desc: "Ứng dụng kịch bản One-line và kỹ thuật ngắt nhịp 5 giây. Từ một người ngại lên hình, chỉ sau 2 ngày Phương đã tự tin quay video Talking Head chia sẻ chuyên môn cực kỳ tự nhiên, giữ chân người xem từ đầu đến cuối.",
+        poster: "/assets/showcase/phuong.jpg",
+        youtubeUrl: "https://youtu.be/zcaVzUlj37s"
+      },
+      {
+        id: "alNkUUuE7fE",
+        title: "Thước Phim Voice-Over Giàu Cảm Xúc & B-Roll Điện Ảnh",
+        author: "Bạn Vân Anh",
+        role: "Học Viên K2 · Sáng Tạo Nội Dung",
+        desc: "Tận dụng không gian ánh sáng tự nhiên và kỹ thuật quay B-roll dôi dư 3 giây. Dựng phim câm trước rồi thu voice trực tiếp trên timeline CapCut, tạo nên video tâm sự chân thật, chạm sâu vào cảm xúc người xem.",
+        poster: "/assets/showcase/vananh.jpg",
+        youtubeUrl: "https://youtu.be/alNkUUuE7fE"
+      },
+      {
+        id: "fzKa6bZPw40",
+        title: "Từ Con Số 0 Đến Tự Tay Sản Xuất Video Hoàn Chỉnh Tại Lớp",
+        author: "Bạn Thúy",
+        role: "Học Viên K2 · Chủ Doanh Nghiệp",
+        desc: "Chưa từng biết cầm máy hay sử dụng phần mềm edit. Sau khi được thầy cầm tay chỉ việc setup ánh sáng và cắt gọt CapCut, Thúy đã tự dựng xong video hoàn chỉnh ngay trong buổi chiều ngày thứ 2.",
+        poster: "/assets/showcase/thuy.jpg",
+        youtubeUrl: "https://youtu.be/fzKa6bZPw40"
+      },
+      {
+        id: "Oa_U20Cih90",
+        title: "Làm Chủ Quy Trình Video Marketing Không Phụ Thuộc Agency",
+        author: "Chị Halona",
+        role: "Học Viên K2 · Sáng Lập Halona",
+        desc: "Trước đây tốn hàng chục triệu thuê đội ngũ quay dựng nhưng không ra đơn vì thiếu chất thật. Khóa học giúp chị tự lên kịch bản, tự quay bằng 2 chiếc điện thoại và chủ động xuất bản video hàng tuần.",
+        poster: "/assets/showcase/halona.jpg",
+        youtubeUrl: "https://youtu.be/Oa_U20Cih90"
+      },
+      {
+        id: "IEeClHjueyk",
+        title: "Kỹ Thuật Quay B-Roll Thao Tác Tay Đặc Tả Chi Tiết Sản Phẩm",
+        author: "Chị Nguyệt",
+        role: "Học Viên K2 · Bán Lẻ & Dịch Vụ",
+        desc: "Áp dụng trọn vẹn kỹ thuật quay Cutaway và Insert Shot trong studio. Hình ảnh cận cảnh sắc nét, da sáng mịn, xóa sạch cảm giác nghiệp dư dù chỉ quay bằng smartphone.",
+        poster: "/assets/showcase/nguyet.jpg",
+        youtubeUrl: "https://youtu.be/IEeClHjueyk"
+      },
+      {
+        id: "WV8rggcgmGA",
+        title: "Cầm Tay Chỉ Việc 1-1 · Bấm Máy & Chỉnh Sửa Từng Cử Chỉ",
+        author: "Lớp Offline K2",
+        role: "Thực Hành Trực Tiếp Tại Studio",
+        desc: "Không khí thực hành sôi nổi tại studio tiêu chuẩn. Giảng viên trực tiếp chỉnh góc máy, đo sáng, hướng dẫn khẩu hình và sửa lỗi trực tiếp trên máy tính từng học viên.",
+        poster: "/assets/showcase/lop_k2.jpg",
+        youtubeUrl: "https://youtu.be/WV8rggcgmGA"
+      },
+      {
+        id: "ktBAEQCC9ik",
+        title: "Ghép Nối 2 Góc Máy Mượt Mà Chuẩn Talkshow Truyền Hình",
+        author: "Thực Hành Multicam",
+        role: "Kỹ Thuật Dựng 2 Cam Tại Lớp",
+        desc: "Học viên trực tiếp thực hành đồng bộ âm thanh đa máy quay, cắt chuyển góc đúng nhịp cảm xúc trên CapCut, che 100% lỗi nói vấp mà không cần quay lại.",
+        poster: "/assets/showcase/multicam.jpg",
+        youtubeUrl: "https://youtu.be/ktBAEQCC9ik"
+      }
+    ]
+  },
+  caseStudies: {
+    badge: "KẾT QUẢ THỰC TẾ HỌC VIÊN",
+    headline: "Học Xong Là Tự Sản Xuất Video Quảng Cáo Tuyển Sinh",
+    subheadline: "Từ một giáo viên dạy tiếng Anh ngại quay mặt, bạn Nương đã tự viết kịch bản, quay bối cảnh đời thực và dựng hoàn thiện video quảng cáo thu hút hàng trăm học viên.",
+    items: [
+      {
+        name: "Bạn Nương",
+        role: "Giáo Viên & Sáng Lập Lớp Tiếng Anh Giao Tiếp",
+        niche: "Đào Tạo Ngoại Ngữ & Tiếng Anh",
+        stats: "Tuyển sinh >150 học viên/tháng nhờ video ngắn",
+        videoId: "GqLHBWSiWDI",
+        youtubeUrl: "https://youtu.be/GqLHBWSiWDI",
+        poster: "/assets/showcase/nuong.jpg",
+        story: "Trước đây chạy quảng cáo bài viết hình ảnh rất tốn kém mà ít người nhắn tin. Sau khóa học video thực chiến của thầy Việt, Nương tự tin cầm mic ra hiệu sách và không gian ngoài trời quay video giải quyết nỗi sợ bận rộn không có thời gian học tiếng Anh. Video tự nhiên, không diễn gượng, giữ chân người xem và mang về danh sách học viên đăng ký đều đặn mỗi ngày.",
+        highlights: [
+          "Áp dụng cấu trúc kịch bản Hook 3s bóc đúng tâm lý 'bận rộn'",
+          "Tự tin cầm mic DJI quay ngoại cảnh không gian mở tự nhiên",
+          "Dựng CapCut chèn sticker, text động và nhạc nền vui tươi",
+          "Chi phí sản xuất 0đ — Chuyển đổi tuyển sinh gấp 3 lần"
+        ]
+      }
+    ]
+  },
+  targetAudience: {
+    badge: "BỘ LỌC ĐỐI TƯỢNG HỌC VIÊN",
+    headline: "Khóa Học Này Dành Cho Ai?",
+    fit: [
+      {
+        title: "Chủ Doanh Nghiệp, Chủ Cơ Sở Dịch Vụ, Spa, Thẩm Mỹ, Bán Lẻ",
+        desc: "Muốn tự xây dựng kênh video marketing mang lại khách hàng bền vững mà không phụ thuộc hoàn toàn vào chạy quảng cáo đắt đỏ."
+      },
+      {
+        title: "Chuyên Gia, Bác Sĩ, Coach, Giảng Viên, Người Làm Giáo Dục",
+        desc: "Đã có sẵn kiến thức và chuyên môn sâu, muốn đóng gói thành các video giá trị cao để xây dựng nhân hiệu và bán khóa học/dịch vụ tư vấn."
+      },
+      {
+        title: "Người Đang Kinh Doanh Tự Do Muốn Đột Phá Doanh Thu",
+        desc: "Đã thử tự quay video nhưng lúng túng, hình ảnh xấu, nói vấp và video không có người xem hay tương tác mua hàng."
+      },
+      {
+        title: "Người Muốn Làm Chủ Kỹ Năng Video Chuyên Nghiệp Trong 2 Ngày",
+        desc: "Cần lộ trình thực chiến cầm tay chỉ việc, được thực hành bấm máy và sửa bài 1-1 tại phòng studio thay vì tự mò mẫm hàng tháng trời."
+      }
+    ],
+    notFit: [
+      {
+        title: "Người Tìm Kiếm Chiêu Trò Câu View Rác",
+        desc: "Khóa học tập trung vào video marketing có cấu trúc tạo ra chuyển đổi và thương hiệu bền vững, không dạy chiêu trò giật gân rẻ tiền."
+      },
+      {
+        title: "Người Không Muốn Trực Tiếp Bấm Máy Thực Hành",
+        desc: "100% thời lượng khóa học là bài tập thực hành. Nếu bạn chỉ muốn nghe lý thuyết suông mà không chịu làm bài tập, khóa học này không phù hợp."
+      },
+      {
+        title: "Người Kỳ Vọng 'Làm Giàu Sau 1 Đêm'",
+        desc: "Video marketing là tài sản tích lũy dài hạn. Nó đòi hỏi bạn áp dụng đúng quy trình và sự kiên trì trong ít nhất 30 - 60 ngày."
+      }
+    ]
+  },
+  instructor: {
+    badge: "NGƯỜI TRỰC TIẾP HƯỚNG DẪN BẠN",
+    name: "Thầy Nguyễn Đức Việt",
+    role: "Giảng viên Multimedia & Chuyên gia Đào tạo Video Marketing (15+ năm kinh nghiệm)",
+    avatar: "/assets/image_1781192246239-Dsb4zlhm.png",
+    bio: [
+      "15+ năm trực tiếp giảng dạy và đào tạo thiết kế, mỹ thuật đa phương tiện, lập trình và video marketing tại FPT Arena Multimedia và các hệ thống giáo dục hàng đầu.",
+      "Tác giả & Mentor trang '30 Ngày Học Làm Nội Dung Viral' (23.000+ thành viên), sở hữu các kênh video chuyên môn thu hút hàng chục nghìn lượt theo dõi thực chất.",
+      "Đã trực tiếp đào tạo và đồng hành cùng hơn 50.000+ học viên từ người mới bắt đầu đến khi làm chủ kỹ năng quay dựng và xây dựng kênh kinh doanh tự động hóa."
+    ],
+    stats: [
+      { number: "15+", label: "Năm Giảng Dạy" },
+      { number: "50.000+", label: "Học Viên Đã Đào Tạo" },
+      { number: "23.000+", label: "Cộng Đồng Viral Content" },
+      { number: "100%", label: "Cầm Tay Chỉ Việc 1-1" }
+    ],
+    quote: "Làm video marketing không phải là phô diễn kỹ xảo đắt tiền, mà là dùng hình ảnh và âm thanh chân thật để bóc đúng nỗi đau khách hàng và trao giải pháp tốt nhất."
+  },
+  faqs: [
+    {
+      q: "Tôi chưa từng biết quay dựng video hay dùng CapCut bao giờ, có học được không?",
+      a: "Hoàn toàn học được. Khóa học được thiết kế từ con số 0 dành riêng cho người không chuyên. Thầy và đội ngũ trợ giảng sẽ kèm cặp 1-1 từng thao tác bấm máy, cắt ghép ngay trên chính chiếc điện thoại của bạn."
+    },
+    {
+      q: "Tôi có cần phải mua máy ảnh xịn hay máy tính cấu hình khủng không?",
+      a: "Không cần. Bạn chỉ cần mang theo 1-2 chiếc điện thoại thông minh (iPhone hoặc Android) và laptop cá nhân. Khóa học hướng dẫn bạn tận dụng tối đa thiết bị sẵn có để tạo ra chất lượng hình ảnh tốt nhất."
+    },
+    {
+      q: "Lớp học tổ chức ở đâu và vào thời gian nào?",
+      a: "Lớp học diễn ra trong 2 ngày Thứ 7 & Chủ Nhật (08:30 - 17:30) tại phòng Studio tiêu chuẩn chuyên nghiệp tại Hà Nội. Địa chỉ chi tiết sẽ được gửi qua Zalo/Email ngay sau khi bạn hoàn tất đăng ký giữ chỗ."
+    },
+    {
+      q: "Sau 2 ngày học offline, tôi có được hỗ trợ tiếp không?",
+      a: "Có. Bạn sẽ được tham gia nhóm Zalo kèm cặp riêng của lớp, được thầy sửa bài tập thực tế trong 30 ngày tiếp theo và nhận trọn bộ tài liệu, slide bài giảng, preset màu và kho âm thanh bản quyền."
+    },
+    {
+      q: "Tôi rất ngại nói trước ống kính, khóa học có giúp tôi tự tin hơn không?",
+      a: "Đây chính là vấn đề 90% học viên gặp phải. Với phương pháp kịch bản One-line 3 cột và kỹ thuật quay ngắt câu 5 giây, bạn sẽ thấy việc đứng trước ống kính nhẹ nhàng như đang nói chuyện với một người bạn."
+    },
+    {
+      q: "Học phí và chính sách hoàn tiền như thế nào?",
+      a: "Khóa học cam kết: Nếu sau ngày học đầu tiên bạn cảm thấy nội dung không thực tế hoặc không thể áp dụng được, ban tổ chức sẽ hoàn lại 100% học phí mà không hỏi thêm bất kỳ câu hỏi nào."
+    },
+    {
+      q: "Sĩ số lớp là bao nhiêu học viên?",
+      a: "Để đảm bảo chất lượng cầm tay chỉ việc và mọi học viên đều có sản phẩm video mang về, mỗi lớp được giới hạn nghiêm ngặt tối đa không quá 40 học viên."
+    }
+  ]
 };
-
-export const ContentCtx = createContext<PageContent>(DEFAULT_CONTENT);
-
-export function useContent(): PageContent {
-  return useContext(ContentCtx);
-}
-
-export function ContentProvider({ children }: { children: ReactNode }) {
-  return createElement(ContentCtx.Provider, { value: DEFAULT_CONTENT }, children);
-}

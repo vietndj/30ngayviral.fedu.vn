@@ -1,119 +1,71 @@
-import React from "react";
-import { useContent } from "../content";
-import { useTheme } from "../theme";
-import { FadeIn, Label, SH, Sec } from "../components/ui";
+import React from 'react';
+import { content } from '../content';
+import { Sparkles, Quote } from 'lucide-react';
 
-export function InstructorSection() {
-  const c = useContent();
-  const t = useTheme();
-
-  const stats = [
-    { num: "1.000+", label: "Học viên & Creator ứng dụng" },
-    { num: "15 năm", label: "Giảng viên FPT Arena Multimedia" },
-    { num: "10.000+", label: "Video triệu view được phân giải" },
-  ];
+export const InstructorSection: React.FC = () => {
+  const { instructor } = content;
 
   return (
-    <Sec maxWidth={900}>
-      <FadeIn>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <Label>{c.instructorLabel}</Label>
-          <SH typed>{c.instructorHeading}</SH>
-        </div>
-      </FadeIn>
-
-      <FadeIn delay={100}>
-        <div className="cl-glow-card" style={{
-          padding: "clamp(24px, 6vw, 48px)",
-          display: "flex",
-          gap: "clamp(24px, 5vw, 44px)",
-          alignItems: "center",
-          flexWrap: "wrap",
-        }}>
-          {/* Avatar / Profile Column */}
-          <div style={{ flexShrink: 0, textAlign: "center", width: 220, margin: "0 auto" }}>
-            <div style={{
-              borderRadius: 24,
-              overflow: "hidden",
-              border: `2px solid ${t.accent}66`,
-              boxShadow: `0 0 35px -8px ${t.accent}44`,
-              marginBottom: 16,
-              background: "#14151f"
-            }}>
-              <img
-                src={c.instructorPhoto ?? "/instructor.jpg"}
-                loading="lazy"
-                alt={c.instructorName}
-                style={{ width: "100%", display: "block" }}
-              />
-            </div>
-            <div style={{ fontFamily: t.fontDisplay, fontSize: 22, fontWeight: 700, color: "var(--cl-text-base, #09090b)", marginBottom: 4 }}>
-              {c.instructorName}
-            </div>
-            <div style={{ fontSize: 13, color: t.accent, fontWeight: 600, marginBottom: 12 }}>
-              {c.instructorTitle}
-            </div>
-            <div style={{
-              display: "inline-block", background: "var(--cl-callout-success-bg, #f0fdf4)", border: "1px solid var(--cl-callout-success-border, #dcfce7)",
-              borderRadius: 30, padding: "4px 12px", fontSize: 12, color: "var(--cl-callout-success-accent, #16a34a)", fontWeight: 700,
-            }}>
-              ✨ Trực Tiếp Mentoring 1-1
-            </div>
+    <section id="giang-vien" className="py-24 px-4 bg-[#f8fafc] text-zinc-900 border-y border-zinc-200/80 relative">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-200 bg-amber-50 text-amber-800 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest mb-4 shadow-xs">
+            <Sparkles className="w-4 h-4 text-amber-600" />
+            <span>{instructor.badge}</span>
           </div>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#09090b] mb-2 [text-wrap:balance]">
+            {instructor.name}
+          </h2>
+          <p className="font-mono text-base sm:text-lg text-orange-600 font-bold">
+            {instructor.role}
+          </p>
+        </div>
 
-          {/* Details & Quote Column */}
-          <div style={{ flex: 1, minWidth: 280, display: "flex", flexDirection: "column", gap: 20 }}>
-            {/* Playfair Display Serif Quote */}
-            <div style={{
-              background: "var(--cl-callout-accent-bg, #eff6ff)",
-              borderLeft: `4px solid ${t.accent}`,
-              padding: "16px 20px",
-              borderRadius: "0 16px 16px 0",
-            }}>
-              <p style={{
-                fontFamily: t.fontAccent,
-                fontStyle: "italic",
-                fontSize: "clamp(16px, 2.2vw, 19px)",
-                lineHeight: 1.6,
-                color: "var(--cl-text-base, #09090b)",
-                fontWeight: 400,
-                margin: 0,
-              }}>
-                "Bán hàng giỏi cho bạn doanh thu hôm nay. Thương hiệu cá nhân &amp; Hệ thống Video Viral cho bạn sự lựa chọn cho ngày mai."
-              </p>
+        {/* Instructor Card */}
+        <div className="p-8 sm:p-12 rounded-3xl border border-zinc-200 bg-white shadow-xl">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            {/* Avatar Photo */}
+            <div className="md:col-span-4 flex justify-center">
+              <div className="w-52 sm:w-64 rounded-3xl overflow-hidden border-2 border-orange-500/40 p-2 bg-gradient-to-tr from-amber-500 to-orange-500 shadow-xl">
+                <img
+                  src={instructor.avatar}
+                  alt={instructor.name}
+                  className="w-full h-full object-cover rounded-2xl"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
-            {/* Bio paragraphs */}
-            {c.instructorBio.map((paragraph, i) => (
-              <p key={i} style={{ fontSize: 15.5, lineHeight: 1.75, color: "var(--cl-text-body, #27272a)", margin: 0 }}>
-                {paragraph}
-              </p>
-            ))}
+            {/* Bio Content */}
+            <div className="md:col-span-8 flex flex-col justify-between">
+              <div className="space-y-4 text-base sm:text-lg text-zinc-900 leading-relaxed mb-6 font-sans">
+                {instructor.bio.map((p, idx) => (
+                  <p key={idx}>{p}</p>
+                ))}
+              </div>
 
-            {/* Stats Row */}
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 12,
-              marginTop: 12,
-              paddingTop: 20,
-              borderTop: "1px solid var(--cl-line)",
-              textAlign: "center"
-            }}>
-              {stats.map((st, i) => (
-                <div key={i}>
-                  <div style={{ fontSize: "clamp(18px, 3vw, 24px)", fontWeight: 800, color: t.accent }}>
-                    {st.num}
+              {/* Quote Box */}
+              <div className="p-5 sm:p-6 rounded-2xl border border-amber-200 bg-amber-50 relative mb-6">
+                <Quote className="w-8 h-8 text-amber-400 absolute top-3 right-4 pointer-events-none opacity-50" />
+                <p className="text-lg sm:text-xl text-amber-950 italic font-serif leading-relaxed font-medium">
+                  "{instructor.quote}"
+                </p>
+              </div>
+
+              {/* Stats Numbers */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-zinc-200 text-center">
+                {instructor.stats.map((st, idx) => (
+                  <div key={idx} className="p-4 rounded-2xl bg-[#f8fafc] border border-zinc-200 shadow-xs">
+                    <div className="font-mono text-xl sm:text-2xl font-black text-orange-600">{st.number}</div>
+                    <div className="text-xs sm:text-sm text-zinc-900 font-sans font-bold mt-1">{st.label}</div>
                   </div>
-                  <div style={{ fontSize: 12, color: "var(--cl-text-muted, #64748b)", marginTop: 2, lineHeight: 1.3, fontWeight: 500 }}>
-                    {st.label}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </FadeIn>
-    </Sec>
+      </div>
+    </section>
   );
-}
+};

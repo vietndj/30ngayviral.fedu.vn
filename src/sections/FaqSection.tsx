@@ -1,114 +1,114 @@
-import React, { useState } from "react";
-import { useTheme } from "../theme";
-import { useContent } from "../content";
-import { FadeIn, Label, SH, Sec } from "../components/ui";
+import React, { useState } from 'react';
+import { content } from '../content';
+import { ChevronDown, HelpCircle, MessageCircleQuestion, ArrowRight } from 'lucide-react';
 
-export function FaqSection() {
-  const t = useTheme();
-  const c = useContent();
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+export const FaqSection: React.FC = () => {
+  const { faqs } = content;
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
 
-  const faqs = [
-    {
-      q: "Tôi không rành công nghệ, thao tác chậm thì có theo được không?",
-      a: "Đừng lo. Lộ trình đi từ căn bản. Mọi thao tác được quay màn hình chi tiết từng bước. Hơn nữa, với 50+ template CapCut có sẵn, bạn chỉ việc kéo thả video vào là tự động khớp hiệu ứng."
-    },
-    {
-      q: "Tôi ngại ống kính, nói vấp, diễn đơ thì phải làm sao?",
-      a: "Không cần nhảy múa hay làm trò lố. Chương trình có hướng dẫn làm video dạng không lộ mặt kết hợp giọng đọc AI và cảnh phụ B-roll cực kỳ cuốn hút. Ngoài ra, kỹ thuật góc chéo 3/4 giúp bạn thoải mái như đang trò chuyện."
-    },
-    {
-      q: "Tôi bận đi làm cả ngày, sợ mua về không có thời gian học?",
-      a: "Lộ trình thiết kế dạng bài học ngắn (10-15 phút/bài), đi thẳng vào thực hành. Kết hợp prompt AI và template có sẵn, thời gian làm 1 video giảm từ 3 tiếng xuống còn 30-45 phút."
-    },
-    {
-      q: "Tôi không giỏi văn, sợ bí ý tưởng, không biết viết kịch bản?",
-      a: "Đó là lý do bạn được tặng kèm 20+ prompt AI. Chỉ cần gõ chủ đề của bạn, AI sẽ đóng vai biên kịch, nhả ra cấu trúc kịch bản 2 cột chuẩn xác từng giây."
-    },
-    {
-      q: "Sợ AI phát triển sẽ thay thế người làm video?",
-      a: "AI sinh ra để thay thế thợ bấm nút. Nội dung công nghiệp vô hồn sẽ bị đào thải. Chương trình này dạy bạn đứng trên vai AI — dùng AI làm trợ lý và dùng tư duy kể chuyện của bạn để thâu tóm sự chú ý."
-    }
-  ];
+  const toggle = (idx: number) => {
+    setOpenIdx(openIdx === idx ? null : idx);
+  };
 
   return (
-    <Sec maxWidth={860}>
-      <FadeIn>
-        <div style={{ textAlign: "center", marginBottom: 44 }}>
-          <Label>5 CÂU HỎI THƯỜNG GẶP</Label>
-          <SH typed>"Liệu chương trình này có phù hợp với bạn?"</SH>
-          <p style={{ color: "var(--cl-text-muted, #64748b)", marginTop: -16, fontSize: 17, lineHeight: 1.7 }}>
-            Giải quyết 5 nỗi sợ lớn nhất đang ngăn cản bạn:
-          </p>
-        </div>
-      </FadeIn>
-
-      <FadeIn delay={100}>
-        <div style={{ maxWidth: 800, margin: "0 auto", display: "flex", flexDirection: "column", gap: 12 }}>
-          {faqs.map((faq, idx) => {
-            const isOpen = openIndex === idx;
-            return (
-              <div 
-                key={idx}
-                className="cl-card"
-                style={{
-                  border: `1px solid ${isOpen ? t.accent : "var(--cl-line)"}`,
-                  borderRadius: 14,
-                  overflow: "hidden",
-                  transition: "all 0.25s ease",
-                  boxShadow: isOpen ? "0 4px 16px rgba(225, 29, 72, 0.12)" : "var(--cl-shadow-sm)"
-                }}
-              >
-                <button
-                  onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  style={{
-                    width: "100%",
-                    padding: "20px 24px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    background: "none",
-                    border: "none",
-                    color: "var(--cl-text-base, #09090b)",
-                    fontSize: 16.5,
-                    fontWeight: 600,
-                    textAlign: "left",
-                    cursor: "pointer",
-                    fontFamily: t.fontBody
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <span style={{ fontSize: 20 }}>🛡️</span>
-                    {faq.q}
-                  </div>
-                  <span style={{ 
-                    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", 
-                    transition: "transform 0.3s ease",
-                    color: t.accent,
-                    fontSize: 18,
-                    fontWeight: 700
-                  }}>
-                    ↓
-                  </span>
-                </button>
-                
-                <div style={{ 
-                  maxHeight: isOpen ? 500 : 0, 
-                  opacity: isOpen ? 1 : 0,
-                  transition: "all 0.3s ease",
-                  padding: isOpen ? "0 24px 20px 24px" : "0 24px",
-                  color: "var(--cl-text-body, #27272a)",
-                  lineHeight: 1.7,
-                  fontSize: 15.5,
-                  paddingLeft: 56
-                }}>
-                  {faq.a}
-                </div>
+    <section id="faq" className="py-24 px-4 bg-white text-zinc-900 border-y border-zinc-200/80 relative">
+      <div className="max-w-6xl mx-auto px-2 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Left Column: Title & Support Callout (5 Cols) */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-8">
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-300 bg-amber-50 text-amber-900 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest mb-4 shadow-xs">
+                <HelpCircle className="w-4 h-4 text-amber-600" />
+                <span>GIẢI ĐÁP THẮC MẮC</span>
               </div>
-            );
-          })}
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#09090b] mb-4 leading-[1.18] [text-wrap:balance]">
+                Câu Hỏi Thường Gặp
+              </h2>
+              <p className="font-sans text-base sm:text-lg text-zinc-700 leading-relaxed [text-wrap:balance]">
+                Tất cả những thắc mắc phổ biến nhất của học viên trước khi tham gia khóa học offline 2 ngày tại Hà Nội.
+              </p>
+            </div>
+
+            {/* Direct Support Card */}
+            <div className="p-6 rounded-3xl border border-zinc-200 bg-[#f8fafc] shadow-sm space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600">
+                <MessageCircleQuestion className="w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="font-sans font-bold text-lg sm:text-xl text-[#09090b] mb-1.5">
+                  Bạn có câu hỏi riêng?
+                </h4>
+                <p className="font-sans text-sm sm:text-base text-zinc-700 leading-relaxed">
+                  Nhắn tin trực tiếp với thầy Việt để được tư vấn định dạng video và lộ trình phù hợp với ngành nghề của bạn.
+                </p>
+              </div>
+              <a
+                href="https://zalo.me/0965928899"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-between w-full px-5 py-4 rounded-xl bg-[#09090b] hover:bg-zinc-800 text-white font-sans font-bold text-base transition-all shadow-sm group"
+              >
+                <span>Nhắn Tin Zalo Thầy Việt</span>
+                <ArrowRight className="w-5 h-5 text-amber-400 transform group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column: Numbered Accordion List (7 Cols) */}
+          <div className="lg:col-span-7 space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = openIdx === idx;
+              return (
+                <div
+                  key={idx}
+                  className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+                    isOpen
+                      ? 'border-amber-500/90 bg-amber-50/50 shadow-md ring-1 ring-amber-500/30'
+                      : 'border-zinc-200 bg-[#f8fafc] hover:border-zinc-300 hover:bg-white'
+                  }`}
+                >
+                  <button
+                    onClick={() => toggle(idx)}
+                    className="w-full p-5 sm:p-6 text-left flex items-start justify-between gap-4 cursor-pointer"
+                  >
+                    <div className="flex items-start gap-3.5">
+                      <span
+                        className={`w-7 h-7 rounded-lg text-xs font-mono font-bold flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
+                          isOpen
+                            ? 'bg-amber-500 text-zinc-950 font-black'
+                            : 'bg-zinc-200 text-zinc-700 font-bold'
+                        }`}
+                      >
+                        {String(idx + 1).padStart(2, '0')}
+                      </span>
+                      <span className="font-sans font-bold text-[#09090b] text-base sm:text-lg md:text-xl leading-snug">
+                        {faq.q}
+                      </span>
+                    </div>
+
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all ${
+                        isOpen
+                          ? 'bg-amber-500 text-zinc-950 rotate-180'
+                          : 'bg-zinc-200 text-zinc-700 hover:bg-zinc-300'
+                      }`}
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </div>
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-6 pb-6 pt-2 text-base sm:text-lg text-zinc-900 leading-relaxed border-t border-amber-200 font-sans pl-[58px]">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </FadeIn>
-    </Sec>
+      </div>
+    </section>
   );
-}
+};
+
