@@ -4,8 +4,13 @@ import { google } from 'googleapis';
 const DEFAULT_TELEGRAM_BOT_TOKEN = "8964853536:AAHuRNm_hY-YQtveBD1HlmthN4I5xpVzM8U";
 const DEFAULT_TELEGRAM_CHAT_ID = "2050406425";
 const DEFAULT_GOOGLE_CLIENT_EMAIL = "form-feedback-offline@vietndj-git-cms.iam.gserviceaccount.com";
-const DEFAULT_SPREADSHEET_ID = "1J9ZrjLxTba9R-wuet1n_J_hKcL0PVtQDD_ag65Ewx04";
-const DEFAULT_SHEET_NAME = "Offline FEDU";
+// SỔ CON (Primary Sheet làm việc chính, dùng chung với đối tác/quản lý)
+const DEFAULT_PRIMARY_SPREADSHEET_ID = "1PaHkFMdY615FasQDcqqeia94L1662YKES7cPuFIpKhg";
+const DEFAULT_PRIMARY_SHEET_NAME = "Danh Sách Học Viên";
+
+// SỔ MẸ (Két Sắt Bảo Hiểm Tự Động - kho lưu trữ tích lũy toàn bộ dữ liệu)
+const DEFAULT_MASTER_SPREADSHEET_ID = "1J9ZrjLxTba9R-wuet1n_J_hKcL0PVtQDD_ag65Ewx04";
+const DEFAULT_MASTER_SHEET_NAME = "Offline FEDU";
 
 function getGoogleSheetsClient() {
   const clientEmail = process.env.GOOGLE_CLIENT_EMAIL || DEFAULT_GOOGLE_CLIENT_EMAIL;
@@ -31,50 +36,70 @@ function getGoogleSheetsClient() {
 
 async function appendToGoogleSheet(data) {
   const sheets = getGoogleSheetsClient();
-  const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID || DEFAULT_SPREADSHEET_ID;
-  const sheetName = process.env.GOOGLE_SHEET_NAME || DEFAULT_SHEET_NAME;
-
-  if (!sheets || !spreadsheetId) {
-    console.warn('Google Sheets client or spreadsheetId not ready');
+  if (!sheets) {
+    console.warn('Google Sheets client not ready');
     return { success: false, reason: 'not_configured' };
   }
 
-  try {
-    const rowValues = [
-      data.submittedAt,
-      data.fullName,
-      data.phone,
-      data.email,
-      data.occupation || 'Chưa điền',
-      data.reason || 'Chưa điền',
-      data.source || 'offline.fedu.vn'
-    ];
+  const primarySheetId = process.env.GOOGLE_SPREADSHEET_ID || DEFAULT_PRIMARY_SPREADSHEET_ID;
+  const primarySheetName = process.env.GOOGLE_SHEET_NAME || DEFAULT_PRIMARY_SHEET_NAME;
 
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: spreadsheetId,
-      range: `'${sheetName}'!A:G`,
-      valueInputOption: 'USER_ENTERED',
-      insertDataOption: 'INSERT_ROWS',
-      requestBody: { values: [rowValues] }
-    });
+  const masterSheetId = process.env.MASTER_SPREADSHEET_ID || DEFAULT_MASTER_SPREADSHEET_ID;
+  const masterSheetName = process.env.MASTER_SHEET_NAME || DEFAULT_MASTER_SHEET_NAME;
 
-    console.log('Appended row to Google Sheet successfully!');
-    return { success: true };
-  } catch (e) {
-    console.error('Google Sheets append error:', e.message);
-    return { success: false, reason: e.message };
+  const rowValues = [
+    data.submittedAt,
+    data.fullName,
+    data.phone,
+    data.email,
+    data.occupation || 'Chưa điền',
+    data.reason || 'Chưa điền',
+    data.source || 'offline.fedu.vn'
+  ];
+
+  const promises = [];
+
+  // 1. Ghi vào SỔ CON (Làm việc chính)
+  if (primarySheetId) {
+    promises.push(
+      sheets.spreadsheets.values.append({
+        spreadsheetId: primarySheetId,
+        range: `'${primarySheetName}'!A:G`,
+        valueInputOption: 'USER_ENTERED',
+        insertDataOption: 'INSERT_ROWS',
+        requestBody: { values: [rowValues] }
+      }).then(() => console.log('Appended to Primary Child Sheet successfully!'))
+        .catch(e => console.error('Error appending to child sheet:', e.message))
+    );
   }
+
+  // 2. Ghi đồng thời vào SỔ MẸ (Két Sắt Bảo Hiểm Tự Động)
+  if (masterSheetId && masterSheetId !== primarySheetId) {
+    promises.push(
+      sheets.spreadsheets.values.append({
+        spreadsheetId: masterSheetId,
+        range: `'${masterSheetName}'!A:G`,
+        valueInputOption: 'USER_ENTERED',
+        insertDataOption: 'INSERT_ROWS',
+        requestBody: { values: [rowValues] }
+      }).then(() => console.log('Appended to Backup Master Sheet successfully!'))
+        .catch(e => console.error('Error appending to master sheet:', e.message))
+    );
+  }
+
+  await Promise.allSettled(promises);
+  return { success: true };
 }
 
 async function dispatchToTelegramNova(data) {
   const botToken = process.env.TELEGRAM_BOT_TOKEN || DEFAULT_TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID || DEFAULT_TELEGRAM_CHAT_ID;
-  const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID || DEFAULT_SPREADSHEET_ID;
+  const primarySheetId = process.env.GOOGLE_SPREADSHEET_ID || DEFAULT_PRIMARY_SPREADSHEET_ID;
 
   if (!botToken || !chatId) return;
 
   try {
-    const sheetUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/edit#gid=627717072`;
+    const sheetUrl = `https://docs.google.com/spreadsheets/d/${primarySheetId}/edit`;
     const text =
       `🔥 <b>HỌC VIÊN ĐĂNG KÝ KHÓA OFFLINE FEDU!</b>\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
@@ -84,7 +109,7 @@ async function dispatchToTelegramNova(data) {
       `💼 <b>Nghề nghiệp / Lĩnh vực:</b> ${data.occupation || 'Chưa điền'}\n` +
       `🎯 <b>Nút thắt cần giải quyết:</b>\n<i>"${data.reason || 'Chưa điền'}"</i>\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
-      `📊 <a href="${sheetUrl}"><b>Mở Google Sheet Quản Lý</b></a>\n` +
+      `📊 <a href="${sheetUrl}"><b>Mở Google Sheet Quản Lý (Sổ Con)</b></a>\n` +
       `⏰ <i>${data.submittedAt}</i>`;
 
     await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
@@ -110,13 +135,13 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID || DEFAULT_SPREADSHEET_ID;
+  const primarySheetId = process.env.GOOGLE_SPREADSHEET_ID || DEFAULT_PRIMARY_SPREADSHEET_ID;
 
   if (req.method === 'GET') {
     return res.status(200).json({
       status: 'healthy',
       service: 'offline.fedu.vn registration API',
-      sheet: `https://docs.google.com/spreadsheets/d/${spreadsheetId}/edit#gid=627717072`
+      sheet: `https://docs.google.com/spreadsheets/d/${primarySheetId}/edit`
     });
   }
 
