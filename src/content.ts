@@ -139,6 +139,10 @@ export interface ContentData {
     badge: string;
     headline: string;
     subheadline: string;
+    categories?: {
+      id: string;
+      label: string;
+    }[];
     videos: {
       id: string;
       title: string;
@@ -146,7 +150,10 @@ export interface ContentData {
       role: string;
       desc: string;
       poster: string;
-      youtubeUrl: string;
+      youtubeUrl?: string;
+      videoUrl?: string;
+      category?: string;
+      categoryLabel?: string;
     }[];
   };
   caseStudies: {
@@ -592,15 +599,56 @@ export const content: ContentData = {
     badge: "THÀNH PHẨM THỰC TẾ HỌC VIÊN",
     headline: "Xem Video Do Chính Học Viên Sản Xuất Sau Khóa Học",
     subheadline: "Từ những người chưa từng biết cầm máy hay edit, đây là những video thành phẩm được quay và dựng hoàn chỉnh 100%.",
+    categories: [
+      { id: "all", label: "Tất Cả Thành Phẩm" },
+      { id: "spa_voiceover", label: "Spa & Làm Đẹp / Voice-Over" },
+      { id: "lifestyle_walktalk", label: "Đời Thường Xây Kênh / Walk & Talk" },
+      { id: "expert_talkinghead", label: "Bán Hàng / Talking Head" }
+    ],
     videos: [
       {
-        id: "zcaVzUlj37s",
-        title: "Tự Tin Nói Trước Camera 1 Chạm · Không Sợ Nói Vấp",
-        author: "Bạn Phương",
-        role: "Học Viên K2 · Bán Hàng & Đào Tạo",
-        desc: "Ứng dụng kịch bản One-line và kỹ thuật ngắt nhịp 5 giây. Từ một người ngại lên hình, chỉ sau 2 ngày Phương đã tự tin quay video Talking Head chia sẻ chuyên môn cực kỳ tự nhiên, giữ chân người xem từ đầu đến cuối.",
-        poster: "/assets/showcase/phuong.jpg",
-        youtubeUrl: "https://youtu.be/zcaVzUlj37s"
+        id: "tham-tho-spa",
+        title: "Home Spa Ấm Cúng: Sự Riêng Tư & Chăm Chút Khách Hàng",
+        author: "Thực Hành Voice-Over",
+        role: "Home Spa & Thẩm Mỹ · Lớp Offline K2",
+        desc: "Ứng dụng kỹ thuật lồng tiếng Voice-over truyền cảm trên nền B-roll cận cảnh thao tác tay đắp mặt nạ, chăm sóc da và điêu khắc chân mày. Xóa sạch cảm giác quảng cáo chèo kéo, truyền tải chân thật sự tinh tế và cái tâm làm nghề của một Home Spa phục vụ khách quen.",
+        poster: "/assets/showcase/tham_tho_poster.jpg",
+        videoUrl: "/assets/showcase/tham_tho_spa.mp4",
+        category: "spa_voiceover",
+        categoryLabel: "Spa / Voice-Over"
+      },
+      {
+        id: "broll-25s-k2",
+        title: "Nhịp Cắt 3 Giây Giúp Video Không Buồn Ngủ",
+        author: "Thực Hành Cảnh Trám",
+        role: "B-Roll Minh Họa · Lớp Offline",
+        desc: "Thực hành quay cảnh trám (B-roll) lồng ghép vào video ngắn. Tận dụng 1 chiếc điện thoại trên chân đế bàn làm việc, đón ánh sáng tự nhiên nghiêng 45° làm nổi khối nhạc cụ. Nhịp cắt 3 giây nối động tác (Cut-on-Action) liền mạch, giấu 100% vết cắt và che sạch lỗi nói vấp mà không cần học thuộc lòng.",
+        poster: "/assets/showcase/disneyland_broll_25s_poster.jpg",
+        videoUrl: "/assets/showcase/disneyland_broll_25s.mp4",
+        category: "lifestyle_walktalk",
+        categoryLabel: "Đời Thường / Walk & Talk"
+      },
+      {
+        id: "cattuong-49s-k2",
+        title: "Kể Chuyện Tuổi Thơ: Đố Mọi Người Đoán Được Vật Liệu Này?",
+        author: "Thực Hành Kể Chuyện",
+        role: "Storytelling · Lớp Offline K2",
+        desc: "Ứng dụng định dạng kể chuyện (Storytelling) kết hợp câu hỏi tương tác gợi nhớ tuổi thơ. Cầm máy theo chân hành trình nổ bỏng ngô, góc máy đa dạng từ toàn cảnh sân nhà đến cận cảnh máy nổ bỏng nghi ngút khói. Kích thích người xem bình luận chia sẻ kỷ niệm, kéo thời lượng xem hết video đạt trên 70%.",
+        poster: "/assets/showcase/nhathuoc_cattuong_poster.jpg",
+        videoUrl: "/assets/showcase/nhathuoc_cattuong_49s.mp4",
+        category: "lifestyle_walktalk",
+        categoryLabel: "Đời Thường / Walk & Talk"
+      },
+      {
+        id: "IEeClHjueyk",
+        title: "Kỹ Thuật Quay B-Roll Thao Tác Tay Đặc Tả Chi Tiết Sản Phẩm",
+        author: "Chị Nguyệt",
+        role: "Học Viên K2 · Bán Lẻ & Dịch Vụ Spa",
+        desc: "Áp dụng trọn vẹn kỹ thuật quay Cutaway và Insert Shot trong studio. Hình ảnh cận cảnh sắc nét, da sáng mịn, xóa sạch cảm giác nghiệp dư dù chỉ quay bằng smartphone.",
+        poster: "/assets/showcase/nguyet.jpg",
+        youtubeUrl: "https://youtu.be/IEeClHjueyk",
+        category: "spa_voiceover",
+        categoryLabel: "Spa / Voice-Over"
       },
       {
         id: "alNkUUuE7fE",
@@ -609,7 +657,20 @@ export const content: ContentData = {
         role: "Học Viên K2 · Sáng Tạo Nội Dung",
         desc: "Tận dụng không gian ánh sáng tự nhiên và kỹ thuật quay B-roll dôi dư 3 giây. Dựng phim câm trước rồi thu voice trực tiếp trên timeline CapCut, tạo nên video tâm sự chân thật, chạm sâu vào cảm xúc người xem.",
         poster: "/assets/showcase/vananh.jpg",
-        youtubeUrl: "https://youtu.be/alNkUUuE7fE"
+        youtubeUrl: "https://youtu.be/alNkUUuE7fE",
+        category: "lifestyle_walktalk",
+        categoryLabel: "Đời Thường / Walk & Talk"
+      },
+      {
+        id: "zcaVzUlj37s",
+        title: "Tự Tin Nói Trước Camera 1 Chạm · Không Sợ Nói Vấp",
+        author: "Bạn Phương",
+        role: "Học Viên K2 · Bán Hàng & Đào Tạo",
+        desc: "Ứng dụng kịch bản One-line và kỹ thuật ngắt nhịp 5 giây. Từ một người ngại lên hình, chỉ sau 2 ngày Phương đã tự tin quay video Talking Head chia sẻ chuyên môn cực kỳ tự nhiên, giữ chân người xem từ đầu đến cuối.",
+        poster: "/assets/showcase/phuong.jpg",
+        youtubeUrl: "https://youtu.be/zcaVzUlj37s",
+        category: "expert_talkinghead",
+        categoryLabel: "Bán Hàng / Talking Head"
       },
       {
         id: "fzKa6bZPw40",
@@ -618,7 +679,9 @@ export const content: ContentData = {
         role: "Học Viên K2 · Chủ Doanh Nghiệp",
         desc: "Chưa từng biết cầm máy hay sử dụng phần mềm edit. Sau khi được thầy cầm tay chỉ việc setup ánh sáng và cắt gọt CapCut, Thúy đã tự dựng xong video hoàn chỉnh ngay trong buổi chiều ngày thứ 2.",
         poster: "/assets/showcase/thuy.jpg",
-        youtubeUrl: "https://youtu.be/fzKa6bZPw40"
+        youtubeUrl: "https://youtu.be/fzKa6bZPw40",
+        category: "expert_talkinghead",
+        categoryLabel: "Bán Hàng / Talking Head"
       },
       {
         id: "Oa_U20Cih90",
@@ -627,16 +690,9 @@ export const content: ContentData = {
         role: "Học Viên K2 · Sáng Lập Halona",
         desc: "Trước đây tốn hàng chục triệu thuê đội ngũ quay dựng nhưng không ra đơn vì thiếu chất thật. Khóa học giúp chị tự lên kịch bản, tự quay bằng 2 chiếc điện thoại và chủ động xuất bản video hàng tuần.",
         poster: "/assets/showcase/halona.jpg",
-        youtubeUrl: "https://youtu.be/Oa_U20Cih90"
-      },
-      {
-        id: "IEeClHjueyk",
-        title: "Kỹ Thuật Quay B-Roll Thao Tác Tay Đặc Tả Chi Tiết Sản Phẩm",
-        author: "Chị Nguyệt",
-        role: "Học Viên K2 · Bán Lẻ & Dịch Vụ",
-        desc: "Áp dụng trọn vẹn kỹ thuật quay Cutaway và Insert Shot trong studio. Hình ảnh cận cảnh sắc nét, da sáng mịn, xóa sạch cảm giác nghiệp dư dù chỉ quay bằng smartphone.",
-        poster: "/assets/showcase/nguyet.jpg",
-        youtubeUrl: "https://youtu.be/IEeClHjueyk"
+        youtubeUrl: "https://youtu.be/Oa_U20Cih90",
+        category: "expert_talkinghead",
+        categoryLabel: "Bán Hàng / Talking Head"
       },
       {
         id: "WV8rggcgmGA",
@@ -645,7 +701,9 @@ export const content: ContentData = {
         role: "Thực Hành Trực Tiếp Tại Studio",
         desc: "Không khí thực hành sôi nổi tại studio tiêu chuẩn. Giảng viên trực tiếp chỉnh góc máy, đo sáng, hướng dẫn khẩu hình và sửa lỗi trực tiếp trên máy tính từng học viên.",
         poster: "/assets/showcase/lop_k2.jpg",
-        youtubeUrl: "https://youtu.be/WV8rggcgmGA"
+        youtubeUrl: "https://youtu.be/WV8rggcgmGA",
+        category: "expert_talkinghead",
+        categoryLabel: "Bán Hàng / Talking Head"
       },
       {
         id: "ktBAEQCC9ik",
@@ -654,29 +712,31 @@ export const content: ContentData = {
         role: "Kỹ Thuật Dựng 2 Cam Tại Lớp",
         desc: "Học viên trực tiếp thực hành đồng bộ âm thanh đa máy quay, cắt chuyển góc đúng nhịp cảm xúc trên CapCut, che 100% lỗi nói vấp mà không cần quay lại.",
         poster: "/assets/showcase/multicam.jpg",
-        youtubeUrl: "https://youtu.be/ktBAEQCC9ik"
+        youtubeUrl: "https://youtu.be/ktBAEQCC9ik",
+        category: "expert_talkinghead",
+        categoryLabel: "Bán Hàng / Talking Head"
       }
     ]
   },
   caseStudies: {
     badge: "KẾT QUẢ THỰC TẾ HỌC VIÊN",
-    headline: "Học Xong Là Tự Sản Xuất Video Quảng Cáo Tuyển Sinh",
-    subheadline: "Từ một giáo viên dạy tiếng Anh ngại quay mặt, bạn Nương đã tự viết kịch bản, quay bối cảnh đời thực và dựng hoàn thiện video quảng cáo thu hút hàng trăm học viên.",
+    headline: "Sản Phẩm Sau Khóa Học: Thực Hành Định Dạng Walk & Talk",
+    subheadline: "Ứng dụng định dạng vừa đi vừa nói tại không gian mở đời thực, giúp video tự nhiên, giữ chân người xem gấp 2.4 lần mà không cần học thuộc lòng kịch bản.",
     items: [
       {
-        name: "Bạn Nương",
-        role: "Giáo Viên & Sáng Lập Lớp Tiếng Anh Giao Tiếp",
-        niche: "Đào Tạo Ngoại Ngữ & Tiếng Anh",
-        stats: "Tuyển sinh >150 học viên/tháng nhờ video ngắn",
+        name: "Sản Phẩm Sau Khóa Học",
+        role: "Thực Hành Định Dạng Walk & Talk (Vừa Đi Vừa Nói)",
+        niche: "ĐÀO TẠO & GIẢNG DẠY THỰC CHIẾN",
+        stats: "Giữ chân người xem gấp 2.4 lần",
         videoId: "GqLHBWSiWDI",
         youtubeUrl: "https://youtu.be/GqLHBWSiWDI",
         poster: "/assets/showcase/nuong.jpg",
-        story: "Trước đây chạy quảng cáo bài viết hình ảnh rất tốn kém mà ít người nhắn tin. Sau khóa học video thực chiến của thầy Việt, Nương tự tin cầm mic ra hiệu sách và không gian ngoài trời quay video giải quyết nỗi sợ bận rộn không có thời gian học tiếng Anh. Video tự nhiên, không diễn gượng, giữ chân người xem và mang về danh sách học viên đăng ký đều đặn mỗi ngày.",
+        story: "Thực hành định dạng Walk & Talk sau khóa học: Cầm mic không dây vừa đi dạo qua hiệu sách và không gian mở vừa chia sẻ góc nhìn thực tế. Khung cảnh chuyển động liên tục cuốn hút mắt nhìn, loại bỏ hoàn toàn cảm giác gượng gạo trước ống kính.",
         highlights: [
-          "Áp dụng cấu trúc kịch bản Hook 3s bóc đúng tâm lý 'bận rộn'",
-          "Tự tin cầm mic DJI quay ngoại cảnh không gian mở tự nhiên",
-          "Dựng CapCut chèn sticker, text động và nhạc nền vui tươi",
-          "Chi phí sản xuất 0đ — Chuyển đổi tuyển sinh gấp 3 lần"
+          "Áp dụng chuẩn định dạng Walk & Talk: Vừa đi vừa nói giữ chân người xem",
+          "Cầm mic thu âm ngoại cảnh rõ tiếng, tận dụng không gian mở tự nhiên",
+          "Cắt gọt CapCut chèn chữ động, chuyển cảnh theo nhịp bước chân",
+          "Tự quay 1 mình bằng điện thoại — Video tự nhiên, không diễn gượng"
         ]
       }
     ]

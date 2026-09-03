@@ -5,14 +5,19 @@ import { Sparkles, Play, CheckCircle2, X, ExternalLink } from 'lucide-react';
 export const ShowcaseSection: React.FC = () => {
   const { showcase } = content;
   const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const selectedVideo = showcase.videos.find((v) => v.id === activeVideoId);
+
+  const filteredVideos = selectedCategory === 'all'
+    ? showcase.videos
+    : showcase.videos.filter((v) => v.category === selectedCategory);
 
   return (
     <section id="showcase" className="py-24 px-4 bg-[#09090b] border-y border-zinc-800/80 text-white relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs sm:text-sm font-mono font-bold uppercase tracking-widest mb-4 shadow-sm">
             <Sparkles className="w-4 h-4 text-emerald-400" />
             <span>{showcase.badge}</span>
@@ -25,9 +30,42 @@ export const ShowcaseSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 7 YouTube Responsive Video Cards Grid */}
+        {/* Category Filter Tabs */}
+        {showcase.categories && showcase.categories.length > 0 && (
+          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
+            {showcase.categories.map((cat) => {
+              const count = cat.id === 'all'
+                ? showcase.videos.length
+                : showcase.videos.filter((v) => v.category === cat.id).length;
+              const isActive = selectedCategory === cat.id;
+
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all flex items-center gap-2 cursor-pointer border ${
+                    isActive
+                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50 shadow-sm shadow-emerald-950/40'
+                      : 'bg-zinc-900/80 text-zinc-400 hover:text-white border-zinc-800 hover:border-zinc-700'
+                  }`}
+                >
+                  <span>{cat.label}</span>
+                  <span
+                    className={`text-[10px] px-2 py-0.5 rounded-full font-mono ${
+                      isActive ? 'bg-emerald-500/30 text-emerald-200' : 'bg-zinc-800 text-zinc-500'
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Responsive Video Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-          {showcase.videos.map((vid, idx) => (
+          {filteredVideos.map((vid, idx) => (
             <div
               key={idx}
               className="p-5 rounded-3xl border border-zinc-800 bg-zinc-900/90 shadow-2xl flex flex-col justify-between hover:border-emerald-500/50 hover:shadow-emerald-950/30 transition-all duration-300 group"
@@ -59,11 +97,20 @@ export const ShowcaseSection: React.FC = () => {
                     <span className="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10">
                       {vid.author}
                     </span>
-                    <span className="bg-red-600/90 px-2 py-0.5 rounded text-[10px] tracking-wider uppercase">
-                      YouTube
+                    <span className={`${vid.videoUrl ? 'bg-emerald-600/90' : 'bg-red-600/90'} px-2 py-0.5 rounded text-[10px] tracking-wider uppercase font-bold`}>
+                      {vid.videoUrl ? 'Video Thực Hành' : 'YouTube'}
                     </span>
                   </div>
                 </div>
+
+                {/* Category Label Pill */}
+                {vid.categoryLabel && (
+                  <div className="mb-2.5">
+                    <span className="inline-block text-[11px] font-mono font-bold text-emerald-300 bg-emerald-500/10 px-2.5 py-0.5 rounded border border-emerald-500/20">
+                      {vid.categoryLabel}
+                    </span>
+                  </div>
+                )}
 
                 {/* Info */}
                 <div className="flex items-center justify-between gap-2 mb-2">
@@ -96,15 +143,21 @@ export const ShowcaseSection: React.FC = () => {
                   <Play className="w-3.5 h-3.5 fill-current" />
                   <span>XEM VIDEO</span>
                 </button>
-                <a
-                  href={vid.youtubeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-zinc-500 hover:text-zinc-300 transition-colors"
-                >
-                  <span>Mở YouTube</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                {vid.youtubeUrl ? (
+                  <a
+                    href={vid.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-zinc-500 hover:text-zinc-300 transition-colors"
+                  >
+                    <span>Mở YouTube</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                ) : (
+                  <span className="flex items-center gap-1 text-emerald-400/90 font-mono text-[11px] font-bold">
+                    <span>Thực Hành Tại Lớp</span>
+                  </span>
+                )}
               </div>
             </div>
           ))}
@@ -141,13 +194,23 @@ export const ShowcaseSection: React.FC = () => {
 
             {/* Video Player */}
             <div className="w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-zinc-800 shadow-inner mb-4">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${selectedVideo.id}?autoplay=1&rel=0&modestbranding=1`}
-                title={selectedVideo.title}
-                className="w-full h-full border-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+              {selectedVideo.videoUrl ? (
+                <video
+                  src={selectedVideo.videoUrl}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${selectedVideo.id}?autoplay=1&rel=0&modestbranding=1`}
+                  title={selectedVideo.title}
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              )}
             </div>
 
             {/* Video Description */}

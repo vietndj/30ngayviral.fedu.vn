@@ -57,8 +57,8 @@ export const CaseStudySection: React.FC = () => {
                     <span className="bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10">
                       {item.name}
                     </span>
-                    <span className="bg-red-600 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">
-                      Video Quảng Cáo
+                    <span className="bg-emerald-600 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">
+                      Walk & Talk
                     </span>
                   </div>
 
@@ -121,7 +121,7 @@ export const CaseStudySection: React.FC = () => {
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm transition-all shadow-sm cursor-pointer"
                   >
                     <Play className="w-4 h-4 fill-current" />
-                    <span>Xem Video Bạn Nương Sản Xuất</span>
+                    <span>Xem Video Thực Hành</span>
                   </button>
                   {item.youtubeUrl && (
                     <a
