@@ -132,51 +132,144 @@ export function CtaSection() {
   const c = useContent();
   const t = useTheme();
   return (
-    <section id="dang-ky" style={{ maxWidth: 760, margin: "84px auto 0", padding: "0 20px" }}>
+    <Sec maxWidth={860} id="dang-ky">
       <FadeIn>
-        <div style={{ background: `linear-gradient(135deg, var(--cl-card), var(--cl-card2))`, border: `1px solid var(--cl-accent)`, borderRadius: "clamp(16px, 4vw, 28px)", overflow: "hidden" }}>
-          <div style={{ background: "var(--cl-accent)", padding: "14px 24px", textAlign: "center" }}>
-            <p style={{ fontSize: 14, fontWeight: 500, letterSpacing: "0.05em", textTransform: "uppercase", color: "var(--cl-accent-text)" }}>
+        <div style={{
+          background: `linear-gradient(135deg, var(--cl-card), var(--cl-card2))`,
+          border: `1.5px solid ${t.accent}`,
+          borderRadius: "var(--cl-radius, 20px)",
+          overflow: "hidden",
+          boxShadow: `0 20px 60px -15px ${t.accent}22`,
+        }}>
+          <div style={{ background: t.accent, padding: "14px 24px", textAlign: "center" }}>
+            <p style={{
+              fontFamily: t.fontMono,
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              color: "#ffffff",
+              margin: 0,
+            }}>
               {c.urgencyBar.replace("{PRICE}", c.price)}
             </p>
           </div>
-          <div style={{ padding: "clamp(24px, 6vw, 48px) clamp(16px, 5vw, 40px)" }}>
+          <div style={{ padding: "clamp(28px, 6vw, 48px) clamp(20px, 5vw, 40px)" }}>
             <div style={{ textAlign: "center", marginBottom: 36 }}>
               <Label>{c.ctaLabel}</Label>
               <SH typed>{c.ctaHeading}</SH>
-              <p style={{ fontSize: 16, color: "var(--cl-text-body, #b0b0b0)", marginBottom: 32, lineHeight: 1.75 }}>{c.ctaSub}</p>
-              <div style={{ marginBottom: 36 }}>
-                <p style={{ fontSize: 13, color: "var(--cl-text-muted, #666)", marginBottom: 16, letterSpacing: "0.08em", textTransform: "uppercase", fontFamily: "var(--cl-font-mono)" }}>{c.countdownLabel}</p>
+              <p style={{
+                fontSize: "clamp(16px, 1.8vw, 17.5px)",
+                color: "var(--cl-text-body, #64748b)",
+                marginBottom: 28,
+                lineHeight: 1.75,
+                maxWidth: 680,
+                margin: "12px auto 28px",
+              }}>
+                {c.ctaSub}
+              </p>
+              <div style={{ marginBottom: 32 }}>
+                <p style={{
+                  fontSize: 12,
+                  color: "var(--cl-text-muted, #64748b)",
+                  marginBottom: 14,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  fontFamily: t.fontMono,
+                  fontWeight: 600,
+                }}>
+                  {c.countdownLabel}
+                </p>
                 <Countdown />
               </div>
             </div>
 
-            <div style={{ background: "var(--cl-card)", border: `1px solid var(--cl-line)`, borderRadius: t.cardRadius, padding: "26px 24px", marginBottom: 32 }}>
-              <p style={{ fontSize: 13, fontWeight: 500, color: "var(--cl-text-base, #111827)", marginBottom: 18, textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--cl-font-mono)" }}>{c.valueStackTitle}</p>
+            <div style={{
+              background: "var(--cl-card)",
+              border: `1px solid var(--cl-line)`,
+              borderRadius: "var(--cl-radius, 16px)",
+              padding: "26px 24px",
+              marginBottom: 32,
+            }}>
+              <p style={{
+                fontSize: 12.5,
+                fontWeight: 700,
+                color: "var(--cl-text-head, #0f172a)",
+                marginBottom: 18,
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                fontFamily: t.fontMono,
+              }}>
+                {c.valueStackTitle}
+              </p>
 
               {c.valueStack.map(({ label, price }, i) => (
                 <div key={i} style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 12, alignItems: "baseline" }}>
-                  <span style={{ fontSize: 14, color: "var(--cl-text-body, #374151)", lineHeight: 1.5 }}>{label}</span>
-                  <span style={{ fontSize: 14, color: "var(--cl-text-muted, #777)", fontFamily: "var(--cl-font-mono)", flexShrink: 0 }}>{price}</span>
+                  <span style={{ fontSize: 15, color: "var(--cl-text-body, #475569)", lineHeight: 1.6 }}>{label}</span>
+                  <span style={{ fontSize: 14, color: "var(--cl-text-muted, #64748b)", fontFamily: t.fontMono, flexShrink: 0, fontWeight: 500 }}>{price}</span>
                 </div>
               ))}
 
               <div style={{ borderTop: `1px solid var(--cl-line)`, marginTop: 14, paddingTop: 16 }}>
-                <p style={{ fontSize: 11, fontWeight: 500, color: "var(--cl-accent)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 12, fontFamily: "var(--cl-font-mono)" }}>🎁 KÈM THEO — CHỈ TRONG ĐỢT NÀY:</p>
+                <p style={{
+                  fontSize: 11.5,
+                  fontWeight: 700,
+                  color: t.accent,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  marginBottom: 12,
+                  fontFamily: t.fontMono,
+                }}>
+                  ✦ ĐỒ NGHỀ ĐI KÈM MIỄN PHÍ:
+                </p>
                 {(c as any).bonusItems?.map((item: any, i: number) => (
                   <div key={i} style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 10, alignItems: "baseline" }}>
-                    <span style={{ fontSize: 13, color: "var(--cl-text-body, #374151)", lineHeight: 1.5, display: "flex", gap: 6 }}>
-                      <span style={{ color: "var(--cl-accent)", flexShrink: 0 }}>✓</span>
+                    <span style={{ fontSize: 14, color: "var(--cl-text-body, #475569)", lineHeight: 1.6, display: "flex", gap: 8 }}>
+                      <span style={{ color: t.accent, flexShrink: 0 }}>✓</span>
                       {item.title}
                     </span>
-                    <span style={{ fontSize: 13, color: "var(--cl-text-muted, #888)", fontFamily: "var(--cl-font-mono)", flexShrink: 0, textDecoration: "line-through" }}>250.000đ</span>
+                    <span style={{
+                      fontSize: 11.5,
+                      color: "#16a34a",
+                      fontFamily: t.fontMono,
+                      fontWeight: 700,
+                      flexShrink: 0,
+                      background: "rgba(22, 163, 74, 0.08)",
+                      padding: "2px 8px",
+                      borderRadius: 4,
+                    }}>
+                      MIỄN PHÍ
+                    </span>
                   </div>
                 ))}
               </div>
 
-              <div style={{ borderTop: `1px solid var(--cl-line)`, marginTop: 14, paddingTop: 16, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
-                <span style={{ fontSize: 14, color: "#666", textDecoration: "line-through", fontFamily: "var(--cl-font-mono)" }}>Tổng giá trị thực tế: {c.value} VNĐ</span>
-                <span style={{ fontSize: 22, fontWeight: 500, color: "var(--cl-accent)", fontFamily: "var(--cl-font-mono)" }}>Hôm nay: {c.price} VNĐ</span>
+              <div style={{
+                borderTop: `1px solid var(--cl-line)`,
+                marginTop: 16,
+                paddingTop: 18,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: 12,
+              }}>
+                <span style={{
+                  fontSize: 14.5,
+                  color: "var(--cl-text-muted, #94a3b8)",
+                  textDecoration: "line-through",
+                  fontFamily: t.fontMono,
+                }}>
+                  Giá gốc: 4.500.000 VNĐ
+                </span>
+                <span style={{
+                  fontSize: "clamp(22px, 3vw, 26px)",
+                  fontWeight: 700,
+                  color: t.accent,
+                  fontFamily: t.fontMono,
+                }}>
+                  Hôm nay: {c.price} VNĐ
+                </span>
               </div>
             </div>
 
@@ -186,13 +279,21 @@ export function CtaSection() {
               <div style={{ display: "flex", justifyContent: "center", marginBottom: 10 }}>
                 <IconGuarantee accent={t.accent} />
               </div>
-              <p style={{ fontSize: 15, color: "var(--cl-text-body, #cfcfcf)", lineHeight: 1.7, maxWidth: 520, margin: "0 auto", fontStyle: "italic", textWrap: "balance" }}>
+              <p style={{
+                fontSize: 15,
+                color: "var(--cl-text-body, #64748b)",
+                lineHeight: 1.7,
+                maxWidth: 520,
+                margin: "0 auto",
+                fontStyle: "italic",
+                textWrap: "balance",
+              }}>
                 {c.guarantee}
               </p>
             </div>
           </div>
         </div>
       </FadeIn>
-    </section>
+    </Sec>
   );
 }

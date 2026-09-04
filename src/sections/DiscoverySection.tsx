@@ -6,43 +6,10 @@ import { useIsMobile } from "../components/ui";
 
 export function SolutionsSection() {
   const t = useTheme();
+  const c = useContent();
   const [activeTab, setActiveTab] = useState(0);
 
-  const tabs = [
-    {
-      title: "🤖 Chủ Shop / SMEs (Bán Ads)",
-      subtitle: "Thoát cảnh quảng cáo lôm côm không ra đơn",
-      pain: "Quay video bán hàng đặt máy chết một góc, review như đọc vẹt. Sản phẩm nhìn kém sang, 'hàng chợ', đổ tiền chạy quảng cáo là lỗ.",
-      solution: "Dạy Ma trận Cỡ Cảnh (Toàn - Trung - Cận) để điều hướng mắt khán giả. Dùng Cảnh Cận (Close-up - Nam châm chi tiết) để khoe giá trị tinh hoa của sản phẩm, kích thích sự khao khát. Dùng ánh sáng khối làm sản phẩm nhìn đắt tiền. Dùng B-roll làm bằng chứng chốt sale.",
-      leftLabel: "LÔM CÔM / HÀNG CHỢ",
-      leftDesc: "Đặt máy từ xa góc tĩnh, nói đều đều, đánh sáng phòng phẳng lì rọi thẳng mặt.",
-      rightLabel: "CHỈN CHU / ĐẤT TIỀN",
-      rightDesc: "Luân chuyển cỡ cảnh theo nhịp nói, cận cảnh đặc tả giọt nước/đường nét sắc nét, setup ánh sáng ven nổi khối.",
-      icon: "🏪"
-    },
-    {
-      title: "🧠 Chuyên gia / KOC (Nhân hiệu)",
-      subtitle: "Hệ thống sản xuất nhàn hạ, tự nhiên",
-      pain: "Tự nghĩ kịch bản, tự setup lỉnh kỉnh mỗi ngày dẫn đến kiệt sức rồi bỏ hoang kênh. Đứng trước ống kính là bị đơ cứng, gượng gạo.",
-      solution: "Setup định dạng Talking Head cố định bối cảnh 1 lần dùng mãi mãi. Dùng AI viết kịch bản 2 cột trong 1 phút. Áp dụng góc quay chéo 3/4 (giả lập cuộc hội thoại) kết hợp hành động vật lý (pha trà, lật sách) để cơ thể hát cùng ngôn từ tự nhiên, toát lên sự đĩnh đạc.",
-      leftLabel: "LÊN HÌNH ĐƠ CỨNG",
-      leftDesc: "Mắt nhìn chằm chằm trực diện vào camera gây áp lực lớn cho người xem, nói vấp phải quay lại nhiều lần.",
-      rightLabel: "ĐĨNH ĐẠC & TỰ NHIÊN",
-      rightDesc: "Góc quay chéo 3/4 thoải mái, cơ thể chuyển động theo hành động vật lý tự nhiên, đắp B-roll che lỗi vấp mượt mà.",
-      icon: "🧠"
-    },
-    {
-      title: "🎬 Editor / Tự học (Thẩm mỹ xịn)",
-      subtitle: "Có tư duy hình ảnh để x5 thu nhập",
-      pain: "Lầm tưởng video đẹp là lạm dụng nhiều hiệu ứng lật trang 3D, giật chớp. Kết quả làm video bị rối mắt, sến sẩm và mất định vị chuyên nghiệp.",
-      solution: "Đập tan ảo giác về phần mềm. Dạy kỹ thuật Cut on Action (chuyển cảnh vật lý tàng hình) và chuyển động cơ học tự nhiên (vung tay, lướt vật thể qua camera) giúp video mượt mà như một dòng chảy liên tục.",
-      leftLabel: "HIỆU ỨNG SẾN SẨM",
-      leftDesc: "Chèn hiệu ứng lật trang 3D lòe loẹt, chuyển cảnh giật cục phá vỡ sự thoải mái thị giác.",
-      rightLabel: "CHUYỂN CẢNH TÀNG HÌNH",
-      rightDesc: "Nối cảnh mượt mà bằng chuyển động vật lý cơ học, người xem không nhận ra vết cắt nhưng không thể rời mắt.",
-      icon: "🎬"
-    }
-  ];
+  const tabs = c.solutionsTabs || [];
 
   return (
     <Sec maxWidth={860}>

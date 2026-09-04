@@ -14,21 +14,26 @@ export function useIsMobile(breakpoint = 768) {
   return mobile;
 }
 
-export function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+export function FadeIn({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { el.classList.add("is-visible"); obs.disconnect(); } },
-      { threshold: 0.12 }
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("is-visible");
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
   
   return (
-    <div ref={ref} className="fade-in-section" style={{ "--delay": `${delay}ms` } as React.CSSProperties}>
+    <div ref={ref} className={`fade-in-section ${className}`.trim()} style={{ "--delay": `${delay}ms` } as React.CSSProperties}>
       {children}
     </div>
   );
@@ -191,9 +196,10 @@ export function Sec({ children, style = {}, maxWidth = 820, id }: { children: Re
 }
 
 export function Label({ children }: { children: React.ReactNode }) {
+  const content = typeof children === "string" ? children.replace(/^\/\/\s*/, "") : children;
   return (
     <div className="cl-label">
-      <span style={{ opacity: 0.4 }}>// </span>{children}
+      <span style={{ opacity: 0.4 }}>// </span>{content}
     </div>
   );
 }

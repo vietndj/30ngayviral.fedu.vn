@@ -4,6 +4,8 @@ import { useTheme } from "./theme";
 import { ThemeSyncer, Div, CtaButton } from "./components/ui";
 import { HeroSection } from "./sections/HeroSection";
 import { PainSection } from "./sections/PainSection";
+import { CorePillarsSection } from "./sections/CorePillarsSection";
+import { ModulesSection } from "./sections/ModulesSection";
 import { AttentionSection } from "./sections/AttentionSection";
 import { RuleSection } from "./sections/RuleSection";
 import { CycleSection } from "./sections/CycleSection";
@@ -70,7 +72,11 @@ function StickyRegisterBar() {
         </div>
       </div>
       <a
-        href="/checkout"
+        href="#dang-ky"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById("dang-ky")?.scrollIntoView({ behavior: "smooth" });
+        }}
         style={{
           background: "#1a73e8",
           color: "#ffffff",
@@ -83,72 +89,77 @@ function StickyRegisterBar() {
           whiteSpace: "nowrap",
           flexShrink: 0,
           transition: "transform 0.2s ease, background-color 0.2s ease",
+          cursor: "pointer",
         }}
         onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#1557b0"; }}
         onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#1a73e8"; }}
       >
-        SỞ HỮU BẢN THIẾT KẾ 999K →
+        SỞ HỮU LỘ TRÌNH 999K →
       </a>
     </div>
   );
 }
 
+// ── Dynamic Section Registry (Tập trung toàn bộ khối tại một nơi) ──
+export const SECTION_COMPONENTS: Record<string, React.ComponentType> = {
+  hero: HeroSection,
+  pain: PainSection,
+  philosophy: CorePillarsSection,
+  pillars: CorePillarsSection,
+  modules: ModulesSection,
+  skills: SkillsSection,
+  "before-after": BeforeAfterSection,
+  attention: AttentionSection,
+  midCta: MidCtaSection,
+  instructor: InstructorSection,
+  bonus: BonusSection,
+  faq: FaqSection,
+  cta: CtaSection,
+  // Các khối cũ vẫn giữ trong registry để không gãy fallback:
+  rule: RuleSection,
+  cycle: CycleSection,
+  discovery: DiscoverySection,
+  solutions: SolutionsSection,
+  solution: SolutionSection,
+  roadmap: RoadmapSection,
+};
+
+export const DEFAULT_SECTION_ORDER = [
+  "hero",
+  "pain",
+  "pillars",
+  "modules",
+  "instructor",
+  "before-after",
+  "attention",
+  "bonus",
+  "faq",
+  "cta",
+];
+
 export default function App() {
   const t = useTheme();
   const c = useContent();
   const isHidden = (id: string) => c.blocksMeta?.hidden?.includes(id) ?? false;
+  const sectionOrder = (c.blocksMeta?.order?.length) ? c.blocksMeta.order : DEFAULT_SECTION_ORDER;
 
   return (
     <div style={{ position: "relative", background: t.bg, color: t.textBase ?? "#f0f0f0", fontFamily: t.fontBody, minHeight: "100vh", overflowX: "hidden" }}>
       <ThemeSyncer />
       <ParticleCanvas />
 
-      {!isHidden("hero") && <HeroSection />}
-      <Div />
-
-      {!isHidden("pain") && <PainSection />}
-      <Div />
-
-      {!isHidden("attention") && <AttentionSection />}
-      <Div />
-
-      {!isHidden("rule") && <RuleSection />}
-      <Div />
-
-      {!isHidden("cycle") && <CycleSection />}
-      <Div />
-
-      {!isHidden("discovery") && <DiscoverySection />}
-      <Div />
-
-      {!isHidden("solutions") && <SolutionsSection />}
-      <Div />
-
-      {!isHidden("solution") && <SolutionSection />}
-      <Div />
-
-      {!isHidden("skills") && <SkillsSection />}
-      <Div />
-
-      {!isHidden("midCta") && <MidCtaSection />}
-      <Div />
-
-      {!isHidden("before-after") && <BeforeAfterSection />}
-      <Div />
-
-      {!isHidden("roadmap") && <RoadmapSection />}
-      <Div />
-
-      {!isHidden("instructor") && <InstructorSection />}
-      <Div />
-
-      {!isHidden("bonus") && <BonusSection />}
-      <Div />
-
-      {!isHidden("faq") && <FaqSection />}
-      <Div />
-
-      {!isHidden("cta") && <CtaSection />}
+      {sectionOrder.map((key, i) => {
+        const Comp = SECTION_COMPONENTS[key];
+        if (!Comp || isHidden(key)) return null;
+        return (
+          <React.Fragment key={key}>
+            {i > 0 && <Div />}
+            <div id={`sec-${key}`} data-section={key}>
+              <Comp />
+            </div>
+          </React.Fragment>
+        );
+      })}
 
       {!isHidden("footer") && (
         <footer className="cl-footer" style={{ borderTop: `1px solid ${t.line}`, fontFamily: t.fontBody }}>
@@ -236,7 +247,7 @@ export default function App() {
         </footer>
       )}
       <StickyRegisterBar />
-      <LiveSocialProof />
+      {/* <LiveSocialProof /> */}
     </div>
   );
 }

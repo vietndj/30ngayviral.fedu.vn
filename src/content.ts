@@ -20,6 +20,59 @@ export interface SkillCard {
 export interface Stage { n: string; title: string; sub?: string; desc?: string; gif?: string }
 export interface ValueLine { label: string; price: string }
 
+export interface PainItem {
+  title: string;
+  desc: string;
+  highlight?: string;
+}
+
+export interface FailedSolution {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+export interface InstructorStoryItem {
+  tag: string;
+  title: string;
+  desc: string;
+  highlight?: string;
+}
+
+export interface ModuleItem {
+  id: string;
+  tag: string;
+  title: string;
+  hook: string;
+  outcome: string;
+  items: string[];
+  youtubeId?: string;
+  videoUrl?: string;
+  gif?: string;
+  poster?: string;
+  badge?: string;
+  stepName?: string;
+}
+
+export interface GoalItem {
+  id: string;
+  tag: string;
+  title: string;
+  desc: string;
+  image?: string;
+  highlight?: string;
+  bullets?: string[];
+}
+
+export interface PillarItem {
+  id: string;
+  tag: string;
+  title: string;
+  desc: string;
+  image?: string;
+  highlight?: string;
+}
+
 export interface PageContent {
   _v?: number;
   price: string;
@@ -28,6 +81,11 @@ export interface PageContent {
   heroBadge: string;
   heroHeadline1: string;
   heroHeadline2: string;
+  heroHighlightPill?: string;
+  heroFlow?: string[];
+  heroDesc1?: string;
+  heroDescUnderline?: string;
+  heroDesc2?: string;
   heroAccentLine: string;
   heroSub: string;
   heroCta: string;
@@ -40,7 +98,31 @@ export interface PageContent {
   painQuote: string;
   painSub: string;
   pains: string[];
+  painItems?: PainItem[];
+  failedSolutionsHeading?: string;
+  failedSolutionsSub?: string;
+  failedSolutions?: FailedSolution[];
+  painReframeHeading?: string;
+  painReframeBody?: string;
   painConclusion?: string;
+
+  // ── Core Goals & 3 Pillars (2 Mục tiêu sống còn & 3 Trụ cột) ──
+  coreGoalsLabel?: string;
+  coreGoalsHeading?: string;
+  coreGoalsSub?: string;
+  coreGoalsLeftTitle?: string;
+  coreGoalsRightTitle?: string;
+  coreGoals?: GoalItem[];
+  corePillars?: PillarItem[];
+
+  // ── 4 Modules Thực Chiến ──
+  modulesLabel?: string;
+  modulesHeading?: string;
+  modulesSub?: string;
+  modules?: ModuleItem[];
+  modulesGuaranteeTitle?: string;
+  modulesGuaranteePoints?: string[];
+  modulesBadges?: string[];
 
   // ── Attention (3 cách gây chú ý) ──
   attentionLabel: string;
@@ -104,6 +186,7 @@ export interface PageContent {
   instructorTitle: string;
   instructorBio: string[];
   instructorInsight?: string;
+  instructorStory?: InstructorStoryItem[];
   instructorPhoto?: string;
 
   urgencyBar: string;
@@ -122,13 +205,23 @@ export interface PageContent {
   bonusLabel: string;
   bonusHeading: string;
   bonusSub: string;
-  bonusItems: { id: string; title: string; desc: string; audioDemo?: string; youtubeDemo?: string; gifDemo?: string }[];
+  bonusItems: { id: string; badge?: string; title: string; desc: string; audioDemo?: string; youtubeDemo?: string; gifDemo?: string; videoDemo?: string }[];
   footerCopyright: string;
+
+  // ── Extracted Components Data (Single Source of Truth) ──
+  philosophyFoundations?: { icon: string; tag: string; title: string; desc: string }[];
+  attentionChoices?: { badge: string; title: string; cost: string; desc: string; isBest: boolean; tag: string }[];
+  solutionsTabs?: { title: string; subtitle: string; pain: string; solution: string; leftLabel: string; leftDesc: string; rightLabel: string; rightDesc: string; icon: string }[];
+  instructorStats?: { num: string; label: string }[];
+  faqBadge?: string;
+  faqHeading?: string;
+  faqSub?: string;
+  faqItems?: { q: string; a: string }[];
 
   blocksMeta: BlocksMeta;
 }
 
-const CONTENT_SCHEMA_VERSION = 7;
+const CONTENT_SCHEMA_VERSION = 8;
 
 export const DEFAULT_CONTENT: PageContent = {
   _v: CONTENT_SCHEMA_VERSION,
@@ -136,36 +229,229 @@ export const DEFAULT_CONTENT: PageContent = {
   value: "7.500.000",
 
   // ── Hero ──
-  heroBadge: "✨ TÍCH HỢP AI 2026 — DÀNH CHO CREATOR, FREELANCER VÀ CHỦ KINH DOANH",
-  heroHeadline1: "THOÁT KHỎI 'LỜI NGUYỀN 200 VIEW'.",
+  heroBadge: "TÍCH HỢP AI 2026 — DÀNH CHO NGƯỜI MỚI & CHỦ KINH DOANH",
+  heroHeadline1: "TỰ LÀM VIDEO NGẮN CHUYỂN ĐỔI CAO.",
   heroHeadline2: "Lộ Trình 30 Ngày Làm Chủ Video Ngắn",
+  heroHighlightPill: "Từ ý tưởng → Kịch bản → Góc quay → Edit → AI",
   heroPoem: [
-    "Thuật toán không bóp, nó chỉ chọn lọc,",
-    "Ai nắm bản thiết kế, người đó bứt phá."
+    "Khóa học thực chiến từ giảng viên FPT Arena Multimedia,",
+    "Không cần giỏi quay dựng từ trước — Chỉ cần chiếc điện thoại là bắt đầu ra đơn."
   ],
   heroAccentLine: "Bạn không cần máy quay chục triệu, không cần ekip cồng kềnh hay ngoại hình xuất chúng.",
   heroSub: "Không cần kỹ xảo phức tạp, chỉ với chiếc điện thoại trên tay bạn sẽ làm chủ trọn vẹn: Cách đặt góc máy đẹp, mở đầu khiến người xem phải dừng lại và nhịp cắt ghép cuốn hút từ đầu đến cuối. Học bài nào — cầm máy lên ra ngay video chuẩn bài đó.",
-  heroCta: "KHÁM PHÁ BẢN THIẾT KẾ 30 NGÀY →",
-  heroVideoYoutubeId: "eg6T8-SekjQ",
+  heroCta: "KHÁM PHÁ LỘ TRÌNH 30 NGÀY →",
+  heroVideoYoutubeId: "pmEpqI2gFpo",
   heroSubPrice: "Học Online trọn đời trên Skool — Trọn bộ công cụ & Chữa bài chuyên môn",
 
-  // ── Pain (Nỗi đau) ──
-  painLabel: "SỰ THẬT TÀN KHỐC",
-  painHeading: "Thuật toán KHÔNG HỀ 'bóp tương tác'. Nó chỉ bảo vệ người xem khỏi sự nhàm chán.",
-  painQuote: "Thời đại của việc 'cứ đăng là có view' đã kết thúc. Khoảng cách giữa video nghiệp dư và video triệu view không nằm ở thiết bị đắt tiền, mà nằm ở Bản thiết kế Giữ chân (Retention).",
-  painSub: "Bạn có đang bị vắt kiệt sức lực trong vòng lặp bế tắc này?",
-  pains: [
-    "❌ Ám ảnh bởi kỹ xảo: Bỏ ra 4-5 tiếng nhét đủ thứ hiệu ứng chớp nhoáng, nhưng người xem lướt qua ngay giây thứ 2.",
-    "❌ Cạn kiệt ý tưởng: Cầm máy lên là 'đơ', làm nội dung tùy hứng nay hài hước mai triết lý, kênh không có định vị rõ ràng.",
-    "❌ Có view nhưng KHÔNG CÓ TIỀN: Đu trend thì có người xem, nhưng khi lồng ghép bán hàng thì không ai hỏi mua.",
-    "❌ Đốt thời gian vô ích: Cặm cụi edit cả ngày, đăng lên lẹt đẹt vài chục view rồi hoang mang mất niềm tin vào chính mình."
+  // ── Pain (Nỗi đau & 6 bế tắc chuẩn Tầng 2.5 - Văn phong Anh Việt) ──
+  painLabel: "// NỖI KHỔ NGƯỜI CÓ NGHỀ",
+  painHeading: "Ngoài đời làm nghề rất giỏi, nhưng lên mạng lại chẳng ai biết bạn là ai?",
+  painSub: "Cái khó của người lớn đi làm không phải là thiếu chữ. Mà là muốn giữ cái chất đàng hoàng của mình... nhưng nếu không làm video thì không có khách.",
+  painItems: [
+    {
+      title: "Ngoài đời nói vanh vách, bật camera lên là cứng họng:",
+      desc: "Ngồi cà phê tư vấn khách hàng cả tiếng không hết chuyện. Nhưng cứ chĩa máy vào mặt là quên sạch chữ, nói câu nào nghe cũng đơ đơ như đang trả bài.",
+      highlight: "cứng họng"
+    },
+    {
+      title: "Nói sâu thì không ai xem, làm trò lố thì tự mình thấy ngượng:",
+      desc: "Chia sẻ kiến thức thật thì video lẹt đẹt; bảo giật tít câu view nhảm nhí thì bản thân không cho phép mình làm rác mạng. Cứ dùng dằng mãi rồi lại cất máy vào túi.",
+      highlight: "thấy ngượng"
+    },
+    {
+      title: "Ngoài đời đĩnh đạc, lên video nhìn ngô nghê như học việc:",
+      desc: "Bao năm làm nghề có uy tín với khách. Tự quay xong xem lại thấy mặt tối om, mắt đảo như rang lạc, dáng ngồi co ro... chỉ sợ người quen nhìn thấy họ cười cho.",
+      highlight: "nhìn ngô nghê"
+    },
+    {
+      title: "Cặm cụi làm cả buổi tối, nhận về vài chục view... thấy ức chứ!",
+      desc: "Bỏ cả buổi căn từng câu, cắt từng đoạn. Đăng lên lén lút F5 liên tục... vẫn đứng im lẹt đẹt. Nhìn sang mấy clip nhảy nhót xàm xí view triệu triệu, vừa nản vừa tức.",
+      highlight: "thấy ức chứ!"
+    },
+    {
+      title: "Ngại bán hàng vì sợ mang tiếng, nhưng không bán thì lấy gì nuôi quân?",
+      desc: "Chia sẻ thì có người like dạo, nhưng hễ nhắc đến bán hàng là người ta lướt ngay. Sợ bị mang tiếng chèo kéo lùa gà, nhưng tiền nhà, tiền lương nhân viên mỗi tháng có đợi ai đâu?",
+      highlight: "lấy gì nuôi quân?"
+    },
+    {
+      title: "Mua khóa học về vứt đó, vì không có ai ngồi sửa bài cùng:",
+      desc: "Xem video quay sẵn thì gật gù hay đấy, đến lúc làm cho ngành mình thì tắc tị. Người lớn ngại hỏi sợ mang tiếng ngây ngô, tự mò một mình thì làm ra clip vẫn phèn nguyên.",
+      highlight: "không có ai ngồi sửa bài"
+    }
   ],
-  painConclusion: "", // Component handles conclusion
+  pains: [],
+  painQuote: "Thời đại của việc 'cứ đăng là có view' đã kết thúc. Khoảng cách giữa video nghiệp dư và video triệu view không nằm ở thiết bị đắt tiền, mà nằm ở việc 3 giây đầu bạn có giữ chân được người xem hay không.",
 
-  // ── Attention (Khoảng cách vô hình) ──
-  attentionLabel: "KHOẢNG CÁCH VÔ HÌNH",
-  attentionHeading: "Sự khác biệt giữa Video Nghiệp Dư và Video Có Bản Thiết Kế Chuẩn",
-  attentionPara: "Viral không phải may mắn. Nó là một bộ môn khoa học của Tâm lý hành vi, Nhịp điệu cắt dựng và Đọc vị thuật toán.",
+  // ── Failed Solutions (4 Ngõ cụt) ──
+  failedSolutionsHeading: "Có phải bạn cũng từng thử đủ cách này rồi... nhưng đâu vẫn hoàn đấy?",
+  failedSolutionsSub: "Những cách chắp vá chỉ làm bạn mất thêm thời gian và thêm nản lòng.",
+  failedSolutions: [
+    {
+      icon: "📺",
+      title: "Cày nát YouTube học mót từng mẹo",
+      desc: "Xem thì thấy người ta làm dễ ợt, đến lượt mình cầm máy lên là tắc. Toàn mẹo vặt chắp vá, không thành bài bản."
+    },
+    {
+      icon: "💸",
+      title: "Thuê ngoài làm hộ cho nhanh",
+      desc: "Tốn tiền triệu mỗi tháng nhưng nhận về toàn video công nghiệp vô hồn. Họ có hiểu sản phẩm với khách của bạn đâu mà nói trúng được."
+    },
+    {
+      icon: "👥",
+      title: "Lên mạng hỏi han trong mấy hội nhóm",
+      desc: "Đăng bài thì gặp mồi chài bán tool kéo view; đọc bình luận thì toàn khoe tiền tỷ. Càng đọc càng thấy hoang mang."
+    },
+    {
+      icon: "🤖",
+      title: "Nhờ AI viết hộ kịch bản",
+      desc: "Bấm một nút nó nhả ra cả trang văn mẫu sáo rỗng. Đem đi quay nghe giả trân, khán giả ngửi thấy mùi AI là họ lướt ngay trong 1 giây."
+    }
+  ],
+  painReframeHeading: "...Và kết quả cuối cùng vẫn là con số 0 tròn trĩnh?",
+  painReframeBody: "Bạn chưa làm được video không phải vì bạn dở, và càng không phải do bạn thiếu chuyên môn. Bạn chỉ đang thiếu đúng 2 thứ: biết cách mở đầu trong 3 giây đầu để người ta chịu dừng lại nghe bạn nói — và một người làm nghề ngồi cạnh, soi từng khung hình và chỉ thẳng cho bạn biết mình đang vấp ở giây nào.",
+  painConclusion: "",
+
+  // ── Core Goals & 3 Pillars (2 Mục tiêu sống còn & 3 Đòn bẩy thực chiến) ──
+  coreGoalsLabel: "KHÔNG CẦN LÀ CHUYÊN GIA",
+  coreGoalsHeading: "Bạn không cần khiếu ăn nói hay máy ảnh đắt tiền để có một video chuyên nghiệp.",
+  coreGoalsSub: "Rào cản lớn nhất khi làm video không phải là thiết bị, mà là cảm giác sợ bị 'gượng'. Ngoài đời ngồi tư vấn cho khách thì nói rất chắc tay, nhưng cứ đứng trước ống kính là tự nhiên thấy mình phải gồng lên, nói năng không còn là chính mình.\n\nBạn không cần biến thành một ai khác, và càng không cần đánh đổi uy tín bao năm để đổi lấy vài cái view nhảm. Người mua hàng chỉ cần nhìn thấy một người làm nghề đàng hoàng, nói đúng việc, trong một khung hình gọn gàng và sáng sủa. Khóa học này chỉ tập trung vào 2 kết quả thực tế:",
+  coreGoalsLeftTitle: "2 KẾT QUẢ ĐẦU RA THỰC TẾ",
+  coreGoalsRightTitle: "3 Đòn bẩy đơn giản giúp bạn đạt kết quả:",
+  coreGoals: [
+    {
+      id: "01",
+      tag: "MỤC TIÊU 01 · XÓA SẠCH TỰ TI",
+      title: "1. Tự tay làm được video đầu tay — Tự tin bấm máy",
+      desc: "Không cần nhớ kịch bản dài dòng, không sợ nói vấp, không sợ bị người quen cười chê. Xuất xưởng ngay sản phẩm đầu tay không còn thấy ngượng.",
+      image: "/pillars/goal_traffic.png",
+      highlight: "Không cần lộ mặt · Tự tin bấm máy",
+      bullets: [
+        "Làm chủ cách quay 'không cần lộ mặt' hoặc nói chuyện tự nhiên như đang thở",
+        "Xóa bỏ hoàn toàn nỗi sợ bị người quen hay đối tác xì xào phán xét"
+      ]
+    },
+    {
+      id: "02",
+      tag: "MỤC TIÊU 02 · KẾT QUẢ THẬT",
+      title: "2. Kênh có khách hàng thật — Ra đơn trên Zalo & Inbox",
+      desc: "Đừng ham triệu view giải trí của những kẻ xem chùa. Khách thấy bạn chân thành và có chuyên môn, họ sẽ chủ động liên hệ mua hàng.",
+      image: "/pillars/goal_conversion.png",
+      highlight: "Khách đúng tệp · Ra đơn tự nhiên",
+      bullets: [
+        "Chỉ cần 500 – 1.000 view đúng tệp người mua hàng có nhu cầu thực tế",
+        "Khách chủ động nhắn tin hỏi mua, không phải nài ép hay chèo kéo"
+      ]
+    }
+  ],
+  corePillars: [
+    {
+      id: "01",
+      tag: "VŨ KHÍ 01 · GỐC RỄ NỘI DUNG",
+      title: "Kịch bản 1 dòng 1 nhịp thở",
+      desc: "Cắt nhỏ câu thoại thành từng nhịp 5–7 chữ. Nhìn 1 từ khóa là nói trôi chảy như tâm sự với bạn thân, dứt điểm bệnh học vẹt.",
+      image: "/pillars/pillar_story.png",
+      highlight: "Dễ nhớ · Nói tự nhiên"
+    },
+    {
+      id: "02",
+      tag: "VŨ KHÍ 02 · KHUNG HÌNH ĐIỆN THOẠI",
+      title: "1 Chiếc điện thoại là đủ",
+      desc: "Tận dụng ngay ánh sáng tự nhiên bên cửa sổ và góc kê máy sạch sẽ. Khung hình sáng rõ, đĩnh đạc không tốn 1 đồng mua thiết bị.",
+      image: "/pillars/pillar_visual.png",
+      highlight: "100% Smartphone · Tiết kiệm"
+    },
+    {
+      id: "03",
+      tag: "VŨ KHÍ 03 · HẬU KỲ ĐƠN GIẢN",
+      title: "Quay trước lồng tiếng sau (Vấp đâu chèn hình che đó)",
+      desc: "Cứ quay tự nhiên, nói vấp chỗ nào đắp hình thao tác tay che chỗ đó. Khán giả chỉ thấy một video mượt mà, chỉn chu từ đầu đến cuối.",
+      image: "/pillars/pillar_edit.png",
+      highlight: "Che sạch lỗi vấp · Dễ học"
+    }
+  ],
+
+  // ── Modules (5 Khóa học thực chiến từ A đến Z) ──
+  modulesLabel: "5 KHÓA HỌC THỰC CHIẾN TỪ A ĐẾN Z",
+  modulesHeading: "Tại sao lại là trọn bộ 5 Khóa học — chứ không chỉ học quay dựng đơn lẻ?",
+  modulesSub: "Làm video bán hàng không thể chỉ học mỗi cầm máy hay bấm nút CapCut. Video của bạn bắt buộc phải đi qua đủ 5 mắt xích khép kín:",
+  modules: [
+    {
+      id: "01",
+      tag: "BƯỚC 01 · KỊCH BẢN",
+      title: "Kịch bản 1 dòng 1 nhịp thở",
+      hook: "Mở máy lên là nói tự nhiên — Dứt điểm bệnh cứng họng, học vẹt",
+      outcome: "Viết xong kịch bản 60 giây hoàn chỉnh cho đúng sản phẩm của bạn, nói tự nhiên như đang thở.",
+      items: [
+        "Kịch bản 1 dòng 1 nhịp thở: Bẻ nhỏ lời nói thành câu ngắn 5–7 từ, liếc mắt là nói được ngay, không cần học thuộc lòng.",
+        "Mở đầu 3 giây giữ chân: Đánh trúng điều khách đang vướng để họ dừng ngón tay lướt tiếp.",
+        "Nói chuyện như đang tâm sự: Dùng từ ngữ đời thường, mộc mạc như đang ngồi tư vấn khách ngoài đời."
+      ]
+    },
+    {
+      id: "02",
+      tag: "BƯỚC 02 · GÓC MÁY",
+      title: "Góc máy & Ánh sáng điện thoại",
+      hook: "Khung hình sáng rõ, đĩnh đạc — Không tốn tiền mua máy móc",
+      outcome: "Tự quay được video nét căng, sáng sủa, người quen nhìn vào thấy nể mà không tốn 1 đồng mua máy ảnh.",
+      items: [
+        "Tận dụng 1 chiếc điện thoại sẵn có: Không cần tốn tiền triệu mua máy ảnh hay đèn đóm cồng kềnh.",
+        "Mẹo mượn ánh sáng cửa sổ: Giúp mặt sáng mịn, khung hình sạch sẽ và có chiều sâu.",
+        "Kê máy ngang tầm mắt & góc chéo 3/4: Dáng ngồi thoải mái, toát lên phong thái đàng hoàng của người làm nghề."
+      ]
+    },
+    {
+      id: "03",
+      tag: "BƯỚC 03 · DỰNG CAPCUT",
+      title: "Cắt ghép CapCut che sạch lỗi vấp",
+      hook: "Quay trước lồng tiếng sau — Cứ quay tự nhiên, vấp đâu chèn hình che đó",
+      outcome: "Tự tay xuất xưởng video đầu tay mượt mà ngay trên điện thoại dù bạn quay vấp cả chục lần.",
+      items: [
+        "Kỹ thuật quay trước lồng tiếng sau: Quay xong hình ảnh đẹp rồi mới đọc tiếng đè lên — xóa sạch 100% áp lực nhớ lời thoại.",
+        "Chèn hình ảnh che chỗ vấp: Quay vài cảnh thao tác tay hoặc sản phẩm để đắp vào che mọi chỗ nói vấp hay mắt đơ.",
+        "Thao tác CapCut cực dễ: Cắt gọt chỗ ngập ngừng, tự động tạo chữ chạy trên màn hình chuẩn font tiếng Việt."
+      ]
+    },
+    {
+      id: "04",
+      tag: "BƯỚC 04 · TRỢ LÝ AI",
+      title: "Đòn bẩy Trợ lý AI thực chiến",
+      hook: "Một mình tự làm kênh rảnh tay — Rút ngắn còn 45 phút/clip",
+      outcome: "Tự vận hành kênh đều đặn mỗi ngày mà không bị kiệt sức hay cạn ý tưởng.",
+      items: [
+        "Bộ 3 Trợ lý AI của thầy Việt: Gợi ý sẵn 30 ý tưởng mỗi tháng, lọc sạch văn mẫu sáo rỗng, nhả kịch bản 2 cột trong 3 phút.",
+        "Nhịp điệu cuốn hút: Cứ 2–3 giây đổi góc nhìn hoặc chèn ảnh minh họa để người xem không rời mắt.",
+        "Quy trình làm video 45 phút: Từ ý tưởng đến lúc xuất xưởng gói gọn trong 45 phút, không mất cả buổi tối mò mẫm."
+      ]
+    },
+    {
+      id: "05",
+      tag: "BƯỚC 05 · RA ĐƠN THẬT",
+      title: "Video bán hàng ra đơn tự nhiên",
+      hook: "Khách xem xong tự nhắn tin hỏi mua — Không cần chèo kéo, lùa gà",
+      outcome: "Biến video thành tài sản hút khách thật và mang về doanh thu đều đặn mỗi ngày.",
+      items: [
+        "Không cần triệu view xem chùa: Chỉ cần 500–1.000 người đúng tệp xem là đã có khách hỏi mua hàng.",
+        "Cách nhắc đến sản phẩm duyên dáng: Tạo cớ tự nhiên để khách thấy tò mò, cần giúp đỡ và chủ động tìm đến bạn.",
+        "Dẫn khách về Zalo chốt đơn: Khách xem xong tin tưởng, tự động nhắn tin hỏi mua mà bạn không phải đi nài ép."
+      ]
+    }
+  ],
+  modulesGuaranteeTitle: "ĐIỂM KHÁC BIỆT DUY NHẤT: BẠN KHÔNG PHẢI TỰ BƠI MỘT MÌNH",
+  modulesGuaranteePoints: [
+    "Không bán bài giảng quay sẵn rồi bỏ mặc: Mỗi bài học đều có bài tập thực tế. Bạn làm xong nộp lên lớp học trên Skool.",
+    "Tôi trực tiếp ngồi soi timeline chữa từng clip: Chỉ rõ câu nào thừa, góc nào tối, chỗ nào ngập ngừng cần cắt để bạn sửa ngay tại chỗ.",
+    "Học bài nào ra video bài đó: Không dạy lý thuyết suông. Hoàn thành 5 khóa học là bạn có sẵn cả dàn video hoàn chỉnh đăng lên kênh của mình."
+  ],
+  modulesBadges: [
+    "Thực hành trên chính sản phẩm của bạn",
+    "100% bằng điện thoại & CapCut",
+    "Thầy 15 năm FPT Arena chữa bài"
+  ],
+
+  // ── Attention (Bài toán kinh tế & 3 lựa chọn) ──
+  attentionLabel: "BÀI TOÁN KINH TẾ",
+  attentionHeading: "999.000đ là đắt hay rẻ? Hãy đặt 3 con đường này lên bàn cân:",
+  attentionPara: "Tiền bạc mất đi có thể kiếm lại được, nhưng 3–6 tháng mò mẫm trong bế tắc thì không ai bù đắp cho bạn:",
   attentionItems: [
     {
       icon: "❌",
@@ -249,7 +535,7 @@ export const DEFAULT_CONTENT: PageContent = {
 
   // ── Solution (Giải pháp toàn diện) ──
   solutionLabel: "GIẢI PHÁP TOÀN DIỆN",
-  solutionHeading: "Bạn không chỉ học kiến thức. Bạn sở hữu toàn bộ 'Hệ Sinh Thái Thực Chiến'.",
+  solutionHeading: "Bạn không chỉ học kiến thức. Bạn được chuyển giao toàn bộ 'Bộ Đồ Nghề Thực Chiến'.",
   solutionSub: "Mọi thứ đã được đóng gói thành bộ công cụ 'kéo thả ăn liền' giúp bạn cắt giảm 80% thời gian sản xuất:",
   solutionItems: [
     "❌ Edit 5 tiếng/clip ➞ ✅ Template CapCut 'One-Click': Thả video thô vào, hiệu ứng + text + âm thanh tự động khớp. Xuất file trong 15-30 phút.",
@@ -274,25 +560,23 @@ export const DEFAULT_CONTENT: PageContent = {
 
   // ── Before & After ──
   baLabel: "KẾT QUẢ SAU 30 NGÀY",
-  baHeading: "Sự khác biệt TRƯỚC và SAU khi có Bản Thiết Kế Chuẩn:",
-  baSub: "",
-  beforeLabel: "TRƯỚC (Thử Sai & Đốt Thời Gian)",
-  afterLabel: "SAU (Có Hệ Thống & Tối Đa Kết Quả)",
+  baHeading: "Sau 30 ngày, bạn không còn phải thức tới 3h sáng để đổi lấy vài chục view.",
+  baSub: "Không phải làm nhiều hơn để kiệt sức — Mà là làm đúng quy trình để mỗi video làm ra đều đàng hoàng và có người hỏi mua.",
+  beforeLabel: "TRƯỚC ĐÂY · THỬ SAI & ĐỐT SỨC",
+  afterLabel: "SAU 30 NGÀY · CÓ LỘ TRÌNH THỰC CHIẾN",
   beforeItems: [
-    "Edit 3-5 tiếng mỗi video, đăng lên lẹt đẹt vài chục view",
-    "Cạn ý tưởng, ngồi vò đầu bứt tai trước ống kính",
-    "Có lượt xem nhưng không ai hỏi mua hàng",
-    "Lạm dụng hiệu ứng lấp lánh làm video bị nghiệp dư",
-    "Đăng bài tùy hứng, kênh không có định vị rõ ràng",
-    "Lo sợ bị quét bản quyền âm thanh và nhạc nền"
+    "Mất 3–4 tiếng cặm cụi cắt ghép từng khung hình, xuất file xong là kiệt sức rồi bỏ bẵng kênh cả tuần.",
+    "Cứng họng, run tay, nói vấp liên tục. Càng cố học thuộc lòng thì mặt càng đơ, mắt đảo lia lịa đọc chữ.",
+    "Nói vấp 1 từ là bấm xóa quay lại từ đầu cả chục lần đến phát bực và nản lòng.",
+    "Đặt máy một góc như camera an ninh, đèn trần rọi phẳng lì làm mặt bóng dầu, video nhìn 'hàng chợ'.",
+    "Đăng bài cầu may, lẹt đẹt vài chục view rồi sốt ruột vì không một ai hỏi mua hay để lại tin nhắn."
   ],
   afterItems: [
-    "Template One-Click: Hoàn thiện video chỉn chu trong 30 phút",
-    "AI sinh kịch bản Hook-Story-Offer chuẩn chỉnh trong 10 giây",
-    "Lồng ghép Offer tinh tế, chuyển đổi người xem thành khách hàng",
-    "Nhịp J-Cut, L-Cut mượt mà, tỷ lệ giữ chân (Retention) > 70%",
-    "Lịch Notion 30 ngày: Luôn biết rõ hôm nay quay gì, đăng lúc nào",
-    "Kho 500+ nhạc & SFX MasterClass sạch bản quyền vĩnh viễn"
+    "Chỉ mất 45 phút/clip từ quay đến dựng nhờ có sẵn kịch bản 1 dòng và template CapCut kéo-thả.",
+    "Kịch bản 1 dòng ngắt nhịp theo hơi thở: Bật máy lên là nói tự nhiên như đang ngồi uống trà tâm sự.",
+    "Kho B-roll 2–3s đắp đè lên timeline: Che sạch 100% lỗi nói vấp và mắt đơ mà clip lại sinh động gấp đôi.",
+    "Setup 1 sải tay, ánh sáng nổi khối 3D: Khung hình sạch sẽ, toát lên sự đĩnh đạc và uy tín của người làm nghề.",
+    "Lời mở đầu đánh trúng nỗi đau thật: Video trở thành nhân viên tư vấn tự động kéo khách chủ động nhắn tin."
   ],
 
   // ── Lộ trình tinh gọn ──
@@ -309,77 +593,210 @@ export const DEFAULT_CONTENT: PageContent = {
   ],
 
   // ── Instructor ──
-  instructorLabel: "NGƯỜI DẪN ĐƯỜNG",
-  instructorHeading: "Tôi từng chuẩn bị bỏ cuộc...\nCho đến khi tìm ra 'Bản Thiết Kế' của sự Viral.",
+  instructorLabel: "NGƯỜI ĐỒNG HÀNH",
+  instructorHeading: "Tôi đi dạy 15 năm... nhưng video đầu tiên tự đăng cũng chỉ có đúng 40 view.",
   instructorInitials: "NĐV",
   instructorName: "Nguyễn Đức Việt",
   instructorTitle: "Kỹ sư Bách Khoa · 15 năm Giảng viên FPT Arena · Founder Fedu.vn",
+  instructorInsight: "Khán giả không cần bạn hoàn hảo như MC truyền hình. Họ ghét nhất sự giả trân. Họ chỉ cần bạn nói thật — và một khung hình sạch sẽ.",
+  instructorStory: [
+    {
+      tag: "01 · CÚ VẤP ĐẦU NĂM",
+      title: "15 năm dạy quay dựng, video đầu tiên nhận về đúng 40 view",
+      desc: "Dạy ở FPT Arena 15 năm, nhưng mãi đầu năm nay tôi mới tự lập kênh cá nhân. Đêm đầu thức tới 3h sáng căn từng nhịp cắt, sáng ra nhận đúng 40 lượt xem. Thấy ngượng chứ! Nhưng nhờ cú ngã đó, tôi mới hiểu thấu cảm giác run tay, nghẹn lời và sợ bị phán xét của một người mới bước lên mạng.",
+      highlight: "Thức tới 3h sáng, nhận đúng 40 view"
+    },
+    {
+      tag: "02 · ĐIỂM NGỘ NGHỀ NGHIỆP",
+      title: "Màn hình điện thoại phẳng lì ghét nhất sự giả trân",
+      desc: "Kỹ xảo màu mè không giữ chân được ai. Khán giả không cần MC truyền hình hay lý thuyết hàn lâm. Người xem chỉ dừng lại khi 3 giây đầu bạn chạm đúng rắc rối có thật của họ — và toát lên sự đàng hoàng qua một góc quay sáng rõ, âm thanh sạch tiếng.",
+      highlight: "Khán giả ghét nhất sự giả trân"
+    },
+    {
+      tag: "03 · LỜI HỨA CỦA ÔNG GIÁO",
+      title: "Không dạy đời trên bục giảng — Tôi kéo ghế ngồi lại cùng bạn",
+      desc: "Tôi đóng gói chính những gì mình vừa tự sửa cho bản thân thành lộ trình này. Tôi trực tiếp soi từng timeline trên CapCut, chỉ thẳng chỗ nào thừa hình, câu nào nói vấp để bạn tự tin xuất xưởng video có người hỏi mua hàng mà không phải mò mẫm đơn độc.",
+      highlight: "Kéo chiếc ghế ngồi lại sửa cùng bạn"
+    }
+  ],
   instructorBio: [
-    "Tôi không bắt đầu bằng việc khoe nút Bạc hay Follower. Sự thật là, tôi đã từng thức tới 3h sáng cặm cụi cắt ghép từng frame hình, chèn đủ loại nhạc... để rồi sáng hôm sau đăng lên nhận về đúng 50 lượt xem.",
-    "Tôi lùi lại và 'mổ xẻ' hàng ngàn video triệu view. Và tôi ngộ ra: Viral không phải may mắn. Nó là một bản thiết kế khoa học. Tôi đóng gói mọi thứ thành một LỘ TRÌNH RÕ RÀNG — giúp bạn không phải đi qua những bãi mìn mà tôi từng vấp phải.",
-    "Bạn không cần mất thêm nhiều tháng thử sai đơn độc. Hãy đi trên con đường đã được kiểm chứng."
+    "Dạy ở FPT Arena 15 năm, nhưng mãi đầu năm nay tôi mới tự lập kênh cá nhân. Đêm đầu thức tới 3h sáng căn từng nhịp cắt, sáng ra nhận đúng 40 view. Thấy ngượng chứ! Nhưng nhờ cú ngã đó, tôi mới hiểu thấu cảm giác run tay, nghẹn lời và sợ bị phán xét của một người mới.",
+    "Màn hình điện thoại ghét nhất sự giả trân. Người xem chỉ dừng lại khi bạn chạm đúng rắc rối thật của họ — qua một góc quay sáng rõ và lời thoại tự nhiên.",
+    "Tôi không đứng trên bục giảng dạy lý thuyết. Tôi kéo ghế ngồi lại cùng bạn, trực tiếp sửa từng timeline để bạn tự tin ra video có chuyển đổi."
   ],
 
-  // ── Bonus (Quà tặng từ video.fedu.vn) ──
-  bonusLabel: "BỘ CÔNG CỤ TẶNG KÈM",
-  bonusHeading: 'Sở hữu trọn bộ "vũ khí thực chiến" trị giá 3.750.000đ',
-  bonusSub: "Đi kèm miễn phí khi đăng ký Lộ trình 30 ngày hôm nay — Không bán lẻ",
+  // ── Bonus (Đồ nghề thực chiến đi kèm) ──
+  bonusLabel: "TỦ ĐỒ NGHỀ THỰC CHIẾN ĐI KÈM",
+  bonusHeading: "Mở máy lên là có sẵn đồ nghề để làm — Khỏi mất công đi nhặt nhạnh từng file rác trên mạng",
+  bonusSub: "Làm video nản nhất không phải là quay, mà là lúc dựng thiếu bản nhạc phải đi tìm, tải font về thì gãy dấu tiếng Việt, đăng lên kênh thì bị nền tảng tắt tiếng vì dính bản quyền. Toàn bộ đồ nghề này tôi đã gom sẵn 1 link Drive gọn gàng, bạn chỉ việc tải về và kéo vào CapCut dùng ngay:",
   bonusItems: [
     {
       id: "01",
-      title: "Kho 50+ Âm Thanh Điện Ảnh (SFX) Chuyên Dụng",
-      desc: 'Âm thanh có sẵn trong app thường đại trà và thiếu lực. Bộ SFX này mang đến các lớp âm thanh (layer) dày dặn, có lực và sạch 100% bản quyền.<br/><ul style="margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;"><li>🔥 <b>Âm thanh dày, sâu, đậm chất điện ảnh</b></li><li>🎧 <b>Sử dụng thoải mái trên mọi nền tảng (No Copyright)</b></li><li>✂️ <b>Chỉ cần đặt vào đúng điểm cắt, khung hình lập tức nâng tầm!</b></li></ul>'
+      badge: "ĐỒ NGHỀ 01 · ÂM THANH SẠCH",
+      title: "Kho 30 Nhạc Nền & 40 Âm Thanh SFX Sạch Bản Quyền 100%",
+      desc: "Người mới tự làm video thường tải nhạc trôi nổi trên mạng, dựng xong vừa đăng lên Facebook Reels hay TikTok thì bị tắt ngúm âm thanh hoặc ăn cảnh cáo bản quyền.<br/><br/>Toàn bộ nhạc nền mộc mạc, đĩnh đạc (Acoustic, Lo-Fi, Ambient) và tiếng động điện ảnh (bụp, lật giấy, ting nhẹ) này đã được tôi kiểm tra kỹ trên cả 3 nền tảng. Đảm bảo an toàn 100%, kéo vào là khớp nhịp nói.",
+      audioDemo: "/boardroom-siege.mp3",
+      youtubeDemo: "https://www.youtube.com/watch?v=eg6T8-SekjQ"
     },
     {
       id: "02",
-      title: 'Kho Nhạc Nền "MasterClass" Độc Bản',
-      desc: 'Kho nhạc độc quyền được tạo riêng, giúp video của bạn toát lên sự đĩnh đạc, sang trọng và hoàn toàn không đụng hàng trên TikTok/Reels/Shorts.<br/><ul style="margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;"><li>🎼 <b>Giai điệu ĐỘC BẢN:</b> Cảm xúc mãnh liệt, không bị trùng lặp.</li><li>✅ <b>Sạch bản quyền 100%:</b> Hoàn toàn yên tâm trên mọi nền tảng.</li><li>🔄 <b>Cập nhật thường xuyên:</b> Bổ sung các bản phối mới định kỳ.</li></ul>',
-      audioDemo: "/boardroom-siege.mp3"
+      badge: "ĐỒ NGHỀ 02 · TYPOGRAPHY",
+      title: "Bộ Template Chữ Chuyển Động & Preset Phụ Đề CapCut 2 Dòng",
+      desc: "Tải font ngoài vào CapCut rất hay bị lỗi dấu (chữ ô vuông, dấu ư ơ nhảy lung tung). Phụ đề tự động thì dài ngoằng che hết mặt, hoặc bị thanh công cụ Like/Share của TikTok che mất chữ.<br/><br/>Bộ Preset này đã căn sẵn 'vùng an toàn' (Safe Zone) chuẩn cho mọi dòng điện thoại. Font chữ tiếng Việt hiển thị tròn trịa, tự động ngắt câu 2 dòng vừa mắt, người xem lướt qua là đọc được ngay trong 1 giây.",
+      youtubeDemo: "https://www.youtube.com/watch?v=6Oiugt77imE",
+      gifDemo: "https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/landing/text-anim-bds.gif"
     },
     {
       id: "03",
-      title: "Bộ Template Text Motion Cao Cấp Cho CapCut",
-      desc: 'Bộ chữ chuyển động kéo - thả giúp tiêu đề và phụ đề nổi bật tức thì mà không cần kiến thức kỹ xảo phức tạp.<br/><ul style="margin: 12px 0; padding-left: 20px; color: #cbd5e1; line-height: 1.8;"><li>🎬 <b>Đa dạng phong cách:</b> Tối giản sang trọng, Hiện đại công nghệ, Bắt mắt sinh động.</li><li>🚀 <b>Kéo - Thả dùng ngay:</b> Tương thích mọi tỉ lệ khung hình (9:16, 16:9).</li><li>💡 <b>Tạo ấn tượng 3s đầu:</b> Giữ chân người xem hiệu quả hơn.</li></ul>'
+      badge: "ĐỒ NGHỀ 03 · ĐÒN BẨY AI",
+      title: "Bộ Câu Lệnh (Prompt) AI 'Bóc Sạch Văn Mẫu' & Nhả Kịch Bản 2 Cột",
+      desc: "Tự hỏi ChatGPT thì nhận về toàn văn mẫu sáo rỗng: <i>'Chào các bạn, hôm nay tôi xin chia sẻ 3 bí quyết tuyệt vời...'</i> Đọc lên ngượng mồm, khách lướt qua sau 2 giây.<br/><br/>Bộ Prompt này đã nạp sẵn tư duy 'người làm nghề nhiều năm đang tâm sự với khách'. Bạn chỉ cần gõ 1 dòng sản phẩm của mình, AI sẽ tự động nhả kịch bản 2 cột (Lời thoại đời thường ↔ Thao tác tay che mặt) trong đúng 3 phút.",
+      videoDemo: "/assets/formats/ai_miss_idea_loc_van_mau.mp4"
     },
     {
       id: "04",
-      title: "Bộ 20+ Prompt AI Viết Kịch Bản & Phân Phân Cảnh (Shot-list)",
-      desc: "Nhập chủ đề vào ChatGPT/Claude, AI sẽ tự động phân tách kịch bản thành bảng 2 cột kèm các cỡ cảnh (Toàn - Trung - Cận) chuẩn xác. Bạn chỉ việc vác máy lên quay."
-    },
-    {
-      id: "05",
-      title: "Cập Nhật Miễn Phí Quy Trình Edit Video Bằng AI Mới Nhất",
-      desc: "Liên tục cập nhật miễn phí các quy trình ứng dụng AI mới nhất — giúp tự động hóa tạo phụ đề, lọc tạp âm và rút ngắn tối đa thời gian sản xuất.",
-      gifDemo: "/edit-ai-promo.gif"
+      badge: "ĐỒ NGHỀ 04 · Ý TƯỞNG THỰC CHIẾN",
+      title: "Ngân Hàng 30 Cấu Trúc Hook 'Mở Lời Tự Nhiên' Theo Từng Ngành",
+      desc: "Rất nhiều người hào hứng làm được 3 ngày đầu, đến ngày thứ 4 thì ngồi nhìn trần nhà vì không biết hôm nay nói gì, cuối cùng nản và bỏ kênh.<br/><br/>30 cấu trúc mở đầu đã kiểm chứng cho 4 nhóm ngành (Bán lẻ, Dịch vụ/Spa, Tư vấn/Đào tạo, Nghề tự do). Ngày nào bí ý tưởng, bạn chỉ cần bốc 1 cấu trúc ra là có ngay video 60 giây đàng hoàng, không bao giờ phải ngồi vò đầu bứt tai.",
+      youtubeDemo: "https://youtube.com/shorts/ftuv04UxKJA"
     }
   ],
 
   // ── Section 11: Final CTA ──
-  urgencyBar: "⚠ HỌC PHÍ ƯU ĐÃI SẼ TỰ ĐỘNG ĐIỀU CHỈNH KHI ĐỦ SỐ LƯỢNG HỌC VIÊN",
-  ctaLabel: "// ĐĂNG KÝ THAM GIA",
-  ctaHeading: "Sẵn sàng biến điện thoại thành cỗ máy hút view & ra đơn?",
-  ctaSub: "Sự lựa chọn là của bạn: Tiếp tục thử sai mất thời gian với những video không ai xem, hay sở hữu bản thiết kế chuẩn mực để bứt phá ngay hôm nay!",
+  urgencyBar: "⚠ HỌC PHÍ ƯU ĐÃI CHỈ DÀNH CHO LỚP THỰC CHIẾN THÁNG NÀY (GIỚI HẠN SỐ LƯỢNG ĐỂ THẦY SOI TIMELINE)",
+  ctaLabel: "// BẮT ĐẦU HÀNH TRÌNH",
+  ctaHeading: "Tự làm chủ kỹ năng video ngắn — Không còn phụ thuộc vào ai",
+  ctaSub: "Một bữa lẩu bạn ăn rồi cũng hết. Nhưng 999.000đ đầu tư cho kỹ năng này sẽ giúp bạn tự tin làm video cả đời, có khách hàng thật và tự tay xây dựng tài sản cho chính mình.",
   countdownLabel: "⏳ Ưu đãi kết thúc sau:",
-  valueStackTitle: "TỔNG GIÁ TRỊ BẠN NHẬN ĐƯỢC:",
+  valueStackTitle: "TỔNG GIÁ TRỊ THỰC TẾ BẠN NHẬN ĐƯỢC:",
   valueStack: [
-    { label: "Lộ Trình 30 Ngày Làm Chủ Video Ngắn", price: "3.500.000 VNĐ" },
-    { label: "50+ Template CapCut One-Click", price: "1.500.000 VNĐ" },
-    { label: "20+ Prompt AI Viết Kịch Bản & Phân Cảnh", price: "1.000.000 VNĐ" },
-    { label: "Lịch Content Notion 30 Ngày", price: "500.000 VNĐ" },
-    { label: "Kho 500+ Nhạc & SFX MasterClass Bản Quyền", price: "1.000.000 VNĐ" }
+    { label: "Trọn bộ 5 Khóa học thực chiến (Kịch bản, Góc máy, CapCut, AI, Ra đơn)", price: "2.500.000 VNĐ" },
+    { label: "Đặc quyền nộp bài & Thầy Hoàng Anh Việt trực tiếp soi timeline trên Skool", price: "2.000.000 VNĐ" },
+    { label: "Tủ đồ nghề 4 món (Nhạc sạch, Preset CapCut, Prompt AI, 30 Hook)", price: "ĐI KÈM MIỄN PHÍ" }
   ],
-  guarantee: "⚡ Quy trình 1-Chạm: Thanh toán → Vào học NGAY LẬP TỨC trên Skool. Không form rườm rà, không chờ duyệt thủ công.",
+  guarantee: "⚡ Quy trình 1-Chạm: Chuyển khoản xong → Vào học NGAY LẬP TỨC trên Skool. Thầy kèm cặp thực hành trực tiếp.",
 
   // ── Footer ──
   footerBrand: "30NGÀY",
   footerDot: ".",
-  footerTagline: "\"Viral không phải may mắn.\nNó là khoa học — và bạn đang cầm bản thiết kế.\"",
+  footerTagline: "\"Làm video không phải may mắn.\nLàm đúng quy trình, tự khắc video sẽ đàng hoàng và có người mua.\"",
   footerLinks: [],
   footerCopyright: "COPYRIGHT 2026 | 30NGAYVIRAL.FEDU.VN — FEDU EDUCATION",
 
+  // ── Extracted Components Data (Single Source of Truth) ──
+  philosophyFoundations: [
+    {
+      icon: "🎬",
+      tag: "NỀN TẢNG 01: QUAY DỰNG CUỐN HÚT",
+      title: "Cắt Ghép Chỉn Chu",
+      desc: "Làm chủ tư duy phân cảnh và nhịp điệu cắt ghép mượt mà, loại bỏ hoàn toàn các khoảng chết gây nhàm chán."
+    },
+    {
+      icon: "💡",
+      tag: "NỀN TẢNG 02: BỐI CẢNH & ÁNH SÁNG",
+      title: "Góc Quay & Hướng Sáng Chuẩn",
+      desc: "Tận dụng ánh sáng tự nhiên và cách đặt máy thông minh giúp khung hình điện thoại luôn nét căng, có chiều sâu."
+    }
+  ],
+
+  attentionChoices: [
+    {
+      badge: "LỰA CHỌN 1",
+      title: "Tự Mày Mò Một Mình",
+      cost: "0 VNĐ TIỀN MẶT",
+      desc: "Xem video mẹo vặt rải rác trên mạng, tải đủ app về thử rồi ngồi vò đầu bứt tai trước ống kính. Đăng lên nhận đúng 40 view. Không ai chỉ cho câu nào nói thừa, góc nào bị tối. Sau 3 tháng dậm chân tại chỗ, vừa nản vừa bỏ hoang kênh.",
+      isBest: false,
+      tag: "⏳ Mất 3–6 tháng cạn sức"
+    },
+    {
+      badge: "LỰA CHỌN 2",
+      title: "Thuê Ngoài Hoặc Mua Máy Cơ",
+      cost: "15 – 30 Triệu / Tháng",
+      desc: "Thuê thợ quay dựng tốn kém mà họ chỉ biết bấm máy chứ không hiểu sản phẩm của bạn. Mua máy ảnh cơ chục triệu về lỉnh kỉnh, bối rối thông số không biết chỉnh lại vứt xó tủ đóng bụi.",
+      isBest: false,
+      tag: "⚠️ Tốn kém & Luôn bị động"
+    },
+    {
+      badge: "LỰA CHỌN 3 — KHUYÊN DÙNG",
+      title: "Làm Chủ Trên Điện Thoại Cùng Thầy Việt",
+      cost: "Chỉ 999.000 VNĐ (Bằng 1 bữa lẩu)",
+      desc: "Tự làm chủ trọn vẹn từ Kịch bản 1 dòng → Góc sáng 3D → Dựng CapCut → AI ngay trên chiếc điện thoại. Có Thầy Việt trực tiếp soi timeline gỡ lỗi 1-1. Bạn sở hữu kỹ năng làm video ra đơn cả đời.",
+      isBest: true,
+      tag: "🏆 Lựa chọn khôn ngoan nhất"
+    }
+  ],
+
+  solutionsTabs: [
+    {
+      title: "🤖 Chủ Shop / SMEs (Bán Ads)",
+      subtitle: "Thoát cảnh quảng cáo lôm côm không ra đơn",
+      pain: "Quay video bán hàng đặt máy chết một góc, review như đọc vẹt. Sản phẩm nhìn kém sang, 'hàng chợ', đổ tiền chạy quảng cáo là lỗ.",
+      solution: "Dạy Ma trận Cỡ Cảnh (Toàn - Trung - Cận) để điều hướng mắt khán giả. Dùng Cảnh Cận (Close-up - Nam châm chi tiết) để khoe giá trị tinh hoa của sản phẩm, kích thích sự khao khát. Dùng ánh sáng khối làm sản phẩm nhìn đắt tiền. Dùng B-roll làm bằng chứng chốt sale.",
+      leftLabel: "LÔM CÔM / HÀNG CHỢ",
+      leftDesc: "Đặt máy từ xa góc tĩnh, nói đều đều, đánh sáng phòng phẳng lì rọi thẳng mặt.",
+      rightLabel: "CHỈN CHU / ĐẤT TIỀN",
+      rightDesc: "Luân chuyển cỡ cảnh theo nhịp nói, cận cảnh đặc tả giọt nước/đường nét sắc nét, setup ánh sáng ven nổi khối.",
+      icon: "🏪"
+    },
+    {
+      title: "🧠 Chuyên gia / KOC (Nhân hiệu)",
+      subtitle: "Hệ thống sản xuất nhàn hạ, tự nhiên",
+      pain: "Tự nghĩ kịch bản, tự setup lỉnh kỉnh mỗi ngày dẫn đến kiệt sức rồi bỏ hoang kênh. Đứng trước ống kính là bị đơ cứng, gượng gạo.",
+      solution: "Setup định dạng Talking Head cố định bối cảnh 1 lần dùng mãi mãi. Dùng AI viết kịch bản 2 cột trong 1 phút. Áp dụng góc quay chéo 3/4 (giả lập cuộc hội thoại) kết hợp hành động vật lý (pha trà, lật sách) để cơ thể hát cùng ngôn từ tự nhiên, toát lên sự đĩnh đạc.",
+      leftLabel: "LÊN HÌNH ĐƠ CỨNG",
+      leftDesc: "Mắt nhìn chằm chằm trực diện vào camera gây áp lực lớn cho người xem, nói vấp phải quay lại nhiều lần.",
+      rightLabel: "ĐĨNH ĐẠC & TỰ NHIÊN",
+      rightDesc: "Góc quay chéo 3/4 thoải mái, cơ thể chuyển động theo hành động vật lý tự nhiên, đắp B-roll che lỗi vấp mượt mà.",
+      icon: "🧠"
+    },
+    {
+      title: "🎬 Editor / Tự học (Thẩm mỹ xịn)",
+      subtitle: "Có tư duy hình ảnh để x5 thu nhập",
+      pain: "Lầm tưởng video đẹp là lạm dụng nhiều hiệu ứng lật trang 3D, giật chớp. Kết quả làm video bị rối mắt, sến sẩm và mất định vị chuyên nghiệp.",
+      solution: "Đập tan ảo giác về phần mềm. Dạy kỹ thuật Cut on Action (chuyển cảnh vật lý tàng hình) và chuyển động cơ học tự nhiên (vung tay, lướt vật thể qua camera) giúp video mượt mà như một dòng chảy liên tục.",
+      leftLabel: "HIỆU ỨNG SẾN SẨM",
+      leftDesc: "Chèn hiệu ứng lật trang 3D lòe loẹt, chuyển cảnh giật cục phá vỡ sự thoải mái thị giác.",
+      rightLabel: "CHUYỂN CẢNH TÀNG HÌNH",
+      rightDesc: "Nối cảnh mượt mà bằng chuyển động vật lý cơ học, người xem không nhận ra vết cắt nhưng không thể rời mắt.",
+      icon: "🎬"
+    }
+  ],
+
+  instructorStats: [
+    { num: "15 năm", label: "Giảng dạy tại FPT Arena" },
+    { num: "1.000+", label: "Học viên & Creator đã đào tạo" },
+    { num: "1 kèm 1", label: "Trực tiếp soi timeline & sửa bài" },
+  ],
+
+  faqBadge: "HỎI ĐÁP THỰC TẾ",
+  faqHeading: "Những điều người mới hay băn khoăn trước khi bắt đầu:",
+  faqSub: "Giải đáp thẳng thắn, không né tránh để bạn hoàn toàn yên tâm trước khi vào lớp:",
+  faqItems: [
+    {
+      q: "Tôi không biết gì về công nghệ, dùng điện thoại còn lóng ngóng thì có làm được không?",
+      a: "Khóa học đi từ vỡ lòng, từng thao tác bấm trên điện thoại đều được quay lại rõ ràng. Bạn chỉ cần xem xong, bấm dừng video lại và làm theo đúng từng bước trên máy của mình. Chỗ nào chưa rõ, cứ nhắn lên lớp học Skool để được hướng dẫn trực tiếp."
+    },
+    {
+      q: "Tôi rất ngại lên hình, đứng trước camera là run và quên hết chữ thì phải làm sao?",
+      a: "Bạn không cần phải làm diễn viên hay nói lưu loát ngay từ đầu. Trong khóa học, tôi dạy bạn kỹ thuật bẻ kịch bản thành từng câu 1 dòng (5-7 từ), nói câu nào xong thì nghỉ câu đó, rồi dùng kỹ thuật đắp hình ảnh B-roll để che sạch 100% các đoạn nói vấp. Người xem sẽ thấy video cực kỳ mượt mà."
+    },
+    {
+      q: "Điện thoại đời cũ, không có máy ảnh xịn hay đèn studio thì video có bị mờ tối không?",
+      a: "Toàn bộ bài giảng trong khóa học này tôi đều thị phạm bằng chính chiếc điện thoại thông thường. Chỉ cần biết cách kê máy cách mặt 1 sải tay và tận dụng ánh sáng tự nhiên từ cửa sổ, khung hình của bạn đã sáng rõ và nổi khối 3D đĩnh đạc hơn rất nhiều người mua đèn đắt tiền."
+    },
+    {
+      q: "Mỗi ngày tôi bận đi làm / kinh doanh, chỉ rảnh 30-45 phút thì có theo kịp lớp không?",
+      a: "Mỗi bài học được thiết kế cô đọng trong 10–15 phút, vào thẳng vấn đề không lý thuyết dài dòng. Quy trình 45 phút/clip giúp bạn tận dụng đúng giờ nghỉ trưa hoặc buổi tối là có thể hoàn thành xong 1 video để nộp bài."
+    },
+    {
+      q: "Sau khi thanh toán xong thì tôi bắt đầu học như thế nào và ai hỗ trợ tôi?",
+      a: "Sau khi chuyển khoản, hệ thống tự động kích hoạt tài khoản để bạn vào lớp học ngay lập tức trên Skool. Bạn làm xong bài tập nào thì đăng trực tiếp lên đó. Tôi là người trực tiếp xem bài, soi từng đoạn timeline để chỉ cho bạn chỗ cần sửa cho đến khi video chuẩn mới thôi."
+    }
+  ],
+
   blocksMeta: {
-    order: ["hero", "pain", "attention", "rule", "cycle", "discovery", "solution", "skills", "midCta", "before-after", "roadmap", "instructor", "bonus", "cta", "footer"],
-    hidden: [],
+    order: ["hero", "pain", "pillars", "modules", "instructor", "before-after", "attention", "bonus", "faq", "cta"],
+    hidden: ["skills"],
     media: {},
     custom: {},
   },

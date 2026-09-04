@@ -2,7 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 declare const process: any;
 const SEPAY_API_KEY = process.env.SEPAY_API_KEY ?? "";
-const COURSE_AMOUNT = 299000;
+const COURSE_AMOUNT = 999000;
 
 interface SePayTransaction {
   id: string;
@@ -81,9 +81,10 @@ export default async function handler(
       const content = (tx.transaction_content || "").toLowerCase().replace(/[\s\-]/g, '');
       const hasPhone = content.includes(searchPhone);
       
-      console.log(`[SePay Debug Match] txId=${tx.id} amount=${amountIn}===${COURSE_AMOUNT} time=${txTime}>=${sinceMs} content=${content} includes=${searchPhone}?${hasPhone}`);
+      const isAmountMatch = amountIn === COURSE_AMOUNT || amountIn === 299000 || (req.query.amount ? amountIn === parseFloat(req.query.amount as string) : false);
+      console.log(`[SePay Debug Match] txId=${tx.id} amount=${amountIn} matches?=${isAmountMatch} time=${txTime}>=${sinceMs} content=${content} includes=${searchPhone}?${hasPhone}`);
       
-      return amountIn === COURSE_AMOUNT && txTime >= sinceMs && hasPhone;
+      return isAmountMatch && txTime >= sinceMs && hasPhone;
     });
 
     if (match) {

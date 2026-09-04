@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function ZaloChatWidget() {
+  return null; // Tắt popup chat góc dưới bên phải
   const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 

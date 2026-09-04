@@ -32,7 +32,7 @@ export function HeroSection() {
               fontFamily: t.fontMono, fontSize: 13, fontWeight: 600,
               color: "#1a73e8", letterSpacing: "0.06em", textTransform: "uppercase",
             }}>
-              TÍCH HỢP AI 2026 — DÀNH CHO CREATOR & CHỦ KINH DOANH
+              {c.heroBadge || "KHÓA HỌC THỰC CHIẾN TIKTOK, REELS, SHORTS CHO NGƯỜI MỚI"}
             </span>
           </div>
 
@@ -54,16 +54,16 @@ export function HeroSection() {
               fontFamily: t.fontAccent, fontStyle: "italic", fontWeight: 400,
               fontSize: "clamp(16px, 2.2vw, 22px)", color: "#1a73e8", display: "inline-block",
               background: "rgba(26, 115, 232, 0.07)", border: "1px solid rgba(26, 115, 232, 0.18)",
-              borderRadius: 12, padding: "6px 18px", marginTop: 4, maxWidth: "34ch", textWrap: "balance",
+              borderRadius: 12, padding: "6px 18px", marginTop: 4, maxWidth: "46ch", textWrap: "balance",
             }}>
-              Bản thiết kế từng bước biến điện thoại thành cỗ máy hút view & ra đơn
+              {c.heroHighlightPill || "Từ ý tưởng → Kịch bản → Góc quay → Edit → AI"}
             </span>
           </h1>
 
           {(c as any).heroPoem && (c as any).heroPoem.length > 0 && (
             <div style={{
-              margin: "8px auto 36px",
-              maxWidth: 480,
+              margin: "12px auto 36px",
+              maxWidth: 580,
               background: "rgba(255, 255, 255, 0.01)",
               border: `1px dashed ${t.accent}33`,
               borderRadius: 16,
@@ -74,8 +74,8 @@ export function HeroSection() {
             }}>
               <span style={{ position: "absolute", top: 4, left: 16, fontSize: 36, fontFamily: "Georgia, serif", color: `${t.accent}33`, lineHeight: 1, userSelect: "none" }}>“</span>
               <div style={{
-                fontFamily: t.fontDisplay, fontSize: "clamp(17px, 2.4vw, 21px)", fontStyle: "italic",
-                fontWeight: 600, color: "var(--cl-accent)", lineHeight: 1.6, textAlign: "center",
+                fontFamily: t.fontDisplay, fontSize: "clamp(16px, 2.2vw, 19px)", fontStyle: "italic",
+                fontWeight: 600, color: "var(--cl-accent)", lineHeight: 1.65, textAlign: "center",
                 display: "flex", flexDirection: "column", gap: 6, position: "relative", zIndex: 2,
               }}>
                 {(c as any).heroPoem.map((line: string, i: number) => (
@@ -111,8 +111,8 @@ export function HeroSection() {
 
           <div className="cl-hero__cta-wrap">
             <a
-              href="#roadmap"
-              onClick={(e) => { e.preventDefault(); document.getElementById("roadmap")?.scrollIntoView({ behavior: "smooth" }); }}
+              href="#core-pillars"
+              onClick={(e) => { e.preventDefault(); document.getElementById("core-pillars")?.scrollIntoView({ behavior: "smooth" }); }}
               className="cl-btn cl-btn--solid"
               style={{ fontSize: 16, padding: "16px 36px" }}
             >
@@ -125,78 +125,6 @@ export function HeroSection() {
         </div>
       </section>
       <MediaSection blockId="hero" />
-
-      {/* 1B: Triết lý */}
-      <section style={{ 
-        position: "relative", padding: "clamp(48px, 10vw, 100px) clamp(16px, 4vw, 24px)", maxWidth: 800, margin: "0 auto", 
-        textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
-      }}>
-        <div aria-hidden style={{
-          position: "absolute", inset: 0, pointerEvents: "none",
-          backgroundImage: `linear-gradient(${t.accent}04 1px, transparent 1px), linear-gradient(90deg, ${t.accent}04 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-          maskImage: "radial-gradient(ellipse 60% 50% at 50% 50%, black 40%, transparent 100%)",
-        }} />
-        <FadeIn>
-          <div className="cl-label">
-            <span style={{ opacity: 0.4 }}>// </span>Triết lý quay dựng
-          </div>
-          <h2 className="cl-sh" style={{ fontFamily: t.fontDisplay }}>
-            <ScrollTypewriter text={c.heroAccentLine} speed={7} />
-          </h2>
-          <p style={{
-            fontFamily: t.fontBody, fontSize: "clamp(16px, 1.8vw, 19px)", lineHeight: 1.9,
-            color: "var(--cl-text-body, #b0b0b0)", maxWidth: "62ch", margin: "0 auto", textWrap: "balance",
-          }}>
-            {c.heroSub}
-          </p>
-
-          <div style={{
-            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 24,
-            width: "100%", maxWidth: 820, margin: "48px auto 0", textAlign: "left",
-          }}>
-            {/* Foundation 1 */}
-            <div style={{
-              background: "var(--cl-card)", border: `1px solid var(--cl-line)`, borderLeft: `3px solid var(--cl-accent)`,
-              borderRadius: t.cardRadius, padding: "clamp(20px, 5vw, 32px) clamp(16px, 4vw, 28px)", display: "flex", flexDirection: "column", gap: 12,
-              transition: "transform 0.2s ease, border-color 0.2s ease",
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontSize: 20 }}>🎬</span>
-                <span style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--cl-accent)", fontWeight: 600 }}>
-                  NỀN TẢNG 01: QUAY DỰNG CUỐN HÚT
-                </span>
-              </div>
-              <h3 style={{ fontFamily: t.fontBody, fontSize: "clamp(19px, 5vw, 24px)", fontWeight: 700, color: "var(--cl-text-base)", margin: "4px 0 0", letterSpacing: "-0.015em" }}>
-                Cắt Ghép Chỉn Chu
-              </h3>
-              <p style={{ fontSize: "clamp(15px, 3.8vw, 17px)", lineHeight: 1.75, color: "var(--cl-text-body)", margin: 0 }}>
-                Làm chủ tư duy phân cảnh và nhịp điệu cắt ghép mượt mà, loại bỏ hoàn toàn các khoảng chết gây nhàm chán.
-              </p>
-            </div>
-
-            {/* Foundation 2 */}
-            <div style={{
-              background: "var(--cl-card)", border: `1px solid var(--cl-line)`, borderLeft: `3px solid var(--cl-accent)`,
-              borderRadius: t.cardRadius, padding: "clamp(20px, 5vw, 32px) clamp(16px, 4vw, 28px)", display: "flex", flexDirection: "column", gap: 12,
-              transition: "transform 0.2s ease, border-color 0.2s ease",
-            }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontSize: 20 }}>💡</span>
-                <span style={{ fontFamily: t.fontMono, fontSize: 12, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--cl-accent)", fontWeight: 600 }}>
-                  NỀN TẢNG 02: BỐI CẢNH & ÁNH SÁNG
-                </span>
-              </div>
-              <h3 style={{ fontFamily: t.fontBody, fontSize: "clamp(19px, 5vw, 24px)", fontWeight: 700, color: "var(--cl-text-base)", margin: "4px 0 0", letterSpacing: "-0.015em" }}>
-                Góc Quay & Hướng Sáng Chuẩn
-              </h3>
-              <p style={{ fontSize: "clamp(15px, 3.8vw, 17px)", lineHeight: 1.75, color: "var(--cl-text-body)", margin: 0 }}>
-                Tận dụng ánh sáng tự nhiên và cách đặt máy thông minh giúp khung hình điện thoại luôn nét căng, có chiều sâu.
-              </p>
-            </div>
-          </div>
-        </FadeIn>
-      </section>
     </>
   );
 }

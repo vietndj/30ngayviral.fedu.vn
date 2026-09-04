@@ -32,6 +32,7 @@ const TIME_LABELS = [
 ];
 
 export default function LiveSocialProof() {
+  return null; // Tắt popup để tập trung làm nội dung
   const [currentIdx, setCurrentIdx] = useState(0);
   const [timeLabel, setTimeLabel] = useState("vừa xong");
   const [visible, setVisible] = useState(false);

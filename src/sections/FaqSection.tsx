@@ -1,76 +1,53 @@
 import React, { useState } from "react";
 import { useTheme } from "../theme";
 import { useContent } from "../content";
+import { FadeIn, Label, SH, Sec } from "../components/ui";
 
 export function FaqSection() {
   const t = useTheme();
   const c = useContent();
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const faqs = [
-    {
-      q: "Tôi mù công nghệ, thao tác cực chậm thì có theo được không?",
-      a: "Đừng lo. Lộ trình đi từ 'vỡ lòng'. Mọi thao tác được quay màn hình chi tiết 'Click-by-click'. Hơn nữa, với 50+ Template CapCut có sẵn, bạn chỉ việc 'Kéo-Thả' video vào là tự động khớp hiệu ứng."
-    },
-    {
-      q: "Tôi ngại ống kính, nói vấp, diễn đơ thì phải làm sao?",
-      a: "Không cần nhảy múa hay làm trò lố. Khóa học có module hướng dẫn làm video dạng 'Faceless' (Không lộ mặt) kết hợp AI Voice và B-roll cực kỳ cuốn hút. Ngoài ra, kỹ thuật góc chéo 3/4 giúp bạn thoải mái như đang trò chuyện."
-    },
-    {
-      q: "Tôi bận đi làm cả ngày, sợ mua về vứt đó không học?",
-      a: "Lộ trình thiết kế dạng Micro-learning (10-15 phút/bài), đi thẳng vào thực hành. Kết hợp Prompt AI và Template có sẵn, thời gian làm 1 video giảm từ 3 tiếng xuống còn 45 phút."
-    },
-    {
-      q: "Tôi không giỏi văn, sợ bí ý tưởng, không biết viết kịch bản?",
-      a: "Đó là lý do bạn được tặng kèm 20+ Prompt AI. Chỉ cần gõ: 'Tôi bán mỹ phẩm', AI sẽ đóng vai biên kịch, nhả ra cấu trúc Hook-Story-Offer chuẩn xác từng giây."
-    },
-    {
-      q: "Sợ AI phát triển sẽ thay thế con người làm content?",
-      a: "AI sinh ra để thay thế 'thợ bấm nút'. Nội dung công nghiệp vô hồn sẽ bị đào thải. Khóa học này dạy bạn 'Đứng trên vai AI' — dùng AI làm trợ lý và dùng tư duy Storytelling của bạn để thâu tóm sự chú ý."
-    }
-  ];
+  const faqs = c.faqItems || [];
 
   return (
-    <section className="cl-section" style={{ background: t.bg }}>
-      <div className="cl-container">
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <div style={{ 
-            display: "inline-block", 
-            padding: "6px 12px", 
-            background: "rgba(255, 255, 255, 0.05)",
-            border: `1px solid ${t.line}`,
-            borderRadius: 20,
-            fontSize: 12,
-            fontWeight: 700,
-            color: t.accent,
-            marginBottom: 16,
-            letterSpacing: 1
+    <Sec maxWidth={860} id="faq">
+      <FadeIn>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <Label>{c.faqBadge || "5 CÂU HỎI THƯỜNG GẶP"}</Label>
+          <SH typed>{c.faqHeading || "Liệu chương trình này có phù hợp với bạn không?"}</SH>
+          <p style={{
+            fontFamily: t.fontBody,
+            fontSize: "clamp(16px, 1.8vw, 18px)",
+            color: "var(--cl-text-muted, #64748b)",
+            maxWidth: 680,
+            margin: "16px auto 0",
+            lineHeight: 1.75,
           }}>
-            5 CÂU HỎI THƯỜNG GẶP
-          </div>
-          <h2 className="cl-heading" style={{ fontFamily: t.fontDisplay, color: t.textBase }}>
-            "Liệu chương trình này có phù hợp với tôi không?"
-          </h2>
-          <p style={{ color: t.textMuted, marginTop: 12, fontSize: 16 }}>
-            Giải quyết 5 nỗi sợ lớn nhất đang ngăn cản bạn:
+            {c.faqSub || "Giải đáp thẳng thắn những băn khoăn thật mà người mới hay ngượng ngùng không dám hỏi:"}
           </p>
         </div>
+      </FadeIn>
 
-        <div style={{ maxWidth: 800, margin: "0 auto", display: "flex", flexDirection: "column", gap: 12 }}>
+      <FadeIn delay={100}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
-              <div 
+              <div
                 key={idx}
+                className="cl-glow-card"
                 style={{
-                  background: "var(--cl-card, #f8f9fa)",
-                  border: `1px solid ${isOpen ? t.accent : t.line}`,
-                  borderRadius: 16,
+                  background: "var(--cl-card, #ffffff)",
+                  border: isOpen ? `1.5px solid ${t.accent}` : "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
+                  borderRadius: "var(--cl-radius, 16px)",
                   overflow: "hidden",
-                  transition: "all 0.3s ease"
+                  transition: "all 0.25s ease",
+                  boxShadow: isOpen ? `0 8px 24px -6px ${t.accent}22` : "none",
                 }}
               >
                 <button
+                  type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   style={{
                     width: "100%",
@@ -78,48 +55,52 @@ export function FaqSection() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
+                    gap: 16,
                     background: "none",
                     border: "none",
-                    color: t.textBase,
-                    fontSize: 16,
+                    color: "var(--cl-text-head, #0f172a)",
+                    fontSize: "clamp(16px, 1.8vw, 17.5px)",
                     fontWeight: 600,
                     textAlign: "left",
                     cursor: "pointer",
-                    fontFamily: t.fontBody
+                    fontFamily: t.fontBody,
                   }}
+                  aria-expanded={isOpen}
                 >
-                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <span style={{ fontSize: 20 }}>🛡️</span>
-                    {faq.q}
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <span style={{ color: t.accent, fontSize: 18, marginTop: 1, flexShrink: 0 }}>✦</span>
+                    <span>{faq.q}</span>
                   </div>
-                  <span style={{ 
-                    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", 
-                    transition: "transform 0.3s ease",
+                  <span style={{
+                    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                    transition: "transform 0.25s ease",
                     color: t.accent,
-                    fontSize: 20,
-                    fontWeight: 300
+                    fontSize: 18,
+                    fontWeight: 400,
+                    flexShrink: 0,
                   }}>
                     ↓
                   </span>
                 </button>
-                
-                <div style={{ 
-                  maxHeight: isOpen ? 500 : 0, 
-                  opacity: isOpen ? 1 : 0,
-                  transition: "all 0.3s ease",
-                  padding: isOpen ? "0 24px 20px 24px" : "0 24px",
-                  color: "var(--cl-text-body, #374151)",
-                  lineHeight: 1.6,
-                  fontSize: 15,
-                  paddingLeft: 56
-                }}>
-                  {faq.a}
-                </div>
+
+                {isOpen && (
+                  <div style={{
+                    padding: "0 24px 22px 52px",
+                    color: "var(--cl-text-body, #475569)",
+                    lineHeight: 1.8,
+                    fontSize: "16px",
+                    fontFamily: t.fontBody,
+                    borderTop: "1px dashed var(--cl-line, rgba(0, 0, 0, 0.06))",
+                    paddingTop: 16,
+                  }}>
+                    {faq.a}
+                  </div>
+                )}
               </div>
             );
           })}
         </div>
-      </div>
-    </section>
+      </FadeIn>
+    </Sec>
   );
 }
