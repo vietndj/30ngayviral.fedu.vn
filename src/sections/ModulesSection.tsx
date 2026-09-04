@@ -72,7 +72,7 @@ export function ModulesSection() {
     const targetEl = cardRefs.current[idx];
     if (targetEl) {
       const isMobile = window.innerWidth <= 860;
-      const topOffset = isMobile ? 64 : 80;
+      const topOffset = isMobile ? 64 : 90;
       const elPosition = targetEl.getBoundingClientRect().top;
       const offsetPosition = elPosition + window.pageYOffset - topOffset;
       window.scrollTo({
@@ -86,17 +86,17 @@ export function ModulesSection() {
     <Sec maxWidth={1020} id="modules">
       {/* ── Section Header ── */}
       <FadeIn>
-        <div style={{ textAlign: "center", marginBottom: 54 }}>
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
           <Label>{c.modulesLabel || "5 KHÓA HỌC THỰC CHIẾN TỪ A ĐẾN Z"}</Label>
           <SH typed>{c.modulesHeading || "Đủ 5 mắt xích khép kín để tự làm trọn vẹn video bán hàng ngay trên chiếc điện thoại:"}</SH>
           {c.modulesSub && (
             <p style={{
               fontFamily: t.fontBody,
-              fontSize: "clamp(16px, 1.8vw, 18px)",
-              lineHeight: 1.75,
+              fontSize: "clamp(15px, 1.7vw, 17px)",
+              lineHeight: 1.7,
               color: "var(--cl-text-muted, #64748b)",
               maxWidth: 760,
-              margin: "16px auto 0",
+              margin: "12px auto 0",
             }}>
               {c.modulesSub}
             </p>
@@ -109,11 +109,22 @@ export function ModulesSection() {
         {/* Cột Trái: Sticky Sidebar Navigation */}
         <aside className="cl-attio-sticky-sidebar">
           <div className="cl-attio-sidebar-header">
+            <div style={{
+              fontFamily: t.fontMono,
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.14em",
+              color: "var(--cl-accent)",
+              textTransform: "uppercase",
+              marginBottom: 4,
+            }}>
+              5 KHÂU THỰC CHIẾN
+            </div>
             <h3 className="cl-attio-sidebar-title">
-              5 Khâu Sản Xuất Thực Chiến
+              Quy Trình Khép Kín
             </h3>
             <p className="cl-attio-sidebar-desc">
-              Thiếu 1 khâu là video hỏng ngay. Bấm từng bước để xem chi tiết bên trong:
+              Cuộn chuột hoặc bấm từng bước:
             </p>
           </div>
 
@@ -134,7 +145,6 @@ export function ModulesSection() {
                     <span className="cl-attio-nav-time">{meta.time}</span>
                   </div>
                   <div className="cl-attio-nav-title">{meta.title}</div>
-                  <div className="cl-attio-nav-sub">{meta.desc}</div>
                 </button>
               );
             })}
@@ -229,7 +239,7 @@ export function ModulesSection() {
                               </div>
                             </div>
                           </div>
-                          <AppYTEmbed url="https://youtube.com/shorts/ftuv04UxKJA" caption="Kịch bản 1 dòng: Thầy Việt thị phạm nói tự nhiên trước ống kính" />
+                          <AppYTEmbed maxWidth={320} url="https://youtube.com/shorts/ftuv04UxKJA" caption="Kịch bản 1 dòng: Thầy Việt thị phạm nói tự nhiên trước ống kính" />
                         </div>
                       )}
 
@@ -248,7 +258,7 @@ export function ModulesSection() {
                           }}>
                             <span style={{ color: "#fbbf24", fontWeight: 600 }}>💡 Nguyên tắc 1 sải tay:</span> Kê điện thoại ngang sống mũi, cách mặt 1 sải tay (60-70cm), ngồi chéo 45° đón nắng cửa sổ. Mặt tự động nổi khối 3D, không cần tốn tiền mua đèn tản sáng.
                           </div>
-                          <AppYTEmbed url="https://youtu.be/Pem27DMrkVE" caption="Thầy Việt thị phạm setup góc máy bàn làm việc gọn gàng bằng điện thoại" />
+                          <AppYTEmbed maxWidth={540} url="https://youtu.be/Pem27DMrkVE" caption="Thầy Việt thị phạm setup góc máy bàn làm việc gọn gàng bằng điện thoại" />
                         </div>
                       )}
 
@@ -338,7 +348,7 @@ export function ModulesSection() {
                           }}>
                             <span style={{ color: "#38bdf8", fontWeight: 600 }}>💬 Walk & Talk tự nhiên:</span> Vừa đi bộ vừa chia sẻ trải nghiệm thật của mình. Không cần gồng mình diễn, không cần hô hào giảm giá — khách tự nhắn tin xin tư vấn.
                           </div>
-                          <AppYTEmbed url="https://www.youtube.com/watch?v=GqLHBWSiWDI" caption="Case study học viên: Quay Walk & Talk mộc mạc mang về hơn 100 tin nhắn khách hàng thật" />
+                          <AppYTEmbed maxWidth={540} url="https://www.youtube.com/watch?v=GqLHBWSiWDI" caption="Case study học viên: Quay Walk & Talk mộc mạc mang về hơn 100 tin nhắn khách hàng thật" />
                         </div>
                       )}
                     </div>
