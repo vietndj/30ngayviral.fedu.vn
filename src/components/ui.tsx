@@ -187,9 +187,9 @@ export function Scarcity() {
 }
 
 export function Sec({ children, style = {}, maxWidth = 820, id }: { children: React.ReactNode; style?: React.CSSProperties; maxWidth?: number; id?: string }) {
-  const cls = maxWidth >= 940 ? "cl-sec cl-sec--wide" : maxWidth <= 760 ? "cl-sec cl-sec--narrow" : "cl-sec";
+  const cls = maxWidth >= 1020 ? "cl-sec cl-sec--full" : maxWidth >= 940 ? "cl-sec cl-sec--wide" : maxWidth <= 760 ? "cl-sec cl-sec--narrow" : "cl-sec";
   return (
-    <section id={id} className={cls} style={maxWidth !== 820 && maxWidth !== 940 && maxWidth !== 760 ? { maxWidth, ...style } : style}>
+    <section id={id} className={cls} style={maxWidth !== 820 && maxWidth !== 940 && maxWidth !== 760 && maxWidth !== 1020 ? { maxWidth, ...style } : style}>
       {children}
     </section>
   );
@@ -250,7 +250,7 @@ export function ThemeSyncer() {
   return null;
 }
 
-export function AppYTEmbed({ url, caption }: { url: string; caption?: string }) {
+export function AppYTEmbed({ url, caption, maxWidth, style }: { url: string; caption?: string; maxWidth?: number | string; style?: React.CSSProperties }) {
   const ytId = url.match(
     /(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|v\/|shorts\/|live\/))([a-zA-Z0-9_-]{11})/
   )?.[1];
@@ -258,8 +258,8 @@ export function AppYTEmbed({ url, caption }: { url: string; caption?: string }) 
   
   if (!ytId) return null;
   return (
-    <>
-      <div style={{ position: "relative", width: "100%", paddingBottom: isShorts ? "177.78%" : "56.25%", height: 0, background: "#000" }}>
+    <div style={{ maxWidth: maxWidth || "100%", margin: maxWidth ? "0 auto" : undefined, ...style }}>
+      <div style={{ position: "relative", width: "100%", paddingBottom: isShorts ? "177.78%" : "56.25%", height: 0, background: "#000", borderRadius: 10, overflow: "hidden" }}>
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
           title="YouTube video"
@@ -269,8 +269,8 @@ export function AppYTEmbed({ url, caption }: { url: string; caption?: string }) 
           style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
         />
       </div>
-      {caption && <p style={{ fontSize: 13, color: "var(--cl-text-muted)", textAlign: "center", padding: "10px 20px", fontStyle: "italic", fontFamily: MONO }}>{caption}</p>}
-    </>
+      {caption && <p style={{ fontSize: 13, color: "var(--cl-text-muted)", textAlign: "center", padding: "10px 16px 4px", fontStyle: "italic", fontFamily: MONO }}>{caption}</p>}
+    </div>
   );
 }
 

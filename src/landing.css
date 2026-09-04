@@ -60,12 +60,15 @@
 
 .fade-in-section.is-visible {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
+  transform: none;
+  will-change: auto;
 }
 
-/* When a section has staggered child cards: neutralize parent transform to avoid nested transform clash */
-.fade-in-section:has(.apple-card-stagger) {
+/* When a section has staggered child cards or sticky scroll layout: neutralize parent transform to avoid breaking sticky/nested transforms */
+.fade-in-section:has(.apple-card-stagger),
+.fade-in-section:has(.cl-attio-scroll-layout) {
   transform: none !important;
+  will-change: auto !important;
   transition: opacity 0.4s var(--apple-ease);
 }
 
@@ -1108,12 +1111,21 @@
 
 /* Left Sticky Sidebar */
 .cl-attio-sticky-sidebar {
+  position: -webkit-sticky;
   position: sticky;
-  top: 90px;
+  top: 80px;
   align-self: start;
   display: flex;
   flex-direction: column;
   gap: 18px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  z-index: 10;
+}
+
+.cl-attio-sticky-sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .cl-attio-sidebar-header {
@@ -1255,7 +1267,7 @@
   flex-direction: column;
   gap: 20px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  scroll-margin-top: 100px;
+  scroll-margin-top: 80px;
 }
 
 .cl-attio-stage-card.is-active {
@@ -1406,12 +1418,15 @@
     gap: 24px;
   }
   .cl-attio-sticky-sidebar {
+    position: -webkit-sticky;
     position: sticky;
-    top: 60px;
-    z-index: 20;
+    top: 0;
+    z-index: 50;
     background: var(--cl-bg, #ffffff);
     padding: 10px 0;
     border-bottom: 1px solid var(--cl-line);
+    max-height: none;
+    overflow-y: visible;
   }
   .cl-attio-sidebar-header {
     display: none;

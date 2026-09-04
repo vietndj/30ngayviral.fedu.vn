@@ -20,7 +20,7 @@ body {
   background: #0b0b0d;
   color: #f0f0f0;
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   min-height: 100dvh;
 }
 

@@ -60,6 +60,8 @@ export interface GoalItem {
   title: string;
   desc: string;
   image?: string;
+  video?: string;
+  videoCaption?: string;
   highlight?: string;
   bullets?: string[];
 }
@@ -314,32 +316,33 @@ export const DEFAULT_CONTENT: PageContent = {
   // ── Core Goals & 3 Pillars (2 Mục tiêu sống còn & 3 Đòn bẩy thực chiến) ──
   coreGoalsLabel: "KHÔNG CẦN LÀ CHUYÊN GIA",
   coreGoalsHeading: "Bạn không cần khiếu ăn nói hay máy ảnh đắt tiền để có một video chuyên nghiệp.",
-  coreGoalsSub: "Rào cản lớn nhất khi làm video không phải là thiết bị, mà là cảm giác sợ bị 'gượng'. Ngoài đời ngồi tư vấn cho khách thì nói rất chắc tay, nhưng cứ đứng trước ống kính là tự nhiên thấy mình phải gồng lên, nói năng không còn là chính mình.\n\nBạn không cần biến thành một ai khác, và càng không cần đánh đổi uy tín bao năm để đổi lấy vài cái view nhảm. Người mua hàng chỉ cần nhìn thấy một người làm nghề đàng hoàng, nói đúng việc, trong một khung hình gọn gàng và sáng sủa. Khóa học này chỉ tập trung vào 2 kết quả thực tế:",
+  coreGoalsSub: "Rào cản lớn nhất khi làm video không phải là thiết bị, mà là cảm giác sợ bị 'gượng': Ngoài đời tư vấn chắc tay bao nhiêu, đứng trước máy lại gồng mình bấy nhiêu.\n\nBạn không cần đổi vai diễn và càng không cần đánh đổi uy tín lấy vài cái view nhảm. Người mua hàng chỉ cần thấy một người làm nghề đàng hoàng, nói đúng việc trong khung hình sáng sủa. Lộ trình này chỉ tập trung vào 2 kết quả thực tế:",
   coreGoalsLeftTitle: "2 KẾT QUẢ ĐẦU RA THỰC TẾ",
   coreGoalsRightTitle: "3 Đòn bẩy đơn giản giúp bạn đạt kết quả:",
   coreGoals: [
     {
       id: "01",
-      tag: "MỤC TIÊU 01 · XÓA SẠCH TỰ TI",
-      title: "1. Tự tay làm được video đầu tay — Tự tin bấm máy",
-      desc: "Không cần nhớ kịch bản dài dòng, không sợ nói vấp, không sợ bị người quen cười chê. Xuất xưởng ngay sản phẩm đầu tay không còn thấy ngượng.",
-      image: "/pillars/goal_traffic.png",
-      highlight: "Không cần lộ mặt · Tự tin bấm máy",
+      tag: "MỤC TIÊU 01",
+      highlight: "XÓA SẠCH TỰ TI · KHÔNG CẦN LỘ MẶT",
+      title: "Tự tay làm được video đầu tay, tự tin bấm máy",
+      desc: "Không cần nhớ kịch bản dài dòng, không sợ nói vấp, không sợ người quen chê cười. Xuất xưởng ngay sản phẩm đầu tay không còn thấy ngượng ngùng.",
+      video: "https://youtube.com/shorts/lG4Q518RIdw",
+      videoCaption: "Thầy Việt thị phạm: Tự tin bấm máy & quay B-roll mộc mạc",
       bullets: [
         "Làm chủ cách quay 'không cần lộ mặt' hoặc nói chuyện tự nhiên như đang thở",
-        "Xóa bỏ hoàn toàn nỗi sợ bị người quen hay đối tác xì xào phán xét"
+        "Xóa bỏ hoàn toàn nỗi sợ bị người quen hay đối tác xì xào phán xét",
       ]
     },
     {
       id: "02",
-      tag: "MỤC TIÊU 02 · KẾT QUẢ THẬT",
-      title: "2. Kênh có khách hàng thật — Ra đơn trên Zalo & Inbox",
-      desc: "Đừng ham triệu view giải trí của những kẻ xem chùa. Khách thấy bạn chân thành và có chuyên môn, họ sẽ chủ động liên hệ mua hàng.",
+      tag: "MỤC TIÊU 02",
+      highlight: "KẾT QUẢ THẬT · RA ĐƠN TỰ NHIÊN",
+      title: "Kênh có khách hàng thật, ra đơn trên Zalo & Inbox",
+      desc: "Đừng ham triệu view giải trí của những kẻ xem chùa. Khách thấy bạn chân thành và có chuyên môn thật, họ sẽ chủ động liên hệ mua hàng.",
       image: "/pillars/goal_conversion.png",
-      highlight: "Khách đúng tệp · Ra đơn tự nhiên",
       bullets: [
         "Chỉ cần 500 – 1.000 view đúng tệp người mua hàng có nhu cầu thực tế",
-        "Khách chủ động nhắn tin hỏi mua, không phải nài ép hay chèo kéo"
+        "Khách chủ động nhắn tin hỏi mua, không phải nài ép hay chèo kéo",
       ]
     }
   ],

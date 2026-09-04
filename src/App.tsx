@@ -144,7 +144,7 @@ export default function App() {
   const sectionOrder = (c.blocksMeta?.order?.length) ? c.blocksMeta.order : DEFAULT_SECTION_ORDER;
 
   return (
-    <div style={{ position: "relative", background: t.bg, color: t.textBase ?? "#f0f0f0", fontFamily: t.fontBody, minHeight: "100vh", overflowX: "hidden" }}>
+    <div style={{ position: "relative", background: t.bg, color: t.textBase ?? "#f0f0f0", fontFamily: t.fontBody, minHeight: "100vh", overflowX: "clip" }}>
       <ThemeSyncer />
       <ParticleCanvas />
 

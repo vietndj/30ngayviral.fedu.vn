@@ -8,6 +8,9 @@ export function ModulesSection() {
   const t = useTheme();
   const [activeStage, setActiveStage] = useState(0);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const navBtnRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const isNavClickRef = useRef(false);
+  const navClickTimeoutRef = useRef<number | null>(null);
 
   const modulesList = c.modules || [];
 
@@ -19,36 +22,63 @@ export function ModulesSection() {
     { n: "BƯỚC 05", time: "RA ĐƠN THẬT", title: "Mở lời bán hàng", desc: "Khách tự nhắn tin mua" },
   ];
 
+  // Silky smooth scrollspy tracking without scroll jitter
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-stage-index"));
-            if (!isNaN(index)) {
-              setActiveStage(index);
+    let ticking = false;
+    const handleScroll = () => {
+      if (isNavClickRef.current) return;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const triggerPoint = window.innerHeight * 0.35;
+          let currentIdx = 0;
+          cardRefs.current.forEach((el, idx) => {
+            if (!el) return;
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= triggerPoint) {
+              currentIdx = idx;
             }
-          }
+          });
+          setActiveStage(currentIdx);
+          ticking = false;
         });
-      },
-      {
-        rootMargin: "-20% 0px -45% 0px",
-        threshold: 0.15,
+        ticking = true;
       }
-    );
+    };
 
-    cardRefs.current.forEach((el) => {
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (navClickTimeoutRef.current) clearTimeout(navClickTimeoutRef.current);
+    };
   }, [modulesList]);
+
+  // Keep active button visible horizontally on mobile
+  useEffect(() => {
+    const btn = navBtnRefs.current[activeStage];
+    if (btn && typeof window !== "undefined" && window.innerWidth <= 860) {
+      btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    }
+  }, [activeStage]);
 
   const handleNavClick = (idx: number) => {
     setActiveStage(idx);
+    isNavClickRef.current = true;
+    if (navClickTimeoutRef.current) clearTimeout(navClickTimeoutRef.current);
+    navClickTimeoutRef.current = window.setTimeout(() => {
+      isNavClickRef.current = false;
+    }, 800);
+
     const targetEl = cardRefs.current[idx];
     if (targetEl) {
-      targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      const isMobile = window.innerWidth <= 860;
+      const topOffset = isMobile ? 64 : 80;
+      const elPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elPosition + window.pageYOffset - topOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -75,41 +105,41 @@ export function ModulesSection() {
       </FadeIn>
 
       {/* ── Attio Sticky Scroll Layout ── */}
-      <FadeIn delay={100}>
-        <div className="cl-attio-scroll-layout">
-          {/* Cột Trái: Sticky Sidebar Navigation */}
-          <aside className="cl-attio-sticky-sidebar">
-            <div className="cl-attio-sidebar-header">
-              <h3 className="cl-attio-sidebar-title">
-                5 Khâu Sản Xuất Thực Chiến
-              </h3>
-              <p className="cl-attio-sidebar-desc">
-                Thiếu 1 khâu là video hỏng ngay. Bấm từng bước để xem chi tiết bên trong:
-              </p>
-            </div>
+      <div className="cl-attio-scroll-layout">
+        {/* Cột Trái: Sticky Sidebar Navigation */}
+        <aside className="cl-attio-sticky-sidebar">
+          <div className="cl-attio-sidebar-header">
+            <h3 className="cl-attio-sidebar-title">
+              5 Khâu Sản Xuất Thực Chiến
+            </h3>
+            <p className="cl-attio-sidebar-desc">
+              Thiếu 1 khâu là video hỏng ngay. Bấm từng bước để xem chi tiết bên trong:
+            </p>
+          </div>
 
-            <nav className="cl-attio-sidebar-nav" aria-label="5 Khóa học">
-              {modulesList.map((m, idx) => {
-                const isActive = activeStage === idx;
-                const meta = navMeta[idx] || { n: `BƯỚC 0${idx + 1}`, time: "", title: m.title, desc: "" };
-                return (
-                  <button
-                    key={m.id || idx}
-                    type="button"
-                    onClick={() => handleNavClick(idx)}
-                    className={`cl-attio-nav-btn ${isActive ? "is-active" : ""}`}
-                  >
-                    <div className="cl-attio-nav-meta">
-                      <span className="cl-attio-nav-tag">{meta.n}</span>
-                      <span className="cl-attio-nav-time">{meta.time}</span>
-                    </div>
-                    <div className="cl-attio-nav-title">{meta.title}</div>
-                    <div className="cl-attio-nav-sub">{meta.desc}</div>
-                  </button>
-                );
-              })}
-            </nav>
-          </aside>
+          <nav className="cl-attio-sidebar-nav" aria-label="5 Khóa học">
+            {modulesList.map((m, idx) => {
+              const isActive = activeStage === idx;
+              const meta = navMeta[idx] || { n: `BƯỚC 0${idx + 1}`, time: "", title: m.title, desc: "" };
+              return (
+                <button
+                  key={m.id || idx}
+                  ref={(el) => { navBtnRefs.current[idx] = el; }}
+                  type="button"
+                  onClick={() => handleNavClick(idx)}
+                  className={`cl-attio-nav-btn ${isActive ? "is-active" : ""}`}
+                >
+                  <div className="cl-attio-nav-meta">
+                    <span className="cl-attio-nav-tag">{meta.n}</span>
+                    <span className="cl-attio-nav-time">{meta.time}</span>
+                  </div>
+                  <div className="cl-attio-nav-title">{meta.title}</div>
+                  <div className="cl-attio-nav-sub">{meta.desc}</div>
+                </button>
+              );
+            })}
+          </nav>
+        </aside>
 
           {/* Cột Phải: Content Stream (5 Khối Lớn Thoáng Đạt) */}
           <main className="cl-attio-content-stream">
@@ -327,7 +357,6 @@ export function ModulesSection() {
             })}
           </main>
         </div>
-      </FadeIn>
 
       {/* ── Cam Kết Thầy Kèm Cặp (Guarantee Box) ── */}
       {c.modulesGuaranteeTitle && (

@@ -1,7 +1,7 @@
 import React from "react";
 import { useContent } from "../content";
 import { useTheme } from "../theme";
-import { FadeIn, Label, SH, Sec } from "../components/ui";
+import { FadeIn, Label, SH, Sec, AppYTEmbed } from "../components/ui";
 
 export function CorePillarsSection() {
   const c = useContent();
@@ -16,21 +16,24 @@ export function CorePillarsSection() {
           <SH typed>{c.coreGoalsHeading || "Bạn không cần khiếu ăn nói hay máy ảnh đắt tiền để có một video chuyên nghiệp."}</SH>
           {c.coreGoalsSub && (
             <div style={{
-              fontFamily: t.fontBody,
-              fontSize: "clamp(16px, 1.8vw, 18px)",
-              lineHeight: 1.8,
-              color: "var(--cl-text-body, #4b5563)",
-              maxWidth: 780,
+              maxWidth: 720,
               margin: "20px auto 0",
               textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              gap: 14,
             }}>
               {c.coreGoalsSub.split("\n\n").map((para, pIdx) => (
                 <p
                   key={pIdx}
                   style={{
-                    margin: pIdx === 0 ? "0 0 12px 0" : 0,
-                    color: pIdx === 1 ? "var(--cl-text-base, #111827)" : "inherit",
+                    margin: 0,
+                    fontFamily: t.fontBody,
+                    fontSize: "clamp(16px, 1.8vw, 18px)",
+                    lineHeight: 1.8,
+                    color: pIdx === 0 ? "var(--cl-text-muted, #64748b)" : "var(--cl-text-body, #374151)",
                     fontWeight: pIdx === 1 ? 500 : 400,
+                    textWrap: "balance",
                   }}
                 >
                   {para}
@@ -78,13 +81,13 @@ export function CorePillarsSection() {
               }} />
 
               <div>
-                {/* Tag & Highlight */}
+                {/* Tag & Highlight Badge */}
                 <div style={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  marginBottom: 14,
-                  gap: 8,
+                  gap: 10,
+                  marginBottom: 16,
                   flexWrap: "wrap",
                 }}>
                   <span style={{
@@ -96,17 +99,19 @@ export function CorePillarsSection() {
                     color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
                     background: idx === 0 ? "rgba(26, 115, 232, 0.08)" : "rgba(22, 163, 74, 0.08)",
                     border: `1px solid ${idx === 0 ? "rgba(26, 115, 232, 0.25)" : "rgba(22, 163, 74, 0.25)"}`,
-                    borderRadius: 100,
-                    padding: "4px 12px",
+                    borderRadius: 6,
+                    padding: "4px 10px",
                   }}>
                     {g.tag}
                   </span>
                   {g.highlight && (
                     <span style={{
                       fontFamily: t.fontMono,
-                      fontSize: 11.5,
-                      color: "#16a34a",
+                      fontSize: 11,
                       fontWeight: 600,
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
                       display: "inline-flex",
                       alignItems: "center",
                       gap: 4,
@@ -118,12 +123,14 @@ export function CorePillarsSection() {
 
                 {/* Title */}
                 <h3 style={{
-                  fontFamily: t.fontBody,
-                  fontSize: "clamp(19px, 2.2vw, 22px)",
-                  fontWeight: 700,
+                  fontFamily: t.fontDisplay,
+                  fontSize: "clamp(22px, 2.5vw, 26px)",
+                  fontWeight: 500,
+                  letterSpacing: "-0.018em",
+                  lineHeight: 1.25,
                   color: "var(--cl-text-base, #111827)",
-                  margin: "0 0 12px",
-                  lineHeight: 1.35,
+                  margin: "0 0 14px 0",
+                  textWrap: "balance",
                 }}>
                   {g.title}
                 </h3>
@@ -131,10 +138,10 @@ export function CorePillarsSection() {
                 {/* Description */}
                 <p style={{
                   fontFamily: t.fontBody,
-                  fontSize: 15,
-                  lineHeight: 1.7,
-                  color: "var(--cl-text-body, #4b5563)",
-                  margin: "0 0 18px",
+                  fontSize: "clamp(15.5px, 1.7vw, 17px)",
+                  lineHeight: 1.75,
+                  color: "var(--cl-text-body, #374151)",
+                  margin: "0 0 20px 0",
                 }}>
                   {g.desc}
                 </p>
@@ -144,28 +151,36 @@ export function CorePillarsSection() {
                   <div style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: 10,
-                    paddingTop: 16,
+                    gap: 12,
+                    padding: "18px 0 10px",
                     borderTop: "1px dashed var(--cl-line, rgba(0,0,0,0.08))",
                   }}>
                     {g.bullets.map((b, bIdx) => (
                       <div key={bIdx} style={{
                         display: "flex",
                         alignItems: "flex-start",
-                        gap: 10,
-                        fontSize: 14,
-                        lineHeight: 1.55,
-                        color: "var(--cl-text-base, #111827)",
-                        fontWeight: 500,
+                        gap: 12,
+                        fontSize: 15,
+                        lineHeight: 1.65,
+                        color: "var(--cl-text-base, #1f2937)",
                       }}>
                         <span style={{
+                          width: 20,
+                          height: 20,
+                          borderRadius: "50%",
+                          background: "rgba(22, 163, 74, 0.12)",
                           color: "#16a34a",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: 12,
                           fontWeight: 700,
-                          fontSize: 15,
-                          lineHeight: "18px",
                           flexShrink: 0,
-                        }}>✓</span>
-                        <span>{b}</span>
+                          marginTop: 2,
+                        }}>
+                          ✓
+                        </span>
+                        <span style={{ fontWeight: 400 }}>{b}</span>
                       </div>
                     ))}
                   </div>
@@ -173,7 +188,24 @@ export function CorePillarsSection() {
               </div>
 
               {/* Visual Mockup Frame */}
-              {g.image && (
+              {g.video ? (
+                <div style={{
+                  width: "100%",
+                  borderRadius: 14,
+                  overflow: "hidden",
+                  border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
+                  background: "#0a0a0c",
+                  boxShadow: "0 12px 30px -8px rgba(0, 0, 0, 0.2)",
+                  padding: "10px 10px 4px",
+                  marginTop: 6,
+                }}>
+                  <AppYTEmbed
+                    url={g.video}
+                    caption={g.videoCaption || "Video thị phạm thực tế"}
+                    maxWidth={280}
+                  />
+                </div>
+              ) : g.image ? (
                 <div style={{
                   width: "100%",
                   borderRadius: 12,
@@ -200,7 +232,7 @@ export function CorePillarsSection() {
                     }}
                   />
                 </div>
-              )}
+              ) : null}
             </div>
           ))}
         </div>
@@ -321,7 +353,7 @@ export function CorePillarsSection() {
 
                   <h5 style={{
                     fontFamily: t.fontBody,
-                    fontSize: 15.5,
+                    fontSize: 16,
                     fontWeight: 700,
                     color: "var(--cl-text-base, #111827)",
                     margin: "0 0 6px",
@@ -332,9 +364,9 @@ export function CorePillarsSection() {
 
                   <p style={{
                     fontFamily: t.fontBody,
-                    fontSize: 13.5,
-                    lineHeight: 1.6,
-                    color: "var(--cl-text-body, #4b5563)",
+                    fontSize: 14.5,
+                    lineHeight: 1.65,
+                    color: "var(--cl-text-body, #374151)",
                     margin: 0,
                   }}>
                     {p.desc}
