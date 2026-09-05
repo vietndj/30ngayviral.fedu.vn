@@ -3,6 +3,83 @@ import { useContent } from "../content";
 import { useTheme } from "../theme";
 import { FadeIn, Label, SH, Sec, AppYTEmbed } from "../components/ui";
 
+function ModulePhoneShowcase({ videos, fallbackUrl }: { videos?: { title: string; desc?: string; url: string }[]; fallbackUrl?: string }) {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const videoList = videos && videos.length > 0 ? videos : (fallbackUrl ? [{ title: "Video minh họa", url: fallbackUrl }] : []);
+  if (videoList.length === 0) return null;
+
+  const currentVid = videoList[activeIdx] || videoList[0];
+  const isFb = currentVid.url.includes("facebook.com");
+  const ytMatch = currentVid.url.match(
+    /(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|v\/|shorts\/|live\/))([a-zA-Z0-9_-]{11})/
+  );
+  const ytId = ytMatch ? ytMatch[1] : null;
+
+  return (
+    <div className="cl-phone-showcase">
+      {/* Khung điện thoại gọn gàng */}
+      <div className="cl-phone-frame">
+        <div className="cl-phone-notch" />
+        <div className="cl-phone-screen">
+          {isFb ? (
+            <iframe
+              key={currentVid.url}
+              src={`https://www.facebook.com/plugins/video.php?height=476&href=${encodeURIComponent(currentVid.url)}&show_text=false&width=267&t=0`}
+              title={currentVid.title}
+              loading="lazy"
+              scrolling="no"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              allowFullScreen
+              className="cl-phone-iframe"
+            />
+          ) : ytId ? (
+            <iframe
+              key={currentVid.url}
+              src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
+              title={currentVid.title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="cl-phone-iframe"
+            />
+          ) : null}
+        </div>
+      </div>
+
+      {/* 2 nút ấn chuyển video bên dưới */}
+      {videoList.length > 1 && (
+        <div className="cl-phone-switcher" role="tablist">
+          {videoList.map((vid, vIdx) => {
+            const isActive = vIdx === activeIdx;
+            return (
+              <button
+                key={vIdx}
+                type="button"
+                onClick={() => setActiveIdx(vIdx)}
+                className={`cl-phone-switch-btn ${isActive ? "is-active" : ""}`}
+                role="tab"
+                aria-selected={isActive}
+              >
+                <span className="cl-phone-switch-tag">CLIP 0{vIdx + 1}</span>
+                <span className="cl-phone-switch-text">{vid.title}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Tiêu đề nhỏ & nội dung ngắn gọn bên dưới */}
+      <div className="cl-phone-caption-wrap">
+        <h5 className="cl-phone-caption-title">{currentVid.title}</h5>
+        {currentVid.desc && (
+          <p className="cl-phone-caption-desc">{currentVid.desc}</p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function ModulesSection() {
   const c = useContent();
   const t = useTheme();
@@ -182,190 +259,11 @@ export function ModulesSection() {
                     ))}
                   </div>
 
-                  {/* Mockup Window / Minh Họa Trực Quan Từng Bước */}
-                  <div className="cl-mockup-window">
-                    <div className="cl-mockup-topbar">
-                      <div className="cl-mockup-dots">
-                        <div className="cl-mockup-dot" style={{ background: "#ff5f56" }} />
-                        <div className="cl-mockup-dot" style={{ background: "#ffbd2e" }} />
-                        <div className="cl-mockup-dot" style={{ background: "#27c93f" }} />
-                      </div>
-                      <div className="cl-mockup-title">
-                        {idx === 0 && "KỊCH BẢN 1 DÒNG · NÓI TỰ NHIÊN TRƯỚC ỐNG KÍNH"}
-                        {idx === 1 && "QUY TẮC 3 CẢNH · QUAY CHUYÊN NGHIỆP BẰNG ĐIỆN THOẠI"}
-                        {idx === 2 && "CHUYỂN CẢNH TÀNG HÌNH · CUT-ON-ACTION & CỠ CẢNH ĐIỆN ẢNH"}
-                        {idx === 3 && "BIÊN TẬP CAPCUT 2 NÚT & ĐÒN BẨY TRỢ LÝ AI THỰC CHIẾN"}
-                        {idx === 4 && "VIDEO STORYTELLING · KỂ CHUYỆN ĐỜI THỰC CHẠM CẢM XÚC RA ĐƠN"}
-                      </div>
-                    </div>
-
-                    <div className="cl-mockup-body">
-                      {/* Minh họa Khóa 1: Kịch bản 1 dòng */}
-                      {idx === 0 && (
-                        <div>
-                          <div style={{
-                            display: "grid",
-                            gridTemplateColumns: "1fr 1fr",
-                            gap: 12,
-                            fontFamily: t.fontMono,
-                            fontSize: 13,
-                            lineHeight: 1.6,
-                            background: "rgba(255, 255, 255, 0.03)",
-                            padding: 14,
-                            borderRadius: 8,
-                            border: "1px solid rgba(255, 255, 255, 0.06)",
-                            marginBottom: 14,
-                          }}>
-                            <div>
-                              <div style={{ color: "#38bdf8", fontWeight: 700, marginBottom: 4, textTransform: "uppercase" }}>
-                                🎙️ CỘT 1: LỜI THOẠI (1 NHỊP THỞ)
-                              </div>
-                              <div style={{ color: "#e2e8f0" }}>
-                                "Chị cứ tưởng làm video ngắn là phải máy xịn..."
-                              </div>
-                              <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, marginTop: 4 }}>
-                                (5-7 từ · Liếc mắt là nói được ngay)
-                              </div>
-                            </div>
-                            <div>
-                              <div style={{ color: "#a855f7", fontWeight: 700, marginBottom: 4, textTransform: "uppercase" }}>
-                                🎬 CỘT 2: THAO TÁC / B-ROLL
-                              </div>
-                              <div style={{ color: "#cbd5e1" }}>
-                                Tay kê điện thoại lên cốc nước, đón nắng cửa sổ.
-                              </div>
-                              <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, marginTop: 4 }}>
-                                (Đắp cảnh che 100% mắt liếc kịch bản)
-                              </div>
-                            </div>
-                          </div>
-                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/24909527728721206/"} caption={m.videoCaption || "Thầy Việt thị phạm: Làm thế nào lúc quay video không bị cứng đơ?"} />
-                        </div>
-                      )}
-
-                      {/* Minh họa Khóa 2: Setup ánh sáng & góc máy */}
-                      {idx === 1 && (
-                        <div>
-                          <div style={{
-                            background: "rgba(255, 255, 255, 0.03)",
-                            padding: "12px 16px",
-                            borderRadius: 8,
-                            border: "1px solid rgba(255, 255, 255, 0.06)",
-                            fontSize: 14,
-                            color: "#94a3b8",
-                            lineHeight: 1.6,
-                            marginBottom: 14,
-                          }}>
-                            <span style={{ color: "#fbbf24", fontWeight: 600 }}>💡 Quy tắc 3 cảnh:</span> Tự quay bằng 1 điện thoại: Cảnh Rộng (Wide Shot) bao quát, Cảnh Trung (Medium Shot) trò chuyện, và Cảnh Cận (Close-up) đặc tả cảm xúc & chi tiết.
-                          </div>
-                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/775157861537584/"} caption={m.videoCaption || "Thầy Việt thị phạm: Quy tắc 3 cảnh Toàn - Trung - Cận bằng điện thoại"} />
-                        </div>
-                      )}
-
-                      {/* Minh họa Khóa 3: Kỹ nghệ chuyển cảnh tàng hình (Từ video.fedu.vn) */}
-                      {idx === 2 && (
-                        <div>
-                          <div style={{ fontFamily: t.fontMono, fontSize: 13, lineHeight: 1.6, marginBottom: 14 }}>
-                            <div style={{
-                              background: "#161b22",
-                              borderRadius: 8,
-                              padding: 14,
-                              border: "1px solid rgba(255, 255, 255, 0.08)",
-                              display: "flex",
-                              flexDirection: "column",
-                              gap: 8,
-                              marginBottom: 12,
-                            }}>
-                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ color: "#38bdf8", fontWeight: 700, minWidth: 100 }}>01. CUT-ACTION:</span>
-                                <span style={{ color: "#cbd5e1" }}>Mượn chuyển động tay / đồ vật làm cầu nối tàng hình</span>
-                              </div>
-                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ color: "#a855f7", fontWeight: 700, minWidth: 100 }}>02. CỠ CẢNH:</span>
-                                <span style={{ color: "#e2e8f0" }}>Luân chuyển Toàn - Trung - Cận mỗi 3 giây giữ nhịp thở</span>
-                              </div>
-                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ color: "#10b981", fontWeight: 700, minWidth: 100 }}>03. B-ROLL:</span>
-                                <span style={{ color: "#86efac" }}>Cảnh trám thực tế đắp đè lên đoạn nói vấp (Che 100% vết cắt)</span>
-                              </div>
-                            </div>
-                            <div style={{
-                              padding: "10px 14px",
-                              background: "rgba(56, 189, 248, 0.08)",
-                              border: "1px solid rgba(56, 189, 248, 0.2)",
-                              borderRadius: 6,
-                              color: "#bae6fd",
-                              fontSize: 13,
-                            }}>
-                              🎬 Bí quyết video.fedu.vn: Sự mượt mà không đến từ hiệu ứng lật trang 3D sến súa — nó đến từ chuyển động vật lý thật đánh lừa thị giác.
-                            </div>
-                          </div>
-                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/1735902844239442/"} caption={m.videoCaption || "Thầy Việt thị phạm: 2 nguyên tắc Match Cut 'tàng hình' mọi vết cắt vấp (từ video.fedu.vn)"} />
-                        </div>
-                      )}
-
-                      {/* Minh họa Khóa 4: Dựng CapCut & Đòn bẩy AI */}
-                      {idx === 3 && (
-                        <div>
-                          <div style={{ fontFamily: t.fontMono, fontSize: 13, lineHeight: 1.6, marginBottom: 14 }}>
-                            <div style={{
-                              background: "#161b22",
-                              borderRadius: 8,
-                              padding: 14,
-                              border: "1px solid rgba(255, 255, 255, 0.08)",
-                              display: "flex",
-                              flexDirection: "column",
-                              gap: 8,
-                              marginBottom: 12,
-                            }}>
-                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ color: "#ef4444", fontWeight: 700, minWidth: 90 }}>2 THAO TÁC:</span>
-                                <span style={{ color: "#cbd5e1" }}>Tách & Xóa — Gọt sạch ngập ngừng trong 30 giây</span>
-                              </div>
-                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ color: "#10b981", fontWeight: 700, minWidth: 90 }}>PHỤ ĐỀ:</span>
-                                <span style={{ color: "#86efac" }}>Tạo phụ đề tự động 1 chạm chuẩn tiếng Việt (Không rách chữ)</span>
-                              </div>
-                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ color: "#a855f7", fontWeight: 700, minWidth: 90 }}>TRỢ LÝ AI:</span>
-                                <span style={{ color: "#d8b4fe" }}>Lọc sạch văn mẫu, nhả 30 chủ đề sát tệp khách hàng</span>
-                              </div>
-                            </div>
-                          </div>
-                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/2162457291248635/"} caption={m.videoCaption || "Thầy Việt thị phạm: Hậu kỳ CapCut tinh gọn & ứng dụng AI tạo cảnh trám B-roll"} />
-                        </div>
-                      )}
-
-                      {/* Minh họa Khóa 5: Video Storytelling Kể chuyện chạm cảm xúc */}
-                      {idx === 4 && (
-                        <div>
-                          <div style={{
-                            background: "rgba(255, 255, 255, 0.03)",
-                            padding: "14px 16px",
-                            borderRadius: 8,
-                            border: "1px solid rgba(255, 255, 255, 0.06)",
-                            fontSize: 13.5,
-                            lineHeight: 1.6,
-                            marginBottom: 14,
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: 8,
-                          }}>
-                            <div style={{ color: "#38bdf8", fontWeight: 600 }}>
-                              🚶‍♂️ Walk & Talk: Vừa đi vừa tâm sự trong bối cảnh đời thực — Xóa nhòa khoảng cách 2D phẳng lì.
-                            </div>
-                            <div style={{ color: "#fbbf24", fontWeight: 600 }}>
-                              🎯 Raw Truth: Kể câu chuyện bóc trần sự thật ngượng miệng của một khách hàng cụ thể.
-                            </div>
-                            <div style={{ color: "#34d399", fontWeight: 600 }}>
-                              📲 Cầu nối Zalo: Khách nhận ra chuyên gia tử tế và chủ động nhắn tin xin tư vấn lịch thiệp.
-                            </div>
-                          </div>
-                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/1629161828132946/"} caption={m.videoCaption || "Thầy Việt chia sẻ: Kỹ thuật Video Storytelling — Kể chuyện đời thực, chạm đúng tệp khách có tiền"} />
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  {/* Khung điện thoại hiển thị video & 2 nút chuyển đổi */}
+                  <ModulePhoneShowcase
+                    videos={m.videos}
+                    fallbackUrl={m.videoUrl}
+                  />
 
                   {/* Outcome Box */}
                   <div className="cl-attio-outcome">
