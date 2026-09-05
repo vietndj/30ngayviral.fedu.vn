@@ -65,7 +65,6 @@ export default async function handler(
 
   try {
     const { name = "", phone = "", email = "", url = "", transactionId = "", rowIndex } = req.body || {};
-    const MAKE_WEBHOOK_URL = "https://hook.us2.make.com/mdc9dfwges9r1v06momkpboh9auhrtgu";
 
     const cleanPhone = phone.replace(/[\s\.\-\+]/g, "").trim();
     let normalizedPhone = cleanPhone;
