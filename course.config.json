@@ -1,0 +1,73 @@
+{
+  "id": "30ngayviral",
+  "brand": "30NGÀY.",
+  "courseName": "Lộ Trình 30 Ngày Làm Chủ Video Ngắn",
+  "courseShortName": "30 Ngày Video Ngắn",
+  "tagline": "Tự làm video ngắn chuyển đổi cao bằng 1 điện thoại",
+  "price": "999.000",
+  "priceNumber": 999000,
+  "originalPrice": "4.500.000",
+  "originalPriceNumber": 4500000,
+  "currency": "VNĐ",
+  "instructor": {
+    "name": "Nguyễn Đức Việt",
+    "shortName": "Thầy Việt",
+    "title": "Đạo diễn Hình ảnh · Giảng viên FPT Arena Multimedia · Founder FEDU.VN",
+    "alumni": "Đại học Bách Khoa TP.HCM",
+    "phone": "0934.688.632",
+    "email": "vietndj@gmail.com",
+    "zalo": "https://zalo.me/0934688632"
+  },
+  "bankInfo": {
+    "name": "TPBank",
+    "account": "88804101986",
+    "holder": "NGUYEN DUC VIET",
+    "prefix": "VIDEO"
+  },
+  "seo": {
+    "siteUrl": "https://30ngayviral.fedu.vn",
+    "title": "30 Ngày Đồng Hành Xây Kênh Video Viral | 1 Điện Thoại | Fedu.vn",
+    "description": "Lộ trình 30 ngày tự sản xuất video ngắn chuyển đổi cao bằng 1 điện thoại & trợ lực kịch bản AI. Học bài nào — Cầm máy lên ra ngay video chuẩn bài đó.",
+    "keywords": "thử thách 30 ngày video viral, khóa học quay video điện thoại, video marketing, dựng video bán hàng, tư duy làm video điện thoại, fedu, nguyễn đức việt, video viral creator, capcut ai",
+    "ogImage": "https://30ngayviral.fedu.vn/og-30ngayviral-2026.jpg?v=2"
+  },
+  "checkoutFeatures": [
+    "Trọn bộ 5 Khóa học thực chiến: Kịch bản viral, Bố cục ánh sáng, Dựng phim cuốn hút, CapCut Pro & AI chuyển đổi",
+    "Quyền truy cập trọn đời & Cập nhật miễn phí các công nghệ AI video mới nhất 2026",
+    "Đặc quyền nộp bài thực hành & Thầy Nguyễn Đức Việt trực tiếp soi timeline trên Skool",
+    "Tủ đồ nghề 01: Kho nhạc nền AI MasterClass độc bản không lo đánh gậy bản quyền",
+    "Tủ đồ nghề 02: 50+ Hiệu ứng âm thanh điện ảnh (SFX) nhấn nhá kích thích thị giác",
+    "Tủ đồ nghề 03: Bộ Prompt AI trợ lý kịch bản & Gỡ bí ý tưởng theo ngành",
+    "Tủ đồ nghề 04: 30 Cấu trúc Hook mở lời tự nhiên 3 giây đầu giữ chân người xem"
+  ],
+  "bonuses": [
+    {
+      "id": "01",
+      "badge": "ĐỒ NGHỀ 01 · ÂM THANH BẢN QUYỀN",
+      "title": "Kho 30 Nhạc Nền & 40 Âm Thanh SFX Sạch Bản Quyền 100%",
+      "desc": "Người mới tự làm video thường tải nhạc trôi nổi trên mạng, dựng xong vừa đăng lên Facebook Reels hay TikTok thì bị tắt ngúm âm thanh hoặc ăn cảnh báo bản quyền. Toàn bộ nhạc nền mộc mạc, đĩnh đạc (Acoustic, Lo-Fi, Ambient) và tiếng động điện ảnh (bụp, lật giấy, ting nhẹ) này đã được tôi kiểm tra kỹ trên cả 3 nền tảng. Đảm bảo an toàn 100%, kéo vào là khớp nhịp nói.",
+      "audioDemo": "/audio/chuyen-canh.mp3"
+    },
+    {
+      "id": "02",
+      "badge": "ĐỒ NGHỀ 02 · TEMPLATE DỰNG NHANH",
+      "title": "Bộ Template Chữ Chuyển Động & Preset Phụ Đề CapCut 2 Dòng",
+      "desc": "Video ngắn mà không có phụ đề thì người xem lướt qua ngay vì 70% người dùng lướt feed ở chế độ tắt tiếng. Nhưng ngồi gõ từng chữ rất mất thời gian, chữ bị che mất nút like, share hoặc xé dòng nhìn rất xấu.<br/><br/>Tôi cài sẵn cho bạn file mẫu CapCut: Chuẩn font tiếng Việt không lỗi dấu, tự động ngắt tối đa 2 dòng vừa vặn tầm mắt, màu sắc chữ nổi bật trên mọi nền video. Mở CapCut lên là dùng được ngay.",
+      "gifDemo": "/assets/formats/demo_capcut_preset_2dong.mp4"
+    },
+    {
+      "id": "03",
+      "badge": "ĐỒ NGHỀ 03 · AI KỊCH BẢN THỰC CHIẾN",
+      "title": "Bộ Câu Lệnh (Prompt) AI 'Bóc Sạch Văn Mẫu' & Nhà Kịch Bản 2 Cột",
+      "desc": "Bạn hỏi ChatGPT nó toàn trả lời chung chung, triết lý sáo rỗng kiểu 'bạn hãy tự tin lên', 'chào mừng các bạn đến với video'... mang đi quay clip người ta lướt qua ngay vì sặc mùi AI.<br/><br/>Bộ câu lệnh này tôi ép AI phải đóng vai người kể chuyện đời thường: Tự động phân tách 2 cột (Cột Hình ảnh quay gì — Cột Lời thoại nói gì), bóc sạch từ ngữ sáo rỗng, chuyển văn phong thành lời ăn tiếng nói ngoài đời thực.",
+      "videoDemo": "/assets/formats/ai_miss_idea_loc_van_mau.mp4"
+    },
+    {
+      "id": "04",
+      "badge": "ĐỒ NGHỀ 04 · Ý TƯỞNG THỰC CHIẾN",
+      "title": "Ngân Hàng 30 Cấu Trúc Hook 'Mở Lời Tự Nhiên' Theo Từng Ngành",
+      "desc": "Rất nhiều người hào hứng làm được 3 ngày đầu, đến ngày thứ 4 thì ngồi nhìn trần nhà vì không biết hôm nay nói gì, cuối cùng nản và bỏ kênh.<br/><br/>30 cấu trúc mở đầu đã kiểm chứng cho 4 nhóm ngành (Bán lẻ, Dịch vụ/Spa, Tư vấn/Đào tạo, Nghề tự do). Ngày nào bí ý tưởng, bạn chỉ cần bốc 1 cấu trúc ra là có ngay video 60 giây đàng hoàng, không bao giờ phải ngồi vò đầu bứt tai.",
+      "youtubeDemo": "https://youtube.com/shorts/ftuv04UxKJA"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { google } from 'googleapis';
+import courseConfig from '../../course.config.json';
 
 const DEFAULT_TELEGRAM_BOT_TOKEN = "8964853536:AAHuRNm_hY-YQtveBD1HlmthN4I5xpVzM8U";
 const DEFAULT_TELEGRAM_CHAT_ID = "2050406425";
@@ -100,7 +101,7 @@ export default async function handler(
             range: `'${sheetName}'!H${targetRow}:I${targetRow}`,
             valueInputOption: 'USER_ENTERED',
             requestBody: {
-              values: [['Đã thanh toán', 'Đã thanh toán (999.000đ)']],
+              values: [['Đã thanh toán', `Đã thanh toán (${courseConfig.price}đ)`]],
             },
           });
           console.log(`[Google Sheets] Updated payment status at row ${targetRow}`);
@@ -111,11 +112,11 @@ export default async function handler(
     }
 
     // ── 2. Bắn thông báo Telegram ──
-    const teleMsg = `💰 [THANH TOÁN THÀNH CÔNG] 30 Ngày Làm Chủ Video Ngắn
+    const teleMsg = `💰 [THANH TOÁN THÀNH CÔNG] ${courseConfig.courseName}
 👤 Học viên: ${name || "Khách hàng"}
 📱 SĐT: ${normalizedPhone}
 📧 Email: ${email}
-💵 Học phí: 999.000 VNĐ
+💵 Học phí: ${courseConfig.price} ${courseConfig.currency}
 🔖 Mã GD: ${transactionId || "Chuyển khoản VietQR"}
 ⚡ Đã kích hoạt quyền vào học trên Skool!`;
 

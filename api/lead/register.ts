@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { google } from 'googleapis';
+import courseConfig from '../../course.config.json';
 
 function viTimestamp() {
   try {
@@ -160,7 +161,7 @@ export default async function handler(
         pageUrl,
         "Chờ thanh toán",
         "Chưa thanh toán",
-        "Lộ trình 30 Ngày 999k"
+        `${courseConfig.courseShortName} ${courseConfig.price}`
       ];
 
       try {
@@ -212,12 +213,12 @@ export default async function handler(
     }
 
     // ── 2. Bắn thông báo Telegram ──
-    const teleMsg = `📋 [ĐĂNG KÝ MỚI] 30 Ngày Làm Chủ Video Ngắn
+    const teleMsg = `📋 [ĐĂNG KÝ MỚI] ${courseConfig.courseName}
 👤 Họ tên: ${name.trim()}
 📱 SĐT: ${normalizedPhone}
 📧 Email: ${email.trim().toLowerCase()}
 🔗 Nguồn: ${pageUrl}
-⏳ Trạng thái: Chờ thanh toán (999.000đ)`;
+⏳ Trạng thái: Chờ thanh toán (${courseConfig.price}đ)`;
 
     await sendTelegramAlert(teleMsg);
 

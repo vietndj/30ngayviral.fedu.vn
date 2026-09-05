@@ -1,5 +1,6 @@
 import { createContext, useContext, createElement } from "react";
 import type { ReactNode } from "react";
+import courseConfig from "../course.config.json";
 
 export interface BlocksMeta {
   order: string[];
@@ -268,22 +269,14 @@ const CONTENT_SCHEMA_VERSION = 8;
 
 export const DEFAULT_CONTENT: PageContent = {
   _v: CONTENT_SCHEMA_VERSION,
-  price: "999.000",
-  value: "4.500.000",
+  price: courseConfig.price,
+  value: courseConfig.originalPrice,
 
   // ── Checkout & Program Single Source of Truth ──
-  courseName: "Lộ Trình 30 Ngày Làm Chủ Video Ngắn",
-  checkoutTitle: "Lộ Trình 30 Ngày<br />Làm Chủ Video Ngắn",
-  checkoutSub: "Chỉ còn một bước nữa — chuyển khoản và truy cập ngay trọn bộ 5 khóa học thực chiến + 4 tủ đồ nghề quà tặng hôm nay.",
-  checkoutFeatures: [
-    "Trọn bộ 5 Khóa học thực chiến: Kịch bản viral, Bố cục ánh sáng, Dựng phim cuốn hút, CapCut Pro & AI chuyển đổi",
-    "Quyền truy cập trọn đời & Cập nhật miễn phí các công nghệ AI video mới nhất 2026",
-    "Đặc quyền nộp bài thực hành & Thầy Nguyễn Đức Việt trực tiếp soi timeline trên Skool",
-    "Tủ đồ nghề 01: Kho nhạc nền AI MasterClass độc bản không lo đánh gậy bản quyền",
-    "Tủ đồ nghề 02: 50+ Hiệu ứng âm thanh điện ảnh (SFX) nhấn nhá kích thích thị giác",
-    "Tủ đồ nghề 03: Bộ Prompt AI trợ lý kịch bản & Gỡ bí ý tưởng theo ngành",
-    "Tủ đồ nghề 04: 30 Cấu trúc Hook mở lời tự nhiên 3 giây đầu giữ chân người xem"
-  ],
+  courseName: courseConfig.courseName,
+  checkoutTitle: `${courseConfig.courseName.split(" ").slice(0, 4).join(" ")}<br />${courseConfig.courseName.split(" ").slice(4).join(" ")}`,
+  checkoutSub: `Chỉ còn một bước nữa — chuyển khoản và truy cập ngay trọn bộ 5 khóa học thực chiến + ${courseConfig.bonuses.length} tủ đồ nghề quà tặng hôm nay.`,
+  checkoutFeatures: courseConfig.checkoutFeatures,
 
   // ── Hero ──
   heroBadge: "TÍCH HỢP AI 2026 — DÀNH CHO NGƯỜI MỚI & CHỦ KINH DOANH",
@@ -809,38 +802,7 @@ export const DEFAULT_CONTENT: PageContent = {
   bonusLabel: "TỦ ĐỒ NGHỀ THỰC CHIẾN ĐI KÈM",
   bonusHeading: "Mở máy lên là có sẵn đồ nghề để làm — Khỏi mất công đi nhặt nhạnh từng file rác trên mạng",
   bonusSub: "Làm video nản nhất không phải là quay, mà là lúc dựng thiếu bản nhạc phải đi tìm, tải font về thì gãy dấu tiếng Việt, đăng lên kênh thì bị nền tảng tắt tiếng vì dính bản quyền. Toàn bộ đồ nghề này tôi đã gom sẵn 1 link Drive gọn gàng, bạn chỉ việc tải về và kéo vào CapCut dùng ngay:",
-  bonusItems: [
-    {
-      id: "01",
-      badge: "ĐỒ NGHỀ 01 · ÂM THANH SẠCH",
-      title: "Kho 30 Nhạc Nền & 40 Âm Thanh SFX Sạch Bản Quyền 100%",
-      desc: "Người mới tự làm video thường tải nhạc trôi nổi trên mạng, dựng xong vừa đăng lên Facebook Reels hay TikTok thì bị tắt ngúm âm thanh hoặc ăn cảnh cáo bản quyền.<br/><br/>Toàn bộ nhạc nền mộc mạc, đĩnh đạc (Acoustic, Lo-Fi, Ambient) và tiếng động điện ảnh (bụp, lật giấy, ting nhẹ) này đã được tôi kiểm tra kỹ trên cả 3 nền tảng. Đảm bảo an toàn 100%, kéo vào là khớp nhịp nói.",
-      audioDemo: "/boardroom-siege.mp3",
-      youtubeDemo: "https://www.youtube.com/watch?v=eg6T8-SekjQ"
-    },
-    {
-      id: "02",
-      badge: "ĐỒ NGHỀ 02 · TYPOGRAPHY",
-      title: "Bộ Template Chữ Chuyển Động & Preset Phụ Đề CapCut 2 Dòng",
-      desc: "Tải font ngoài vào CapCut rất hay bị lỗi dấu (chữ ô vuông, dấu ư ơ nhảy lung tung). Phụ đề tự động thì dài ngoằng che hết mặt, hoặc bị thanh công cụ Like/Share của TikTok che mất chữ.<br/><br/>Bộ Preset này đã căn sẵn 'vùng an toàn' (Safe Zone) chuẩn cho mọi dòng điện thoại. Font chữ tiếng Việt hiển thị tròn trịa, tự động ngắt câu 2 dòng vừa mắt, người xem lướt qua là đọc được ngay trong 1 giây.",
-      youtubeDemo: "https://www.youtube.com/watch?v=6Oiugt77imE",
-      gifDemo: "https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/landing/text-anim-bds.gif"
-    },
-    {
-      id: "03",
-      badge: "ĐỒ NGHỀ 03 · TRỢ LÝ AI",
-      title: "Bộ Câu Lệnh (Prompt) AI 'Bóc Sạch Văn Mẫu' & Nhả Kịch Bản 2 Cột",
-      desc: "Tự hỏi ChatGPT thì nhận về toàn văn mẫu sáo rỗng: <i>'Chào các bạn, hôm nay tôi xin chia sẻ 3 bí quyết tuyệt vời...'</i> Đọc lên ngượng mồm, khách lướt qua sau 2 giây.<br/><br/>Bộ Prompt này đã nạp sẵn tư duy 'người làm nghề nhiều năm đang tâm sự với khách'. Bạn chỉ cần gõ 1 dòng sản phẩm của mình, AI sẽ tự động nhả kịch bản 2 cột (Lời thoại đời thường ↔ Thao tác tay che mặt) trong đúng 3 phút.",
-      videoDemo: "/assets/formats/ai_miss_idea_loc_van_mau.mp4"
-    },
-    {
-      id: "04",
-      badge: "ĐỒ NGHỀ 04 · Ý TƯỞNG THỰC CHIẾN",
-      title: "Ngân Hàng 30 Cấu Trúc Hook 'Mở Lời Tự Nhiên' Theo Từng Ngành",
-      desc: "Rất nhiều người hào hứng làm được 3 ngày đầu, đến ngày thứ 4 thì ngồi nhìn trần nhà vì không biết hôm nay nói gì, cuối cùng nản và bỏ kênh.<br/><br/>30 cấu trúc mở đầu đã kiểm chứng cho 4 nhóm ngành (Bán lẻ, Dịch vụ/Spa, Tư vấn/Đào tạo, Nghề tự do). Ngày nào bí ý tưởng, bạn chỉ cần bốc 1 cấu trúc ra là có ngay video 60 giây đàng hoàng, không bao giờ phải ngồi vò đầu bứt tai.",
-      youtubeDemo: "https://youtube.com/shorts/ftuv04UxKJA"
-    }
-  ],
+  bonusItems: courseConfig.bonuses,
 
   // ── Section 11: Final CTA ──
   urgencyBar: "⚠ HỌC PHÍ ƯU ĐÃI CHỈ DÀNH CHO LỚP THỰC CHIẾN THÁNG NÀY (GIỚI HẠN SỐ LƯỢNG ĐỂ THẦY SOI TIMELINE)",
