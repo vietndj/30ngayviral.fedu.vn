@@ -208,15 +208,15 @@ export function CorePillarsSection() {
               ) : g.image ? (
                 <div style={{
                   width: "100%",
-                  borderRadius: 12,
+                  borderRadius: 14,
                   overflow: "hidden",
                   border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                   background: "#0a0a0c",
-                  boxShadow: "inset 0 0 16px rgba(0,0,0,0.4), 0 8px 20px -8px rgba(0,0,0,0.12)",
+                  boxShadow: "0 12px 30px -8px rgba(0, 0, 0, 0.2)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  padding: 12,
+                  padding: "10px 10px 14px",
                   marginTop: 6,
                 }}>
                   <img
@@ -225,10 +225,10 @@ export function CorePillarsSection() {
                     loading="lazy"
                     style={{
                       width: "100%",
+                      maxWidth: 320,
                       height: "auto",
-                      maxHeight: 200,
-                      objectFit: "contain",
                       display: "block",
+                      borderRadius: 10,
                     }}
                   />
                 </div>
@@ -272,7 +272,7 @@ export function CorePillarsSection() {
                   display: "block",
                   marginBottom: 2,
                 }}>
-                  3 ĐÒN BẨY HỖ TRỢ (FOUNDATION TOOLS)
+                  {c.corePillarsLabel || "3 ĐIỂM TỰA THỰC CHIẾN"}
                 </span>
                 <h4 style={{
                   fontFamily: t.fontBody,
@@ -282,7 +282,7 @@ export function CorePillarsSection() {
                   margin: 0,
                   lineHeight: 1.3,
                 }}>
-                  {c.coreGoalsRightTitle || "3 Đòn bẩy đơn giản giúp bạn đạt kết quả:"}
+                  {c.coreGoalsRightTitle || "Làm video đàng hoàng không cần phải gồng"}
                 </h4>
               </div>
             </div>
@@ -294,7 +294,7 @@ export function CorePillarsSection() {
               color: "var(--cl-text-muted, #6b7280)",
               textTransform: "uppercase",
             }}>
-              Tối giản · Thực chiến · Không tốn kém
+              {c.corePillarsBadge || "Dễ làm · Đỡ ngại · Không tốn kém"}
             </span>
           </div>
 

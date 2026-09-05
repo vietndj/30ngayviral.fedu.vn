@@ -114,6 +114,8 @@ export interface PageContent {
   coreGoalsSub?: string;
   coreGoalsLeftTitle?: string;
   coreGoalsRightTitle?: string;
+  corePillarsLabel?: string;
+  corePillarsBadge?: string;
   coreGoals?: GoalItem[];
   corePillars?: PillarItem[];
 
@@ -318,7 +320,9 @@ export const DEFAULT_CONTENT: PageContent = {
   coreGoalsHeading: "Bạn không cần khiếu ăn nói hay máy ảnh đắt tiền để có một video chuyên nghiệp.",
   coreGoalsSub: "Rào cản lớn nhất khi làm video không phải là thiết bị, mà là cảm giác sợ bị 'gượng': Ngoài đời tư vấn chắc tay bao nhiêu, đứng trước máy lại gồng mình bấy nhiêu.\n\nBạn không cần đổi vai diễn và càng không cần đánh đổi uy tín lấy vài cái view nhảm. Người mua hàng chỉ cần thấy một người làm nghề đàng hoàng, nói đúng việc trong khung hình sáng sủa. Lộ trình này chỉ tập trung vào 2 kết quả thực tế:",
   coreGoalsLeftTitle: "2 KẾT QUẢ ĐẦU RA THỰC TẾ",
-  coreGoalsRightTitle: "3 Đòn bẩy đơn giản giúp bạn đạt kết quả:",
+  coreGoalsRightTitle: "Làm video đàng hoàng không cần phải gồng",
+  corePillarsLabel: "3 ĐIỂM TỰA THỰC CHIẾN",
+  corePillarsBadge: "Dễ làm · Đỡ ngại · Không tốn kém",
   coreGoals: [
     {
       id: "01",
@@ -339,7 +343,7 @@ export const DEFAULT_CONTENT: PageContent = {
       highlight: "KẾT QUẢ THẬT · RA ĐƠN TỰ NHIÊN",
       title: "Kênh có khách hàng thật, ra đơn trên Zalo & Inbox",
       desc: "Đừng ham triệu view giải trí của những kẻ xem chùa. Khách thấy bạn chân thành và có chuyên môn thật, họ sẽ chủ động liên hệ mua hàng.",
-      image: "/pillars/goal_conversion.png",
+      image: "/pillars/goal_conversion_proof.png",
       bullets: [
         "Chỉ cần 500 – 1.000 view đúng tệp người mua hàng có nhu cầu thực tế",
         "Khách chủ động nhắn tin hỏi mua, không phải nài ép hay chèo kéo",
@@ -349,27 +353,27 @@ export const DEFAULT_CONTENT: PageContent = {
   corePillars: [
     {
       id: "01",
-      tag: "VŨ KHÍ 01 · GỐC RỄ NỘI DUNG",
-      title: "Kịch bản 1 dòng 1 nhịp thở",
-      desc: "Cắt nhỏ câu thoại thành từng nhịp 5–7 chữ. Nhìn 1 từ khóa là nói trôi chảy như tâm sự với bạn thân, dứt điểm bệnh học vẹt.",
+      tag: "01 · NÓI NHƯ THỞ",
+      title: "Bỏ văn mẫu, nói như đang ngồi uống trà",
+      desc: "Đừng cố nhớ cả trang giấy như đi thi học sinh giỏi. Kịch bản bẻ nhỏ từng câu ngắn, liếc một từ khóa là tuôn trào kiến thức thật của mình ra, mộc mạc mà thuyết phục.",
       image: "/pillars/pillar_story.png",
-      highlight: "Dễ nhớ · Nói tự nhiên"
+      highlight: "Không sợ cứng họng"
     },
     {
       id: "02",
-      tag: "VŨ KHÍ 02 · KHUNG HÌNH ĐIỆN THOẠI",
-      title: "1 Chiếc điện thoại là đủ",
-      desc: "Tận dụng ngay ánh sáng tự nhiên bên cửa sổ và góc kê máy sạch sẽ. Khung hình sáng rõ, đĩnh đạc không tốn 1 đồng mua thiết bị.",
+      tag: "02 · GÓC HÌNH THẬT",
+      title: "Chiếc điện thoại và góc bàn sạch sẽ",
+      desc: "Người ta mua hàng vì tin chuyên môn của bạn chứ chẳng ai soi độ phân giải máy cơ. Một chỗ ngồi đủ sáng, khung hình gọn gàng là đủ phong thái của người làm nghề tử tế.",
       image: "/pillars/pillar_visual.png",
-      highlight: "100% Smartphone · Tiết kiệm"
+      highlight: "Khỏi mua máy xịn"
     },
     {
       id: "03",
-      tag: "VŨ KHÍ 03 · HẬU KỲ ĐƠN GIẢN",
-      title: "Quay trước lồng tiếng sau (Vấp đâu chèn hình che đó)",
-      desc: "Cứ quay tự nhiên, nói vấp chỗ nào đắp hình thao tác tay che chỗ đó. Khán giả chỉ thấy một video mượt mà, chỉn chu từ đầu đến cuối.",
+      tag: "03 · DỰNG THÔNG MINH",
+      title: "Nói vấp thì chèn hình che lại",
+      desc: "Đừng bắt mình phải nói trơn tru một lèo từ đầu đến cuối như phát thanh viên. Nói sai chỗ nào, cắt cúp rồi đắp tư liệu đè lên. Vừa giấu sạch lỗi vấp, video xem lại sinh động hơn.",
       image: "/pillars/pillar_edit.png",
-      highlight: "Che sạch lỗi vấp · Dễ học"
+      highlight: "Không sợ quê"
     }
   ],
 
