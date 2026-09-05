@@ -15,11 +15,11 @@ export function ModulesSection() {
   const modulesList = c.modules || [];
 
   const navMeta = [
-    { n: "KHÓA 01", time: "KỊCH BẢN", title: "Kịch bản 1 dòng", desc: "Mở máy lên là nói" },
-    { n: "KHÓA 02", time: "GÓC MÁY", title: "Góc máy điện thoại", desc: "Khung hình sáng rõ" },
-    { n: "KHÓA 03", time: "CAPCUT", title: "Dựng CapCut 2 nút", desc: "Nói vấp đắp hình che" },
-    { n: "KHÓA 04", time: "TRỢ LÝ AI", title: "Ứng dụng AI thực tế", desc: "Tiết kiệm 80% thời gian" },
-    { n: "KHÓA 05", time: "CHUYỂN ĐỔI", title: "Video tư vấn bán hàng", desc: "Khách tự tìm đến Zalo" },
+    { n: "KHÓA 01", time: "KỊCH BẢN", title: "Kịch bản 1 dòng", desc: "Mở máy lên là nói tự nhiên" },
+    { n: "KHÓA 02", time: "GÓC MÁY", title: "Góc máy điện thoại", desc: "Khung hình sáng rõ, đĩnh đạc" },
+    { n: "KHÓA 03", time: "CHUYỂN CẢNH", title: "Chuyển cảnh tàng hình", desc: "Kỹ nghệ giấu vết cắt mượt mà" },
+    { n: "KHÓA 04", time: "CAPCUT & AI", title: "Biên tập CapCut & AI", desc: "Tiết kiệm 80% thời gian" },
+    { n: "KHÓA 05", time: "KỂ CHUYỆN", title: "Video Storytelling", desc: "Chạm cảm xúc, ra đơn Zalo" },
   ];
 
   // Silky smooth scrollspy tracking without scroll jitter
@@ -118,13 +118,13 @@ export function ModulesSection() {
               textTransform: "uppercase",
               marginBottom: 4,
             }}>
-              5 KHÂU THỰC CHIẾN
+              {c.modulesSidebarTag || "5 ĐÒN BẨY HÌNH ẢNH"}
             </div>
             <h3 className="cl-attio-sidebar-title">
-              Quy Trình Khép Kín
+              {c.modulesSidebarTitle || "Hành Trình Tự Chủ"}
             </h3>
             <p className="cl-attio-sidebar-desc">
-              Cuộn chuột hoặc bấm từng bước:
+              {c.modulesSidebarDesc || "Cuộn chuột hoặc bấm từng bước:"}
             </p>
           </div>
 
@@ -193,9 +193,9 @@ export function ModulesSection() {
                       <div className="cl-mockup-title">
                         {idx === 0 && "KỊCH BẢN 1 DÒNG · NÓI TỰ NHIÊN TRƯỚC ỐNG KÍNH"}
                         {idx === 1 && "QUY TẮC 3 CẢNH · QUAY CHUYÊN NGHIỆP BẰNG ĐIỆN THOẠI"}
-                        {idx === 2 && "TIMELINE CAPCUT · 2 NGUYÊN TẮC TÀNG HÌNH MỌI VẾT CẮT"}
-                        {idx === 3 && "ỨNG DỤNG AI · TẠO CẢNH TRÁM B-ROLL & CHUYỂN CẢNH SIÊU TỐC"}
-                        {idx === 4 && "ĐỊNH VỊ CHUYÊN MÔN · VIDEO TƯ VẤN RA ĐƠN THẬT QUA ZALO"}
+                        {idx === 2 && "CHUYỂN CẢNH TÀNG HÌNH · CUT-ON-ACTION & CỠ CẢNH ĐIỆN ẢNH"}
+                        {idx === 3 && "BIÊN TẬP CAPCUT 2 NÚT & ĐÒN BẨY TRỢ LÝ AI THỰC CHIẾN"}
+                        {idx === 4 && "VIDEO STORYTELLING · KỂ CHUYỆN ĐỜI THỰC CHẠM CẢM XÚC RA ĐƠN"}
                       </div>
                     </div>
 
@@ -262,7 +262,7 @@ export function ModulesSection() {
                         </div>
                       )}
 
-                      {/* Minh họa Khóa 3: CapCut Timeline & B-roll */}
+                      {/* Minh họa Khóa 3: Kỹ nghệ chuyển cảnh tàng hình (Từ video.fedu.vn) */}
                       {idx === 2 && (
                         <div>
                           <div style={{ fontFamily: t.fontMono, fontSize: 13, lineHeight: 1.6, marginBottom: 14 }}>
@@ -277,84 +277,91 @@ export function ModulesSection() {
                               marginBottom: 12,
                             }}>
                               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ color: "#ef4444", fontWeight: 700, minWidth: 90 }}>TRACK 01:</span>
-                                <span style={{ color: "#cbd5e1" }}>Video gốc (Quay vấp nhiều đoạn ngập ngừng 🔴)</span>
+                                <span style={{ color: "#38bdf8", fontWeight: 700, minWidth: 100 }}>01. CUT-ACTION:</span>
+                                <span style={{ color: "#cbd5e1" }}>Mượn chuyển động tay / đồ vật làm cầu nối tàng hình</span>
                               </div>
                               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ color: "#10b981", fontWeight: 700, minWidth: 90 }}>TRACK 02:</span>
-                                <span style={{ color: "#86efac" }}>B-roll đắp đè lên (Che sạch 100% vết cắt vấp 🟢)</span>
+                                <span style={{ color: "#a855f7", fontWeight: 700, minWidth: 100 }}>02. CỠ CẢNH:</span>
+                                <span style={{ color: "#e2e8f0" }}>Luân chuyển Toàn - Trung - Cận mỗi 3 giây giữ nhịp thở</span>
                               </div>
                               <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                <span style={{ color: "#38bdf8", fontWeight: 700, minWidth: 90 }}>TRACK 03:</span>
-                                <span style={{ color: "#7dd3fc" }}>Phụ đề tự động chuẩn tiếng Việt (Không rách chữ 🟡)</span>
+                                <span style={{ color: "#10b981", fontWeight: 700, minWidth: 100 }}>03. B-ROLL:</span>
+                                <span style={{ color: "#86efac" }}>Cảnh trám thực tế đắp đè lên đoạn nói vấp (Che 100% vết cắt)</span>
                               </div>
                             </div>
                             <div style={{
                               padding: "10px 14px",
-                              background: "rgba(16, 185, 129, 0.08)",
-                              border: "1px solid rgba(16, 185, 129, 0.2)",
+                              background: "rgba(56, 189, 248, 0.08)",
+                              border: "1px solid rgba(56, 189, 248, 0.2)",
                               borderRadius: 6,
-                              color: "#a7f3d0",
+                              color: "#bae6fd",
                               fontSize: 13,
                             }}>
-                              ✂️ 2 nguyên tắc tàng hình: Dùng Match Cut & tính liên tục để người xem không hề nhận ra bạn vừa nói vấp.
+                              🎬 Bí quyết video.fedu.vn: Sự mượt mà không đến từ hiệu ứng lật trang 3D sến súa — nó đến từ chuyển động vật lý thật đánh lừa thị giác.
                             </div>
                           </div>
-                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/1735902844239442/"} caption={m.videoCaption || "Thầy Việt thị phạm: 2 nguyên tắc Match Cut 'tàng hình' mọi vết cắt vấp"} />
+                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/1735902844239442/"} caption={m.videoCaption || "Thầy Việt thị phạm: 2 nguyên tắc Match Cut 'tàng hình' mọi vết cắt vấp (từ video.fedu.vn)"} />
                         </div>
                       )}
 
-                      {/* Minh họa Khóa 4: AI Trợ lý làm video */}
+                      {/* Minh họa Khóa 4: Dựng CapCut & Đòn bẩy AI */}
                       {idx === 3 && (
                         <div>
-                          <div style={{ display: "flex", flexDirection: "column", gap: 10, fontSize: 13.5, lineHeight: 1.6, marginBottom: 14 }}>
+                          <div style={{ fontFamily: t.fontMono, fontSize: 13, lineHeight: 1.6, marginBottom: 14 }}>
                             <div style={{
-                              padding: 12,
-                              background: "rgba(239, 68, 68, 0.06)",
-                              border: "1px solid rgba(239, 68, 68, 0.2)",
+                              background: "#161b22",
                               borderRadius: 8,
+                              padding: 14,
+                              border: "1px solid rgba(255, 255, 255, 0.08)",
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: 8,
+                              marginBottom: 12,
                             }}>
-                              <div style={{ color: "#f87171", fontWeight: 700, marginBottom: 4, fontFamily: t.fontMono }}>
-                                ❌ AI ĐẠI TRÀ (MÙI VĂN MẪU - LƯỚT SAU 2S):
+                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                <span style={{ color: "#ef4444", fontWeight: 700, minWidth: 90 }}>2 THAO TÁC:</span>
+                                <span style={{ color: "#cbd5e1" }}>Tách & Xóa — Gọt sạch ngập ngừng trong 30 giây</span>
                               </div>
-                              <div style={{ color: "#94a3b8", fontStyle: "italic" }}>
-                                "Chào các bạn, hôm nay tôi xin chia sẻ 3 bí quyết tuyệt vời để bùng nổ doanh số..."
+                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                <span style={{ color: "#10b981", fontWeight: 700, minWidth: 90 }}>PHỤ ĐỀ:</span>
+                                <span style={{ color: "#86efac" }}>Tạo phụ đề tự động 1 chạm chuẩn tiếng Việt (Không rách chữ)</span>
                               </div>
-                            </div>
-                            <div style={{
-                              padding: 12,
-                              background: "rgba(16, 185, 129, 0.08)",
-                              border: "1px solid rgba(16, 185, 129, 0.25)",
-                              borderRadius: 8,
-                            }}>
-                              <div style={{ color: "#34d399", fontWeight: 700, marginBottom: 4, fontFamily: t.fontMono }}>
-                                ✅ AI ÔNG GIÁO FEDU (VÀO THẲNG VIỆC - MỘC MẠC ĐỜI THƯỜNG):
-                              </div>
-                              <div style={{ color: "#f1f5f9" }}>
-                                "Đừng mua micro 2 triệu vội nếu chị chưa biết mẹo kê điện thoại sát ngực này..."
+                              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                <span style={{ color: "#a855f7", fontWeight: 700, minWidth: 90 }}>TRỢ LÝ AI:</span>
+                                <span style={{ color: "#d8b4fe" }}>Lọc sạch văn mẫu, nhả 30 chủ đề sát tệp khách hàng</span>
                               </div>
                             </div>
                           </div>
-                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/2162457291248635/"} caption={m.videoCaption || "Thầy Việt thị phạm: Ứng dụng AI tạo cảnh trám B-roll & chuyển cảnh mượt mà"} />
+                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/2162457291248635/"} caption={m.videoCaption || "Thầy Việt thị phạm: Hậu kỳ CapCut tinh gọn & ứng dụng AI tạo cảnh trám B-roll"} />
                         </div>
                       )}
 
-                      {/* Minh họa Khóa 5: Tư vấn bán hàng & ra đơn */}
+                      {/* Minh họa Khóa 5: Video Storytelling Kể chuyện chạm cảm xúc */}
                       {idx === 4 && (
                         <div>
                           <div style={{
                             background: "rgba(255, 255, 255, 0.03)",
-                            padding: "12px 16px",
+                            padding: "14px 16px",
                             borderRadius: 8,
                             border: "1px solid rgba(255, 255, 255, 0.06)",
-                            fontSize: 14,
-                            color: "#94a3b8",
+                            fontSize: 13.5,
                             lineHeight: 1.6,
                             marginBottom: 14,
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 8,
                           }}>
-                            <span style={{ color: "#38bdf8", fontWeight: 600 }}>💬 Sản phẩm chính là bạn:</span> Chia sẻ đúng chuyên môn, mang lại giá trị thật cho khách hàng. Không cần hô hào hay chèo kéo — khách tự động nhắn tin xin tư vấn lịch thiệp.
+                            <div style={{ color: "#38bdf8", fontWeight: 600 }}>
+                              🚶‍♂️ Walk & Talk: Vừa đi vừa tâm sự trong bối cảnh đời thực — Xóa nhòa khoảng cách 2D phẳng lì.
+                            </div>
+                            <div style={{ color: "#fbbf24", fontWeight: 600 }}>
+                              🎯 Raw Truth: Kể câu chuyện bóc trần sự thật ngượng miệng của một khách hàng cụ thể.
+                            </div>
+                            <div style={{ color: "#34d399", fontWeight: 600 }}>
+                              📲 Cầu nối Zalo: Khách nhận ra chuyên gia tử tế và chủ động nhắn tin xin tư vấn lịch thiệp.
+                            </div>
                           </div>
-                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/1629161828132946/"} caption={m.videoCaption || "Thầy Việt chia sẻ: Tìm thị trường ngách chuẩn — Sản phẩm chính là bạn"} />
+                          <AppYTEmbed maxWidth={320} url={m.videoUrl || "https://www.facebook.com/reel/1629161828132946/"} caption={m.videoCaption || "Thầy Việt chia sẻ: Kỹ thuật Video Storytelling — Kể chuyện đời thực, chạm đúng tệp khách có tiền"} />
                         </div>
                       )}
                     </div>

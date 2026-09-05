@@ -142,10 +142,13 @@ export interface PageContent {
   coreGoals?: GoalItem[];
   corePillars?: PillarItem[];
 
-  // ── 4 Modules Thực Chiến ──
+  // ── 5 Khóa học Thực Chiến ──
   modulesLabel?: string;
   modulesHeading?: string;
   modulesSub?: string;
+  modulesSidebarTag?: string;
+  modulesSidebarTitle?: string;
+  modulesSidebarDesc?: string;
   modules?: ModuleItem[];
   modulesGuaranteeTitle?: string;
   modulesGuaranteePoints?: string[];
@@ -457,79 +460,82 @@ export const DEFAULT_CONTENT: PageContent = {
     }
   ],
 
-  // ── Modules (5 Khóa học thực chiến từ A đến Z) ──
-  modulesLabel: "5 KHÓA HỌC THỰC CHIẾN TỪ A ĐẾN Z",
-  modulesHeading: "Trọn bộ 5 Khóa học khép kín — Đi từ số 0 đến video đầu tay ra đơn:",
-  modulesSub: "Làm video bán hàng không thể học chắp vá từng mẹo rời rạc. Bạn cần một lộ trình 5 mắt xích khép kín từ nội dung, ghi hình, dựng phim, đòn bẩy AI đến tư vấn chuyển đổi:",
+  // ── Modules (5 Khóa học Thực Chiến Từ A Đến Z) ──
+  modulesLabel: "5 ĐÒN BẨY HÌNH ẢNH THỰC CHIẾN",
+  modulesHeading: "Trọn bộ 5 Khóa học khép kín — Từ ý tưởng, chuyển cảnh tàng hình đến kể chuyện ra đơn:",
+  modulesSub: "Làm video bán hàng không thể học chắp vá từng mẹo rời rạc. Bạn cần một lộ trình 5 đòn bẩy khép kín: làm chủ kịch bản, góc máy, kỹ nghệ chuyển cảnh giấu vết cắt, biên tập AI và nghệ thuật kể chuyện hút khách qua Zalo:",
+  modulesSidebarTag: "5 ĐÒN BẨY HÌNH ẢNH",
+  modulesSidebarTitle: "Hành Trình Tự Chủ",
+  modulesSidebarDesc: "Bấm từng bước để xem lộ trình thực tế:",
   modules: [
     {
       id: "01",
       tag: "#KHÓA HỌC 01",
-      title: "Kịch bản 1 dòng — Mở máy lên là nói",
-      hook: "Dứt điểm cảm giác ngập ngừng trước ống kính. Không cần học thuộc lòng, liếc mắt đến đâu nói tự nhiên đến đó.",
+      title: "Kịch bản 1 dòng — Mở máy lên là nói tự nhiên như thở",
+      hook: "Dứt điểm cảm giác ngập ngừng trước ống kính. Không cần học thuộc lòng cả trang giấy, liếc mắt đến đâu nói tự nhiên đến đó.",
       videoUrl: "https://www.facebook.com/reel/24909527728721206/",
       videoCaption: "Thầy Việt thị phạm: Làm thế nào lúc quay video không bị cứng đơ? (1.207 lượt xem)",
-      outcome: "Cầm kịch bản 60 giây nói trôi chảy ngay lần quay đầu tiên, phong thái tự nhiên và thoải mái.",
+      outcome: "Cầm kịch bản 60 giây nói trôi chảy ngay lần quay đầu tiên, phong thái tự nhiên và điềm đạm.",
       items: [
-        "Kỹ thuật ngắt câu theo nhịp thở: Chia nhỏ lời nói thành từng câu 5–7 từ. Nói hết một câu ngắn thì dừng lại lấy hơi, xóa sạch áp lực nhớ lời thoại dài dòng.",
-        "Mở đầu 3 giây đi thẳng vào vấn đề: Đánh trúng khúc mắc thực tế của người xem để giữ chân họ ngay từ giây đầu tiên, không cần chào hỏi vòng vo.",
-        "Chuyển tải chuyên môn thành lời tâm sự: Dùng ngôn từ mộc mạc, gần gũi như khi bạn ngồi tư vấn trực tiếp cho khách hàng ngoài đời."
+        "Kỹ thuật ngắt câu theo nhịp thở: Bẻ nhỏ lời thoại thành từng câu 5–7 từ. Nói hết một ý ngắn thì dừng lại lấy hơi, xóa sạch áp lực phải nhớ văn bản dài dòng.",
+        "Mở đầu 3 giây Hook đâm thẳng vào điểm đau: Khán giả chỉ cho bạn 3 giây đầu tiên. Đánh trúng khúc mắc thực tế của họ để giữ chân ngay lập tức, không chào hỏi vòng vo.",
+        "Chuyển hóa chuyên môn thành lời tâm sự: Bỏ hoàn toàn giọng điệu rao giảng hay văn mẫu AI. Nói chuyện mộc mạc như khi bạn ngồi kéo ghế uống trà tư vấn cho khách ngoài đời."
       ]
     },
     {
       id: "02",
       tag: "#KHÓA HỌC 02",
-      title: "Góc máy điện thoại — Khung hình sáng rõ, đĩnh đạc",
-      hook: "Không cần đầu tư máy ảnh hay đèn chiếu đắt tiền — Khung hình vẫn sáng rõ, toát lên phong thái của người làm nghề.",
+      title: "Góc máy điện thoại — Khung hình sáng rõ, toát phong thái làm nghề",
+      hook: "Không cần mua máy ảnh hay dàn đèn studio đắt tiền — Chiếc smartphone trong túi và góc bàn sạch sẽ là đủ tạo dựng niềm tin.",
       videoUrl: "https://www.facebook.com/reel/775157861537584/",
       videoCaption: "Thầy Việt thị phạm: Quy tắc 3 cảnh Toàn - Trung - Cận tự quay bằng 1 điện thoại (1.899 lượt xem)",
-      outcome: "Tự quay được những thước phim đầu tay bằng điện thoại với khung hình sạch sẽ, sáng sủa và chuyên nghiệp.",
+      outcome: "Tự setup góc quay gọn gàng, đón sáng tự nhiên, toát lên sự đĩnh đạc và đáng tin cậy của một chuyên gia.",
       items: [
-        "Quy tắc 1 sải tay & ánh sáng cửa sổ: Kê điện thoại ngang tầm mắt cách 60cm, ngồi chéo 45° đón nắng tự nhiên. Gương mặt sáng rõ, khung hình có chiều sâu mà không cần đèn studio.",
-        "3 bố cục hình ảnh chuẩn mực: Góc chính diện đĩnh đạc, góc chéo trò chuyện thân tình, và góc cận đặc tả thao tác tay hoặc chi tiết sản phẩm.",
-        "Giải pháp quay không cần lộ mặt (Faceless): Dành cho người ngại lên hình — tập trung ghi lại quá trình làm việc, tài liệu hoặc sản phẩm thực tế mà vẫn tạo dựng trọn vẹn niềm tin."
+        "Quy tắc 1 sải tay & ánh sáng tự nhiên: Đặt điện thoại ngang tầm mắt cách 60cm, ngồi chéo 45° đón nguồn sáng cửa sổ. Gương mặt sáng rõ, khung hình có khối 3D mà không tốn tiền mua đèn.",
+        "3 bố cục hình ảnh chuẩn mực: Góc chính diện đĩnh đạc tạo uy tín, góc chéo trò chuyện thân tình kéo gần khoảng cách, và góc cận đặc tả thao tác tay hoặc sản phẩm thực tế.",
+        "Giải pháp quay Faceless (Không lộ mặt): Dành cho người ngại xuất hiện trước camera — tập trung ghi lại quy trình làm việc, bản vẽ, thao tác tay mà vẫn tạo dựng trọn vẹn niềm tin."
       ]
     },
     {
       id: "03",
       tag: "#KHÓA HỌC 03",
-      title: "Dựng CapCut thực chiến — Che sạch mọi đoạn nói vấp",
-      hook: "Bấm máy nói thoải mái, nói vấp cũng không sao. Chỉ với 2 thao tác cơ bản là video xuất xưởng mượt mà.",
+      title: "Kỹ nghệ chuyển cảnh tàng hình — Thước phim mượt mà không kỹ xảo màu mè",
+      hook: "Vứt bỏ hiệu ứng lật trang 3D sến súa của app. Mượn chuyển động cơ học tự nhiên để nối cảnh mượt đến vô lý chỉ bằng 1 điện thoại.",
       videoUrl: "https://www.facebook.com/reel/1735902844239442/",
-      videoCaption: "Thầy Việt thị phạm: 2 nguyên tắc Match Cut 'tàng hình' mọi vết cắt vấp (1.250 lượt xem)",
-      outcome: "Tự tay xuất bản video 45–60 giây hoàn chỉnh ngay trên điện thoại, nhịp điệu dứt khoát dù lúc quay bạn phải nói lại nhiều lần.",
+      videoCaption: "Thầy Việt thị phạm: 2 nguyên tắc Match Cut 'tàng hình' mọi vết cắt vấp (từ video.fedu.vn)",
+      outcome: "Làm chủ tư duy nối cảnh điện ảnh, video trôi chảy như một dòng nước, giữ chặt mắt người xem từ đầu đến cuối.",
       items: [
-        "Cắt gọt tinh gọn với 2 thao tác (Tách & Xóa): Dẹp bỏ các hiệu ứng phức tạp. Chỉ cần phóng to dòng thời gian để cắt bỏ những đoạn ngập ngừng, thở dài trong vài giây.",
-        "Kỹ thuật chèn hình ảnh che vết cắt (B-roll): Chèn hình ảnh sản phẩm hoặc cảnh thao tác tay đè lên đoạn nói vấp. Âm thanh vẫn liền mạch, người xem cảm nhận video được đầu tư chỉn chu.",
-        "Tạo phụ đề tự động chuẩn tiếng Việt: 1 chạm để CapCut tự nhận diện giọng nói và hiển thị chữ, căn chỉnh vị trí an toàn để không che mất nội dung quan trọng."
+        "Nguyên lý Cut-on-Action (Nối cảnh bằng chuyển động): Mượn chuyển động vật lý thật (vung tay, lướt vật thể qua ống kính, bước chân) làm cầu nối giấu nhẹm vết cắt giữa 2 bối cảnh.",
+        "Điều phối không gian qua 3 cỡ cảnh (Toàn - Trung - Cận): Phá bỏ góc máy tĩnh gây buồn ngủ. Luân chuyển cỡ cảnh đúng nhịp điệu mỗi 3 giây để người xem liên tục có điểm nhìn mới.",
+        "Bằng chứng thị giác B-roll che sạch lỗi vấp: Lỡ nói ngắc ngứ? Không cần quay lại từ đầu. Chèn cảnh thao tác thực tế đè lên vết cắt, âm thanh vẫn liền mạch mà video trông cực kỳ chỉn chu."
       ]
     },
     {
       id: "04",
       tag: "#KHÓA HỌC 04",
-      title: "Ứng dụng AI sản xuất video — Tiết kiệm 80% thời gian",
-      hook: "Giải phóng bạn khỏi nỗi lo cạn ý tưởng. Trợ lý AI hỗ trợ lên sườn nội dung đúng giọng nói của bạn chỉ sau vài phút.",
+      title: "Biên tập CapCut & Đòn bẩy AI — Tinh gọn 2 nút, tiết kiệm 80% thời gian",
+      hook: "Nói vấp thoải mái, hậu kỳ xử lý êm ru. Kết hợp trợ lý AI gọt giũa kịch bản đúng giọng của bạn, giải phóng bạn khỏi mò mẫm mỗi đêm.",
       videoUrl: "https://www.facebook.com/reel/2162457291248635/",
-      videoCaption: "Thầy Việt thị phạm: Ứng dụng AI tạo cảnh trám B-roll & chuyển cảnh mượt mà",
-      outcome: "Xây dựng được kho ý tưởng dồi dào và quy trình làm video rảnh tay, không còn mất hàng giờ mò mẫm mỗi tối.",
+      videoCaption: "Thầy Việt thị phạm: Hậu kỳ CapCut tinh gọn & ứng dụng AI tạo cảnh trám B-roll",
+      outcome: "Xuất xưởng video hoàn chỉnh trong 30–45 phút, không phụ thuộc người dựng ngoài, tự chủ 100% kênh cá nhân.",
       items: [
-        "Bộ lệnh gợi ý 30 chủ đề theo ngành nghề: Chỉ cần cung cấp lĩnh vực của bạn, AI sẽ tự động phân tích và đưa ra danh sách ý tưởng sát với nhu cầu thực tế của khách hàng.",
-        "Huấn luyện AI viết theo văn phong đời thường: Cách thiết lập để AI viết ngắn gọn, đúng trọng tâm, loại bỏ hoàn toàn những câu từ sáo rỗng hay văn mẫu khuôn sáo.",
-        "Quy trình sản xuất video 45 phút cho người bận rộn: Tối ưu hóa các bước từ khâu duyệt kịch bản, quay đến hậu kỳ, giúp bạn duy trì kênh đều đặn mà không ảnh hưởng công việc chính."
+        "Dựng CapCut với đúng 2 thao tác (Tách & Xóa): Dẹp bỏ các menu phức tạp. Chỉ cần phóng to dòng thời gian để cắt bỏ đoạn ngập ngừng, thở dài trong vài giây.",
+        "Tạo phụ đề tự động chuẩn tiếng Việt: 1 chạm nhận diện giọng nói, căn chỉnh vùng hiển thị an toàn không rách chữ, không che mất chi tiết quan trọng trên màn hình.",
+        "Luyện AI viết sườn bài theo giọng nói đời thường: Bộ câu lệnh ép AI bỏ văn mẫu sáo rỗng, tự động gợi ý 30 chủ đề bám sát câu hỏi thực tế của khách hàng."
       ]
     },
     {
       id: "05",
       tag: "#KHÓA HỌC 05",
-      title: "Video tư vấn bán hàng — Thu hút khách hàng về Zalo",
-      hook: "Biến video thành công cụ tư vấn giá trị. Khách hàng xem xong hiểu được chuyên môn và chủ động liên hệ với bạn.",
+      title: "Video Storytelling — Kể chuyện chạm cảm xúc, khách tự tìm đến Zalo",
+      hook: "Người có tiền không mua hàng vì lời nài nỉ hay quảng cáo tính năng. Họ mua vì câu chuyện nghề nghiệp chân thật chạm đúng khúc mắc của họ.",
       videoUrl: "https://www.facebook.com/reel/1629161828132946/",
-      videoCaption: "Thầy Việt chia sẻ: Tìm thị trường ngách chuẩn — Sản phẩm chính là bạn (3.982 lượt xem)",
-      outcome: "Mỗi video trở thành một cầu nối tự nhiên, mang về những cuộc trò chuyện chất lượng và khách hàng thực tế qua Zalo.",
+      videoCaption: "Thầy Việt chia sẻ: Kỹ thuật Video Storytelling — Kể chuyện đời thực, chạm đúng tệp khách có tiền",
+      outcome: "Biến mỗi thước phim thành chiếc danh thiếp sống động, khách xem xong thấu hiểu chuyên môn và chủ động nhắn tin Zalo xin tư vấn.",
       items: [
-        "Tư duy tiếp cận đúng tệp khách hàng tiềm năng: Tập trung vào nhóm người xem có nhu cầu thực tế và khả năng chi trả, thay vì chạy theo số lượng người xem đại trà.",
-        "Cách lồng ghép câu chuyện thực tế vào video (Walk & Talk): Chia sẻ trải nghiệm giải quyết vấn đề cho một khách hàng cụ thể, giúp người xem tự nhận ra giá trị và đặt niềm tin vào bạn.",
-        "Thiết lập cầu nối chuyển đổi về Zalo: Cách để lại thông tin liên hệ tinh tế ở cuối video, tạo cảm giác thuận tiện để khách hàng chủ động nhắn tin trao đổi công việc."
+        "Mô hình kể chuyện Walk & Talk mộc mạc: Vừa đi vừa tâm sự trong bối cảnh làm việc đời thực. Phá vỡ cảm giác bán hàng gượng gạo, tạo dựng cảm giác an toàn và gần gũi.",
+        "Công thức bóc trần sự thật ngượng miệng: Kể lại câu chuyện giải quyết vấn đề cho một khách hàng cụ thể — bẫy chi phí họ từng gặp, nỗi sợ hớ hênh khi làm nghề, và cách bạn tháo gỡ.",
+        "Thiết lập cầu nối chuyển đổi về Zalo: Cách để lại lời ngỏ tự nhiên, không chèo kéo, biến video thành một chuyên viên tư vấn mẫn cán mang về khách hàng thật 24/7."
       ]
     }
   ],
