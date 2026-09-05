@@ -114,11 +114,11 @@ export function BonusSection() {
                     {/* 1. Trình phát Audio Player cho Món 01 */}
                     {item.audioDemo && (
                       <div style={{
-                        background: "#0d1117",
-                        border: `1px solid ${t.accent}44`,
+                        background: "var(--cl-card, #f8f9fa)",
+                        border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                         borderRadius: 14,
                         padding: "16px 18px",
-                        boxShadow: `0 10px 25px -10px rgba(0, 0, 0, 0.4)`,
+                        boxShadow: "0 8px 24px -6px rgba(0, 0, 0, 0.05)",
                       }}>
                         <div style={{
                           fontFamily: t.fontMono,
@@ -141,12 +141,11 @@ export function BonusSection() {
                             height: 38,
                             outline: "none",
                             borderRadius: 8,
-                            filter: "invert(0.9) hue-rotate(180deg)",
                           }}
                         />
                         <div style={{
                           fontSize: 12.5,
-                          color: "#94a3b8",
+                          color: "var(--cl-text-muted, #64748b)",
                           marginTop: 10,
                           lineHeight: 1.5,
                         }}>
@@ -158,11 +157,11 @@ export function BonusSection() {
                     {/* 2. Video Player HTML5 cho Món 03 (AI Lọc Văn Mẫu) */}
                     {item.videoDemo && (
                       <div style={{
-                        background: "#000",
-                        border: `1px solid ${t.accent}33`,
+                        background: "var(--cl-card, #f8f9fa)",
+                        border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                         borderRadius: 14,
                         overflow: "hidden",
-                        boxShadow: `0 12px 30px rgba(0, 0, 0, 0.25)`,
+                        boxShadow: "0 8px 24px -6px rgba(0, 0, 0, 0.05)",
                       }}>
                         <video
                           src={item.videoDemo}
@@ -177,16 +176,15 @@ export function BonusSection() {
                             maxHeight: 260,
                             objectFit: "contain",
                             display: "block",
-                            background: "#000",
                           }}
                         />
                         <div style={{
                           padding: "10px 14px",
                           fontFamily: t.fontMono,
                           fontSize: 12,
-                          color: "#94a3b8",
-                          background: "#0d1117",
-                          borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+                          color: "var(--cl-text-body, #475569)",
+                          background: "var(--cl-card2, #f1f3f4)",
+                          borderTop: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                         }}>
                           ▶ Thực tế: AI lọc sạch 7 lỗi văn mẫu & nhả kịch bản 2 cột
                         </div>
@@ -196,11 +194,11 @@ export function BonusSection() {
                     {/* 3. GIF Animation cho Món 02 (Template Chữ CapCut) */}
                     {item.gifDemo && !item.videoDemo && (
                       <div style={{
-                        background: "#0d1117",
-                        border: `1px solid ${t.accent}33`,
+                        background: "var(--cl-card, #f8f9fa)",
+                        border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                         borderRadius: 14,
                         overflow: "hidden",
-                        boxShadow: `0 12px 30px rgba(0, 0, 0, 0.25)`,
+                        boxShadow: "0 8px 24px -6px rgba(0, 0, 0, 0.05)",
                       }}>
                         <img
                           src={item.gifDemo}
@@ -217,9 +215,9 @@ export function BonusSection() {
                           padding: "10px 14px",
                           fontFamily: t.fontMono,
                           fontSize: 12,
-                          color: "#94a3b8",
-                          background: "#0d1117",
-                          borderTop: "1px solid rgba(255, 255, 255, 0.08)",
+                          color: "var(--cl-text-body, #475569)",
+                          background: "var(--cl-card2, #f1f3f4)",
+                          borderTop: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                         }}>
                           ✦ Kéo - thả dùng ngay: Chữ hiển thị chuẩn vùng an toàn trên điện thoại
                         </div>

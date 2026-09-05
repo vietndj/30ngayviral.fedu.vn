@@ -190,8 +190,8 @@ export function CorePillarsSection() {
                       borderRadius: 22,
                       overflow: "hidden",
                       border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
-                      background: "#0a0a0c",
-                      boxShadow: "0 16px 36px -12px rgba(0, 0, 0, 0.3)",
+                      background: "var(--cl-card, #f8f9fa)",
+                      boxShadow: "0 10px 28px -8px rgba(0, 0, 0, 0.08)",
                       padding: "10px 10px 6px",
                     }}>
                       <AppYTEmbed
@@ -209,8 +209,8 @@ export function CorePillarsSection() {
                       borderRadius: 22,
                       overflow: "hidden",
                       border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
-                      background: "#0a0a0c",
-                      boxShadow: "0 16px 36px -12px rgba(0, 0, 0, 0.3)",
+                      background: "var(--cl-card, #f8f9fa)",
+                      boxShadow: "0 10px 28px -8px rgba(0, 0, 0, 0.08)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",

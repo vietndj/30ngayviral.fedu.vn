@@ -4,8 +4,11 @@ export default function ZaloChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
 
-  // Tự động bung popup sau 3.5 giây nếu người dùng chưa tương tác
+  // Tự động bung popup sau 3.5 giây nếu người dùng chưa tương tác (trừ trang checkout)
   useEffect(() => {
+    if (typeof window !== "undefined" && window.location.pathname.includes("checkout")) {
+      return;
+    }
     const timer = setTimeout(() => {
       if (!hasInteracted) {
         setIsOpen(true);

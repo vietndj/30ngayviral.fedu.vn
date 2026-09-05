@@ -113,6 +113,7 @@ export interface PageContent {
 
   heroBadge: string;
   heroHeadline1: string;
+  heroHeadlineAccent?: string;
   heroHeadline2: string;
   heroHighlightPill?: string;
   heroFlow?: string[];
@@ -124,6 +125,10 @@ export interface PageContent {
   heroCta: string;
   heroSubPrice?: string;
   heroVideoYoutubeId?: string;
+  heroVideoLabel?: string;
+  heroVideoHeading?: string;
+  heroVideoSub?: string;
+  heroVideoNote?: string;
   heroPoem?: string[];
 
   painLabel: string;
@@ -281,19 +286,24 @@ export const DEFAULT_CONTENT: PageContent = {
   checkoutFaqs: courseConfig.checkoutFaqs,
 
   // ── Hero ──
-  heroBadge: "TÍCH HỢP AI 2026 — DÀNH CHO NGƯỜI MỚI & CHỦ KINH DOANH",
-  heroHeadline1: "TỰ LÀM VIDEO NGẮN CHUYỂN ĐỔI CAO.",
-  heroHeadline2: "Lộ Trình 30 Ngày Làm Chủ Video Ngắn",
+  heroBadge: "DÀNH CHO NGƯỜI MỚI & CHỦ KINH DOANH",
+  heroHeadline1: "Lộ Trình 30 Ngày Tự Làm Video Ngắn",
+  heroHeadlineAccent: "Bán Hàng & Chuyển Đổi Cao",
+  heroHeadline2: "Lộ Trình 30 Ngày Tự Làm Video Ngắn",
   heroHighlightPill: "Từ ý tưởng → Kịch bản → Góc quay → Edit → AI",
   heroPoem: [
     "Khóa học thực chiến từ giảng viên FPT Arena Multimedia,",
     "Không cần giỏi quay dựng từ trước — Chỉ cần chiếc điện thoại là bắt đầu ra đơn."
   ],
   heroAccentLine: "Bạn không cần máy quay chục triệu, không cần ekip cồng kềnh hay ngoại hình xuất chúng.",
-  heroSub: "Không cần kỹ xảo phức tạp, chỉ với chiếc điện thoại trên tay bạn sẽ làm chủ trọn vẹn: Cách đặt góc máy đẹp, mở đầu khiến người xem phải dừng lại và nhịp cắt ghép cuốn hút từ đầu đến cuối. Học bài nào — cầm máy lên ra ngay video chuẩn bài đó.",
+  heroSub: "Không cần máy quay đắt tiền, không cần biết kỹ thuật từ trước. Bạn học cách làm chủ góc quay và kịch bản giữ chân người xem bằng chiếc điện thoại — kết hợp trợ lực AI giúp rút ngắn 80% thời gian dựng video.",
   heroCta: "KHÁM PHÁ LỘ TRÌNH 30 NGÀY →",
   heroVideoYoutubeId: "pmEpqI2gFpo",
-  heroSubPrice: "Học Online trọn đời trên Skool — Trọn bộ công cụ & Chữa bài chuyên môn",
+  heroVideoLabel: "// XEM TRƯỚC BÀI GIẢNG THỰC TẾ",
+  heroVideoHeading: "Chỉ cần chiếc điện thoại trên tay — Đây là cách bạn bắt đầu ra đơn",
+  heroVideoSub: "Xem video 90 giây: Quy trình quay dựng thực tế từ số 0 của anh Nguyễn Đức Việt — Tự tay làm video hoàn chỉnh mà không cần máy cơ hay kỹ thuật phức tạp.",
+  heroVideoNote: "🎥 100% cảnh quay và edit thực hiện trên điện thoại cá nhân · Trợ lực kịch bản AI",
+  heroSubPrice: "⚡ Giảng viên FPT Arena • Cầm máy lên là làm được • Học online trọn đời",
 
   // ── Pain (Nỗi đau & 6 bế tắc chuẩn Tầng 2.5 - Văn phong Anh Việt) ──
   painLabel: "// NỖI KHỔ NGƯỜI CÓ NGHỀ",
@@ -940,7 +950,7 @@ export const DEFAULT_CONTENT: PageContent = {
   ],
 
   blocksMeta: {
-    order: ["hero", "pain", "pillars", "modules", "instructor", "before-after", "attention", "bonus", "faq", "cta"],
+    order: ["hero", "video", "pain", "pillars", "modules", "instructor", "before-after", "attention", "bonus", "faq", "cta"],
     hidden: ["skills"],
     media: {},
     custom: {},

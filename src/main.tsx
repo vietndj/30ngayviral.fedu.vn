@@ -9,7 +9,11 @@ const path = window.location.pathname.replace(/\/$/, "");
 if (path === "/checkout") {
   import("./Checkout").then(({ default: Checkout }) => {
     createRoot(document.getElementById("root")!).render(
-      createElement(ThemeProvider, null, createElement(Checkout))
+      createElement(ThemeProvider, null,
+        createElement(ContentProvider, null,
+          createElement(Checkout)
+        )
+      )
     );
   });
 } else {

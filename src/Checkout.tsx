@@ -20,11 +20,10 @@ const GREEN = "#10b981"; // Emerald green for success states
 
 
 function Ck({ children }: { children: React.ReactNode }) {
-  const t = useTheme();
   return (
     <div style={{ display: "flex", gap: 10, marginBottom: 10, alignItems: "flex-start" }}>
-      <span style={{ color: GREEN, fontWeight: 500, flexShrink: 0, fontSize: 16 }}>✓</span>
-      <span style={{ fontSize: 15, lineHeight: 1.65, color: t.textBody ?? "#c0c0c0" }}>{children}</span>
+      <span style={{ color: GREEN, fontWeight: 700, flexShrink: 0, fontSize: 16 }}>✓</span>
+      <span style={{ fontSize: 15, lineHeight: 1.65, color: "var(--cl-text-body, #374151)" }}>{children}</span>
     </div>
   );
 }
@@ -33,10 +32,11 @@ function Card({ children, highlight = false, style: extraStyle = {} }: { childre
   const t = useTheme();
   return (
     <div style={{
-      background: highlight ? `linear-gradient(135deg, ${t.card}, ${t.card2})` : t.card,
-      border: `1px solid ${highlight ? t.accent + "44" : t.line}`,
-      borderRadius: t.cardRadius,
+      background: highlight ? "#ffffff" : "var(--cl-card, #ffffff)",
+      border: highlight ? `1.5px solid ${t.accent}55` : "1px solid var(--cl-line, #e2e8f0)",
+      borderRadius: "var(--cl-radius, 16px)",
       padding: "24px 20px",
+      boxShadow: highlight ? "0 8px 30px rgba(26, 115, 232, 0.08)" : "0 2px 8px rgba(0, 0, 0, 0.03)",
       ...extraStyle,
     }}>
       {children}
@@ -46,13 +46,24 @@ function Card({ children, highlight = false, style: extraStyle = {} }: { childre
 
 function Lbl({ children }: { children: React.ReactNode }) {
   const t = useTheme();
-  return <div style={{ fontFamily: t.fontMono, fontSize: 13, fontWeight: 500, letterSpacing: "0.2em", color: t.accent, textTransform: "uppercase" as const, marginBottom: 10 }}>{children}</div>;
+  return (
+    <div style={{
+      fontFamily: t.fontMono,
+      fontSize: 12,
+      fontWeight: 700,
+      letterSpacing: "0.14em",
+      color: t.accent,
+      textTransform: "uppercase" as const,
+      marginBottom: 10
+    }}>
+      {children}
+    </div>
+  );
 }
 
 function H({ children }: { children: React.ReactNode }) {
-  const t = useTheme();
   return (
-    <h2 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(18px, 3vw, 24px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", margin: "0 0 18px", color: t.textBase ?? "#fff" }}>
+    <h2 className="cl-sh" style={{ fontSize: "clamp(18px, 3vw, 24px)", margin: "0 0 18px", color: "var(--cl-text-base, #111827)" }}>
       {children}
     </h2>
   );
@@ -64,53 +75,55 @@ function PaymentSuccessModal({ onClose }: { onClose: () => void }) {
   return (
     <div style={{
       position: "fixed", inset: 0, zIndex: 9999,
-      background: "rgba(0,0,0,0.88)",
+      background: "rgba(0,0,0,0.6)",
+      backdropFilter: "blur(6px)",
+      WebkitBackdropFilter: "blur(6px)",
       display: "flex", alignItems: "center", justifyContent: "center",
       padding: 16,
       animation: "fadeIn 0.3s ease",
     }}>
       <div style={{
-        background: `linear-gradient(135deg, ${t.bg}, ${t.card2})`,
-        border: `1px solid ${GREEN}`,
-        borderRadius: t.cardRadius, padding: "48px 32px",
+        background: "#ffffff",
+        border: `1.5px solid ${GREEN}`,
+        borderRadius: "var(--cl-radius, 16px)", padding: "40px 28px",
         maxWidth: 480, width: "100%", textAlign: "center",
-        boxShadow: `0 0 80px ${GREEN}44, 0 24px 64px rgba(0,0,0,0.8)`,
+        boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
       }}>
         <div style={{
-          width: 72, height: 72, borderRadius: 16, margin: "0 auto 20px",
-          background: `linear-gradient(135deg, ${t.accent}22, transparent)`,
-          border: `1px solid ${t.accent}44`,
+          width: 68, height: 68, borderRadius: 16, margin: "0 auto 20px",
+          background: "rgba(16, 185, 129, 0.1)",
+          border: `1.5px solid ${GREEN}44`,
           display: "flex", alignItems: "center", justifyContent: "center"
         }}>
           <div style={{ transform: "scale(1.2)" }}>
-            <IconCheck accent={t.accent} />
+            <IconCheck accent={GREEN} />
           </div>
         </div>
-        <h2 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(22px,4vw,30px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", color: t.textBase ?? "#fff", margin: "0 0 12px" }}>
+        <h2 className="cl-sh" style={{ fontSize: "clamp(22px,4vw,28px)", color: "var(--cl-text-base, #111827)", margin: "0 0 12px" }}>
           Chào mừng bạn đến với lớp học!
         </h2>
-        <p style={{ fontSize: 15, color: t.textBody ?? "#aaa", lineHeight: 1.75, margin: "0 0 24px" }}>
+        <p style={{ fontSize: 15, color: "var(--cl-text-body, #374151)", lineHeight: 1.75, margin: "0 0 24px" }}>
           Mình đã nhận được chuyển khoản thành công của bạn rồi nhé.
         </p>
-        <div style={{ background: t.card, border: `1px solid ${t.line}`, borderRadius: t.cardRadius, padding: "20px 24px", marginBottom: 24 }}>
-          <p style={{ fontSize: 15, color: t.textMuted ?? "#666", marginBottom: 8, fontWeight: 600 }}>📧 Tài khoản Skool &amp; 4 Tủ đồ nghề thực chiến:</p>
-          <p style={{ fontSize: 16, fontWeight: 500, color: GREEN, margin: "0 0 4px" }}>Đã gửi thẳng vào email của bạn</p>
-          <p style={{ fontSize: 13, color: t.textMuted ?? "#555" }}>Mở hòm thư (kiểm tra cả mục Spam/Quảng cáo) để kích hoạt tài khoản và vào chào anh em nhé!</p>
+        <div style={{ background: "#f8fafc", border: "1px solid var(--cl-line, #e2e8f0)", borderRadius: 12, padding: "18px 20px", marginBottom: 20 }}>
+          <p style={{ fontSize: 14.5, color: "var(--cl-text-base, #111827)", marginBottom: 6, fontWeight: 700 }}>📧 Tài khoản Skool &amp; 4 Tủ đồ nghề thực chiến:</p>
+          <p style={{ fontSize: 15.5, fontWeight: 700, color: GREEN, margin: "0 0 4px" }}>Đã gửi thẳng vào email của bạn</p>
+          <p style={{ fontSize: 13, color: "var(--cl-text-muted, #64748b)" }}>Mở hòm thư (kiểm tra cả mục Spam/Quảng cáo) để kích hoạt tài khoản và vào chào anh em nhé!</p>
         </div>
-        <div style={{ background: t.card2, borderRadius: Math.max(8, t.cardRadius - 4), padding: "14px 20px", marginBottom: 24 }}>
+        <div style={{ background: "#f1f5f9", borderRadius: 10, padding: "14px 18px", marginBottom: 24 }}>
           {[
             `🎬 ${c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"}`,
             "🎁 Trọn bộ 4 Tủ đồ nghề thực chiến (Nhạc AI, SFX, Prompt, 30 Hook)",
             "♾ Sở hữu trọn đời & Cập nhật kỹ thuật AI mới liên tục"
           ].map((item) => (
-            <div key={item} style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0", padding: "4px 0", textAlign: "left" }}>{item}</div>
+            <div key={item} style={{ fontSize: 14, color: "var(--cl-text-body, #374151)", padding: "4px 0", textAlign: "left" }}>{item}</div>
           ))}
         </div>
         <button onClick={() => window.location.href = "/"} style={{
           background: t.accent, color: t.accentText, border: "none",
-          borderRadius: t.btnRadius, padding: "14px 36px",
-          fontSize: 15, fontWeight: 500, cursor: "pointer",
-          boxShadow: `0 0 24px ${t.accent}66`,
+          borderRadius: "var(--cl-radius-btn, 12px)", padding: "14px 36px",
+          fontSize: 15, fontWeight: 700, cursor: "pointer",
+          boxShadow: `0 4px 18px ${t.accent}44`,
         }}>
           Đóng & Bắt đầu học ngay
         </button>
@@ -123,31 +136,31 @@ function ConfirmBanner({ onReset }: { onReset: () => void }) {
   const t = useTheme();
   const c = useContent();
   return (
-    <div style={{ textAlign: "center", padding: "40px 20px", background: t.card2, border: `1px solid ${GREEN}44`, borderRadius: t.cardRadius }}>
-        <div style={{
-          width: 64, height: 64, borderRadius: 16, margin: "0 auto 16px",
-          background: `linear-gradient(135deg, ${t.accent}22, transparent)`,
-          border: `1px solid ${t.accent}44`,
-          display: "flex", alignItems: "center", justifyContent: "center"
-        }}>
-          <IconCheck accent={t.accent} />
-        </div>
-      <h2 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(22px, 4vw, 28px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", marginBottom: 12, color: t.textBase ?? "#fff" }}>
+    <div style={{ textAlign: "center", padding: "40px 20px", background: "#ffffff", border: `1.5px solid ${GREEN}55`, borderRadius: "var(--cl-radius, 16px)", boxShadow: "0 8px 30px rgba(16, 185, 129, 0.08)" }}>
+      <div style={{
+        width: 64, height: 64, borderRadius: 16, margin: "0 auto 16px",
+        background: "rgba(16, 185, 129, 0.1)",
+        border: `1.5px solid ${GREEN}44`,
+        display: "flex", alignItems: "center", justifyContent: "center"
+      }}>
+        <IconCheck accent={GREEN} />
+      </div>
+      <h2 className="cl-sh" style={{ fontSize: "clamp(22px, 4vw, 28px)", marginBottom: 12, color: "var(--cl-text-base, #111827)" }}>
         Mình đã ghi nhận chuyển khoản của bạn!
       </h2>
-      <p style={{ fontSize: 15, color: t.textBody ?? "#aaa", lineHeight: 1.75, maxWidth: 460, margin: "0 auto 24px" }}>
+      <p style={{ fontSize: 15, color: "var(--cl-text-body, #374151)", lineHeight: 1.75, maxWidth: 460, margin: "0 auto 24px" }}>
         Hệ thống đang tự động đối soát giao dịch. Tài khoản Skool và bộ đồ nghề sẽ được gửi thẳng vào email của bạn <strong style={{ color: "var(--cl-text-base, #111827)" }}>trong vòng 1 - 2 phút</strong>.
       </p>
-      <div style={{ display: "inline-flex", flexDirection: "column", gap: 10, background: t.card, border: `1px solid ${t.line}`, borderRadius: Math.max(8, t.cardRadius - 4), padding: "20px 24px", marginBottom: 20, textAlign: "left" }}>
+      <div style={{ display: "inline-flex", flexDirection: "column", gap: 10, background: "#f8fafc", border: "1px solid var(--cl-line, #e2e8f0)", borderRadius: 12, padding: "18px 22px", marginBottom: 20, textAlign: "left" }}>
         {[
           `🎬 ${c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"}`,
           "🎁 Trọn bộ 4 Tủ đồ nghề thực chiến (Nhạc AI, SFX, Prompt, 30 Hook)",
           "♾ Sở hữu trọn đời & Cập nhật kỹ thuật AI mới liên tục"
         ].map((item) => (
-          <span key={item} style={{ fontSize: 15, color: t.textBody ?? "#c0c0c0" }}>{item}</span>
+          <span key={item} style={{ fontSize: 14.5, color: "var(--cl-text-body, #374151)" }}>{item}</span>
         ))}
       </div>
-      <p style={{ fontSize: 15, color: t.textMuted ?? "#555", lineHeight: 1.6 }}>Cần hỗ trợ gấp hoặc sau 5 phút chưa thấy email? Nhắn thẳng Zalo Việt: <a href="https://zalo.me/0934688632" style={{ color: t.accent, fontWeight: 600 }}>0934.688.632</a> (hỗ trợ ngay)</p>
+      <p style={{ fontSize: 14, color: "var(--cl-text-muted, #64748b)", lineHeight: 1.6 }}>Cần hỗ trợ gấp hoặc sau 5 phút chưa thấy email? Nhắn thẳng Zalo Việt: <a href="https://zalo.me/0934688632" style={{ color: t.accent, fontWeight: 700 }}>0934.688.632</a> (hỗ trợ ngay)</p>
       <button onClick={onReset} style={{ marginTop: 20, background: "transparent", border: `1px solid ${t.line}`, borderRadius: t.btnRadius, padding: "10px 24px", color: t.textMuted ?? "#555", fontSize: 13, cursor: "pointer" }}>
         Quay lại trang thanh toán
       </button>
@@ -229,15 +242,15 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
       </div>
 
       {/* Pricing block */}
-      <div style={{ textAlign: "center", marginBottom: 18, paddingBottom: 18, borderBottom: `1px solid ${t.line}` }}>
-        <div style={{ fontSize: 15, color: t.textMuted ?? "#555", textDecoration: "line-through" }}>{c.value} VNĐ</div>
-        <div style={{ fontSize: 36, fontWeight: 500, color: t.textBase ?? "#fff" }}>{c.price} <span style={{ fontSize: 16 }}>VNĐ</span></div>
-        <div style={{ fontSize: 15, color: t.accent, fontWeight: 500 }}>Tiết kiệm {formattedSaving} VNĐ</div>
+      <div style={{ textAlign: "center", marginBottom: 18, paddingBottom: 18, borderBottom: "1px solid var(--cl-line, #e2e8f0)" }}>
+        <div style={{ fontSize: 15, color: "var(--cl-text-muted, #64748b)", textDecoration: "line-through" }}>{c.value} VNĐ</div>
+        <div style={{ fontSize: 36, fontWeight: 700, color: "var(--cl-text-base, #111827)" }}>{c.price} <span style={{ fontSize: 16 }}>VNĐ</span></div>
+        <div style={{ fontSize: 14.5, color: t.accent, fontWeight: 700 }}>Tiết kiệm {formattedSaving} VNĐ</div>
       </div>
 
       {/* 📱 [Khối Mã QR & Thanh Toán] (Ở giữa, to nhất - Không có chữ VIET QR) */}
       <div style={{ textAlign: "center", marginBottom: 20 }}>
-        <p style={{ fontSize: 13, fontWeight: 500, color: t.accent, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+        <p style={{ fontSize: 13, fontWeight: 700, color: t.accent, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>
           📱 QUÉT MÃ VÀO LỚP NGAY
         </p>
         <div style={{ 
@@ -246,8 +259,8 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
           margin: "0 auto",
           background: "#fff", 
           borderRadius: 16, 
-          boxShadow: `0 0 40px ${t.accent}22`,
-          border: `1px solid ${t.line}`,
+          boxShadow: `0 4px 24px rgba(0, 0, 0, 0.06)`,
+          border: `1px solid var(--cl-line, #e2e8f0)`,
           overflow: "hidden",
           padding: "16px 16px 18px",
           textAlign: "center"
@@ -294,23 +307,21 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
             </div>
           </div>
         </div>
-        <p style={{ fontSize: 14, color: t.textMuted ?? "#555", marginTop: 10 }}>Tương thích: Mọi app ngân hàng &amp; Ví Momo (quét là tự điền đúng tiền và cú pháp)</p>
+        <p style={{ fontSize: 13.5, color: "var(--cl-text-muted, #64748b)", marginTop: 10 }}>Tương thích: Mọi app ngân hàng &amp; Ví Momo (quét là tự điền đúng tiền và cú pháp)</p>
       </div>
 
-
-
-      {/* NEW INSTRUCTIONS */}
-      <div style={{ marginBottom: 18, background: t.card2, borderRadius: 12, padding: "14px 16px", border: `1px solid ${t.line}` }}>
-        <p style={{ fontSize: 13, fontWeight: 500, color: t.textMuted ?? "#777", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Hướng dẫn 2 bước</p>
+      {/* 2-STEP INSTRUCTIONS */}
+      <div style={{ marginBottom: 18, background: "#f8fafc", borderRadius: 12, padding: "14px 16px", border: "1px solid var(--cl-line, #e2e8f0)" }}>
+        <p style={{ fontSize: 12, fontWeight: 700, color: "var(--cl-text-muted, #64748b)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 12 }}>Hướng dẫn 2 bước</p>
         <div style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "center" }}>
-          <span style={{ background: t.accent, color: t.accentText, fontSize: 12, fontWeight: 500, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>1</span>
-          <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>Mở app ngân hàng quét mã QR (đã tự điền đúng 999.000đ).</span>
+          <span style={{ background: t.accent, color: "#ffffff", fontSize: 12, fontWeight: 700, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>1</span>
+          <span style={{ fontSize: 14.5, color: "var(--cl-text-body, #374151)" }}>Mở app ngân hàng quét mã QR (đã tự điền đúng {c.price}đ).</span>
         </div>
         <div style={{ display: "flex", gap: 10, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-            <span style={{ background: t.accent, color: t.accentText, fontSize: 12, fontWeight: 500, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>2</span>
-            <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>
-              Kiểm tra nội dung: <strong style={{ color: "var(--cl-text-base, #111827)" }}>{bank.content}</strong>
+            <span style={{ background: t.accent, color: "#ffffff", fontSize: 12, fontWeight: 700, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>2</span>
+            <span style={{ fontSize: 14.5, color: "var(--cl-text-body, #374151)" }}>
+              Kiểm tra nội dung: <strong style={{ color: "var(--cl-text-base, #111827)", wordBreak: "break-all" }}>{bank.content}</strong>
             </span>
           </div>
           <CopyButton text={bank.content} label="Copy cú pháp" />
@@ -321,10 +332,11 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
         onClick={onConfirm}
         style={{
           width: "100%", background: t.accent, color: t.accentText, border: "none",
-          borderRadius: t.btnRadius, padding: "16px 16px",
-          fontSize: 15, fontWeight: 500, cursor: "pointer",
+          borderRadius: "var(--cl-radius-btn, 12px)", padding: "16px 16px",
+          fontSize: 15, fontWeight: 700, cursor: "pointer",
           letterSpacing: "0.04em", textTransform: "uppercase",
-          boxShadow: `0 0 32px 4px ${t.accent}44`,
+          boxShadow: `0 4px 20px ${t.accent}44`,
+          transition: "all 0.15s ease",
         }}
       >
         ✅ TÔI ĐÃ CHUYỂN KHOẢN XONG
@@ -546,7 +558,7 @@ function CheckoutContent() {
         {/* ── DECISION CONFIRMATION ── */}
         <div style={{ textAlign: "center", padding: "40px 0 0" }}>
           <Lbl>Bước cuối vào lớp</Lbl>
-          <h1 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(22px, 4.2vw, 38px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", margin: "0 0 14px", color: t.textBase ?? "#fff" }}>
+          <h1 className="cl-sh" style={{ fontSize: "clamp(22px, 4.2vw, 38px)", margin: "0 0 14px", color: "var(--cl-text-base, #111827)" }}>
             {c.checkoutTitle ? <span dangerouslySetInnerHTML={{ __html: c.checkoutTitle }} /> : (
               <>
                 Bạn chỉ còn cách video đầu tiên<br />
@@ -554,12 +566,12 @@ function CheckoutContent() {
               </>
             )}
           </h1>
-          <p style={{ fontSize: 15, color: t.textMuted ?? "#888", maxWidth: 520, margin: "0 auto 12px", lineHeight: 1.6 }}>
+          <p style={{ fontSize: 15.5, color: "var(--cl-text-muted, #64748b)", maxWidth: 520, margin: "0 auto 14px", lineHeight: 1.65 }}>
             {c.checkoutSub || "Mình giữ chỗ này cho bạn rồi. Chuyển khoản xong là hệ thống gửi tài khoản vào thẳng Skool, kéo ghế ngồi xuống là mình cùng bắt tay vào làm luôn, không phải chờ đợi."}
           </p>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: t.card2, border: `1px solid ${GREEN}33`, borderRadius: 50, padding: "8px 20px" }}>
-            <span style={{ color: GREEN, fontSize: 14 }}>✓</span>
-            <span style={{ fontSize: 15, color: t.textBody ?? "#aaa" }}>Đã giữ mức giá ưu đãi 999.000đ — Hoàn tất chuyển khoản để vào lớp ngay</span>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(16, 185, 129, 0.08)", border: `1.5px solid ${GREEN}44`, borderRadius: 50, padding: "8px 20px" }}>
+            <span style={{ color: GREEN, fontSize: 14, fontWeight: 700 }}>✓</span>
+            <span style={{ fontSize: 14.5, color: "var(--cl-text-body, #374151)", fontWeight: 500 }}>Đã giữ mức giá ưu đãi {c.price}đ — Hoàn tất chuyển khoản để vào lớp ngay</span>
           </div>
         </div>
 
@@ -959,7 +971,6 @@ function CheckoutContent() {
           </p>
         </div>
       </div>
-      <LiveSocialProof />
       <ZaloChatWidget />
     </div>
   );

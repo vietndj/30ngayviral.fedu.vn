@@ -130,11 +130,18 @@ export function ModulesSection() {
     };
   }, [modulesList]);
 
-  // Keep active button visible horizontally on mobile
+  // Keep active button visible horizontally on mobile without triggering page scroll
+  const isInitialNavMount = useRef(true);
   useEffect(() => {
+    if (isInitialNavMount.current) {
+      isInitialNavMount.current = false;
+      return;
+    }
     const btn = navBtnRefs.current[activeStage];
-    if (btn && typeof window !== "undefined" && window.innerWidth <= 860) {
-      btn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    const container = btn?.parentElement;
+    if (btn && container && typeof window !== "undefined" && window.innerWidth <= 860) {
+      const targetLeft = btn.offsetLeft - container.offsetWidth / 2 + btn.offsetWidth / 2;
+      container.scrollTo({ left: Math.max(0, targetLeft), behavior: "smooth" });
     }
   }, [activeStage]);
 

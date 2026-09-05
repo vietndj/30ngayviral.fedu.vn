@@ -83,14 +83,14 @@ export function SolutionsSection() {
 
             <div style={{
               marginTop: 16, display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: 20, background: "#08080a", border: `1px solid var(--cl-line)`,
+              gap: 20, background: "var(--cl-card, #f8f9fa)", border: `1px solid var(--cl-line)`,
               borderRadius: Math.max(8, t.cardRadius - 4), padding: "24px 20px"
             }}>
               <div>
                 <p style={{ fontSize: 12, fontWeight: 500, color: "var(--cl-danger)", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: t.fontMono }}>
                   ✗ {tabs[activeTab].leftLabel}
                 </p>
-                <p style={{ fontSize: 15, lineHeight: 1.6, color: "#666", margin: 0 }}>
+                <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--cl-text-muted, #64748b)", margin: 0 }}>
                   {tabs[activeTab].leftDesc}
                 </p>
               </div>

@@ -66,9 +66,9 @@ export function BeforeAfterSection() {
               aspectRatio: "9 / 16",
               borderRadius: 24,
               overflow: "hidden",
-              background: "#000000",
+              background: "#f8fafc",
               border: "1.5px solid rgba(0, 0, 0, 0.08)",
-              boxShadow: "0 18px 40px -12px rgba(0, 0, 0, 0.22)",
+              boxShadow: "0 18px 40px -12px rgba(0, 0, 0, 0.12)",
             }}>
               <video
                 src="/assets/showcase/hoc_vien_nuong.mp4"

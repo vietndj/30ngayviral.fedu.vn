@@ -152,10 +152,10 @@ export function Countdown() {
     <div style={{ display: "flex", gap: 8, justifyContent: "center", alignItems: "center" }}>
       {[{ v: pad(time.h), l: "GIỜ" }, { v: pad(time.m), l: "PHÚT" }, { v: pad(time.s), l: "GIÂY" }].map(({ v, l }, i) => (
         <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-          <div style={{ background: "#161a1b", border: `1px solid ${t.accent}33`, borderRadius: 10, padding: "10px 18px", minWidth: 64, textAlign: "center", boxShadow: `0 0 22px -8px ${t.accent}` }}>
+          <div style={{ background: "var(--cl-card, #ffffff)", border: `1px solid rgba(26, 115, 232, 0.25)`, borderRadius: 12, padding: "10px 18px", minWidth: 64, textAlign: "center", boxShadow: `0 4px 16px -4px rgba(26, 115, 232, 0.12)` }}>
             <span style={{ fontSize: 32, fontWeight: 500, fontFamily: MONO, fontVariantNumeric: "tabular-nums", color: "var(--cl-accent)" }}>{v}</span>
           </div>
-          <span style={{ fontSize: 10, letterSpacing: "0.2em", color: "#666", fontFamily: MONO }}>{l}</span>
+          <span style={{ fontSize: 10, letterSpacing: "0.2em", color: "var(--cl-text-muted, #64748b)", fontFamily: MONO }}>{l}</span>
         </div>
       )).reduce((acc, el, i) => i < 2 ? [...acc, el, <span key={`sep${i}`} style={{ fontSize: 28, fontWeight: 500, color: "var(--cl-accent)", marginTop: -18 }}>:</span>] : [...acc, el], [] as React.ReactNode[])}
     </div>
@@ -256,7 +256,7 @@ export function AppYTEmbed({ url, caption, maxWidth, style }: { url: string; cap
   if (url.includes("facebook.com")) {
     return (
       <div style={{ maxWidth: maxWidth || 320, margin: "0 auto", ...style }}>
-        <div style={{ position: "relative", width: "100%", paddingBottom: "177.78%", height: 0, background: "#0c0a0a", borderRadius: 12, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
+        <div style={{ position: "relative", width: "100%", paddingBottom: "177.78%", height: 0, background: "#f8fafc", borderRadius: 12, overflow: "hidden", border: "1px solid var(--cl-line, rgba(0,0,0,0.08))" }}>
           <iframe
             src={`https://www.facebook.com/plugins/video.php?height=476&href=${encodeURIComponent(url)}&show_text=false&width=267&t=0`}
             title={caption || "Facebook Video"}
