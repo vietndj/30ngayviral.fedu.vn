@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useContent, GoalCarouselItem, GoalContrast } from "../content";
 import { useTheme } from "../theme";
 import { FadeIn, Label, SH, Sec, AppYTEmbed } from "../components/ui";
@@ -422,10 +422,11 @@ function GoalContrastBox({ contrast }: { contrast: GoalContrast }) {
   );
 }
 
-// ── Goal Zalo Carousel (PA1: 4 Demo Hội Thoại Tư Vấn Chuyên Môn) ──
+// ── Goal Zalo Carousel (5 Hội Thoại Khách Thật & Chữa Bài Thực Chiến) ──
 function GoalZaloCarousel({ items }: { items: GoalCarouselItem[] }) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const handlePrev = () => {
     setActiveIdx((prev) => (prev === 0 ? items.length - 1 : prev - 1));
@@ -451,6 +452,18 @@ function GoalZaloCarousel({ items }: { items: GoalCarouselItem[] }) {
     setTouchStart(null);
   };
 
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsLightboxOpen(false);
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isLightboxOpen, items.length]);
+
   const current = items[activeIdx] || items[0];
   if (!current) return null;
 
@@ -462,6 +475,17 @@ function GoalZaloCarousel({ items }: { items: GoalCarouselItem[] }) {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
+        {/* Floating Zoom Hint */}
+        <button
+          type="button"
+          className="cl-carousel-zoom-hint"
+          onClick={() => setIsLightboxOpen(true)}
+          aria-label="Phóng to xem rõ tin nhắn"
+          title="Phóng to xem rõ tin nhắn"
+        >
+          🔍 Phóng to xem
+        </button>
+
         <div
           className="cl-carousel-stage"
           style={{ transform: `translateX(-${activeIdx * 100}%)` }}
@@ -472,6 +496,8 @@ function GoalZaloCarousel({ items }: { items: GoalCarouselItem[] }) {
                 src={it.image}
                 alt={it.title}
                 loading={idx === 0 ? "eager" : "lazy"}
+                onClick={() => setIsLightboxOpen(true)}
+                title="Bấm để phóng to xem tin nhắn"
               />
             </div>
           ))}
@@ -516,7 +542,79 @@ function GoalZaloCarousel({ items }: { items: GoalCarouselItem[] }) {
           ›
         </button>
       </div>
+
+      {/* Real Case Description Strip */}
+      <div className="cl-carousel-caption">
+        <span className="cl-carousel-caption-tag">{current.tag}</span>
+        <div className="cl-carousel-caption-title">{current.title}</div>
+        <div className="cl-carousel-caption-desc">{current.desc}</div>
+      </div>
+
+      {/* Fullscreen Lightbox Modal */}
+      {isLightboxOpen && (
+        <div
+          className="cl-lightbox-backdrop"
+          onClick={() => setIsLightboxOpen(false)}
+        >
+          <div
+            className="cl-lightbox-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="cl-lightbox-header">
+              <div className="cl-lightbox-title-group">
+                <span className="cl-lightbox-tag">{current.tag}</span>
+                <h4 className="cl-lightbox-title">{current.title}</h4>
+              </div>
+              <button
+                type="button"
+                className="cl-lightbox-close"
+                onClick={() => setIsLightboxOpen(false)}
+                aria-label="Đóng"
+                title="Đóng (Esc)"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="cl-lightbox-body">
+              <img
+                src={current.image}
+                alt={current.title}
+                className="cl-lightbox-img"
+              />
+            </div>
+
+            <div className="cl-lightbox-footer">
+              <p className="cl-lightbox-desc">{current.desc}</p>
+              <div className="cl-lightbox-controls">
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  className="cl-carousel-btn"
+                  aria-label="Tin trước"
+                  title="Trước (←)"
+                >
+                  ‹
+                </button>
+                <span className="cl-carousel-counter">
+                  0{activeIdx + 1} / 0{items.length}
+                </span>
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="cl-carousel-btn"
+                  aria-label="Tin tiếp theo"
+                  title="Sau (→)"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
 
