@@ -255,18 +255,63 @@ def poll_telegram_bot():
             print(f"Lỗi trong vòng lặp poll_telegram_bot: {e}")
             time.sleep(3)
 
+NTFY_TOPIC = "fedu_skool_auto_invite_vietmac_tpbank888041"
+
+def poll_realtime_queue():
+    """Luồng nhận đơn hàng Realtime qua ntfy.sh (Tự động 100% không cần bấm nút Telegram)."""
+    print(f"⚡ [REALTIME QUEUE] Khởi chạy lắng nghe hàng đợi ntfy ({NTFY_TOPIC})...")
+    since = int(time.time()) - 120
+    while True:
+        try:
+            url = f"https://ntfy.sh/{NTFY_TOPIC}/json?poll=1&since={since}"
+            resp = requests.get(url, timeout=30)
+            if resp.status_code == 200:
+                for line in resp.iter_lines():
+                    if line:
+                        try:
+                            event = json.loads(line)
+                            if event.get("event") == "message":
+                                event_time = event.get("time", int(time.time()))
+                                if event_time > since:
+                                    since = event_time
+                                raw_msg = event.get("message", "")
+                                if raw_msg.startswith("{"):
+                                    data = json.loads(raw_msg)
+                                    email = data.get("email", "").strip()
+                                    name = data.get("name", "")
+                                    source = data.get("source", "web")
+                                else:
+                                    email = raw_msg.strip()
+                                    name = ""
+                                    source = "web"
+
+                                if email and "@" in email:
+                                    print(f"🔥 [REALTIME TỰ ĐỘNG] Nhận đơn mới từ {source}: {name} ({email}) -> Mời Skool ngay!")
+                                    threading.Thread(target=execute_skool_invite, args=(email, name, None, ALLOWED_CHAT_ID)).start()
+                        except Exception as parse_err:
+                            print(f"Lỗi parse event ntfy: {parse_err}")
+            time.sleep(3)
+        except Exception as e:
+            print(f"Lỗi trong vòng lặp poll_realtime_queue: {e}")
+            time.sleep(5)
+
 def main():
     print("="*60)
     print("🚀 SKOOL ZERO-CLICK DAEMON IS RUNNING ON MAC")
+    print(f"• Hàng đợi Realtime: {NTFY_TOPIC} (Tự động 100%)")
     print(f"• Giám sát Google Sheet: {SPREADSHEET_ID}")
     print(f"• Telegram Admin: {ALLOWED_CHAT_ID}")
     print("="*60)
 
-    # Khởi chạy luồng quét Google Sheet
+    # 1. Khởi chạy luồng nhận đơn Realtime ntfy (Tự động 100% không cần bấm nút)
+    queue_thread = threading.Thread(target=poll_realtime_queue, daemon=True)
+    queue_thread.start()
+
+    # 2. Khởi chạy luồng quét Google Sheet
     sheet_thread = threading.Thread(target=poll_google_sheets, daemon=True)
     sheet_thread.start()
 
-    # Luồng chính chạy Telegram bot
+    # 3. Luồng chính chạy Telegram bot (vẫn giữ nút bấm thủ công dự phòng)
     poll_telegram_bot()
 
 if __name__ == "__main__":
