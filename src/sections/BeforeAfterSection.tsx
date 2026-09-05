@@ -71,8 +71,8 @@ export function BeforeAfterSection() {
               boxShadow: "0 18px 40px -12px rgba(0, 0, 0, 0.12)",
             }}>
               <video
-                src="/assets/showcase/hoc_vien_nuong.mp4"
-                poster="/assets/showcase/hoc_vien_nuong_poster.jpg"
+                src="/assets/showcase/hoc_vien_walk_talk.mp4"
+                poster="/assets/showcase/hoc_vien_walk_talk_poster.jpg"
                 autoPlay
                 loop
                 muted={isMuted}
@@ -158,16 +158,16 @@ export function BeforeAfterSection() {
             }}>
               <div style={{
                 fontFamily: t.fontBody,
-                fontSize: 14.5,
-                fontWeight: 600,
+                fontSize: 16.5,
+                fontWeight: 700,
                 color: "var(--cl-text-base, #0f172a)",
                 marginBottom: 4,
               }}>
-                Học viên Nương — Thực hành Walk & Talk tự quay 1 mình
+                Học viên thực hành Walk &amp; Talk tự quay 1 mình
               </div>
               <div style={{
                 fontFamily: t.fontBody,
-                fontSize: 13.5,
+                fontSize: 15,
                 color: "var(--cl-text-body, #64748b)",
                 lineHeight: 1.55,
               }}>
