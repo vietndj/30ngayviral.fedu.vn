@@ -203,20 +203,6 @@ export function VideoPreviewSection({ demoCardRef }: VideoPreviewSectionProps) {
             )}
           </div>
         </div>
-
-        <p
-          style={{
-            textAlign: "center",
-            marginTop: 18,
-            fontSize: 13,
-            fontFamily: t.fontMono,
-            letterSpacing: "0.04em",
-            color: "var(--cl-text-muted, #6b7280)",
-          }}
-        >
-          {c.heroVideoNote ||
-            "🎥 100% cảnh quay và edit thực hiện trên điện thoại cá nhân · Trợ lực kịch bản AI"}
-        </p>
       </FadeIn>
 
       <MediaSection blockId="video" />

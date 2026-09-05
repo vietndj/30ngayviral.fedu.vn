@@ -306,7 +306,6 @@ export const DEFAULT_CONTENT: PageContent = {
   heroVideoLabel: "// XEM TRƯỚC LỘ TRÌNH THỰC CHIẾN",
   heroVideoHeading: "Chỉ cần chiếc điện thoại trên tay — Đây là cách bạn bắt đầu ra đơn",
   heroVideoSub: "Xem video 75 giây: Quy trình 5 chặng thực tế từ giảng viên FPT 15 năm kinh nghiệm — Tự tay làm video hoàn chỉnh mà không cần máy cơ hay kỹ thuật phức tạp.",
-  heroVideoNote: "🎥 100% cảnh quay và edit thực hiện trên điện thoại cá nhân · Trợ lực kịch bản AI",
   heroSubPrice: "⚡ Giảng viên FPT 15 năm kinh nghiệm • Cầm máy lên là làm được • Học online trọn đời",
 
   // ── Pain (Nỗi đau & 6 bế tắc chuẩn Tầng 2.5 - Văn phong Anh Việt) ──
