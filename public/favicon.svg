@@ -1,52 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <!-- Warm Amber Glow Gradient -->
-    <linearGradient id="amber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFB373" />
-      <stop offset="50%" stop-color="#F36716" />
-      <stop offset="100%" stop-color="#9E3500" />
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A73E8" />
+      <stop offset="100%" stop-color="#0D47A1" />
     </linearGradient>
-    
-    <linearGradient id="amber-bright" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#F36716" />
-      <stop offset="100%" stop-color="#FFE0C2" />
-    </linearGradient>
-
-    <!-- Dark Metallic Slate Background -->
-    <radialGradient id="dark-bg" cx="50%" cy="50%" r="70%">
-      <stop offset="0%" stop-color="#181B26" />
-      <stop offset="100%" stop-color="#08090C" />
-    </radialGradient>
   </defs>
-
-  <!-- Squircle Base -->
-  <rect x="16" y="16" width="480" height="480" rx="120" fill="url(#dark-bg)" stroke="url(#amber-grad)" stroke-width="14" />
-
-  <!-- Outer Orbit Dash Ring (Representing Viral Reach) -->
-  <circle cx="256" cy="256" r="205" stroke="url(#amber-grad)" stroke-width="4" stroke-dasharray="14 14" opacity="0.35" />
-
-  <!-- Smartphone Frame (Symbol of Mobile Creation) -->
-  <rect x="146" y="86" width="220" height="340" rx="40" fill="#0E1017" stroke="url(#amber-grad)" stroke-width="8" />
-  <rect x="226" y="104" width="60" height="6" rx="3" fill="#282D3D" />
-
-  <!-- Center Icon: Flame + Play Button (30-Day Viral Video Concept) -->
-  <g transform="translate(256, 256)">
-    <!-- Viral Flame Backdrop -->
-    <path d="M 0 -85 C 32 -50, 60 -20, 60 20 C 60 55, 34 80, 0 80 C -34 80, -60 55, -60 20 C -60 -10, -42 -40, -22 -60 C -18 -38, -5 -25, 0 -85 Z" fill="url(#amber-grad)" opacity="0.28" />
-
-    <!-- Play Button Triangle with Glowing Edge -->
-    <path d="M -26,-42 L 40,0 L -26,42 Z" fill="url(#amber-grad)" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="round" />
-
-    <!-- Sparkle Stars (Viral Growth) -->
-    <!-- Top-Right Sparkle -->
-    <path d="M 85,-75 L 89,-61 L 103,-57 L 89,-53 L 85,-39 L 81,-53 L 67,-57 L 81,-61 Z" fill="url(#amber-bright)" />
-    <!-- Bottom-Left Sparkle -->
-    <path d="M -85,55 L -82,65 L -72,68 L -82,71 L -85,81 L -88,71 L -98,68 L -88,65 Z" fill="url(#amber-bright)" opacity="0.85" />
-  </g>
-
-  <!-- 30 DAYS Badge Pill at Top Right -->
-  <g transform="translate(305, 65)">
-    <rect x="0" y="0" width="135" height="52" rx="26" fill="#F36716" stroke="#FFFFFF" stroke-width="4" />
-    <text x="67" y="35" font-family="'Be Vietnam Pro', 'Inter', system-ui, sans-serif" font-weight="900" font-size="25" fill="#FFFFFF" text-anchor="middle" letter-spacing="-0.02em">30D</text>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="url(#bg)" />
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="#ffffff" stroke-width="6" stroke-opacity="0.25" />
+  <g transform="translate(36.75, 376.75) scale(0.3450, -0.3450)" fill="#FFFFFF">
+    <path d="M588 196Q588 135 553.5 89.5Q519 44 455.5 19.0Q392 -6 306 -6Q176 -6 100.5 60.0Q25 126 25 242H200Q201 189 233.0 158.5Q265 128 316 128Q356 128 382.5 150.0Q409 172 409 211Q409 246 382.5 265.5Q356 285 305 285H230V423H295Q343 423 369.0 444.0Q395 465 395 501Q395 536 372.5 554.0Q350 572 313 572Q271 572 243.5 548.0Q216 524 214 482H43Q44 586 115.0 646.0Q186 706 306 706Q433 706 502.5 655.5Q572 605 572 518Q572 457 533.5 419.5Q495 382 432 366Q588 328 588 196Z" />
+    <path d="M28 366Q28 471 66.0 548.0Q104 625 172.5 665.5Q241 706 329 706Q417 706 485.5 665.5Q554 625 592.0 548.0Q630 471 630 366V334Q630 229 592.0 152.0Q554 75 485.5 34.5Q417 -6 329 -6Q241 -6 172.5 34.5Q104 75 66.0 152.0Q28 229 28 334ZM329 560Q272 560 238.0 508.0Q204 456 204 360V340Q204 243 238.0 191.5Q272 140 329 140Q386 140 420.0 191.5Q454 243 454 340V360Q454 456 420.0 508.0Q386 560 329 560Z" transform="translate(616, 0)" />
   </g>
 </svg>
