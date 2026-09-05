@@ -17,31 +17,6 @@ export default function ZaloChatWidget() {
   const ZALO_PHONE = "0934688632";
   const ZALO_LINK = `https://zalo.me/${ZALO_PHONE}`;
 
-  const QUICK_QUESTIONS = [
-    {
-      icon: "📱",
-      text: "Điện thoại máy cũ / Chưa từng quay dựng có theo kịp không thầy?",
-      param: "Chào Thầy Việt, mình dùng máy điện thoại thường và chưa biết gì về dựng video thì có theo kịp lộ trình 30 ngày không ạ?"
-    },
-    {
-      icon: "💼",
-      text: "Ngành của mình hơi đặc thù, trong khóa có mẫu kịch bản áp dụng không?",
-      param: "Chào Thầy Việt, mình đang kinh doanh ngành đặc thù, thầy tư vấn giúp ngành của mình có áp dụng được mẫu kịch bản trong khóa không ạ?"
-    },
-    {
-      icon: "⚡",
-      text: "Chuyển khoản xong thì mình nhận tài khoản và vào học thế nào?",
-      param: "Chào Thầy Việt, mình đang ở trang thanh toán, cho mình hỏi chuyển khoản xong thì nhận link vào học Skool thế nào ạ?"
-    }
-  ];
-
-  const handleOpenQuestion = (q: typeof QUICK_QUESTIONS[0]) => {
-    setHasInteracted(true);
-    setIsOpen(false);
-    // Mở Zalo trực tiếp
-    window.open(ZALO_LINK, "_blank", "noopener,noreferrer");
-  };
-
   return (
     <div style={{ position: "fixed", bottom: "clamp(16px, 3vw, 24px)", right: "clamp(16px, 3vw, 24px)", zIndex: 9999, fontFamily: "'Aeonik', 'Inter', -apple-system, sans-serif" }}>
       {/* POPUP BOX */}
@@ -51,42 +26,39 @@ export default function ZaloChatWidget() {
             position: "absolute",
             bottom: "74px",
             right: "0",
-            width: "min(340px, calc(100vw - 32px))",
+            width: "min(320px, calc(100vw - 32px))",
             background: "var(--cl-card, #ffffff)",
             color: "var(--cl-text-base, #111827)",
             border: "1.5px solid rgba(0, 104, 255, 0.35)",
             borderRadius: "20px",
-            padding: "20px",
+            padding: "18px",
             boxShadow: "0 24px 60px rgba(0, 0, 0, 0.2), 0 0 35px rgba(0, 104, 255, 0.15)",
-            animation: "zalo-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+            animation: "zalo-fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
             transformOrigin: "bottom right"
           }}
         >
           {/* Header & Close */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "14px" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "12px" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <div style={{ position: "relative" }}>
-                <div style={{ 
-                  width: "44px", 
-                  height: "44px", 
-                  borderRadius: "50%", 
-                  background: "linear-gradient(135deg, #0068FF, #00C6FF)", 
-                  display: "flex", 
-                  alignItems: "center", 
-                  justifyContent: "center", 
-                  fontWeight: "700", 
-                  color: "#fff", 
-                  fontSize: "16px",
-                  boxShadow: "0 4px 12px rgba(0, 104, 255, 0.3)"
-                }}>
-                  NĐV
-                </div>
+                <img 
+                  src="/ava.jpg" 
+                  alt="Nguyễn Đức Việt"
+                  style={{ 
+                    width: "42px", 
+                    height: "42px", 
+                    borderRadius: "50%", 
+                    objectFit: "cover",
+                    display: "block",
+                    boxShadow: "0 4px 12px rgba(0, 104, 255, 0.3)"
+                  }} 
+                />
                 <span style={{ 
                   position: "absolute", 
                   bottom: 1, 
                   right: 1, 
-                  width: "11px", 
-                  height: "11px", 
+                  width: "10px", 
+                  height: "10px", 
                   background: "#10B981", 
                   borderRadius: "50%", 
                   border: "2px solid var(--cl-card, #ffffff)" 
@@ -94,11 +66,11 @@ export default function ZaloChatWidget() {
               </div>
               <div>
                 <h4 style={{ margin: 0, fontSize: "15px", fontWeight: "700", color: "var(--cl-text-head, #0f172a)" }}>
-                  Thầy Nguyễn Đức Việt
+                  Nguyễn Đức Việt
                 </h4>
                 <span style={{ fontSize: "12px", color: "#10B981", fontWeight: "600", display: "flex", alignItems: "center", gap: "4px" }}>
                   <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#10B981" }} />
-                  Đang online hỗ trợ học viên
+                  Online hỗ trợ trực tiếp
                 </span>
               </div>
             </div>
@@ -111,10 +83,10 @@ export default function ZaloChatWidget() {
                 background: "rgba(0,0,0,0.05)", 
                 border: "none", 
                 color: "var(--cl-text-muted, #64748B)", 
-                width: 32,
-                height: 32,
+                width: 30,
+                height: 30,
                 borderRadius: "50%",
-                fontSize: "20px", 
+                fontSize: "18px", 
                 cursor: "pointer", 
                 display: "flex",
                 alignItems: "center",
@@ -128,53 +100,15 @@ export default function ZaloChatWidget() {
 
           {/* Greeting message */}
           <div style={{
-            background: "rgba(0, 104, 255, 0.06)",
-            border: "1px solid rgba(0, 104, 255, 0.15)",
-            borderRadius: "14px",
+            background: "rgba(0, 104, 255, 0.05)",
+            border: "1px solid rgba(0, 104, 255, 0.12)",
+            borderRadius: "12px",
             padding: "12px 14px",
             marginBottom: "14px"
           }}>
-            <p style={{ margin: 0, fontSize: "13.5px", color: "var(--cl-text-body, #334155)", lineHeight: "1.55" }}>
-              Chào bạn! Nhiều anh em đi làm hay ngại vì chưa từng bấm máy, sợ máy cũ hoặc ngành đặc thù không biết quay gì. Nếu bạn còn chút lăn tăn nào trước khi vào lớp, cứ bấm vào câu hỏi bên dưới hoặc nhắn thẳng Zalo cho mình nhé, việc gì phải ngại!
+            <p style={{ margin: 0, fontSize: "13.5px", color: "var(--cl-text-body, #334155)", lineHeight: "1.5" }}>
+              Lộ trình thực chiến từ số 0 trên chính điện thoại của bạn. Có bất kỳ câu hỏi nào trước khi vào lớp, nhắn Zalo mình hỗ trợ ngay nhé!
             </p>
-          </div>
-
-          {/* Quick Action Prompt Chips */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "16px" }}>
-            {QUICK_QUESTIONS.map((q, idx) => (
-              <button
-                key={idx}
-                onClick={() => handleOpenQuestion(q)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  padding: "10px 12px",
-                  background: "var(--cl-card2, #f8fafc)",
-                  border: "1px solid var(--cl-line, #e2e8f0)",
-                  borderRadius: "10px",
-                  color: "var(--cl-text-head, #1e293b)",
-                  fontSize: "13px",
-                  fontWeight: "500",
-                  textAlign: "left",
-                  cursor: "pointer",
-                  transition: "all 0.15s ease",
-                  lineHeight: "1.4"
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.borderColor = "#0068FF";
-                  e.currentTarget.style.background = "rgba(0, 104, 255, 0.05)";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.borderColor = "var(--cl-line, #e2e8f0)";
-                  e.currentTarget.style.background = "var(--cl-card2, #f8fafc)";
-                }}
-              >
-                <span style={{ fontSize: "15px", flexShrink: 0 }}>{q.icon}</span>
-                <span style={{ flexGrow: 1 }}>{q.text}</span>
-                <span style={{ color: "#0068FF", fontSize: "14px", fontWeight: "700" }}>→</span>
-              </button>
-            ))}
           </div>
 
           {/* Main Direct Chat Button */}
@@ -192,7 +126,7 @@ export default function ZaloChatWidget() {
               justifyContent: "center",
               gap: "8px",
               width: "100%",
-              padding: "12px 18px",
+              padding: "12px 16px",
               borderRadius: "12px",
               background: "linear-gradient(135deg, #0068FF, #0052CC)",
               color: "#FFFFFF",
@@ -215,7 +149,7 @@ export default function ZaloChatWidget() {
               <path fillRule="evenodd" clipRule="evenodd" d="M24 4C12.954 4 4 11.954 4 21.75C4 26.685 6.425 31.112 10.36 34.25L8.5 42L16.75 38.35C19.01 39.11 21.45 39.5 24 39.5C35.046 39.5 44 31.546 44 21.75C44 11.954 35.046 4 24 4Z" fill="#FFFFFF"/>
               <path d="M16 17.5H23V20H18.5V21.5H22V24H18.5V26H23V28.5H16V17.5Z" fill="#0068FF"/>
             </svg>
-            <span>Nhắn Zalo Thầy Việt (0934.688.632)</span>
+            <span>Nhắn Zalo trực tiếp (0934.688.632)</span>
           </a>
         </div>
       )}
@@ -226,7 +160,7 @@ export default function ZaloChatWidget() {
           setIsOpen(!isOpen);
           setHasInteracted(true);
         }}
-        aria-label="Chat Zalo tư vấn cùng Thầy Việt"
+        aria-label="Chat Zalo hỗ trợ cùng Nguyễn Đức Việt"
         style={{
           width: "56px",
           height: "56px",

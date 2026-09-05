@@ -25,3 +25,9 @@
 - **Thẻ Card**: Bo góc `16px` (`var(--cl-radius)`).
 - **Nút CTA**: Bo góc `12px`, padding dày `22px 56px`.
 - **Đường viền vi mạch**: Sử dụng màu chủ đạo (`var(--cl-accent)` pha với opacity 20-30%) để tạo Glow thay vì viền xám đục.
+
+## 6. Tiêu chuẩn Mã QR & Thanh toán
+- **Tuyệt đối không hiển thị chữ / logo "VIET QR"**: Sử dụng template `qr_only` từ VietQR (`https://img.vietqr.io/image/<BANK>-<ACCOUNT>-qr_only.png?...`) thay vì `compact` hay `compact2` để loại bỏ hoàn toàn header/logo VIETQR.
+- **Khối thông tin chuyển khoản dạng HTML/React**: Thông tin Ngân hàng (Napas 24/7 | TPBank), Chủ tài khoản, STK, Số tiền hiển thị bên dưới mã QR dạng text rõ nét, kèm nút copy tiện lợi cho khách thao tác trên điện thoại.
+- **Nhãn bảo mật**: Dùng "Thanh toán bảo mật 24/7" hoặc "Bảo mật Napas 24/7", tuyệt đối không dùng "Bảo mật VietQR".
+

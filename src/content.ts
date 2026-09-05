@@ -771,6 +771,7 @@ export const DEFAULT_CONTENT: PageContent = {
   instructorLabel: "NGƯỜI ĐỒNG HÀNH",
   instructorHeading: "Tôi đi dạy 15 năm... nhưng video đầu tiên tự đăng cũng chỉ có đúng 40 view.",
   instructorInitials: "NĐV",
+  instructorPhoto: "/ava.jpg",
   instructorName: "Nguyễn Đức Việt",
   instructorTitle: "Kỹ sư Bách Khoa · 15 năm Giảng viên FPT Arena · Founder Fedu.vn",
   instructorInsight: "Khán giả không cần bạn hoàn hảo như MC truyền hình. Họ ghét nhất sự giả trân. Họ chỉ cần bạn nói thật — và một khung hình sạch sẽ.",

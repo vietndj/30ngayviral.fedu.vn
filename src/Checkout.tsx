@@ -147,7 +147,7 @@ function ConfirmBanner({ onReset }: { onReset: () => void }) {
           <span key={item} style={{ fontSize: 15, color: t.textBody ?? "#c0c0c0" }}>{item}</span>
         ))}
       </div>
-      <p style={{ fontSize: 15, color: t.textMuted ?? "#555", lineHeight: 1.6 }}>Cần hỗ trợ gấp hoặc sau 5 phút chưa thấy email? Nhắn thẳng Zalo Thầy Việt: <a href="https://zalo.me/0934688632" style={{ color: t.accent, fontWeight: 600 }}>0934.688.632</a> (hỗ trợ ngay)</p>
+      <p style={{ fontSize: 15, color: t.textMuted ?? "#555", lineHeight: 1.6 }}>Cần hỗ trợ gấp hoặc sau 5 phút chưa thấy email? Nhắn thẳng Zalo Việt: <a href="https://zalo.me/0934688632" style={{ color: t.accent, fontWeight: 600 }}>0934.688.632</a> (hỗ trợ ngay)</p>
       <button onClick={onReset} style={{ marginTop: 20, background: "transparent", border: `1px solid ${t.line}`, borderRadius: t.btnRadius, padding: "10px 24px", color: t.textMuted ?? "#555", fontSize: 13, cursor: "pointer" }}>
         Quay lại trang thanh toán
       </button>
@@ -156,6 +156,44 @@ function ConfirmBanner({ onReset }: { onReset: () => void }) {
 }
 
 type BankInfo = { name: string; account: string; holder: string; amount: string; content: string };
+
+function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    try {
+      navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* silent */
+    }
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      type="button"
+      style={{
+        background: copied ? "rgba(16, 185, 129, 0.12)" : "#f1f5f9",
+        color: copied ? "#10b981" : "#475569",
+        border: `1px solid ${copied ? "#10b981" : "#cbd5e1"}`,
+        borderRadius: 6,
+        padding: "2px 8px",
+        fontSize: 11.5,
+        fontWeight: 600,
+        cursor: "pointer",
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 4,
+        transition: "all 0.15s ease",
+      }}
+      title="Sao chép"
+    >
+      {copied ? "✓ Đã copy" : label}
+    </button>
+  );
+}
 
 function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo; qrUrl: string; onConfirm: () => void; onVideoClick: () => void }) {
   const c = useContent();
@@ -197,42 +235,64 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
         <div style={{ fontSize: 15, color: t.accent, fontWeight: 500 }}>Tiết kiệm {formattedSaving} VNĐ</div>
       </div>
 
-      {/* 📱 [Khối Mã QR & Thanh Toán] (Ở giữa, to nhất) */}
+      {/* 📱 [Khối Mã QR & Thanh Toán] (Ở giữa, to nhất - Không có chữ VIET QR) */}
       <div style={{ textAlign: "center", marginBottom: 20 }}>
         <p style={{ fontSize: 13, fontWeight: 500, color: t.accent, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>
           📱 QUÉT MÃ VÀO LỚP NGAY
         </p>
         <div style={{ 
           width: "100%",
-          maxWidth: 340,
+          maxWidth: 320,
           margin: "0 auto",
           background: "#fff", 
           borderRadius: 16, 
           boxShadow: `0 0 40px ${t.accent}22`,
           border: `1px solid ${t.line}`,
-          overflow: "hidden"
+          overflow: "hidden",
+          padding: "16px 16px 18px",
+          textAlign: "center"
         }}>
-          <img
-            src={qrUrl}
-            alt="QR chuyển khoản Khóa học"
-            style={{ 
-              display: "block", 
-              width: "114%", 
-              maxWidth: "none", 
-              marginLeft: "-7%", 
-              marginTop: "-4%", 
-              marginBottom: "-2%", 
-              objectFit: "contain" 
-            }}
-            onError={(e) => {
-              const img = e.currentTarget as HTMLImageElement;
-              img.style.display = "none";
-              const parent = img.parentElement;
-              if (parent) {
-                parent.innerHTML = `<div style="width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#141417;border-radius:8px;font-size:12px;color:#fff;text-align:center;padding:16px;">QR lỗi</div>`;
-              }
-            }}
-          />
+          <div style={{ width: "100%", aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <img
+              src={qrUrl}
+              alt="Mã QR chuyển khoản Khóa học"
+              style={{ 
+                display: "block", 
+                width: "100%", 
+                height: "100%",
+                objectFit: "contain",
+                borderRadius: 8 
+              }}
+              onError={(e) => {
+                const img = e.currentTarget as HTMLImageElement;
+                img.style.display = "none";
+                const parent = img.parentElement;
+                if (parent) {
+                  parent.innerHTML = `<div style="width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#141417;border-radius:8px;font-size:12px;color:#fff;text-align:center;padding:16px;">QR lỗi</div>`;
+                }
+              }}
+            />
+          </div>
+
+          <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px solid #e2e8f0", textAlign: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 6 }}>
+              <span style={{ fontSize: 12, fontWeight: 700, color: "#0284c7", letterSpacing: "0.04em" }}>NAPAS 247</span>
+              <span style={{ color: "#cbd5e1" }}>|</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: "#ea580c", letterSpacing: "0.02em" }}>TPBank</span>
+            </div>
+            <div style={{ fontSize: 13.5, fontWeight: 600, color: "#0f172a", textTransform: "uppercase", letterSpacing: "0.02em" }}>
+              {bank.holder}
+            </div>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 4 }}>
+              <span style={{ fontSize: 14.5, fontWeight: 700, color: "#0f172a", letterSpacing: "0.03em" }}>
+                {bank.account}
+              </span>
+              <CopyButton text={bank.account} label="Copy STK" />
+            </div>
+            <div style={{ fontSize: 13, color: "#64748b", marginTop: 4 }}>
+              Số tiền: <strong style={{ color: "#0f172a", fontWeight: 700 }}>{bank.amount} VNĐ</strong>
+            </div>
+          </div>
         </div>
         <p style={{ fontSize: 14, color: t.textMuted ?? "#555", marginTop: 10 }}>Tương thích: Mọi app ngân hàng &amp; Ví Momo (quét là tự điền đúng tiền và cú pháp)</p>
       </div>
@@ -246,11 +306,14 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
           <span style={{ background: t.accent, color: t.accentText, fontSize: 12, fontWeight: 500, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>1</span>
           <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>Mở app ngân hàng quét mã QR (đã tự điền đúng 999.000đ).</span>
         </div>
-        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <span style={{ background: t.accent, color: t.accentText, fontSize: 12, fontWeight: 500, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>2</span>
-          <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>
-            Kiểm tra nội dung: <strong style={{ color: "var(--cl-text-base, #111827)" }}>{prefix} + [Số điện thoại của bạn]</strong>
-          </span>
+        <div style={{ display: "flex", gap: 10, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+            <span style={{ background: t.accent, color: t.accentText, fontSize: 12, fontWeight: 500, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>2</span>
+            <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>
+              Kiểm tra nội dung: <strong style={{ color: "var(--cl-text-base, #111827)" }}>{bank.content}</strong>
+            </span>
+          </div>
+          <CopyButton text={bank.content} label="Copy cú pháp" />
         </div>
       </div>
 
@@ -272,7 +335,7 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
       </p>
 
       <div style={{ display: "flex", gap: 12, justifyContent: "center", paddingTop: 14, borderTop: `1px solid ${t.line}`, flexWrap: "wrap" }}>
-        {[["🔒", "Bảo mật VietQR"], ["🤝", "Đồng hành thật, người thật"], ["⚡", "Vào học ngay"]].map(([icon, label]) => (
+        {[["🔒", "Thanh toán bảo mật 24/7"], ["🤝", "Đồng hành thật, người thật"], ["⚡", "Vào học ngay"]].map(([icon, label]) => (
           <div key={label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 13, color: t.textMuted ?? "#64748b", fontWeight: 500 }}>
             <span>{icon}</span><span>{label}</span>
           </div>
@@ -303,7 +366,7 @@ function CheckoutContent() {
   const transferContent = `${prefix} ${phone}`;
 
   const BANK: BankInfo = { name: "TPBank", account: "88804101986", holder: "NGUYEN DUC VIET", amount: c.price, content: transferContent };
-  const QR_URL = `https://img.vietqr.io/image/TPB-${BANK.account}-compact2.png?amount=${c.price.replace(/\./g, "")}&addInfo=${encodeURIComponent(transferContent)}&accountName=${encodeURIComponent(BANK.holder)}`;
+  const QR_URL = `https://img.vietqr.io/image/TPB-${BANK.account}-qr_only.png?amount=${c.price.replace(/\./g, "")}&addInfo=${encodeURIComponent(transferContent)}&accountName=${encodeURIComponent(BANK.holder)}`;
 
   // Bắn sự kiện InitiateCheckout khi truy cập trang thanh toán
   useEffect(() => {
@@ -562,14 +625,17 @@ function CheckoutContent() {
               gap: 16,
               alignItems: "flex-start"
             }}>
-              <div style={{
-                width: 48, height: 48, borderRadius: "50%",
-                background: "linear-gradient(135deg, #0068FF, #00C6FF)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                color: "#fff", fontWeight: 700, fontSize: 17, flexShrink: 0
-              }}>
-                NĐV
-              </div>
+              <img
+                src="/ava.jpg"
+                alt="Nguyễn Đức Việt"
+                style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  flexShrink: 0
+                }}
+              />
               <div>
                 <p style={{
                   fontSize: 14,
@@ -577,7 +643,7 @@ function CheckoutContent() {
                   color: "var(--cl-text-head, #0f172a)",
                   margin: "0 0 4px"
                 }}>
-                  Lời nhắn từ người chủ nhà — Thầy Nguyễn Đức Việt
+                  Lời nhắn từ người chủ nhà — Nguyễn Đức Việt
                 </p>
                 <p style={{
                   fontSize: 13.5,
