@@ -178,7 +178,11 @@ function PaymentSuccessModal({ onClose }: { onClose: () => void }) {
           <p style={{ fontSize: 13, color: t.textMuted ?? "#555" }}>Vui lòng kiểm tra hộp thư (kể cả Spam) sau vài phút nhé!</p>
         </div>
         <div style={{ background: t.card2, borderRadius: Math.max(8, t.cardRadius - 4), padding: "14px 20px", marginBottom: 24 }}>
-          {["🎬 Khóa học Tư Duy Làm Video Điện Thoại: Quay Là Cuốn", `🎁 ${c.valueStack.length > 1 ? c.valueStack[1].label : "Quà Tặng Độc Quyền"}`, "♾ Sở hữu vĩnh viễn"].map((item) => (
+          {[
+            `🎬 ${c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"}`,
+            "🎁 Trọn bộ 4 Tủ đồ nghề thực chiến (Nhạc AI, SFX, Prompt, 30 Hook)",
+            "♾ Sở hữu trọn đời & Cập nhật kỹ thuật AI mới liên tục"
+          ].map((item) => (
             <div key={item} style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0", padding: "4px 0", textAlign: "left" }}>{item}</div>
           ))}
         </div>
@@ -215,7 +219,11 @@ function ConfirmBanner({ onReset }: { onReset: () => void }) {
         Chúng tôi đang xác minh giao dịch. Bạn sẽ nhận được tài liệu qua email <strong style={{ color: "var(--cl-text-base, #111827)" }}>trong vòng 30 phút</strong> (giờ hành chính).
       </p>
       <div style={{ display: "inline-flex", flexDirection: "column", gap: 10, background: t.card, border: `1px solid ${t.line}`, borderRadius: Math.max(8, t.cardRadius - 4), padding: "20px 24px", marginBottom: 20, textAlign: "left" }}>
-        {["🎬 Khóa học Tư Duy Làm Video Điện Thoại: Quay Là Cuốn", `🎁 ${c.valueStack.length > 1 ? c.valueStack[1].label : "Quà Tặng Độc Quyền"}`, "♾ Sở hữu vĩnh viễn"].map((item) => (
+        {[
+          `🎬 ${c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"}`,
+          "🎁 Trọn bộ 4 Tủ đồ nghề thực chiến (Nhạc AI, SFX, Prompt, 30 Hook)",
+          "♾ Sở hữu trọn đời & Cập nhật kỹ thuật AI mới liên tục"
+        ].map((item) => (
           <span key={item} style={{ fontSize: 15, color: t.textBody ?? "#c0c0c0" }}>{item}</span>
         ))}
       </div>
@@ -282,7 +290,7 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
           🎁 QUÀ TẶNG BẢO ĐẢM NHẬN NGAY
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 14 }}>
-          {c.bonusItems.slice(0, 2).map((bonus, idx) => (
+          {c.bonusItems.map((bonus, idx) => (
             <div key={idx} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
               <span style={{ color: "#f97316", fontSize: 15, lineHeight: 1.2 }}>✓</span>
               <p style={{ fontSize: 13, color: "var(--cl-text-base, #111827)", margin: 0, lineHeight: 1.4, fontWeight: 600 }}>
@@ -556,10 +564,10 @@ function CheckoutContent() {
       (window as any).fbq('track', 'InitiateCheckout', {
         value: priceVal || 999000,
         currency: 'VND',
-        content_name: 'Tư Duy Làm Video Điện Thoại: Quay Là Cuốn'
+        content_name: (c.courseName || 'Lộ Trình 30 Ngày Làm Chủ Video Ngắn') + ' - Fedu.vn'
       });
     }
-  }, [priceVal]);
+  }, [priceVal, c.courseName]);
 
   const handleManualConfirm = async () => {
     setConfirmed(true);
@@ -569,7 +577,7 @@ function CheckoutContent() {
       (window as any).fbq('track', 'Purchase', {
         value: priceVal || 999000,
         currency: 'VND',
-        content_name: 'Tư Duy Làm Video Điện Thoại: Quay Là Cuốn'
+        content_name: (c.courseName || 'Lộ Trình 30 Ngày Làm Chủ Video Ngắn') + ' - Fedu.vn'
       });
     }
 
@@ -617,7 +625,7 @@ function CheckoutContent() {
             (window as any).fbq('track', 'Purchase', {
               value: priceVal || 999000,
               currency: 'VND',
-              content_name: 'Tư Duy Làm Video Điện Thoại: Quay Là Cuốn'
+              content_name: (c.courseName || 'Lộ Trình 30 Ngày Làm Chủ Video Ngắn') + ' - Fedu.vn'
             });
           }
 
@@ -708,7 +716,7 @@ function CheckoutContent() {
       {/* ── HEADER ── */}
       <header style={{ borderBottom: `1px solid ${t.line}`, padding: "14px 20px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ fontFamily: t.fontDisplay, fontSize: 22, fontWeight: 500 }}>
-          VIDEO<span style={{ color: t.accent }}>.</span>
+          {c.footerBrand || "30NGÀY"}<span style={{ color: t.accent }}>{c.footerDot || "."}</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span style={{ fontSize: 18 }}>🔒</span>
@@ -731,11 +739,11 @@ function CheckoutContent() {
           <h1 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(22px, 4.2vw, 38px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", margin: "0 0 14px", color: t.textBase ?? "#fff" }}>
             Bạn đang hoàn tất đơn hàng<br />
             <em style={{ color: t.accent, fontStyle: "normal", fontWeight: 500 }}>
-              {(c as any).checkoutTitle ? <span dangerouslySetInnerHTML={{ __html: (c as any).checkoutTitle }} /> : <>Tư Duy Làm Video Điện Thoại:<br />Quay Là Cuốn</>}
+              {c.checkoutTitle ? <span dangerouslySetInnerHTML={{ __html: c.checkoutTitle }} /> : (c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn")}
             </em>
           </h1>
           <p style={{ fontSize: 15, color: t.textMuted ?? "#888", maxWidth: 520, margin: "0 auto 12px", lineHeight: 1.6 }}>
-            Chỉ còn một bước nữa — chuyển khoản và truy cập ngay toàn bộ khóa học + 5 bài học quà tặng trong hôm nay.
+            {c.checkoutSub || "Chỉ còn một bước nữa — chuyển khoản và truy cập ngay trọn bộ 5 khóa học thực chiến + 4 tủ đồ nghề quà tặng hôm nay."}
           </p>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: t.card2, border: `1px solid ${GREEN}33`, borderRadius: 50, padding: "8px 20px" }}>
             <span style={{ color: GREEN, fontSize: 14 }}>✓</span>
@@ -772,8 +780,8 @@ function CheckoutContent() {
               <Lbl>Thông tin đơn hàng</Lbl>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
                 <div>
-                  <div style={{ fontWeight: 500, fontSize: 16, color: t.textBase ?? "#fff" }}>Khóa học Video The Creator</div>
-                  <div style={{ fontSize: 15, color: t.textMuted ?? "#666", marginTop: 4 }}>Tư duy quay dựng video bằng điện thoại</div>
+                  <div style={{ fontWeight: 500, fontSize: 16, color: t.textBase ?? "#fff" }}>{c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"}</div>
+                  <div style={{ fontSize: 15, color: t.textMuted ?? "#666", marginTop: 4 }}>Trọn bộ 5 khóa học thực chiến từ quay dựng đến AI ra đơn</div>
                 </div>
                 <div style={{ textAlign: "right" }}>
                   <div style={{ fontSize: 15, color: t.accent, fontWeight: 500 }}>Tiết kiệm {formattedSaving} VNĐ</div>
@@ -786,29 +794,30 @@ function CheckoutContent() {
             <Card>
               <Lbl>Bạn nhận được gì ngay hôm nay</Lbl>
               <H>Truy cập ngay sau xác nhận</H>
-              {((c as any).checkoutFeatures || [
-                "Khóa học Video The Creator: Tư duy quay dựng video bằng điện thoại",
-                "Quyền sở hữu vĩnh viễn — học mọi lúc, mọi nơi, mọi thiết bị",
-                "Kho 50+ âm thanh điện ảnh (SFX) bốc nhất",
-                "Kho Nhạc Nền \"MasterClass\" Độc Bản (mình tạo bằng AI chuyên dụng nên sử dụng sạch bản quyền nhé)",
-                "Sơ đồ đánh sáng 3 điểm cho phòng nhỏ",
-                "Bộ Prompt AI Kịch Bản & Chia Phân Cảnh (Shot-list)",
-                "Cập nhật miễn phí kỹ thuật Edit Video bằng AI",
+              {(c.checkoutFeatures || [
+                "Trọn bộ 5 Khóa học thực chiến: Kịch bản viral, Bố cục ánh sáng, Dựng phim cuốn hút, CapCut Pro & AI chuyển đổi",
+                "Quyền truy cập trọn đời & Cập nhật miễn phí các công nghệ AI video mới nhất 2026",
+                "Đặc quyền nộp bài thực hành & Thầy Nguyễn Đức Việt trực tiếp soi timeline trên Skool",
+                "Tủ đồ nghề 01: Kho nhạc nền AI MasterClass độc bản không lo đánh gậy bản quyền",
+                "Tủ đồ nghề 02: 50+ Hiệu ứng âm thanh điện ảnh (SFX) nhấn nhá kích thích thị giác",
+                "Tủ đồ nghề 03: Bộ Prompt AI trợ lý kịch bản & Gỡ bí ý tưởng theo ngành",
+                "Tủ đồ nghề 04: 30 Cấu trúc Hook mở lời tự nhiên 3 giây đầu giữ chân người xem"
               ]).map((item: string, i: number) => <Ck key={i}>{item}</Ck>)}
             </Card>
 
             {/* BONUS STACK */}
             <Card>
-              <Lbl>🎁 5 Bonus đặc biệt</Lbl>
-              <H><em>Trị giá 1.250.000 VNĐ — tặng kèm miễn phí</em></H>
+              <Lbl>🎁 4 Tủ đồ nghề quà tặng thực chiến</Lbl>
+              <H><em>Trị giá 1.500.000 VNĐ — tặng kèm miễn phí</em></H>
               {c.bonusItems.map((b, i) => (
                 <div key={i} style={{ display: "flex", gap: 14, marginBottom: 16, alignItems: "flex-start" }}>
                   <span style={{ fontSize: 24, flexShrink: 0 }}>
                     {i === 0 ? "🎵" : i === 1 ? "🎹" : i === 2 ? "💡" : i === 3 ? "🎬" : "📋"}
                   </span>
                   <div>
-                    <div style={{ fontWeight: 500, fontSize: 15, marginBottom: 4 }}>BONUS {i + 1}: {b.title}</div>
-                    <div style={{ fontSize: 15, color: t.textMuted ?? "#555" }}>Trị giá: <s>250.000 VNĐ</s> — <span style={{ color: GREEN }}>Tặng miễn phí</span></div>
+                    <div style={{ fontWeight: 500, fontSize: 15, marginBottom: 4 }}>ĐỒ NGHỀ {b.id || `0${i + 1}`}: {b.title}</div>
+                    <div style={{ fontSize: 14, color: t.textBody ?? "#475569", lineHeight: 1.5, marginBottom: 4 }}>{b.desc.replace(/<[^>]*>?/gm, ' ')}</div>
+                    <div style={{ fontSize: 13, color: t.textMuted ?? "#555" }}>Trị giá: <s>350.000 VNĐ</s> — <span style={{ color: GREEN, fontWeight: 600 }}>Tặng kèm miễn phí</span></div>
                   </div>
                 </div>
               ))}
@@ -890,7 +899,7 @@ function CheckoutContent() {
             Chuyển khoản ngay và bắt đầu<br /><span style={{ color: t.accent, fontWeight: 500 }}>lột xác hình ảnh chuyên gia hôm nay.</span>
           </h2>
           <p style={{ fontSize: 15, color: t.textBody ?? "#777", marginBottom: 24, lineHeight: 1.65 }}>
-            Trong khi những người khác vẫn chật vật với clip "phèn" và tuyệt vọng nhìn khách lướt qua — bạn sẽ thảnh thơi với dòng khách tự động chuyển đổi nhờ Tư Duy Làm Video Điện Thoại: Quay Là Cuốn.
+            Trong khi những người khác vẫn chật vật với clip "phèn" và tuyệt vọng nhìn khách lướt qua — bạn sẽ thảnh thơi với dòng khách tự động chuyển đổi nhờ {c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"}.
           </p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -904,17 +913,17 @@ function CheckoutContent() {
             ↑ QUAY LÊN ĐỂ THANH TOÁN
           </button>
           <p style={{ fontSize: 15, color: t.textMuted ?? "#555", marginTop: 16 }}>
-            Đảm bảo hoàn tiền 100% trong 24 giờ · Truy cập vĩnh viễn
+            Đảm bảo kết quả thực chiến · Truy cập trọn đời &amp; Cập nhật liên tục
           </p>
         </div>
 
         {/* ── FOOTER ── */}
         <div style={{ textAlign: "center", paddingTop: 48, borderTop: `1px solid ${t.line}`, marginTop: 40 }}>
           <div style={{ fontFamily: t.fontDisplay, fontSize: 20, fontWeight: 500, marginBottom: 12, color: t.textBase ?? "#fff" }}>
-            VIDEO<span style={{ color: t.accent }}>.</span>
+            {c.footerBrand || "30NGÀY"}<span style={{ color: t.accent }}>{c.footerDot || "."}</span>
           </div>
           <p style={{ fontSize: 15, color: t.textMuted ?? "#444", lineHeight: 1.8 }}>
-            © 2026 Tư Duy Làm Video Điện Thoại: Quay Là Cuốn · fedu.vn · Mọi quyền được bảo lưu.<br />
+            © 2026 {c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"} · fedu.vn · Mọi quyền được bảo lưu.<br />
             <a href="mailto:vietndj@gmail.com" style={{ color: t.textMuted ?? "#555" }}>vietndj@gmail.com</a> | Zalo: 0934.688.632
           </p>
         </div>

@@ -245,6 +245,12 @@ export interface PageContent {
   bonusItems: { id: string; badge?: string; title: string; desc: string; audioDemo?: string; youtubeDemo?: string; gifDemo?: string; videoDemo?: string }[];
   footerCopyright: string;
 
+  // ── Checkout & Course Meta (Single Source of Truth) ──
+  courseName?: string;
+  checkoutTitle?: string;
+  checkoutSub?: string;
+  checkoutFeatures?: string[];
+
   // ── Extracted Components Data (Single Source of Truth) ──
   philosophyFoundations?: { icon: string; tag: string; title: string; desc: string }[];
   attentionChoices?: { badge: string; title: string; cost: string; desc: string; isBest: boolean; tag: string }[];
@@ -263,7 +269,21 @@ const CONTENT_SCHEMA_VERSION = 8;
 export const DEFAULT_CONTENT: PageContent = {
   _v: CONTENT_SCHEMA_VERSION,
   price: "999.000",
-  value: "7.500.000",
+  value: "4.500.000",
+
+  // ── Checkout & Program Single Source of Truth ──
+  courseName: "Lộ Trình 30 Ngày Làm Chủ Video Ngắn",
+  checkoutTitle: "Lộ Trình 30 Ngày<br />Làm Chủ Video Ngắn",
+  checkoutSub: "Chỉ còn một bước nữa — chuyển khoản và truy cập ngay trọn bộ 5 khóa học thực chiến + 4 tủ đồ nghề quà tặng hôm nay.",
+  checkoutFeatures: [
+    "Trọn bộ 5 Khóa học thực chiến: Kịch bản viral, Bố cục ánh sáng, Dựng phim cuốn hút, CapCut Pro & AI chuyển đổi",
+    "Quyền truy cập trọn đời & Cập nhật miễn phí các công nghệ AI video mới nhất 2026",
+    "Đặc quyền nộp bài thực hành & Thầy Nguyễn Đức Việt trực tiếp soi timeline trên Skool",
+    "Tủ đồ nghề 01: Kho nhạc nền AI MasterClass độc bản không lo đánh gậy bản quyền",
+    "Tủ đồ nghề 02: 50+ Hiệu ứng âm thanh điện ảnh (SFX) nhấn nhá kích thích thị giác",
+    "Tủ đồ nghề 03: Bộ Prompt AI trợ lý kịch bản & Gỡ bí ý tưởng theo ngành",
+    "Tủ đồ nghề 04: 30 Cấu trúc Hook mở lời tự nhiên 3 giây đầu giữ chân người xem"
+  ],
 
   // ── Hero ──
   heroBadge: "TÍCH HỢP AI 2026 — DÀNH CHO NGƯỜI MỚI & CHỦ KINH DOANH",
@@ -831,7 +851,7 @@ export const DEFAULT_CONTENT: PageContent = {
   valueStackTitle: "TỔNG GIÁ TRỊ THỰC TẾ BẠN NHẬN ĐƯỢC:",
   valueStack: [
     { label: "Trọn bộ 5 Khóa học thực chiến (Kịch bản, Góc máy, CapCut, AI, Ra đơn)", price: "2.500.000 VNĐ" },
-    { label: "Đặc quyền nộp bài & Thầy Hoàng Anh Việt trực tiếp soi timeline trên Skool", price: "2.000.000 VNĐ" },
+    { label: "Đặc quyền nộp bài & Thầy Nguyễn Đức Việt trực tiếp soi timeline trên Skool", price: "2.000.000 VNĐ" },
     { label: "Tủ đồ nghề 4 món (Nhạc sạch, Preset CapCut, Prompt AI, 30 Hook)", price: "ĐI KÈM MIỄN PHÍ" }
   ],
   guarantee: "⚡ Quy trình 1-Chạm: Chuyển khoản xong → Vào học NGAY LẬP TỨC trên Skool. Thầy kèm cặp thực hành trực tiếp.",

@@ -277,7 +277,7 @@ export function CtaSection() {
                   textDecoration: "line-through",
                   fontFamily: t.fontMono,
                 }}>
-                  Giá gốc: 4.500.000 VNĐ
+                  Giá gốc: {c.value} VNĐ
                 </span>
                 <span style={{
                   fontSize: "clamp(22px, 3vw, 26px)",
