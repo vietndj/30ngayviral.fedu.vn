@@ -1,5 +1,5 @@
-import React from "react";
-import { useContent } from "../content";
+import React, { useState } from "react";
+import { useContent, GoalCarouselItem, GoalContrast } from "../content";
 import { useTheme } from "../theme";
 import { FadeIn, Label, SH, Sec, AppYTEmbed } from "../components/ui";
 
@@ -152,7 +152,7 @@ export function CorePillarsSection() {
                     display: "flex",
                     flexDirection: "column",
                     gap: 12,
-                    padding: "18px 0 10px",
+                    padding: "18px 0 16px",
                     borderTop: "1px dashed var(--cl-line, rgba(0,0,0,0.08))",
                   }}>
                     {g.bullets.map((b, bIdx) => (
@@ -168,8 +168,8 @@ export function CorePillarsSection() {
                           width: 20,
                           height: 20,
                           borderRadius: "50%",
-                          background: "rgba(22, 163, 74, 0.12)",
-                          color: "#16a34a",
+                          background: idx === 0 ? "rgba(26, 115, 232, 0.12)" : "rgba(22, 163, 74, 0.12)",
+                          color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
                           display: "inline-flex",
                           alignItems: "center",
                           justifyContent: "center",
@@ -185,9 +185,16 @@ export function CorePillarsSection() {
                     ))}
                   </div>
                 )}
+
+                {/* Optional Contrast Box (PA2: Triệu view vs Chuẩn FEDU) */}
+                {g.contrast && (
+                  <div style={{ marginTop: 8, marginBottom: 16 }}>
+                    <GoalContrastBox contrast={g.contrast} />
+                  </div>
+                )}
               </div>
 
-              {/* Visual Mockup Frame */}
+              {/* Visual Mockup Frame / Video / Carousel */}
               {g.video ? (
                 <div style={{
                   width: "100%",
@@ -205,6 +212,12 @@ export function CorePillarsSection() {
                     maxWidth={280}
                   />
                 </div>
+              ) : g.carousel && g.carousel.length > 0 ? (
+                <GoalZaloCarousel
+                  items={g.carousel}
+                  note={g.carouselNote}
+                  theme={t}
+                />
               ) : g.image ? (
                 <div style={{
                   width: "100%",
@@ -380,3 +393,167 @@ export function CorePillarsSection() {
     </Sec>
   );
 }
+
+// ── Goal Contrast Box (PA2: Bẫy 1.2M view vs Chuẩn 480 view FEDU) ──
+function GoalContrastBox({ contrast }: { contrast: GoalContrast }) {
+  return (
+    <div className="cl-contrast-box">
+      <div className="cl-contrast-grid">
+        {/* Negative / Bad Column */}
+        <div className="cl-contrast-card cl-contrast-card--bad">
+          <div>
+            <div className="cl-contrast-title">{contrast.badTitle}</div>
+            <div className="cl-contrast-views">{contrast.badViews}</div>
+            <div className="cl-contrast-list">
+              {contrast.badItems.map((item, i) => (
+                <div key={i} className="cl-contrast-list-item">
+                  <span style={{ color: "#dc2626", fontWeight: 700, fontSize: 13, flexShrink: 0 }}>✕</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="cl-contrast-conclusion">{contrast.badConclusion}</div>
+        </div>
+
+        {/* Positive / Good Column */}
+        <div className="cl-contrast-card cl-contrast-card--good">
+          <div>
+            <div className="cl-contrast-title">{contrast.goodTitle}</div>
+            <div className="cl-contrast-views">{contrast.goodViews}</div>
+            <div className="cl-contrast-list">
+              {contrast.goodItems.map((item, i) => (
+                <div key={i} className="cl-contrast-list-item">
+                  <span style={{ color: "#16a34a", fontWeight: 700, fontSize: 13, flexShrink: 0 }}>✓</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="cl-contrast-conclusion">{contrast.goodConclusion}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Goal Zalo Carousel (PA1: 4 Demo Hội Thoại Tư Vấn Chuyên Môn) ──
+function GoalZaloCarousel({
+  items,
+  note,
+  theme,
+}: {
+  items: GoalCarouselItem[];
+  note?: string;
+  theme: any;
+}) {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  const handlePrev = () => {
+    setActiveIdx((prev) => (prev === 0 ? items.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIdx((prev) => (prev === items.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+    if (diff > 40) {
+      handleNext();
+    } else if (diff < -40) {
+      handlePrev();
+    }
+    setTouchStart(null);
+  };
+
+  const current = items[activeIdx] || items[0];
+  if (!current) return null;
+
+  return (
+    <div className="cl-zalo-carousel">
+      {/* Phone Mockup Screen */}
+      <div
+        className="cl-carousel-viewport"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div
+          className="cl-carousel-stage"
+          style={{ transform: `translateX(-${activeIdx * 100}%)` }}
+        >
+          {items.map((it, idx) => (
+            <div key={it.id || idx} className="cl-carousel-slide">
+              <img
+                src={it.image}
+                alt={it.title}
+                loading={idx === 0 ? "eager" : "lazy"}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Navigation Controls: Prev, Dots, Next */}
+      <div className="cl-carousel-nav">
+        <button
+          type="button"
+          onClick={handlePrev}
+          className="cl-carousel-btn"
+          aria-label="Xem tin nhắn trước"
+          title="Tin nhắn trước"
+        >
+          ‹
+        </button>
+
+        <div className="cl-carousel-dots">
+          {items.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => setActiveIdx(idx)}
+              className={`cl-carousel-dot ${idx === activeIdx ? "is-active" : ""}`}
+              aria-label={`Slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+
+        <span className="cl-carousel-counter">
+          0{activeIdx + 1} / 0{items.length}
+        </span>
+
+        <button
+          type="button"
+          onClick={handleNext}
+          className="cl-carousel-btn"
+          aria-label="Xem tin nhắn tiếp theo"
+          title="Tin nhắn tiếp theo"
+        >
+          ›
+        </button>
+      </div>
+
+      {/* Active Case Summary Card */}
+      <div className="cl-carousel-card-info">
+        <span className="cl-carousel-info-tag">{current.tag}</span>
+        <div className="cl-carousel-info-title">{current.title}</div>
+        <p className="cl-carousel-info-desc">{current.desc}</p>
+      </div>
+
+      {/* Footnote for User */}
+      {note && (
+        <div className="cl-carousel-footer-note">
+          💡 {note}
+        </div>
+      )}
+    </div>
+  );
+}
+

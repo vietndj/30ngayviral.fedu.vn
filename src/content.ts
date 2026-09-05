@@ -54,6 +54,25 @@ export interface ModuleItem {
   stepName?: string;
 }
 
+export interface GoalCarouselItem {
+  id: string;
+  tag: string;
+  title: string;
+  desc: string;
+  image: string;
+}
+
+export interface GoalContrast {
+  badTitle: string;
+  badViews: string;
+  badItems: string[];
+  badConclusion: string;
+  goodTitle: string;
+  goodViews: string;
+  goodItems: string[];
+  goodConclusion: string;
+}
+
 export interface GoalItem {
   id: string;
   tag: string;
@@ -64,6 +83,9 @@ export interface GoalItem {
   videoCaption?: string;
   highlight?: string;
   bullets?: string[];
+  contrast?: GoalContrast;
+  carousel?: GoalCarouselItem[];
+  carouselNote?: string;
 }
 
 export interface PillarItem {
@@ -335,19 +357,69 @@ export const DEFAULT_CONTENT: PageContent = {
       bullets: [
         "Làm chủ cách quay 'không cần lộ mặt' hoặc nói chuyện tự nhiên như đang thở",
         "Xóa bỏ hoàn toàn nỗi sợ bị người quen hay đối tác xì xào phán xét",
+        "Xuất xưởng ngay video đầu tay: Có sản phẩm thực tế đăng kênh ngay tuần đầu tiên",
       ]
     },
     {
       id: "02",
       tag: "MỤC TIÊU 02",
-      highlight: "KẾT QUẢ THẬT · RA ĐƠN TỰ NHIÊN",
-      title: "Kênh có khách hàng thật, ra đơn trên Zalo & Inbox",
-      desc: "Đừng ham triệu view giải trí của những kẻ xem chùa. Khách thấy bạn chân thành và có chuyên môn thật, họ sẽ chủ động liên hệ mua hàng.",
-      image: "/pillars/goal_conversion_proof.png",
+      highlight: "KẾT QUẢ THẬT · KHÁCH HÀNG TÔN TRỌNG",
+      title: "Kênh có khách hàng thật, ra đơn đàng hoàng trên Zalo",
+      desc: "Đừng đánh đổi thể diện 10 năm làm nghề lấy vài cái view nhảm của những người xem chùa rồi lướt. Người có tiền cần một chuyên gia tử tế và đáng tin cậy. Chỉ cần 300 – 500 view đúng tệp, khách sẽ chủ động nhắn tin Zalo xin tư vấn lịch thiệp.",
       bullets: [
-        "Chỉ cần 500 – 1.000 view đúng tệp người mua hàng có nhu cầu thực tế",
-        "Khách chủ động nhắn tin hỏi mua, không phải nài ép hay chèo kéo",
-      ]
+        "Không cần làm trò hề câu view: Giữ trọn vị thế và lòng tự trọng của người có chuyên môn",
+        "Khách tự tìm đến Zalo: Khách hỏi tư vấn lịch sự, không chèo kéo, không kỳ kèo mặc cả",
+        "Ra đơn thực tế: Biến mỗi video thành một chuyên viên tư vấn mẫn cán làm việc 24/7",
+      ],
+      contrast: {
+        badTitle: "BẪY TRIỆU VIEW NHẢM",
+        badViews: "1.200.000 lượt xem",
+        badItems: [
+          "Diễn hề, giật tít drama, nhảy nhót câu view",
+          "Khán giả rảnh rỗi xem giải trí rồi lướt qua",
+          "Người quen xì xào, mất thể diện người làm nghề",
+        ],
+        badConclusion: "➔ Doanh thu: 0đ · Đánh mất uy tín",
+        goodTitle: "CHUẨN CHUYỂN ĐỔI FEDU",
+        goodViews: "480 lượt xem đúng tệp",
+        goodItems: [
+          "Nói đúng việc, phong thái điềm đạm tử tế",
+          "Video như chiếc card visit sống xác thực uy tín",
+          "Khách có tiền chủ động nhắn Zalo nhờ tư vấn",
+        ],
+        goodConclusion: "➔ 2 – 3 tin Zalo xịn · Chốt hợp đồng lớn",
+      },
+      carousel: [
+        {
+          id: "01",
+          tag: "CASE 01 · TƯ VẤN CHUYÊN MÔN",
+          title: "Khách căn hộ Times City nhờ tư vấn trọn gói",
+          desc: "Xem video phân tích bẫy chi phí hoàn thiện nội thất, chủ nhà gửi ngay mặt bằng CAD nhờ lên concept riêng.",
+          image: "/pillars/zalo_demo_1.png",
+        },
+        {
+          id: "02",
+          tag: "CASE 02 · HẸN LỊCH TRỰC TIẾP",
+          title: "Nữ CEO doanh nghiệp hẹn cafe trao đổi",
+          desc: "Video chạm đúng điểm nghẽn của đội ngũ kỹ sư, giám đốc hẹn cafe tại sảnh Park 1 để bàn định hướng hợp tác.",
+          image: "/pillars/zalo_demo_2.png",
+        },
+        {
+          id: "03",
+          tag: "CASE 03 · XIN BÁO GIÁ DỰ ÁN",
+          title: "Bác sĩ nha khoa đăng ký đào tạo nhân sự",
+          desc: "Tin tưởng phong thái điềm đạm, phòng khám cử ngay 2 bác sĩ chuyên khoa học làm video tư vấn y tế chuẩn mực.",
+          image: "/pillars/zalo_demo_3.png",
+        },
+        {
+          id: "04",
+          tag: "CASE 04 · CHỐT HỢP ĐỒNG LỚN",
+          title: "Chủ xưởng mộc chốt 2 đơn hàng từ 800 view",
+          desc: "Chỉ quay cảnh thợ đục mộng gỗ sồi thật thà, khách Vin Ocean Park đến tận xưởng ký hợp đồng bộ bàn ăn và tủ bếp.",
+          image: "/pillars/zalo_demo_4.png",
+        },
+      ],
+      carouselNote: "4 demo màn hình Zalo tư vấn thực tế. Bạn có thể dễ dàng thay thế bằng ảnh chụp màn hình tin nhắn của chính bạn.",
     }
   ],
   corePillars: [
