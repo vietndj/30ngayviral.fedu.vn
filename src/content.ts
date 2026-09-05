@@ -303,7 +303,7 @@ export const DEFAULT_CONTENT: PageContent = {
   heroVideoHeading: "Chỉ cần chiếc điện thoại trên tay — Đây là cách bạn bắt đầu ra đơn",
   heroVideoSub: "Xem video 90 giây: Quy trình quay dựng thực tế từ số 0 của anh Nguyễn Đức Việt — Tự tay làm video hoàn chỉnh mà không cần máy cơ hay kỹ thuật phức tạp.",
   heroVideoNote: "🎥 100% cảnh quay và edit thực hiện trên điện thoại cá nhân · Trợ lực kịch bản AI",
-  heroSubPrice: "⚡ Giảng viên FPT Arena • Cầm máy lên là làm được • Học online trọn đời",
+  heroSubPrice: "⚡ Giảng viên FPT 15 năm kinh nghiệm • Cầm máy lên là làm được • Học online trọn đời",
 
   // ── Pain (Nỗi đau & 6 bế tắc chuẩn Tầng 2.5 - Văn phong Anh Việt) ──
   painLabel: "// NỖI KHỔ NGƯỜI CÓ NGHỀ",

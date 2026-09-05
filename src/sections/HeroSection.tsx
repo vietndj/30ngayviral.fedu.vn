@@ -79,18 +79,25 @@ export function HeroSection() {
           <h1
             className="cl-sh"
             style={{
-              fontSize: "clamp(32px, 5.2vw, 54px)",
+              fontSize: "clamp(28px, 4.6vw, 50px)",
               fontWeight: 500,
               lineHeight: 1.15,
               letterSpacing: "-0.018em",
               color: "var(--cl-text-base, #111827)",
               margin: "0 auto 20px",
-              maxWidth: 780,
-              textWrap: "balance",
+              maxWidth: 860,
             }}
           >
-            {c.heroHeadline1 || "Lộ Trình 30 Ngày Tự Làm Video Ngắn"}{" "}
-            <span style={{ color: "var(--cl-accent)", display: "inline" }}>
+            <span style={{ display: "block" }}>
+              Lộ Trình 30 Ngày Tự Làm <span style={{ whiteSpace: "nowrap" }}>Video Ngắn</span>
+            </span>
+            <span
+              style={{
+                color: "var(--cl-accent)",
+                display: "block",
+                marginTop: "0.08em",
+              }}
+            >
               {c.heroHeadlineAccent || "Bán Hàng & Chuyển Đổi Cao"}
             </span>
           </h1>
