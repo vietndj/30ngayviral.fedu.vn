@@ -24,9 +24,9 @@ from playwright.sync_api import sync_playwright
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(PROJECT_ROOT / ".env")
 
-BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8796389265:AAH-QkaZNIrOKiMLJexprI5EboUJplL7a3c")
-if not BOT_TOKEN or BOT_TOKEN.startswith("896485"):
-    BOT_TOKEN = "8796389265:AAH-QkaZNIrOKiMLJexprI5EboUJplL7a3c"
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+if not BOT_TOKEN:
+    print("⚠️ Cảnh báo: TELEGRAM_BOT_TOKEN chưa được cấu hình trong file .env!")
 
 ALLOWED_CHAT_ID = int(os.getenv("TELEGRAM_CHAT_ID", "2050406425"))
 BASE_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"

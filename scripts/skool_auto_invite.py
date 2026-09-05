@@ -32,8 +32,17 @@ def invite_member_to_skool(email: str, headless: bool = True) -> bool:
     if not PROFILE_DIR.exists():
         print(f"⚠️ Chưa tìm thấy profile đăng nhập tại {PROFILE_DIR}.")
         print("👉 Vui lòng chạy 'python3 scripts/skool_login.py' trước để đăng nhập một lần duy nhất.")
-        return False
+    # Dọn dẹp lock cũ nếu browser bị tắt đột ngột
+    for lock_file in ["SingletonLock", "SingletonCookie", "SingletonSocket"]:
+        target = PROFILE_DIR / lock_file
+        if target.exists() or target.is_symlink():
+            try:
+                target.unlink(missing_ok=True)
+            except Exception:
+                pass
 
+    context = None
+    page = None
     with sync_playwright() as p:
         try:
             context = p.chromium.launch_persistent_context(
@@ -141,13 +150,18 @@ def invite_member_to_skool(email: str, headless: bool = True) -> bool:
 
         except Exception as err:
             print(f"❌ Lỗi: {err}")
-            try:
-                screenshot_path = f"/tmp/skool_error_{int(time.time())}.png"
-                page.screenshot(path=screenshot_path)
-                print(f"📸 Đã lưu ảnh chụp màn hình lỗi tại: {screenshot_path}")
-            except Exception:
-                pass
-            context.close()
+            if page:
+                try:
+                    screenshot_path = f"/tmp/skool_error_{int(time.time())}.png"
+                    page.screenshot(path=screenshot_path)
+                    print(f"📸 Đã lưu ảnh chụp màn hình lỗi tại: {screenshot_path}")
+                except Exception:
+                    pass
+            if context:
+                try:
+                    context.close()
+                except Exception:
+                    pass
             return False
 
 if __name__ == "__main__":
