@@ -15,11 +15,11 @@ export function ModulesSection() {
   const modulesList = c.modules || [];
 
   const navMeta = [
-    { n: "KHÓA 01", time: "KỊCH BẢN", title: "Kịch bản 1 dòng", desc: "Mở máy lên là nói tự nhiên" },
-    { n: "KHÓA 02", time: "GÓC MÁY", title: "Góc máy điện thoại", desc: "Khung hình sáng rõ, đĩnh đạc" },
-    { n: "KHÓA 03", time: "CHUYỂN CẢNH", title: "Chuyển cảnh tàng hình", desc: "Kỹ nghệ giấu vết cắt mượt mà" },
-    { n: "KHÓA 04", time: "CAPCUT & AI", title: "Biên tập CapCut & AI", desc: "Tiết kiệm 80% thời gian" },
-    { n: "KHÓA 05", time: "KỂ CHUYỆN", title: "Video Storytelling", desc: "Chạm cảm xúc, ra đơn Zalo" },
+    { n: "BƯỚC 01", time: "KỊCH BẢN", title: "Kịch bản 1 dòng", desc: "Mở máy lên là nói tự nhiên" },
+    { n: "BƯỚC 02", time: "GÓC MÁY", title: "Góc máy điện thoại", desc: "Khung hình sáng rõ, đĩnh đạc" },
+    { n: "BƯỚC 03", time: "CHUYỂN CẢNH", title: "Chuyển cảnh tàng hình", desc: "Kỹ nghệ giấu vết cắt mượt mà" },
+    { n: "BƯỚC 04", time: "CAPCUT & AI", title: "Biên tập CapCut & AI", desc: "Tiết kiệm 80% thời gian" },
+    { n: "BƯỚC 05", time: "KỂ CHUYỆN", title: "Video Storytelling", desc: "Chạm cảm xúc, ra đơn Zalo" },
   ];
 
   // Silky smooth scrollspy tracking without scroll jitter
