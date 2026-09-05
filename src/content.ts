@@ -300,7 +300,7 @@ export const DEFAULT_CONTENT: PageContent = {
   heroAccentLine: "Bạn không cần máy quay chục triệu, không cần ekip cồng kềnh hay ngoại hình xuất chúng.",
   heroSub: "Không cần máy quay đắt tiền, không cần biết kỹ thuật từ trước. Bạn học cách làm chủ góc quay và kịch bản giữ chân người xem bằng chiếc điện thoại — kết hợp trợ lực AI giúp rút ngắn 80% thời gian dựng video.",
   heroCta: "KHÁM PHÁ LỘ TRÌNH 30 NGÀY →",
-  heroVideoUrl: "/assets/video_intro_30ngay_1080p.mp4",
+  heroVideoUrl: "https://pub-447bd44dfdac4938912655c855b8631c.r2.dev/videos/video_intro_30ngay_1080p.mp4",
   heroVideoPoster: "/assets/video_intro_poster.jpg",
   heroVideoYoutubeId: "pmEpqI2gFpo",
   heroVideoLabel: "// XEM TRƯỚC LỘ TRÌNH THỰC CHIẾN",
