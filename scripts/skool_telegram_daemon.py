@@ -99,6 +99,25 @@ def update_sheet_status(row_idx: int, status_text: str):
     except Exception as e:
         print(f"Lỗi update_sheet_status (row {row_idx}): {e}")
 
+def update_sheet_status_by_email(email: str, status_text: str):
+    clean_email = email.strip().lower()
+    try:
+        service = get_sheets_service()
+        if not service:
+            return
+        sheet = service.spreadsheets().values().get(
+            spreadsheetId=SPREADSHEET_ID,
+            range=f"'{SHEET_NAME}'!A2:D200"
+        ).execute()
+        rows = sheet.get("values", [])
+        for idx, row in enumerate(rows):
+            if len(row) > 3 and row[3].strip().lower() == clean_email:
+                row_idx = idx + 2
+                update_sheet_status(row_idx, status_text)
+                return
+    except Exception as e:
+        print(f"Lỗi update_sheet_status_by_email ({email}): {e}")
+
 def execute_skool_invite(email: str, name: str = "", row_idx: int = None, chat_id: int = ALLOWED_CHAT_ID) -> bool:
     clean_email = email.strip().lower()
     with lock:
@@ -111,6 +130,8 @@ def execute_skool_invite(email: str, name: str = "", row_idx: int = None, chat_i
         print(f"\n🚀 [EXECUTE INVITE] Đang chạy Playwright mời: {clean_email} ({name})...")
         if row_idx:
             update_sheet_status(row_idx, "Đang mời Skool...")
+        else:
+            update_sheet_status_by_email(clean_email, "Đang mời Skool...")
 
         with playwright_lock:
             cmd = [sys.executable, str(INVITE_SCRIPT), clean_email]
@@ -121,6 +142,8 @@ def execute_skool_invite(email: str, name: str = "", row_idx: int = None, chat_i
             print(f"✅ Mời thành công: {clean_email}")
             if row_idx:
                 update_sheet_status(row_idx, f"Đã mời Skool ({now})")
+            else:
+                update_sheet_status_by_email(clean_email, f"Đã mời Skool ({now})")
 
             display_name = name or clean_email
             send_msg(
@@ -140,6 +163,8 @@ def execute_skool_invite(email: str, name: str = "", row_idx: int = None, chat_i
             print(f"❌ Mời thất bại {clean_email}:\nSTDOUT: {res.stdout}\nSTDERR: {res.stderr}")
             if row_idx:
                 update_sheet_status(row_idx, f"Lỗi mời Skool ({get_now_str()})")
+            else:
+                update_sheet_status_by_email(clean_email, f"Lỗi mời Skool ({get_now_str()})")
 
             send_msg(
                 chat_id,
@@ -152,6 +177,8 @@ def execute_skool_invite(email: str, name: str = "", row_idx: int = None, chat_i
         print(f"⏰ Timeout mời Skool cho {clean_email}")
         if row_idx:
             update_sheet_status(row_idx, f"Lỗi Timeout ({get_now_str()})")
+        else:
+            update_sheet_status_by_email(clean_email, f"Lỗi Timeout ({get_now_str()})")
         return False
     except Exception as e:
         print(f"Lỗi execute_skool_invite: {e}")
@@ -208,7 +235,8 @@ def check_skool_members_joined(pending_emails: list):
 
 def poll_skool_joined_members():
     """Luồng tự động kiểm tra xem học viên đã được mời có bấm JOIN NOW vào nhóm Skool chưa."""
-    print("👀 [JOIN MONITOR] Khởi chạy luồng theo dõi học viên vào nhóm Skool (mỗi 30s)...")
+    print("👀 [JOIN MONITOR] Khởi chạy luồng theo dõi học viên vào nhóm Skool (mỗi 120s)...", flush=True)
+    time.sleep(30)
     while True:
         try:
             service = get_sheets_service()
@@ -406,8 +434,10 @@ NTFY_TOPIC = "fedu_skool_auto_invite_vietmac_tpbank888041"
 
 def poll_realtime_queue():
     """Luồng nhận đơn hàng Realtime qua ntfy.sh (Tự động 100% không cần bấm nút Telegram)."""
-    print(f"⚡ [REALTIME QUEUE] Khởi chạy lắng nghe hàng đợi ntfy ({NTFY_TOPIC})...")
-    since = int(time.time()) - 120
+    print(f"⚡ [REALTIME QUEUE] Khởi chạy lắng nghe hàng đợi ntfy ({NTFY_TOPIC})...", flush=True)
+    seen_ids = set()
+    since = int(time.time()) - 3600
+    recently_invited = {}
     while True:
         try:
             url = f"https://ntfy.sh/{NTFY_TOPIC}/json?poll=1&since={since}"
@@ -416,11 +446,18 @@ def poll_realtime_queue():
                 for line in resp.iter_lines():
                     if line:
                         try:
-                            event = json.loads(line)
+                            line_str = line.decode('utf-8') if isinstance(line, bytes) else line
+                            event = json.loads(line_str)
                             if event.get("event") == "message":
+                                event_id = event.get("id")
+                                if event_id in seen_ids:
+                                    continue
+                                seen_ids.add(event_id)
+
                                 event_time = event.get("time", int(time.time()))
-                                if event_time > since:
-                                    since = event_time
+                                if event_time >= since:
+                                    since = event_time + 1
+
                                 raw_msg = event.get("message", "")
                                 if raw_msg.startswith("{"):
                                     data = json.loads(raw_msg)
@@ -432,14 +469,21 @@ def poll_realtime_queue():
                                     name = ""
                                     source = "web"
 
-                                if email and "@" in email:
-                                    print(f"🔥 [REALTIME TỰ ĐỘNG] Nhận đơn mới từ {source}: {name} ({email}) -> Mời Skool ngay!")
-                                    threading.Thread(target=execute_skool_invite, args=(email, name, None, ALLOWED_CHAT_ID)).start()
+                                clean_email = email.lower().strip()
+                                now = time.time()
+                                if clean_email and "@" in clean_email:
+                                    if clean_email in recently_invited and (now - recently_invited[clean_email] < 600):
+                                        print(f"⏩ Email {clean_email} vừa được xử lý gần đây, bỏ qua trùng lặp.", flush=True)
+                                        continue
+                                    recently_invited[clean_email] = now
+
+                                    print(f"🔥 [REALTIME TỰ ĐỘNG] Nhận đơn mới từ {source}: {name} ({clean_email}) -> Mời Skool ngay!", flush=True)
+                                    threading.Thread(target=execute_skool_invite, args=(clean_email, name, None, ALLOWED_CHAT_ID)).start()
                         except Exception as parse_err:
-                            print(f"Lỗi parse event ntfy: {parse_err}")
+                            print(f"Lỗi parse event ntfy: {parse_err}", flush=True)
             time.sleep(3)
         except Exception as e:
-            print(f"Lỗi trong vòng lặp poll_realtime_queue: {e}")
+            print(f"Lỗi trong vòng lặp poll_realtime_queue: {e}", flush=True)
             time.sleep(5)
 
 def main():
