@@ -807,7 +807,7 @@ export const DEFAULT_CONTENT: PageContent = {
       highlight: "Khán giả ghét nhất sự giả trân"
     },
     {
-      tag: "03 · LỜI HỨA CỦA ÔNG GIÁO",
+      tag: "03 · CAM KẾT ĐỒNG HÀNH",
       title: "Không dạy đời trên bục giảng — Tôi kéo ghế ngồi lại cùng bạn",
       desc: "Tôi đóng gói chính những gì mình vừa tự sửa cho bản thân thành lộ trình này. Tôi trực tiếp soi từng timeline trên CapCut, chỉ thẳng chỗ nào thừa hình, câu nào nói vấp để bạn tự tin xuất xưởng video có người hỏi mua hàng mà không phải mò mẫm đơn độc.",
       highlight: "Kéo chiếc ghế ngồi lại sửa cùng bạn"
