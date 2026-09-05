@@ -723,20 +723,20 @@ export const DEFAULT_CONTENT: PageContent = {
   baHeading: "Sau 30 ngày, bạn không còn phải thức tới 3h sáng để đổi lấy vài chục view.",
   baSub: "Không phải làm nhiều hơn để kiệt sức — Mà là làm đúng quy trình để mỗi video làm ra đều đàng hoàng và có người hỏi mua.",
   beforeLabel: "TRƯỚC ĐÂY · THỬ SAI & ĐỐT SỨC",
-  afterLabel: "SAU 30 NGÀY · CÓ LỘ TRÌNH THỰC CHIẾN",
+  afterLabel: "SAU 30 NGÀY · CÓ QUY TRÌNH THỰC CHIẾN",
   beforeItems: [
-    "Mất 3–4 tiếng cặm cụi cắt ghép từng khung hình, xuất file xong là kiệt sức rồi bỏ bẵng kênh cả tuần.",
-    "Cứng họng, run tay, nói vấp liên tục. Càng cố học thuộc lòng thì mặt càng đơ, mắt đảo lia lịa đọc chữ.",
-    "Nói vấp 1 từ là bấm xóa quay lại từ đầu cả chục lần đến phát bực và nản lòng.",
-    "Đặt máy một góc như camera an ninh, đèn trần rọi phẳng lì làm mặt bóng dầu, video nhìn 'hàng chợ'.",
-    "Đăng bài cầu may, lẹt đẹt vài chục view rồi sốt ruột vì không một ai hỏi mua hay để lại tin nhắn."
+    "Mất 3–4 tiếng mò mẫm cắt ghép: Cặm cụi từng khung hình, xuất video xong là kiệt sức rồi bỏ bẵng kênh cả tuần không ra nổi clip mới.",
+    "Cứng họng, mắt đảo lia lịa: Càng cố học thuộc lòng kịch bản thì mặt càng đơ, giọng gượng gạo như trả bài, thiếu tự nhiên.",
+    "Nói vấp 1 từ là xóa quay lại: Bấm quay rồi xóa cả chục lần, mất hàng giờ đồng hồ khiến tâm lý phát bực và nản lòng buông xuôi.",
+    "Góc máy như 'camera an ninh': Đèn trần rọi phẳng lì làm mặt bóng dầu, khung hình lộn xộn khiến video nhìn rẻ tiền và thiếu uy tín.",
+    "Đăng bài cầu may, lẹt đẹt vài view: Đốt bao nhiêu công sức nhưng không một ai bấm nhắn tin hỏi mua hay xin tư vấn, kênh chết yểu."
   ],
   afterItems: [
-    "Chỉ mất 45 phút/clip từ quay đến dựng nhờ có sẵn kịch bản 1 dòng và template CapCut kéo-thả.",
-    "Kịch bản 1 dòng ngắt nhịp theo hơi thở: Bật máy lên là nói tự nhiên như đang ngồi uống trà tâm sự.",
-    "Kho B-roll 2–3s đắp đè lên timeline: Che sạch 100% lỗi nói vấp và mắt đơ mà clip lại sinh động gấp đôi.",
-    "Setup 1 sải tay, ánh sáng nổi khối 3D: Khung hình sạch sẽ, toát lên sự đĩnh đạc và uy tín của người làm nghề.",
-    "Lời mở đầu đánh trúng nỗi đau thật: Video trở thành nhân viên tư vấn tự động kéo khách chủ động nhắn tin."
+    "Chỉ mất 45 phút/clip hoàn chỉnh: Quy trình tinh gọn từ quay đến dựng nhờ có sẵn kịch bản 1 dòng và template CapCut kéo-thả.",
+    "Bật máy lên là nói tự nhiên: Kịch bản 1 dòng ngắt nhịp theo hơi thở, nói chuyện lưu loát, gần gũi như đang ngồi uống trà tâm sự.",
+    "Đắp B-roll 2–3s che 100% lỗi vấp: Che sạch hoàn toàn chỗ nói vấp hoặc ngập ngừng bằng cảnh chèn thao tác thực tế, clip sinh động gấp đôi.",
+    "Setup 1 sải tay, ánh sáng nổi khối 3D: Khung hình sạch sẽ, sáng rõ, toát lên sự đĩnh đạc và uy tín của một người làm nghề lâu năm.",
+    "Khách chủ động nhắn tin Zalo: Lời mở đầu đánh trúng nỗi đau thật, biến video thành nhân viên tư vấn tự động kéo khách lịch thiệp."
   ],
 
   // ── Lộ trình tinh gọn ──

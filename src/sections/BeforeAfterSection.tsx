@@ -240,7 +240,7 @@ export function BeforeAfterSection() {
             </div>
           )}
 
-          {/* Bảng So Sánh Đối Ứng 2 Cột */}
+          {/* Bảng So Sánh Đối Ứng 2 Cột Nâng Cấp (Micro-cards + Bold Title Anchors) */}
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 420px), 1fr))",
@@ -252,44 +252,89 @@ export function BeforeAfterSection() {
             <div
               className="cl-glow-card"
               style={{
-                background: "var(--cl-card, #ffffff)",
-                border: "1px solid rgba(239, 68, 68, 0.2)",
-                borderRadius: "var(--cl-radius, 16px)",
-                padding: "clamp(20px, 3vw, 28px)",
+                background: "#ffffff",
+                border: "1.5px solid rgba(239, 68, 68, 0.25)",
+                borderRadius: "var(--cl-radius, 20px)",
+                padding: "clamp(22px, 3.5vw, 32px)",
                 display: "flex",
                 flexDirection: "column",
-                gap: 16,
+                gap: 14,
+                boxShadow: "0 4px 24px -4px rgba(239, 68, 68, 0.08)",
               }}
             >
               <div style={{
                 fontFamily: t.fontMono,
-                fontSize: 12,
+                fontSize: 12.5,
                 letterSpacing: "0.14em",
-                color: "#ef4444",
+                color: "#dc2626",
                 fontWeight: 700,
                 textTransform: "uppercase",
                 display: "flex",
                 alignItems: "center",
                 gap: 8,
-                paddingBottom: 12,
-                borderBottom: "1px solid rgba(239, 68, 68, 0.15)",
+                paddingBottom: 14,
+                borderBottom: "1.5px solid rgba(239, 68, 68, 0.15)",
               }}>
-                <span style={{ fontSize: 14 }}>✕</span> {c.beforeLabel}
+                <span style={{ fontSize: 15 }}>✕</span> {c.beforeLabel}
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                {c.beforeItems.map((item, i) => (
-                  <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", textAlign: "left" }}>
-                    <span style={{ color: "#ef4444", fontWeight: 700, flexShrink: 0, marginTop: 2 }}>✕</span>
-                    <span style={{
-                      fontSize: "clamp(15.5px, 1.6vw, 16.5px)",
-                      color: "var(--cl-text-muted, #64748b)",
-                      lineHeight: 1.75,
-                    }}>
-                      {item}
-                    </span>
-                  </div>
-                ))}
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {c.beforeItems.map((item, i) => {
+                  const hasColon = item.includes(":");
+                  const title = hasColon ? item.split(":")[0].trim() : "";
+                  const desc = hasColon ? item.split(":").slice(1).join(":").trim() : item;
+                  return (
+                    <div
+                      key={i}
+                      style={{
+                        display: "flex",
+                        gap: 14,
+                        alignItems: "flex-start",
+                        padding: "14px 16px",
+                        borderRadius: 14,
+                        background: "#fff8f8",
+                        border: "1px solid #fee2e2",
+                        textAlign: "left",
+                      }}
+                    >
+                      <div style={{
+                        width: 24,
+                        height: 24,
+                        borderRadius: "50%",
+                        background: "#fee2e2",
+                        color: "#dc2626",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: 12.5,
+                        fontWeight: 800,
+                        flexShrink: 0,
+                        marginTop: 2,
+                      }}>
+                        ✕
+                      </div>
+                      <div style={{
+                        fontSize: "clamp(15.5px, 1.6vw, 16.5px)",
+                        lineHeight: 1.65,
+                        color: "#475569",
+                        fontFamily: t.fontBody,
+                      }}>
+                        {title && (
+                          <span style={{
+                            display: "block",
+                            fontWeight: 700,
+                            color: "#991b1b",
+                            fontSize: "clamp(16px, 1.7vw, 17px)",
+                            marginBottom: 3,
+                          }}>
+                            {title}
+                          </span>
+                        )}
+                        {desc}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -297,46 +342,91 @@ export function BeforeAfterSection() {
             <div
               className="cl-glow-card"
               style={{
-                background: `linear-gradient(180deg, var(--cl-card, #ffffff) 0%, ${t.accent}08 100%)`,
-                border: `1px solid ${t.accent}44`,
-                boxShadow: `0 12px 32px -10px ${t.accent}20`,
-                borderRadius: "var(--cl-radius, 16px)",
-                padding: "clamp(20px, 3vw, 28px)",
+                background: "linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%)",
+                border: "1.5px solid #93c5fd",
+                borderRadius: "var(--cl-radius, 20px)",
+                padding: "clamp(22px, 3.5vw, 32px)",
                 display: "flex",
                 flexDirection: "column",
-                gap: 16,
+                gap: 14,
+                boxShadow: "0 10px 32px -6px rgba(26, 115, 232, 0.16)",
               }}
             >
               <div style={{
                 fontFamily: t.fontMono,
-                fontSize: 12,
+                fontSize: 12.5,
                 letterSpacing: "0.14em",
-                color: t.accent,
+                color: "#1a73e8",
                 fontWeight: 700,
                 textTransform: "uppercase",
                 display: "flex",
                 alignItems: "center",
                 gap: 8,
-                paddingBottom: 12,
-                borderBottom: `1px solid ${t.accent}22`,
+                paddingBottom: 14,
+                borderBottom: "1.5px solid #dbeafe",
               }}>
-                <span style={{ fontSize: 14 }}>✓</span> {c.afterLabel}
+                <span style={{ fontSize: 15 }}>✓</span> {c.afterLabel}
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                {c.afterItems.map((item, i) => (
-                  <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start", textAlign: "left" }}>
-                    <span style={{ color: "#10b981", fontWeight: 700, flexShrink: 0, marginTop: 2 }}>✓</span>
-                    <span style={{
-                      fontSize: "clamp(15.5px, 1.6vw, 16.5px)",
-                      color: "var(--cl-text-base, #111827)",
-                      lineHeight: 1.75,
-                      fontWeight: 500,
-                    }}>
-                      {item}
-                    </span>
-                  </div>
-                ))}
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {c.afterItems.map((item, i) => {
+                  const hasColon = item.includes(":");
+                  const title = hasColon ? item.split(":")[0].trim() : "";
+                  const desc = hasColon ? item.split(":").slice(1).join(":").trim() : item;
+                  return (
+                    <div
+                      key={i}
+                      style={{
+                        display: "flex",
+                        gap: 14,
+                        alignItems: "flex-start",
+                        padding: "14px 16px",
+                        borderRadius: 14,
+                        background: "#ffffff",
+                        border: "1px solid #bfdbfe",
+                        boxShadow: "0 2px 10px rgba(26, 115, 232, 0.06)",
+                        textAlign: "left",
+                      }}
+                    >
+                      <div style={{
+                        width: 24,
+                        height: 24,
+                        borderRadius: "50%",
+                        background: "#dcfce7",
+                        color: "#15803d",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: 13,
+                        fontWeight: 800,
+                        flexShrink: 0,
+                        marginTop: 2,
+                      }}>
+                        ✓
+                      </div>
+                      <div style={{
+                        fontSize: "clamp(15.5px, 1.6vw, 16.5px)",
+                        lineHeight: 1.65,
+                        color: "#0f172a",
+                        fontWeight: 500,
+                        fontFamily: t.fontBody,
+                      }}>
+                        {title && (
+                          <span style={{
+                            display: "block",
+                            fontWeight: 700,
+                            color: "#1a73e8",
+                            fontSize: "clamp(16px, 1.7vw, 17px)",
+                            marginBottom: 3,
+                          }}>
+                            {title}
+                          </span>
+                        )}
+                        {desc}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
