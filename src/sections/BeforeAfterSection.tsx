@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContent } from "../content";
 import { useTheme } from "../theme";
-import { FadeIn, Label, SH, Sec, AppYTEmbed } from "../components/ui";
+import { FadeIn, Label, SH, Sec } from "../components/ui";
 
 export function BeforeAfterSection() {
   const c = useContent();
   const t = useTheme();
+  const [isMuted, setIsMuted] = useState(true);
+  const [activeYoutubeModal, setActiveYoutubeModal] = useState<string | null>(null);
 
   return (
     <Sec maxWidth={1020}>
@@ -29,9 +31,9 @@ export function BeforeAfterSection() {
 
       <FadeIn delay={100}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
-          {/* Video Minh Họa Thành Phẩm Thực Tế */}
+          {/* Video Minh Họa Thành Phẩm Thực Tế (Tự động chạy sạch sẽ như offline.fedu.vn) */}
           <div style={{
-            maxWidth: 440,
+            maxWidth: 380,
             width: "100%",
             margin: "0 auto",
             display: "flex",
@@ -50,33 +52,193 @@ export function BeforeAfterSection() {
               fontSize: 12,
               fontWeight: 700,
               color: "#059669",
-              marginBottom: 14,
+              marginBottom: 16,
               textAlign: "center",
             }}>
               <span>🎬</span> THÀNH PHẨM THỰC TẾ HỌC VIÊN
             </div>
 
+            {/* Khung video dọc 9:16 tự động chạy sạch sẽ */}
             <div style={{
+              position: "relative",
               width: "100%",
-              borderRadius: 20,
+              maxWidth: 300,
+              aspectRatio: "9 / 16",
+              borderRadius: 24,
               overflow: "hidden",
-              border: `2px solid ${t.accent}44`,
-              boxShadow: `0 12px 32px -10px ${t.accent}33`,
-              background: "#000",
+              background: "#000000",
+              border: "1.5px solid rgba(0, 0, 0, 0.08)",
+              boxShadow: "0 18px 40px -12px rgba(0, 0, 0, 0.22)",
             }}>
-              <AppYTEmbed url="https://www.youtube.com/watch?v=GqLHBWSiWDI" />
+              <video
+                src="/assets/showcase/hoc_vien_nuong.mp4"
+                poster="/assets/showcase/hoc_vien_nuong_poster.jpg"
+                autoPlay
+                loop
+                muted={isMuted}
+                playsInline
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+
+              {/* Overlay Nút YouTube góc trên - chuẩn offline.fedu.vn */}
+              <div style={{
+                position: "absolute",
+                top: 12,
+                right: 12,
+                zIndex: 10,
+              }}>
+                <button
+                  type="button"
+                  onClick={() => setActiveYoutubeModal("GqLHBWSiWDI")}
+                  title="Xem trên YouTube"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 5,
+                    padding: "5px 11px",
+                    borderRadius: 999,
+                    background: "rgba(0, 0, 0, 0.7)",
+                    backdropFilter: "blur(8px)",
+                    border: "1px solid rgba(255, 255, 255, 0.22)",
+                    color: "#ffffff",
+                    fontSize: 11,
+                    fontFamily: t.fontMono,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    transition: "all 0.2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = "#dc2626")}
+                  onMouseLeave={(e) => (e.currentTarget.style.background = "rgba(0, 0, 0, 0.7)")}
+                >
+                  <span style={{ fontSize: 9 }}>▶</span>
+                  <span>YouTube</span>
+                </button>
+              </div>
+
+              {/* Nút bật/tắt tiếng góc dưới */}
+              <button
+                type="button"
+                onClick={() => setIsMuted(!isMuted)}
+                title={isMuted ? "Bật âm thanh" : "Tắt âm thanh"}
+                style={{
+                  position: "absolute",
+                  bottom: 12,
+                  right: 12,
+                  zIndex: 10,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 5,
+                  padding: "5px 10px",
+                  borderRadius: 999,
+                  background: "rgba(0, 0, 0, 0.65)",
+                  backdropFilter: "blur(8px)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  color: "#ffffff",
+                  fontSize: 11,
+                  fontFamily: t.fontMono,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                }}
+              >
+                <span>{isMuted ? "🔇" : "🔊"}</span>
+                <span style={{ fontSize: 10.5 }}>{isMuted ? "BẬT TIẾNG" : "ĐANG BẬT"}</span>
+              </button>
             </div>
 
+            {/* Chú thích ngắn gọn, mộc mạc bên dưới */}
             <div style={{
-              fontSize: 13,
-              color: "var(--cl-text-muted, #64748b)",
-              marginTop: 10,
+              marginTop: 14,
               textAlign: "center",
-              lineHeight: 1.5,
+              maxWidth: 340,
             }}>
-              Clip tự quay 1 mình bằng điện thoại — Định dạng Walk & Talk tự nhiên, không diễn gượng.
+              <div style={{
+                fontFamily: t.fontBody,
+                fontSize: 14.5,
+                fontWeight: 600,
+                color: "var(--cl-text-base, #0f172a)",
+                marginBottom: 4,
+              }}>
+                Học viên Nương — Thực hành Walk & Talk tự quay 1 mình
+              </div>
+              <div style={{
+                fontFamily: t.fontBody,
+                fontSize: 13.5,
+                color: "var(--cl-text-body, #64748b)",
+                lineHeight: 1.55,
+              }}>
+                Vừa đi vừa nói chuyện tự nhiên bằng điện thoại, không học vẹt kịch bản, cuốn hút người xem từ đầu đến cuối.
+              </div>
             </div>
           </div>
+
+          {/* Modal Xem YouTube Full */}
+          {activeYoutubeModal && (
+            <div
+              onClick={() => setActiveYoutubeModal(null)}
+              style={{
+                position: "fixed",
+                inset: 0,
+                background: "rgba(0, 0, 0, 0.85)",
+                backdropFilter: "blur(8px)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                zIndex: 9999,
+                padding: 16,
+              }}
+            >
+              <div
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  maxWidth: 380,
+                }}
+              >
+                <button
+                  onClick={() => setActiveYoutubeModal(null)}
+                  style={{
+                    position: "absolute",
+                    top: -42,
+                    right: 0,
+                    background: "rgba(255, 255, 255, 0.15)",
+                    border: "none",
+                    color: "#ffffff",
+                    fontSize: 18,
+                    width: 34,
+                    height: 34,
+                    borderRadius: "50%",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  ✕
+                </button>
+                <div style={{
+                  aspectRatio: "9 / 16",
+                  width: "100%",
+                  borderRadius: 20,
+                  overflow: "hidden",
+                  background: "#000000",
+                }}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${activeYoutubeModal}?autoplay=1&rel=0`}
+                    title="YouTube video player"
+                    style={{ width: "100%", height: "100%", border: 0 }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Bảng So Sánh Đối Ứng 2 Cột */}
           <div style={{
