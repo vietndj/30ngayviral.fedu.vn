@@ -274,8 +274,8 @@ export const DEFAULT_CONTENT: PageContent = {
 
   // ── Checkout & Program Single Source of Truth ──
   courseName: courseConfig.courseName,
-  checkoutTitle: `${courseConfig.courseName.split(" ").slice(0, 4).join(" ")}<br />${courseConfig.courseName.split(" ").slice(4).join(" ")}`,
-  checkoutSub: `Chỉ còn một bước nữa — chuyển khoản và truy cập ngay trọn bộ 5 khóa học thực chiến + ${courseConfig.bonuses.length} tủ đồ nghề quà tặng hôm nay.`,
+  checkoutTitle: `Bạn chỉ còn cách video đầu tiên<br /><span style="color: var(--cl-accent)">đúng một lượt quét mã</span>`,
+  checkoutSub: `Mình giữ chỗ này cho bạn rồi. Chuyển khoản xong là hệ thống gửi tài khoản vào thẳng Skool, kéo ghế ngồi xuống là mình cùng bắt tay vào làm luôn, không phải chờ đợi.`,
   checkoutFeatures: courseConfig.checkoutFeatures,
 
   // ── Hero ──

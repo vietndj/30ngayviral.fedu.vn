@@ -20,17 +20,17 @@ export default function ZaloChatWidget() {
   const QUICK_QUESTIONS = [
     {
       icon: "📱",
-      text: "Điện thoại máy cũ / Chưa biết gì có học được không thầy?",
+      text: "Điện thoại máy cũ / Chưa từng quay dựng có theo kịp không thầy?",
       param: "Chào Thầy Việt, mình dùng máy điện thoại thường và chưa biết gì về dựng video thì có theo kịp lộ trình 30 ngày không ạ?"
     },
     {
       icon: "💼",
-      text: "Mình làm ngành riêng, khóa có mẫu kịch bản không?",
-      param: "Chào Thầy Việt, mình đang kinh doanh tự do, thầy tư vấn giúp ngành của mình có áp dụng được mẫu kịch bản trong khóa không ạ?"
+      text: "Ngành của mình hơi đặc thù, trong khóa có mẫu kịch bản áp dụng không?",
+      param: "Chào Thầy Việt, mình đang kinh doanh ngành đặc thù, thầy tư vấn giúp ngành của mình có áp dụng được mẫu kịch bản trong khóa không ạ?"
     },
     {
       icon: "⚡",
-      text: "Chuyển khoản xong thì nhận khóa học qua đâu?",
+      text: "Chuyển khoản xong thì mình nhận tài khoản và vào học thế nào?",
       param: "Chào Thầy Việt, mình đang ở trang thanh toán, cho mình hỏi chuyển khoản xong thì nhận link vào học Skool thế nào ạ?"
     }
   ];
@@ -135,7 +135,7 @@ export default function ZaloChatWidget() {
             marginBottom: "14px"
           }}>
             <p style={{ margin: 0, fontSize: "13.5px", color: "var(--cl-text-body, #334155)", lineHeight: "1.55" }}>
-              Chào bạn! Nếu bạn đang lăn tăn ngành của mình có làm được video không, hay cần hỏi thêm điều gì trước khi chuyển khoản, cứ bấm chọn nhanh bên dưới nhé:
+              Chào bạn! Nhiều anh em đi làm hay ngại vì chưa từng bấm máy, sợ máy cũ hoặc ngành đặc thù không biết quay gì. Nếu bạn còn chút lăn tăn nào trước khi vào lớp, cứ bấm vào câu hỏi bên dưới hoặc nhắn thẳng Zalo cho mình nhé, việc gì phải ngại!
             </p>
           </div>
 

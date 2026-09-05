@@ -87,15 +87,15 @@ function PaymentSuccessModal({ onClose }: { onClose: () => void }) {
           </div>
         </div>
         <h2 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(22px,4vw,30px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", color: t.textBase ?? "#fff", margin: "0 0 12px" }}>
-          Thanh toán thành công!
+          Chào mừng bạn đến với lớp học!
         </h2>
         <p style={{ fontSize: 15, color: t.textBody ?? "#aaa", lineHeight: 1.75, margin: "0 0 24px" }}>
-          Chúng tôi đã nhận được chuyển khoản của bạn.
+          Mình đã nhận được chuyển khoản thành công của bạn rồi nhé.
         </p>
         <div style={{ background: t.card, border: `1px solid ${t.line}`, borderRadius: t.cardRadius, padding: "20px 24px", marginBottom: 24 }}>
-          <p style={{ fontSize: 15, color: t.textMuted ?? "#666", marginBottom: 8, fontWeight: 600 }}>📧 Tài liệu và liên kết truy cập:</p>
-          <p style={{ fontSize: 16, fontWeight: 500, color: GREEN, margin: "0 0 4px" }}>Đã được gửi tới email của bạn</p>
-          <p style={{ fontSize: 13, color: t.textMuted ?? "#555" }}>Vui lòng kiểm tra hộp thư (kể cả Spam) sau vài phút nhé!</p>
+          <p style={{ fontSize: 15, color: t.textMuted ?? "#666", marginBottom: 8, fontWeight: 600 }}>📧 Tài khoản Skool &amp; 4 Tủ đồ nghề thực chiến:</p>
+          <p style={{ fontSize: 16, fontWeight: 500, color: GREEN, margin: "0 0 4px" }}>Đã gửi thẳng vào email của bạn</p>
+          <p style={{ fontSize: 13, color: t.textMuted ?? "#555" }}>Mở hòm thư (kiểm tra cả mục Spam/Quảng cáo) để kích hoạt tài khoản và vào chào anh em nhé!</p>
         </div>
         <div style={{ background: t.card2, borderRadius: Math.max(8, t.cardRadius - 4), padding: "14px 20px", marginBottom: 24 }}>
           {[
@@ -112,7 +112,7 @@ function PaymentSuccessModal({ onClose }: { onClose: () => void }) {
           fontSize: 15, fontWeight: 500, cursor: "pointer",
           boxShadow: `0 0 24px ${t.accent}66`,
         }}>
-          Đóng & Về trang chủ
+          Đóng & Bắt đầu học ngay
         </button>
       </div>
     </div>
@@ -133,10 +133,10 @@ function ConfirmBanner({ onReset }: { onReset: () => void }) {
           <IconCheck accent={t.accent} />
         </div>
       <h2 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(22px, 4vw, 28px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", marginBottom: 12, color: t.textBase ?? "#fff" }}>
-        Cảm ơn bạn đã chuyển khoản!
+        Mình đã ghi nhận chuyển khoản của bạn!
       </h2>
       <p style={{ fontSize: 15, color: t.textBody ?? "#aaa", lineHeight: 1.75, maxWidth: 460, margin: "0 auto 24px" }}>
-        Chúng tôi đang xác minh giao dịch. Bạn sẽ nhận được tài liệu qua email <strong style={{ color: "var(--cl-text-base, #111827)" }}>trong vòng 30 phút</strong> (giờ hành chính).
+        Hệ thống đang tự động đối soát giao dịch. Tài khoản Skool và bộ đồ nghề sẽ được gửi thẳng vào email của bạn <strong style={{ color: "var(--cl-text-base, #111827)" }}>trong vòng 1 - 2 phút</strong>.
       </p>
       <div style={{ display: "inline-flex", flexDirection: "column", gap: 10, background: t.card, border: `1px solid ${t.line}`, borderRadius: Math.max(8, t.cardRadius - 4), padding: "20px 24px", marginBottom: 20, textAlign: "left" }}>
         {[
@@ -147,7 +147,7 @@ function ConfirmBanner({ onReset }: { onReset: () => void }) {
           <span key={item} style={{ fontSize: 15, color: t.textBody ?? "#c0c0c0" }}>{item}</span>
         ))}
       </div>
-      <p style={{ fontSize: 15, color: t.textMuted ?? "#555", lineHeight: 1.6 }}>Chưa nhận email sau 30 phút? Liên hệ <a href="mailto:vietndj@gmail.com" style={{ color: t.accent }}>vietndj@gmail.com</a> &nbsp;|&nbsp; Zalo: <a href="https://zalo.me/0934688632" style={{ color: t.accent }}>0934.688.632</a></p>
+      <p style={{ fontSize: 15, color: t.textMuted ?? "#555", lineHeight: 1.6 }}>Cần hỗ trợ gấp hoặc sau 5 phút chưa thấy email? Nhắn thẳng Zalo Thầy Việt: <a href="https://zalo.me/0934688632" style={{ color: t.accent, fontWeight: 600 }}>0934.688.632</a> (hỗ trợ ngay)</p>
       <button onClick={onReset} style={{ marginTop: 20, background: "transparent", border: `1px solid ${t.line}`, borderRadius: t.btnRadius, padding: "10px 24px", color: t.textMuted ?? "#555", fontSize: 13, cursor: "pointer" }}>
         Quay lại trang thanh toán
       </button>
@@ -170,9 +170,9 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
     <Card highlight style={{ padding: "24px 20px" }}>
 
 
-      <Lbl>Thanh toán ngay</Lbl>
+      <Lbl>Quét mã vào lớp</Lbl>
 
-      {/* ✨ [POSITION 2 BADGE] Phiên bản Cập nhật Tháng 7/2026 */}
+      {/* ✨ [POSITION 2 BADGE] */}
       <div style={{
         background: "linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(16, 185, 129, 0.04))",
         border: "1px solid rgba(16, 185, 129, 0.4)",
@@ -183,10 +183,10 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
         boxShadow: "0 4px 20px rgba(16, 185, 129, 0.15)"
       }}>
         <div style={{ fontSize: 12.5, fontWeight: 700, color: "#10b981", letterSpacing: "0.03em", textTransform: "uppercase" }}>
-          ✨ PHIÊN BẢN CHÍNH THỨC CẬP NHẬT THÁNG 7/2026
+          ✨ BẢO CHỨNG CHÍNH CHỦ TỪ THẦY NGUYỄN ĐỨC VIỆT
         </div>
         <div style={{ fontSize: 12, color: "var(--cl-text-body, #374151)", marginTop: 3 }}>
-          Bảo chứng chính chủ &amp; Hỗ trợ trực tiếp từ NGUYỄN ĐỨC VIỆT
+          Đồng hành chữa bài trực tiếp trên Skool · Bản cập nhật 2026
         </div>
       </div>
 
@@ -200,7 +200,7 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
       {/* 📱 [Khối Mã QR & Thanh Toán] (Ở giữa, to nhất) */}
       <div style={{ textAlign: "center", marginBottom: 20 }}>
         <p style={{ fontSize: 13, fontWeight: 500, color: t.accent, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-          📱 QUÉT MÃ ĐỂ VÀO LỚP NGAY
+          📱 QUÉT MÃ VÀO LỚP NGAY
         </p>
         <div style={{ 
           width: "100%",
@@ -234,59 +234,25 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
             }}
           />
         </div>
-        <p style={{ fontSize: 15, color: t.textMuted ?? "#555", marginTop: 10 }}>Tương thích: Momo, VCB, Techcombank, MB Bank, BIDV, v.v.</p>
+        <p style={{ fontSize: 14, color: t.textMuted ?? "#555", marginTop: 10 }}>Tương thích: Mọi app ngân hàng &amp; Ví Momo (quét là tự điền đúng tiền và cú pháp)</p>
       </div>
 
 
 
       {/* NEW INSTRUCTIONS */}
       <div style={{ marginBottom: 18, background: t.card2, borderRadius: 12, padding: "14px 16px", border: `1px solid ${t.line}` }}>
-        <p style={{ fontSize: 13, fontWeight: 500, color: t.textMuted ?? "#777", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Hướng dẫn siêu tốc</p>
+        <p style={{ fontSize: 13, fontWeight: 500, color: t.textMuted ?? "#777", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Hướng dẫn 2 bước</p>
         <div style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "center" }}>
           <span style={{ background: t.accent, color: t.accentText, fontSize: 12, fontWeight: 500, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>1</span>
-          <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>Mở App Ngân hàng quét mã QR bên trên.</span>
+          <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>Mở app ngân hàng quét mã QR (đã tự điền đúng 999.000đ).</span>
         </div>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           <span style={{ background: t.accent, color: t.accentText, fontSize: 12, fontWeight: 500, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>2</span>
           <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0" }}>
-            Nhập nội dung: <strong style={{ color: "var(--cl-text-base, #111827)" }}>{prefix} + [Số điện thoại của bạn]</strong>
+            Kiểm tra nội dung: <strong style={{ color: "var(--cl-text-base, #111827)" }}>{prefix} + [Số điện thoại của bạn]</strong>
           </span>
         </div>
       </div>
-
-      {/* BACKUP_OLD_DESIGN_START
-      <div style={{ background: t.card2, border: `1px solid ${t.line}`, borderRadius: 12, padding: "14px 16px", marginBottom: 16 }}>
-        <p style={{ fontSize: 13, fontWeight: 500, color: t.textMuted ?? "#777", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 10 }}>Thông tin chuyển khoản</p>
-        {[
-          ["Ngân hàng", bank.name],
-          ["Chủ tài khoản", bank.holder],
-          ["Số tài khoản", bank.account],
-          ["Số tiền", `${bank.amount} VNĐ`],
-          ["Nội dung CK", bank.content],
-        ].map(([label, value]) => (
-          <div key={label} style={{ display: "flex", justifyContent: "space-between", marginBottom: 7, gap: 8 }}>
-            <span style={{ fontSize: 15, color: t.textMuted ?? "#555", flexShrink: 0 }}>{label}</span>
-            <span style={{ fontSize: 15, color: t.textBase ?? "#fff", fontWeight: 600, textAlign: "right" }}>{value}</span>
-          </div>
-        ))}
-      </div>
-
-      <div style={{ marginBottom: 18 }}>
-        <p style={{ fontSize: 13, fontWeight: 500, color: t.textMuted ?? "#777", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10 }}>Hướng dẫn từng bước</p>
-        {[
-          "Mở app ngân hàng → Chuyển khoản → Quét QR hoặc nhập số TK",
-          `Nhập số tiền: ${bank.amount} VNĐ`,
-          "Nội dung: VIDEO [SĐT của bạn]",
-          "Xác nhận và hoàn tất chuyển khoản",
-          'Nhấn nút "Tôi đã chuyển khoản" bên dưới',
-        ].map((step, i) => (
-          <div key={i} style={{ display: "flex", gap: 10, marginBottom: 8, alignItems: "flex-start" }}>
-            <span style={{ background: t.accent, color: t.accentText, fontSize: 11, fontWeight: 500, borderRadius: "50%", width: 20, height: 20, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>{i + 1}</span>
-            <span style={{ fontSize: 15, color: t.textBody ?? "#b0b0b0", lineHeight: 1.55 }}>{step}</span>
-          </div>
-        ))}
-      </div>
-      BACKUP_OLD_DESIGN_END */}
 
       <button
         onClick={onConfirm}
@@ -298,15 +264,15 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
           boxShadow: `0 0 32px 4px ${t.accent}44`,
         }}
       >
-        ✅ TÔI ĐÃ CHUYỂN KHOẢN
+        ✅ TÔI ĐÃ CHUYỂN KHOẢN XONG
       </button>
 
       <p style={{ fontSize: 13.5, color: t.textMuted ?? "#64748b", textAlign: "center", marginTop: 14, marginBottom: 14, lineHeight: 1.5 }}>
-        ⚡ Hệ thống tự động kích hoạt tài khoản Skool qua Email &amp; SMS ngay khi nhận được chuyển khoản.
+        ⚡ Hệ thống tự động kích hoạt tài khoản Skool qua Email &amp; SMS ngay khi ngân hàng báo có (thường mất 1 - 2 phút).
       </p>
 
       <div style={{ display: "flex", gap: 12, justifyContent: "center", paddingTop: 14, borderTop: `1px solid ${t.line}`, flexWrap: "wrap" }}>
-        {[["🔒", "Bảo mật VietQR"], ["↩", "Cam kết hoàn tiền 24h"], ["⚡", "Vào học ngay"]].map(([icon, label]) => (
+        {[["🔒", "Bảo mật VietQR"], ["🤝", "Đồng hành thật, người thật"], ["⚡", "Vào học ngay"]].map(([icon, label]) => (
           <div key={label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 13, color: t.textMuted ?? "#64748b", fontWeight: 500 }}>
             <span>{icon}</span><span>{label}</span>
           </div>
@@ -507,7 +473,7 @@ function CheckoutContent() {
       {/* ── URGENCY BAR ── */}
       <div style={{ background: t.accent, padding: "10px 16px", textAlign: "center" }}>
         <p style={{ fontSize: 13, fontWeight: 500, letterSpacing: "0.04em", lineHeight: 1.4, color: t.accentText }}>
-          ⚡ ƯU ĐÃI ĐẶC BIỆT — CHỈ DÀNH CHO HỌC VIÊN ĐÃ ĐĂNG KÝ — HOÀN TẤT NGAY ĐỂ GIỮ GIÁ NÀY
+          ⚡ SUẤT HỌC ĐỒNG HÀNH 30 NGÀY CÙNG THẦY VIỆT — QUÉT MÃ ĐỂ KÍCH HOẠT TÀI KHOẢN SKOOL &amp; NHẬN BỘ ĐỒ NGHỀ HÔM NAY
         </p>
       </div>
 
@@ -515,19 +481,21 @@ function CheckoutContent() {
 
         {/* ── DECISION CONFIRMATION ── */}
         <div style={{ textAlign: "center", padding: "40px 0 0" }}>
-          <Lbl>Xác nhận quyết định</Lbl>
+          <Lbl>Bước cuối vào lớp</Lbl>
           <h1 style={{ fontFamily: t.fontDisplay, fontSize: "clamp(22px, 4.2vw, 38px)", fontWeight: 500, lineHeight: 1.15, letterSpacing: "-0.018em", margin: "0 0 14px", color: t.textBase ?? "#fff" }}>
-            Bạn đang hoàn tất đơn hàng<br />
-            <em style={{ color: t.accent, fontStyle: "normal", fontWeight: 500 }}>
-              {c.checkoutTitle ? <span dangerouslySetInnerHTML={{ __html: c.checkoutTitle }} /> : (c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn")}
-            </em>
+            {c.checkoutTitle ? <span dangerouslySetInnerHTML={{ __html: c.checkoutTitle }} /> : (
+              <>
+                Bạn chỉ còn cách video đầu tiên<br />
+                <em style={{ color: t.accent, fontStyle: "normal", fontWeight: 500 }}>đúng một lượt quét mã.</em>
+              </>
+            )}
           </h1>
           <p style={{ fontSize: 15, color: t.textMuted ?? "#888", maxWidth: 520, margin: "0 auto 12px", lineHeight: 1.6 }}>
-            {c.checkoutSub || "Chỉ còn một bước nữa — chuyển khoản và truy cập ngay trọn bộ 5 khóa học thực chiến + 4 tủ đồ nghề quà tặng hôm nay."}
+            {c.checkoutSub || "Mình giữ chỗ này cho bạn rồi. Chuyển khoản xong là hệ thống gửi tài khoản vào thẳng Skool, kéo ghế ngồi xuống là mình cùng bắt tay vào làm luôn, không phải chờ đợi."}
           </p>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: t.card2, border: `1px solid ${GREEN}33`, borderRadius: 50, padding: "8px 20px" }}>
             <span style={{ color: GREEN, fontSize: 14 }}>✓</span>
-            <span style={{ fontSize: 15, color: t.textBody ?? "#aaa" }}>Bạn đã đăng ký thành công — chỉ cần hoàn tất thanh toán</span>
+            <span style={{ fontSize: 15, color: t.textBody ?? "#aaa" }}>Đã giữ mức giá ưu đãi 999.000đ — Hoàn tất chuyển khoản để vào lớp ngay</span>
           </div>
         </div>
 
@@ -559,7 +527,7 @@ function CheckoutContent() {
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
                 <div>
                   <div style={{ fontWeight: 600, fontSize: 17, color: t.textBase ?? "#fff" }}>{c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"}</div>
-                  <div style={{ fontSize: 14, color: t.textMuted ?? "#666", marginTop: 4 }}>Trọn bộ 5 khóa học thực chiến từ quay dựng đến AI ra đơn</div>
+                  <div style={{ fontSize: 14, color: t.textMuted ?? "#666", marginTop: 4 }}>5 chặng thực chiến từ bóc kịch bản đời thường đến dựng CapCut Pro &amp; trợ lực AI</div>
                 </div>
                 <div style={{ textAlign: "right", flexShrink: 0 }}>
                   <div style={{ fontSize: 13, color: t.accent, fontWeight: 600 }}>Tiết kiệm {formattedSaving} VNĐ</div>
@@ -570,16 +538,16 @@ function CheckoutContent() {
 
             {/* WHAT YOU GET */}
             <Card>
-              <Lbl>Đặc quyền học viên nhận ngay</Lbl>
-              <H>Trọn gói kích hoạt ngay sau thanh toán</H>
+              <Lbl>Đặc quyền vào lớp</Lbl>
+              <H>Những gì bạn nhận được khi vào lớp hôm nay</H>
               {(c.checkoutFeatures || [
-                "Trọn bộ 5 Khóa học thực chiến: Kịch bản viral, Bố cục ánh sáng, Dựng phim cuốn hút, CapCut Pro & AI chuyển đổi",
-                "Quyền truy cập trọn đời & Cập nhật miễn phí các công nghệ AI video mới nhất 2026",
-                "Đặc quyền nộp bài thực hành & Thầy Nguyễn Đức Việt trực tiếp soi timeline trên Skool",
-                "Tủ đồ nghề 01: Kho 30 nhạc nền AI MasterClass & 40 SFX điện ảnh sạch bản quyền 100%",
-                "Tủ đồ nghề 02: Bộ Template chữ chuyển động & Preset phụ đề CapCut 2 dòng chuẩn Safe Zone",
-                "Tủ đồ nghề 03: Bộ Prompt AI trợ lý kịch bản 'Bóc sạch văn mẫu' nhả kịch bản 2 cột trong 3 phút",
-                "Tủ đồ nghề 04: Ngân hàng 30 Cấu trúc Hook mở lời tự nhiên theo từng ngành giữ chân 3s đầu"
+                "Trọn bộ 5 chặng thực hành: Bóc kịch bản đời thường, góc máy sạch sẽ, nhịp dựng cuốn hút & AI trợ lực",
+                "Quyền vào lớp trọn đời trên Skool & Nhận các bản cập nhật kỹ thuật AI video mới nhất",
+                "Đặc quyền nộp bài thực hành: Mình trực tiếp soi timeline CapCut, chỉ rõ từng nhịp cắt thừa",
+                "Tủ đồ nghề 01: Kho 30 nhạc nền đĩnh đạc & 40 SFX điện ảnh sạch bản quyền 100%, không lo tắt tiếng",
+                "Tủ đồ nghề 02: Bộ Template chữ chuyển động & Preset phụ đề 2 dòng chuẩn Safe Zone, không bị xé chữ",
+                "Tủ đồ nghề 03: Bộ câu lệnh AI bóc sạch văn mẫu, nhả kịch bản 2 cột (quay gì — nói gì) trong 3 phút",
+                "Tủ đồ nghề 04: Ngân hàng 30 cấu trúc mở lời tự nhiên 3 giây đầu theo từng ngành, gỡ bí ý tưởng"
               ]).map((item: string, i: number) => <Ck key={i}>{item}</Ck>)}
             </Card>
 
@@ -608,19 +576,19 @@ function CheckoutContent() {
                   color: "var(--cl-text-head, #0f172a)",
                   margin: "0 0 4px"
                 }}>
-                  Lời hứa đồng hành từ Thầy Nguyễn Đức Việt
+                  Lời nhắn từ người chủ nhà — Thầy Nguyễn Đức Việt
                 </p>
                 <p style={{
                   fontSize: 13.5,
                   color: "var(--cl-text-body, #475569)",
-                  lineHeight: 1.6,
+                  lineHeight: 1.65,
                   margin: "0 0 8px",
                   fontStyle: "italic"
                 }}>
-                  "Làm video không phải may mắn. Bạn chỉ cần làm đúng quy trình và dám bấm máy bài đầu tiên, phần còn lại mình sẽ trực tiếp soi timeline trên Skool và Zalo sửa cùng bạn."
+                  "Làm video không cần bạn phải nói hay như MC, cũng chẳng cần máy ảnh chục triệu. Cái người xem cần là một người làm nghề đàng hoàng, nói câu chuyện có thật. Bạn cứ dám bấm máy bài đầu tiên, còn lại trên Skool và Zalo, mình sẽ ngồi lại soi từng khung hình sửa cùng bạn."
                 </p>
                 <span style={{ fontSize: 12, color: "var(--cl-text-muted, #64748b)", fontWeight: 500 }}>
-                  Giảng viên FPT Arena Multimedia · 15 năm kinh nghiệm đào tạo thực chiến
+                  Đạo diễn hình ảnh · Giảng viên FPT Arena Multimedia · 15 năm làm nghề đào tạo thực chiến
                 </span>
               </div>
             </div>
