@@ -250,39 +250,52 @@ export function BeforeAfterSection() {
           }}>
             {/* Cột TRƯỚC */}
             <div
-              className="cl-glow-card"
               style={{
                 background: "#ffffff",
-                border: "1.5px solid rgba(239, 68, 68, 0.25)",
+                border: "1px solid rgba(239, 68, 68, 0.2)",
                 borderRadius: "var(--cl-radius, 20px)",
-                padding: "clamp(22px, 3.5vw, 32px)",
+                padding: "clamp(24px, 4vw, 36px)",
                 display: "flex",
                 flexDirection: "column",
-                gap: 14,
-                boxShadow: "0 4px 24px -4px rgba(239, 68, 68, 0.08)",
+                boxShadow: "0 4px 20px -8px rgba(239, 68, 68, 0.06)",
               }}
             >
               <div style={{
                 fontFamily: t.fontMono,
-                fontSize: 12.5,
-                letterSpacing: "0.14em",
+                fontSize: 13,
+                letterSpacing: "0.12em",
                 color: "#dc2626",
                 fontWeight: 700,
                 textTransform: "uppercase",
                 display: "flex",
                 alignItems: "center",
                 gap: 8,
-                paddingBottom: 14,
+                paddingBottom: 16,
                 borderBottom: "1.5px solid rgba(239, 68, 68, 0.15)",
+                marginBottom: 4,
               }}>
-                <span style={{ fontSize: 15 }}>✕</span> {c.beforeLabel}
+                <span style={{
+                  width: 22,
+                  height: 22,
+                  borderRadius: "50%",
+                  background: "rgba(239, 68, 68, 0.1)",
+                  color: "#dc2626",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  flexShrink: 0,
+                }}>✕</span>
+                <span>{c.beforeLabel}</span>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{ display: "flex", flexDirection: "column" }}>
                 {c.beforeItems.map((item, i) => {
                   const hasColon = item.includes(":");
                   const title = hasColon ? item.split(":")[0].trim() : "";
                   const desc = hasColon ? item.split(":").slice(1).join(":").trim() : item;
+                  const isLast = i === c.beforeItems.length - 1;
                   return (
                     <div
                       key={i}
@@ -290,33 +303,25 @@ export function BeforeAfterSection() {
                         display: "flex",
                         gap: 14,
                         alignItems: "flex-start",
-                        padding: "14px 16px",
-                        borderRadius: 14,
-                        background: "#fff8f8",
-                        border: "1px solid #fee2e2",
+                        padding: "18px 0",
+                        borderBottom: isLast ? "none" : "1px solid rgba(0, 0, 0, 0.06)",
                         textAlign: "left",
                       }}
                     >
-                      <div style={{
-                        width: 24,
-                        height: 24,
-                        borderRadius: "50%",
-                        background: "#fee2e2",
-                        color: "#dc2626",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: 12.5,
-                        fontWeight: 800,
+                      <span style={{
+                        color: "#ef4444",
+                        fontSize: 15,
+                        fontWeight: 700,
                         flexShrink: 0,
                         marginTop: 2,
+                        lineHeight: 1,
                       }}>
                         ✕
-                      </div>
+                      </span>
                       <div style={{
                         fontSize: "clamp(16px, 1.7vw, 17.5px)",
-                        lineHeight: 1.65,
-                        color: "#475569",
+                        lineHeight: 1.75,
+                        color: "var(--cl-text-body, #4b5563)",
                         fontFamily: t.fontBody,
                       }}>
                         {title && (
@@ -325,7 +330,8 @@ export function BeforeAfterSection() {
                             fontWeight: 700,
                             color: "#991b1b",
                             fontSize: "clamp(16.5px, 1.8vw, 18px)",
-                            marginBottom: 3,
+                            marginBottom: 4,
+                            lineHeight: 1.35,
                           }}>
                             {title}
                           </span>
@@ -342,37 +348,51 @@ export function BeforeAfterSection() {
             <div
               className="cl-glow-card"
               style={{
-                background: "linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%)",
-                border: "1.5px solid #93c5fd",
+                background: "#ffffff",
+                border: "1.5px solid rgba(26, 115, 232, 0.35)",
                 borderRadius: "var(--cl-radius, 20px)",
-                padding: "clamp(22px, 3.5vw, 32px)",
+                padding: "clamp(24px, 4vw, 36px)",
                 display: "flex",
                 flexDirection: "column",
-                gap: 14,
-                boxShadow: "0 10px 32px -6px rgba(26, 115, 232, 0.16)",
+                boxShadow: "0 8px 30px -4px rgba(26, 115, 232, 0.1)",
               }}
             >
               <div style={{
                 fontFamily: t.fontMono,
-                fontSize: 12.5,
-                letterSpacing: "0.14em",
-                color: "#1a73e8",
+                fontSize: 13,
+                letterSpacing: "0.12em",
+                color: "var(--cl-accent, #1a73e8)",
                 fontWeight: 700,
                 textTransform: "uppercase",
                 display: "flex",
                 alignItems: "center",
                 gap: 8,
-                paddingBottom: 14,
-                borderBottom: "1.5px solid #dbeafe",
+                paddingBottom: 16,
+                borderBottom: "1.5px solid rgba(26, 115, 232, 0.2)",
+                marginBottom: 4,
               }}>
-                <span style={{ fontSize: 15 }}>✓</span> {c.afterLabel}
+                <span style={{
+                  width: 22,
+                  height: 22,
+                  borderRadius: "50%",
+                  background: "rgba(26, 115, 232, 0.12)",
+                  color: "var(--cl-accent, #1a73e8)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  flexShrink: 0,
+                }}>✓</span>
+                <span>{c.afterLabel}</span>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div style={{ display: "flex", flexDirection: "column" }}>
                 {c.afterItems.map((item, i) => {
                   const hasColon = item.includes(":");
                   const title = hasColon ? item.split(":")[0].trim() : "";
                   const desc = hasColon ? item.split(":").slice(1).join(":").trim() : item;
+                  const isLast = i === c.afterItems.length - 1;
                   return (
                     <div
                       key={i}
@@ -380,44 +400,35 @@ export function BeforeAfterSection() {
                         display: "flex",
                         gap: 14,
                         alignItems: "flex-start",
-                        padding: "14px 16px",
-                        borderRadius: 14,
-                        background: "#ffffff",
-                        border: "1px solid #bfdbfe",
-                        boxShadow: "0 2px 10px rgba(26, 115, 232, 0.06)",
+                        padding: "18px 0",
+                        borderBottom: isLast ? "none" : "1px solid rgba(26, 115, 232, 0.08)",
                         textAlign: "left",
                       }}
                     >
-                      <div style={{
-                        width: 24,
-                        height: 24,
-                        borderRadius: "50%",
-                        background: "#dcfce7",
-                        color: "#15803d",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: 13,
-                        fontWeight: 800,
+                      <span style={{
+                        color: "#16a34a",
+                        fontSize: 16,
+                        fontWeight: 700,
                         flexShrink: 0,
                         marginTop: 2,
+                        lineHeight: 1,
                       }}>
                         ✓
-                      </div>
+                      </span>
                       <div style={{
                         fontSize: "clamp(16px, 1.7vw, 17.5px)",
-                        lineHeight: 1.65,
-                        color: "#0f172a",
-                        fontWeight: 500,
+                        lineHeight: 1.75,
+                        color: "var(--cl-text-base, #111827)",
                         fontFamily: t.fontBody,
                       }}>
                         {title && (
                           <span style={{
                             display: "block",
                             fontWeight: 700,
-                            color: "#1a73e8",
+                            color: "var(--cl-accent, #1a73e8)",
                             fontSize: "clamp(16.5px, 1.8vw, 18px)",
-                            marginBottom: 3,
+                            marginBottom: 4,
+                            lineHeight: 1.35,
                           }}>
                             {title}
                           </span>
