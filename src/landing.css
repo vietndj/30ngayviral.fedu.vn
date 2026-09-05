@@ -421,9 +421,90 @@
   font-size: clamp(16px, 1.7vw, 19px);
   line-height: 1.85;
   color: var(--cl-text-body);
-  /* ~65 chars max for comfortable reading */
   max-width: 60ch;
   margin: 0 auto 44px;
+}
+
+/* ═══ HERO SUB-HEADLINE RHYTHM & EMPHASIS ═══ */
+.cl-hero__sub-wrap {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.cl-hero__tags-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cl-hero__pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--cl-line, rgba(0, 0, 0, 0.08));
+  font-family: var(--cl-font-mono, -apple-system, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--cl-text-muted, #64748b);
+  line-height: 1.4;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.cl-hero__pill-icon {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.cl-hero__sub-pitch {
+  font-family: var(--cl-font-body, -apple-system, sans-serif);
+  font-size: clamp(16.5px, 1.9vw, 19.5px);
+  line-height: 1.75;
+  color: var(--cl-text-body, #334155);
+  margin: 0;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.cl-hero__sub-pitch strong {
+  font-weight: 600;
+  color: var(--cl-text-base, #0f172a);
+}
+
+.cl-hero__pitch-sep {
+  display: inline-block;
+  margin: 0 6px;
+  opacity: 0.4;
+}
+
+.cl-hero__ai-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 8px;
+  border-radius: 6px;
+  background: rgba(26, 115, 232, 0.08);
+  border: 1px solid rgba(26, 115, 232, 0.22);
+  color: var(--cl-accent, #1a73e8);
+  font-weight: 600;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.cl-hero__accent-highlight {
+  color: var(--cl-accent, #1a73e8);
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .cl-hero__sub-price {

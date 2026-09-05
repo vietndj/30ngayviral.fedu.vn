@@ -102,21 +102,37 @@ export function HeroSection() {
             </span>
           </h1>
 
-          {/* Tầng 3: Sub-headline giải tỏa nỗi sợ và định vị AI là đòn bẩy */}
-          <p
-            style={{
-              fontFamily: t.fontBody,
-              fontSize: "clamp(16px, 1.8vw, 18.5px)",
-              lineHeight: 1.8,
-              color: "var(--cl-text-body, #4b5563)",
-              maxWidth: 680,
-              margin: "0 auto 36px",
-              textWrap: "balance",
-            }}
-          >
-            {c.heroSub ||
-              "Không cần máy quay đắt tiền, không cần biết kỹ thuật từ trước. Bạn học cách làm chủ góc quay và kịch bản giữ chân người xem bằng chiếc điện thoại — kết hợp trợ lực AI giúp rút ngắn 80% thời gian dựng video."}
-          </p>
+          {/* Tầng 3: Sub-headline giải tỏa nỗi sợ và định vị AI là đòn bẩy (Tách nhịp & Nhấn trọng tâm) */}
+          <div className="cl-hero__sub-wrap">
+            {/* Nhịp 1: Xóa bỏ rào cản - Micro Badges tinh tế */}
+            <div className="cl-hero__tags-row">
+              {(c.heroBarriers && c.heroBarriers.length > 0
+                ? c.heroBarriers
+                : ["Không cần máy quay đắt tiền", "Không cần biết kỹ thuật từ trước"]
+              ).map((barrier, idx) => (
+                <span key={idx} className="cl-hero__pill-tag">
+                  <span className="cl-hero__pill-icon">✕</span> {barrier}
+                </span>
+              ))}
+            </div>
+
+            {/* Nhịp 2: Khẳng định giá trị & Đòn bẩy AI - Độ tương phản cao, nhấn từ khóa */}
+            <p className="cl-hero__sub-pitch">
+              Bạn học cách làm chủ{" "}
+              <strong>góc quay &amp; kịch bản giữ chân người xem</strong> bằng{" "}
+              <strong>chiếc điện thoại</strong>
+              <span className="cl-hero__pitch-sep">—</span>
+              kết hợp{" "}
+              <span className="cl-hero__ai-tag">
+                ⚡ trợ lực AI
+              </span>{" "}
+              giúp rút ngắn{" "}
+              <strong className="cl-hero__accent-highlight">
+                80% thời gian dựng video
+              </strong>
+              .
+            </p>
+          </div>
 
           {/* Tầng 4: CTA Button xuất hiện ngay trên màn hình đầu tiên */}
           <div className="cl-hero__cta-wrap">
