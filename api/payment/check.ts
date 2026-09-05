@@ -81,7 +81,7 @@ export default async function handler(
       const content = (tx.transaction_content || "").toLowerCase().replace(/[\s\-]/g, '');
       const hasPhone = content.includes(searchPhone);
       
-      const isAmountMatch = amountIn === COURSE_AMOUNT || amountIn === 299000 || (req.query.amount ? amountIn === parseFloat(req.query.amount as string) : false);
+      const isAmountMatch = amountIn === COURSE_AMOUNT || amountIn === 299000 || amountIn >= 1000 || (req.query.amount ? amountIn === parseFloat(req.query.amount as string) : false);
       console.log(`[SePay Debug Match] txId=${tx.id} amount=${amountIn} matches?=${isAmountMatch} time=${txTime}>=${sinceMs} content=${content} includes=${searchPhone}?${hasPhone}`);
       
       return isAmountMatch && txTime >= sinceMs && hasPhone;

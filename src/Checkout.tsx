@@ -602,35 +602,32 @@ function CheckoutContent() {
 
             {/* WHAT YOU GET */}
             <Card>
-              <Lbl>Đặc quyền vào lớp</Lbl>
-              <H>Những gì bạn nhận được khi vào lớp hôm nay</H>
+              <Lbl>Quyền lợi thành viên</Lbl>
+              <H>Nội dung bàn giao khi vào lớp</H>
               {(c.checkoutFeatures || [
-                "Trọn bộ 5 chặng thực hành: Bóc kịch bản đời thường, góc máy sạch sẽ, nhịp dựng cuốn hút & AI trợ lực",
-                "Quyền vào lớp trọn đời trên Skool & Nhận các bản cập nhật kỹ thuật AI video mới nhất",
-                "Đặc quyền nộp bài thực hành: Mình trực tiếp soi timeline CapCut, chỉ rõ từng nhịp cắt thừa",
-                "Tủ đồ nghề 01: Kho 30 nhạc nền đĩnh đạc & 40 SFX điện ảnh sạch bản quyền 100%, không lo tắt tiếng",
-                "Tủ đồ nghề 02: Bộ Template chữ chuyển động & Preset phụ đề 2 dòng chuẩn Safe Zone, không bị xé chữ",
-                "Tủ đồ nghề 03: Bộ câu lệnh AI bóc sạch văn mẫu, nhả kịch bản 2 cột (quay gì — nói gì) trong 3 phút",
-                "Tủ đồ nghề 04: Ngân hàng 30 cấu trúc mở lời tự nhiên 3 giây đầu theo từng ngành, gỡ bí ý tưởng"
+                "Lộ trình 5 chặng thực hành: Tự làm chủ từ kịch bản đời thường đến cắt dựng CapCut trên 1 điện thoại",
+                "Tài khoản học trọn đời trên Skool: Tự do học theo tiến độ cá nhân, cập nhật kỹ thuật AI mới liên tục",
+                "Kênh góp ý sửa bài thực tế: Nộp video lên nhóm để được chỉ rõ nhịp cắt thừa và chỉnh lại góc quay",
+                "Bộ công cụ dựng nhanh đi kèm: Mẫu preset phụ đề 2 dòng, prompt AI lọc văn mẫu và kho nhạc sạch bản quyền"
               ]).map((item: string, i: number) => <Ck key={i}>{item}</Ck>)}
             </Card>
 
             {/* INSTRUCTOR MENTORSHIP PLEDGE */}
             <div style={{
-              background: "linear-gradient(135deg, rgba(0, 104, 255, 0.08), rgba(0, 104, 255, 0.02))",
-              border: "1.5px solid rgba(0, 104, 255, 0.25)",
+              background: "linear-gradient(135deg, rgba(0, 104, 255, 0.07), rgba(0, 104, 255, 0.02))",
+              border: "1.5px solid rgba(0, 104, 255, 0.22)",
               borderRadius: "var(--cl-radius, 16px)",
               padding: "20px 22px",
               display: "flex",
               gap: 16,
-              alignItems: "flex-start"
+              alignItems: "center"
             }}>
               <img
                 src="/ava.jpg"
                 alt="Nguyễn Đức Việt"
                 style={{
-                  width: 58,
-                  height: 58,
+                  width: 56,
+                  height: 56,
                   borderRadius: "50%",
                   objectFit: "cover",
                   flexShrink: 0,
@@ -640,41 +637,124 @@ function CheckoutContent() {
               />
               <div>
                 <p style={{
-                  fontSize: 14,
-                  fontWeight: 600,
+                  fontSize: 16,
+                  fontWeight: 700,
                   color: "var(--cl-text-head, #0f172a)",
-                  margin: "0 0 4px"
+                  margin: "0 0 6px"
                 }}>
-                  Lời nhắn từ người chủ nhà — Nguyễn Đức Việt
+                  Nguyễn Đức Việt • Đồng hành trực tiếp
                 </p>
                 <p style={{
-                  fontSize: 13.5,
-                  color: "var(--cl-text-body, #475569)",
+                  fontSize: 15.5,
+                  color: "var(--cl-text-body, #334155)",
                   lineHeight: 1.65,
-                  margin: "0 0 8px",
-                  fontStyle: "italic"
+                  margin: 0
                 }}>
-                  "Làm video không cần bạn phải nói hay như MC, cũng chẳng cần máy ảnh chục triệu. Cái người xem cần là một người làm nghề đàng hoàng, nói câu chuyện có thật. Bạn cứ dám bấm máy bài đầu tiên, còn lại trên Skool và Zalo, mình sẽ ngồi lại soi từng khung hình sửa cùng bạn."
+                  "Vào lớp rồi, việc của bạn chỉ là cầm máy lên và làm. Quay xong bài nào, bạn cứ <strong style={{ color: "var(--cl-text-head, #0f172a)", fontWeight: 700 }}>gửi thẳng qua Zalo riêng cho mình</strong> (hoặc đăng lên nhóm lớp nếu muốn giao lưu) — mình xem và chỉ bạn cách gọt lại từng nhịp cắt, góc quay cho đàng hoàng."
                 </p>
-                <span style={{ fontSize: 12, color: "var(--cl-text-muted, #64748b)", fontWeight: 500 }}>
-                  Đạo diễn hình ảnh · Giảng viên FPT Arena Multimedia · 15 năm làm nghề đào tạo thực chiến
-                </span>
               </div>
             </div>
 
-            {/* AUDITED CHECKOUT FAQ ACCORDION */}
+            {/* AUDITED CHECKOUT FAQ ACCORDION — RICH UI/UX */}
             <Card>
-              <Lbl>Giải đáp thắc mắc</Lbl>
-              <H>Những câu anh em hay hỏi trước khi vào lớp</H>
+              <Lbl>Câu hỏi thường gặp</Lbl>
+              <H>Giải đáp nhanh trước khi vào lớp</H>
               <div style={{ display: "flex", flexDirection: "column" }}>
-                {(c.checkoutFaqs || []).map((faq, i) => {
+                {[
+                  {
+                    q: "Khóa học diễn ra theo hình thức nào, có bị cố định giờ học không?",
+                    intro: "Khóa học được thiết kế học 100% online theo tiến độ cá nhân trên nền tảng Skool, hoàn toàn không gò bó lịch học:",
+                    blocks: [
+                      {
+                        badge: "THỰC HÀNH NGAY",
+                        badgeBg: "rgba(0, 104, 255, 0.1)",
+                        badgeColor: "#0068FF",
+                        title: "⏱ Bài giảng ngắn 5–7 phút",
+                        desc: "Quay trực tiếp từng thao tác trên màn hình. Học mẹo nào, bạn cầm máy thực hành luôn mẹo đó trong 15 phút nghỉ trưa."
+                      },
+                      {
+                        badge: "TRỌN ĐỜI",
+                        badgeBg: "rgba(16, 185, 129, 0.1)",
+                        badgeColor: "#10B981",
+                        title: "♾ Xem lại bất kỳ lúc nào 24/7",
+                        desc: "Linh hoạt học trên cả điện thoại và máy tính. Tự do học theo thời gian rảnh, nhận cập nhật kỹ thuật AI mới liên tục."
+                      }
+                    ]
+                  },
+                  {
+                    q: "Khóa học hướng dẫn dựng trên điện thoại hay máy tính (CapCut PC)?",
+                    intro: "Khóa học hướng dẫn chi tiết cả 2 nền tảng để bạn linh hoạt sử dụng theo đúng thiết bị đang có:",
+                    blocks: [
+                      {
+                        badge: "MOBILE",
+                        badgeBg: "rgba(0, 104, 255, 0.1)",
+                        badgeColor: "#0068FF",
+                        title: "📱 Trên điện thoại (Làm nhanh & Cơ động)",
+                        desc: "Quay xong dựng liền mọi lúc mọi nơi. Máy đời cũ, iPhone hay Android đều thực hành được ngay trên app CapCut miễn phí."
+                      },
+                      {
+                        badge: "CAPCUT PC",
+                        badgeBg: "rgba(139, 92, 246, 0.1)",
+                        badgeColor: "#8B5CF6",
+                        title: "💻 Trên máy tính (Xử lý nâng cao & Xuất nét)",
+                        desc: "Dành cho bạn muốn quản lý thư mục footage khoa học, tinh chỉnh chi tiết âm thanh/màu sắc và xuất video ở độ nét cao nhất, không lo bị vỡ hình khi đăng tải."
+                      }
+                    ]
+                  },
+                  {
+                    q: "Sau khi chuyển khoản, tôi nhận tài khoản và vào học bằng cách nào?",
+                    intro: "Quy trình kích hoạt diễn ra tự động trong 1–2 phút và luôn có người thật hỗ trợ sát bên:",
+                    blocks: [
+                      {
+                        badge: "BƯỚC 1",
+                        badgeBg: "rgba(0, 104, 255, 0.1)",
+                        badgeColor: "#0068FF",
+                        title: "✉️ Kích hoạt tự động qua Email",
+                        desc: "Ngay khi ngân hàng báo có, hệ thống tự động gửi email kèm link đăng nhập Skool. Bạn mở email bấm vào link là vào lớp học ngay."
+                      },
+                      {
+                        badge: "BƯỚC 2",
+                        badgeBg: "rgba(16, 185, 129, 0.1)",
+                        badgeColor: "#10B981",
+                        title: "💬 Xác nhận trực tiếp qua Zalo",
+                        desc: "Việt cũng nhận được thông báo đơn hàng và sẽ chủ động nhắn Zalo cho bạn để xác nhận và hướng dẫn bạn nhập lớp suôn sẻ."
+                      }
+                    ]
+                  },
+                  {
+                    q: "Trong quá trình học và làm video, nếu gặp vướng mắc thì hỏi ai?",
+                    intro: "Bạn có 2 kênh hỗ trợ song song — đặc biệt ưu tiên giải đáp riêng tư, bảo mật:",
+                    blocks: [
+                      {
+                        badge: "ƯU TIÊN 1-1",
+                        badgeBg: "rgba(0, 104, 255, 0.1)",
+                        badgeColor: "#0068FF",
+                        title: "🔒 Nhắn riêng 1-1 qua Zalo",
+                        desc: "Quay xong bài nào, bạn cứ gửi thẳng file hoặc link cho Việt. Mình xem và chỉ bạn cách gọt lại từng nhịp cắt, góc quay hoặc tư vấn riêng hướng kênh — hoàn toàn riêng tư, không ngại đám đông."
+                      },
+                      {
+                        badge: "CỘNG ĐỒNG",
+                        badgeBg: "rgba(100, 116, 139, 0.1)",
+                        badgeColor: "#64748B",
+                        title: "👥 Nhóm lớp Skool (725+ thành viên)",
+                        desc: "Nơi nộp bài tập chung, xem bài mẫu của các học viên khác và giao lưu học hỏi kinh nghiệm thực tế."
+                      }
+                    ],
+                    cta: {
+                      text: "💬 Nhắn Zalo riêng cho Việt (0934.688.632)",
+                      link: "https://zalo.me/0934688632"
+                    },
+                    image: "/skool-community.webp",
+                    imageCaption: "Hình ảnh thực tế không gian nhóm lớp Skool (725+ thành viên chia sẻ và sửa bài mỗi ngày)"
+                  }
+                ].map((faq, i) => {
                   const isOpen = openFaq === i;
                   return (
                     <div
                       key={i}
                       style={{
-                        borderBottom: i < (c.checkoutFaqs?.length || 0) - 1 ? `1px solid ${t.line}` : "none",
-                        padding: "2px 0"
+                        borderBottom: i < 3 ? `1px solid ${t.line}` : "none",
+                        padding: "4px 0"
                       }}
                     >
                       <button
@@ -683,17 +763,17 @@ function CheckoutContent() {
                           width: "100%",
                           background: "none",
                           border: "none",
-                          color: isOpen ? t.accent : (t.textBase ?? "#fff"),
+                          color: isOpen ? t.accent : "var(--cl-text-head, #0f172a)",
                           cursor: "pointer",
-                          padding: "14px 0",
+                          padding: "16px 0",
                           display: "flex",
                           justifyContent: "space-between",
                           alignItems: "center",
                           gap: 12,
                           textAlign: "left",
-                          fontSize: 15,
-                          fontWeight: 500,
-                          lineHeight: 1.5,
+                          fontSize: 16.5,
+                          fontWeight: 600,
+                          lineHeight: 1.45,
                           fontFamily: "inherit",
                           transition: "color 0.15s ease"
                         }}
@@ -704,8 +784,8 @@ function CheckoutContent() {
                         <span
                           style={{
                             color: isOpen ? t.accent : (t.textMuted ?? "#64748b"),
-                            fontSize: 18,
-                            fontWeight: 600,
+                            fontSize: 20,
+                            fontWeight: 700,
                             flexShrink: 0,
                             transition: "transform 0.2s",
                             transform: isOpen ? "rotate(45deg)" : "rotate(0deg)"
@@ -717,20 +797,135 @@ function CheckoutContent() {
                       {isOpen && (
                         <div
                           style={{
-                            fontSize: 14.5,
-                            color: t.textBody ?? "#475569",
-                            lineHeight: 1.7,
-                            padding: "0 0 16px",
+                            padding: "0 0 18px",
                             animation: "fadeIn 0.2s ease"
                           }}
                         >
                           <div style={{
-                            background: t.card2,
-                            borderRadius: 10,
-                            padding: "12px 16px",
-                            borderLeft: `3px solid ${t.accent}`
+                            background: "rgba(0, 104, 255, 0.03)",
+                            border: "1px solid rgba(0, 104, 255, 0.14)",
+                            borderRadius: 14,
+                            padding: "16px 18px"
                           }}>
-                            {faq.a}
+                            {/* Intro text */}
+                            <p style={{
+                              fontSize: 16,
+                              color: "var(--cl-text-body, #334155)",
+                              lineHeight: 1.6,
+                              margin: "0 0 14px",
+                              fontWeight: 500
+                            }}>
+                              {faq.intro}
+                            </p>
+
+                            {/* Structured Sub-Cards */}
+                            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                              {faq.blocks?.map((block, bIdx) => (
+                                <div
+                                  key={bIdx}
+                                  style={{
+                                    background: "var(--cl-card, #ffffff)",
+                                    border: "1px solid var(--cl-line, #e2e8f0)",
+                                    borderRadius: 12,
+                                    padding: "14px 16px",
+                                    boxShadow: "0 2px 6px rgba(0, 0, 0, 0.03)"
+                                  }}
+                                >
+                                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
+                                    <span style={{ fontSize: 16, fontWeight: 700, color: "var(--cl-text-head, #0f172a)" }}>
+                                      {block.title}
+                                    </span>
+                                    {block.badge && (
+                                      <span style={{
+                                        fontSize: 11,
+                                        fontWeight: 700,
+                                        letterSpacing: "0.08em",
+                                        textTransform: "uppercase",
+                                        padding: "3px 8px",
+                                        borderRadius: 6,
+                                        background: block.badgeBg,
+                                        color: block.badgeColor
+                                      }}>
+                                        {block.badge}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p style={{
+                                    fontSize: 15.5,
+                                    color: "var(--cl-text-body, #334155)",
+                                    lineHeight: 1.65,
+                                    margin: 0
+                                  }}>
+                                    {block.desc}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+
+                            {/* Zalo Direct Button */}
+                            {faq.cta && (
+                              <div style={{ marginTop: 14 }}>
+                                <a
+                                  href={faq.cta.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 8,
+                                    padding: "10px 18px",
+                                    background: "linear-gradient(135deg, #0068FF, #0052CC)",
+                                    color: "#fff",
+                                    borderRadius: 10,
+                                    fontSize: 15,
+                                    fontWeight: 700,
+                                    textDecoration: "none",
+                                    boxShadow: "0 4px 14px rgba(0, 104, 255, 0.3)",
+                                    transition: "all 0.15s ease"
+                                  }}
+                                  onMouseOver={(e) => {
+                                    e.currentTarget.style.transform = "translateY(-1px)";
+                                    e.currentTarget.style.boxShadow = "0 6px 18px rgba(0, 104, 255, 0.45)";
+                                  }}
+                                  onMouseOut={(e) => {
+                                    e.currentTarget.style.transform = "translateY(0)";
+                                    e.currentTarget.style.boxShadow = "0 4px 14px rgba(0, 104, 255, 0.3)";
+                                  }}
+                                >
+                                  {faq.cta.text}
+                                </a>
+                              </div>
+                            )}
+
+                            {/* Skool Proof Image */}
+                            {faq.image && (
+                              <div style={{
+                                marginTop: 14,
+                                borderRadius: 12,
+                                overflow: "hidden",
+                                border: "1.5px solid var(--cl-line, #e2e8f0)",
+                                background: "#ffffff",
+                                boxShadow: "0 4px 16px rgba(0, 0, 0, 0.06)"
+                              }}>
+                                <img
+                                  src={faq.image}
+                                  alt="Cộng đồng học viên Skool"
+                                  style={{ width: "100%", height: "auto", display: "block" }}
+                                  loading="lazy"
+                                />
+                                <div style={{
+                                  padding: "10px 14px",
+                                  fontSize: 13,
+                                  color: "var(--cl-text-muted, #64748b)",
+                                  background: "rgba(0, 0, 0, 0.02)",
+                                  borderTop: "1px solid var(--cl-line, #e2e8f0)",
+                                  fontWeight: 500,
+                                  textAlign: "center"
+                                }}>
+                                  {faq.imageCaption}
+                                </div>
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}
