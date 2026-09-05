@@ -738,10 +738,10 @@ function CheckoutContent() {
                     intro: "Bạn có 2 kênh hỗ trợ song song — đặc biệt ưu tiên giải đáp riêng tư, bảo mật:",
                     blocks: [
                       {
-                        badge: "ƯU TIÊN 1-1",
+                        badge: "HỖ TRỢ TRỰC TIẾP",
                         badgeBg: "rgba(0, 104, 255, 0.1)",
                         badgeColor: "#0068FF",
-                        title: "🔒 Nhắn riêng 1-1 qua Zalo",
+                        title: "🔒 Nhắn riêng trực tiếp qua Zalo",
                         desc: "Quay xong bài nào, bạn cứ gửi thẳng file hoặc link cho Việt. Mình xem và chỉ bạn cách gọt lại từng nhịp cắt, góc quay hoặc tư vấn riêng hướng kênh — hoàn toàn riêng tư, không ngại đám đông."
                       },
                       {

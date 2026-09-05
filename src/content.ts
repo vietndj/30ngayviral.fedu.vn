@@ -458,8 +458,8 @@ export const DEFAULT_CONTENT: PageContent = {
         {
           id: "04",
           tag: "CASE 04 · CHỮA BÀI THỰC TẾ",
-          title: "Học viên quầy thuốc gửi video, hỗ trợ Video Call 1-1",
-          desc: "Quay thực tế tại quầy lúng túng chưa tìm ra lỗi, Thầy sẵn sàng mở Video Call 1-1 trực tiếp tháo gỡ điểm nghẽn ngay trong ngày.",
+          title: "Học viên quầy thuốc gửi video, hỗ trợ Video Call trực tiếp",
+          desc: "Quay thực tế tại quầy lúng túng chưa tìm ra lỗi, Thầy sẵn sàng mở Video Call trực tiếp tháo gỡ điểm nghẽn ngay trong ngày.",
           image: "/pillars/zalo_proof_4.png",
         },
         {
@@ -470,7 +470,7 @@ export const DEFAULT_CONTENT: PageContent = {
           image: "/pillars/zalo_proof_5.png",
         },
       ],
-      carouselNote: "5 hội thoại Zalo thực tế: Học viên & khách hàng thật, ra đơn đàng hoàng, đồng hành chữa bài 1-1 tận tâm.",
+      carouselNote: "5 hội thoại Zalo thực tế: Học viên & khách hàng thật, ra đơn đàng hoàng, đồng hành chữa bài trực tiếp tận tâm.",
     }
   ],
   corePillars: [
@@ -837,7 +837,7 @@ export const DEFAULT_CONTENT: PageContent = {
     { label: "Đặc quyền nộp bài & Thầy Nguyễn Đức Việt trực tiếp soi timeline trên Skool", price: "2.000.000 VNĐ" },
     { label: "Tủ đồ nghề 4 món (Nhạc sạch, Preset CapCut, Prompt AI, 30 Hook)", price: "ĐI KÈM MIỄN PHÍ" }
   ],
-  guarantee: "⚡ Quy trình 1-Chạm: Chuyển khoản xong → Vào học NGAY LẬP TỨC trên Skool. Thầy kèm cặp thực hành trực tiếp.",
+  guarantee: "⚡ Quy trình 1-Chạm: Chuyển khoản xong → Vào học NGAY LẬP TỨC trên Skool. Thầy đồng hành hướng dẫn thực hành trực tiếp.",
 
   // ── Footer ──
   footerBrand: "30NGÀY",
@@ -883,7 +883,7 @@ export const DEFAULT_CONTENT: PageContent = {
       badge: "LỰA CHỌN 3 — KHUYÊN DÙNG",
       title: "Làm Chủ Trên Điện Thoại Cùng Thầy Việt",
       cost: "Chỉ 999.000 VNĐ (Bằng 1 bữa lẩu)",
-      desc: "Tự làm chủ trọn vẹn từ Kịch bản 1 dòng → Góc sáng 3D → Dựng CapCut → AI ngay trên chiếc điện thoại. Có Thầy Việt trực tiếp soi timeline gỡ lỗi 1-1. Bạn sở hữu kỹ năng làm video ra đơn cả đời.",
+      desc: "Tự làm chủ trọn vẹn từ Kịch bản 1 dòng → Góc sáng 3D → Dựng CapCut → AI ngay trên chiếc điện thoại. Có Thầy Việt trực tiếp soi timeline chữa bài thực tế. Bạn sở hữu kỹ năng làm video ra đơn cả đời.",
       isBest: true,
       tag: "🏆 Lựa chọn khôn ngoan nhất"
     }
@@ -928,7 +928,7 @@ export const DEFAULT_CONTENT: PageContent = {
   instructorStats: [
     { num: "15 năm", label: "Giảng dạy tại FPT Arena" },
     { num: "1.000+", label: "Học viên & Creator đã đào tạo" },
-    { num: "1 kèm 1", label: "Trực tiếp soi timeline & sửa bài" },
+    { num: "Trực tiếp", label: "Giảng viên soi timeline & sửa bài" },
   ],
 
   faqBadge: "HỎI ĐÁP THỰC TẾ",

@@ -38,7 +38,7 @@ export function InstructorSection() {
       <FadeIn>
         <div style={{ textAlign: "center", marginBottom: 44 }}>
           <Label>{c.instructorLabel || "NGƯỜI ĐỒNG HÀNH CÙNG BẠN"}</Label>
-          <SH typed>{c.instructorHeading || "Tôi từng chuẩn bị bỏ cuộc... Cho đến khi tìm ra Bản Thiết Kế của sự Viral."}</SH>
+          <SH>{c.instructorHeading || "Tôi từng chuẩn bị bỏ cuộc... Cho đến khi tìm ra Bản Thiết Kế của sự Viral."}</SH>
         </div>
       </FadeIn>
 
@@ -88,40 +88,40 @@ export function InstructorSection() {
             {/* Tên & Chức danh */}
             <h3 style={{
               fontFamily: t.fontDisplay,
-              fontSize: 23,
+              fontSize: 26,
               fontWeight: 500,
               color: "var(--cl-text-base, #111827)",
-              margin: "0 0 6px",
+              margin: "0 0 8px",
               lineHeight: 1.25,
             }}>
               {c.instructorName}
             </h3>
             <div style={{
-              fontSize: 13.5,
+              fontSize: 16,
               color: "var(--cl-text-muted, #6b7280)",
-              lineHeight: 1.5,
-              marginBottom: 16,
-              maxWidth: 260,
+              lineHeight: 1.55,
+              marginBottom: 18,
+              maxWidth: 280,
             }}>
               {c.instructorTitle}
             </div>
 
-            {/* Badge Mentoring 1-1 */}
+            {/* Badge Giảng viên đồng hành */}
             <div style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: 6,
+              gap: 8,
               background: "rgba(16, 185, 129, 0.08)",
-              border: "1px solid rgba(16, 185, 129, 0.25)",
+              border: "1.5px solid rgba(16, 185, 129, 0.25)",
               borderRadius: 100,
-              padding: "4px 12px",
-              fontSize: 12,
+              padding: "6px 16px",
+              fontSize: 15,
               color: "#059669",
               fontWeight: 600,
               marginBottom: 22,
             }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#10b981", display: "inline-block" }} />
-              Trực Tiếp Mentoring 1 kèm 1
+              <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#10b981", display: "inline-block" }} />
+              Giảng viên trực tiếp đồng hành &amp; sửa bài
             </div>
 
             {/* 3 Chỉ Số Thực Tế (Text Stack Tối Giản, Không Hộp Xám Rời Rạc) */}
@@ -129,7 +129,7 @@ export function InstructorSection() {
               width: "100%",
               display: "flex",
               flexDirection: "column",
-              gap: 12,
+              gap: 14,
               paddingTop: 18,
               borderTop: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
               textAlign: "left",
@@ -144,12 +144,12 @@ export function InstructorSection() {
                     gap: 10,
                   }}
                 >
-                  <span style={{ fontSize: 13, color: "var(--cl-text-muted, #6b7280)", lineHeight: 1.4 }}>
+                  <span style={{ fontSize: 16, color: "var(--cl-text-muted, #6b7280)", lineHeight: 1.4 }}>
                     {st.label}
                   </span>
                   <span style={{
                     fontFamily: t.fontMono,
-                    fontSize: 15,
+                    fontSize: 17,
                     fontWeight: 700,
                     color: "var(--cl-accent, #1a73e8)",
                     flexShrink: 0,
