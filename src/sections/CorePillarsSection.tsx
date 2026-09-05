@@ -173,10 +173,16 @@ export function CorePillarsSection() {
                     </div>
                   )}
 
-                  {/* Optional Contrast Box (PA2: Triệu view vs Chuẩn FEDU) */}
-                  {g.contrast && (
-                    <div style={{ marginTop: 6 }}>
-                      <GoalContrastBox contrast={g.contrast} />
+                  {/* Pro-Tip Callout Box: Cân bằng chiều cao hoàn hảo cho Khối 01 */}
+                  {idx === 0 && (
+                    <div className="cl-goal-tip-box">
+                      <div className="cl-goal-tip-header">
+                        <span>💡</span>
+                        <strong>LỜI KHUYÊN THỰC CHIẾN TỪ GIẢNG VIÊN</strong>
+                      </div>
+                      <p className="cl-goal-tip-text">
+                        "Chỉ cần 1 góc bàn đủ sáng và chiếc điện thoại kê chắc chắn. Video đầu tiên là để phá vỡ nỗi sợ bấm máy — tập trung vào thao tác tay mộc mạc và nói đúng việc, không cần mặt đẹp, không cần phòng thu."
+                      </p>
                     </div>
                   )}
                 </div>
@@ -186,18 +192,18 @@ export function CorePillarsSection() {
                   {g.video ? (
                     <div style={{
                       width: "100%",
-                      maxWidth: 290,
+                      maxWidth: 270,
                       borderRadius: 22,
                       overflow: "hidden",
                       border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                       background: "var(--cl-card, #f8f9fa)",
-                      boxShadow: "0 10px 28px -8px rgba(0, 0, 0, 0.08)",
-                      padding: "10px 10px 6px",
+                      boxShadow: "0 12px 32px -8px rgba(0, 0, 0, 0.1)",
+                      padding: "8px 8px 6px",
                     }}>
                       <AppYTEmbed
                         url={g.video}
                         caption={g.videoCaption || "Video thị phạm thực tế"}
-                        maxWidth={280}
+                        maxWidth={260}
                       />
                     </div>
                   ) : g.carousel && g.carousel.length > 0 ? (
@@ -231,6 +237,17 @@ export function CorePillarsSection() {
                   ) : null}
                 </div>
               </div>
+
+              {/* ── Dải So Sánh Toàn Cảnh: Trải rộng Full-Width dưới chân Khối 02 ── */}
+              {g.contrast && (
+                <div className="cl-goal-contrast-section">
+                  <div className="cl-goal-contrast-header">
+                    <span className="cl-goal-contrast-tag">// BẢN CHẤT CHUYỂN ĐỔI BỀN VỮNG</span>
+                    <h4 className="cl-goal-contrast-title">Tại sao chúng tôi không dạy bạn đua "triệu view" vô nghĩa?</h4>
+                  </div>
+                  <GoalContrastBox contrast={g.contrast} />
+                </div>
+              )}
             </div>
           ))}
         </div>
