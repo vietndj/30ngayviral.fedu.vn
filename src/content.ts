@@ -366,7 +366,7 @@ export const DEFAULT_CONTENT: PageContent = {
       tag: "MỤC TIÊU 02",
       highlight: "KẾT QUẢ THẬT · KHÁCH HÀNG TÔN TRỌNG",
       title: "Kênh có khách hàng thật, ra đơn đàng hoàng trên Zalo",
-      desc: "Đừng đánh đổi thể diện và uy tín làm nghề lấy những con số xem lướt đại trà. Người mua hàng giá trị cao cần một chuyên gia tử tế và đáng tin cậy. Chỉ cần 300 – 500 lượt xem đúng tệp, khách hàng sẽ chủ động nhắn tin Zalo xin tư vấn lịch thiệp.",
+      desc: "Đừng đánh đổi thể diện 10 năm làm nghề lấy vài cái view nhảm của những người xem chùa rồi lướt. Người có tiền cần một chuyên gia tử tế và đáng tin cậy. Chỉ cần 300 – 500 view đúng tệp, khách sẽ chủ động nhắn tin Zalo xin tư vấn lịch thiệp.",
       bullets: [
         "Giữ trọn phong thái chuyên môn: Đĩnh đạc, tử tế, không đánh đổi uy tín lấy vài giây lướt qua",
         "Khách tự tìm đến Zalo: Khách hỏi tư vấn lịch sự, không chèo kéo, không kỳ kèo mặc cả",
