@@ -30,6 +30,30 @@
   --cl-font-accent: 'SVN-Acta', 'Acta Display', 'Acta', Georgia, serif;
 }
 
+/* ═══ FORM INPUT (CLEAN LIGHT THEME) ════════════════════════════ */
+.cl-form-input {
+  width: 100%;
+  background: #f8fafc;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  padding: 14px 22px;
+  color: #0f172a;
+  font-size: 15.5px;
+  font-family: var(--cl-font-body, -apple-system, BlinkMacSystemFont, sans-serif);
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cl-form-input::placeholder {
+  color: #94a3b8;
+  opacity: 1;
+}
+.cl-form-input:focus {
+  background: #ffffff;
+  border-color: var(--cl-accent, #1a73e8);
+  box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.12);
+}
+
 /* ═══ VNCreative Utility Classes ═══════════════════════════════ */
 .cl-serif-accent, em {
   font-family: var(--cl-font-accent);

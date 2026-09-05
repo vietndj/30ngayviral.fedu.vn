@@ -74,7 +74,19 @@ function RegForm() {
         { name: "phone", label: "Số điện thoại *", type: "tel", placeholder: "0912 345 678", required: true },
       ].map((f) => (
         <div key={f.name}>
-          <label htmlFor={`reg-${f.name}`} style={{ display: "block", fontSize: 13, fontWeight: 600, color: "var(--cl-text-muted, #999)", marginBottom: 8 }}>{f.label}</label>
+          <label
+            htmlFor={`reg-${f.name}`}
+            style={{
+              display: "block",
+              fontSize: 13.5,
+              fontWeight: 600,
+              color: "#334155",
+              marginBottom: 6,
+              textAlign: "left",
+            }}
+          >
+            {f.label}
+          </label>
           <input
             id={`reg-${f.name}`}
             name={f.name}
@@ -83,20 +95,23 @@ function RegForm() {
             required={f.required}
             value={form[f.name as keyof typeof form]}
             onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
-            style={{
-              width: "100%", background: "#0a0a0c",
-              border: `1px solid var(--cl-line)`, borderRadius: t.btnRadius,
-              padding: "14px 18px", color: "#fff", fontSize: 15,
-              outline: "none", boxSizing: "border-box",
-            }}
-            onFocus={(e) => { e.currentTarget.style.borderColor = "var(--cl-accent)"; }}
-            onBlur={(e) => { e.currentTarget.style.borderColor = "var(--cl-line)"; }}
+            className="cl-form-input"
           />
         </div>
       ))}
 
       {errorMsg && (
-        <div style={{ background: "#7f1d1d33", border: "1px solid #ef4444", borderRadius: t.btnRadius, padding: "12px 16px", color: "#fca5a5", fontSize: 14, lineHeight: 1.5, textAlign: "center" }}>
+        <div style={{
+          background: "#fef2f2",
+          border: "1px solid #fecaca",
+          borderRadius: 100,
+          padding: "12px 18px",
+          color: "#dc2626",
+          fontSize: 14,
+          lineHeight: 1.5,
+          textAlign: "center",
+          fontWeight: 500,
+        }}>
           {errorMsg}
         </div>
       )}
@@ -104,25 +119,27 @@ function RegForm() {
         type="submit"
         disabled={loading}
         style={{
-          background: loading ? "#0a5560" : "var(--cl-accent)",
-          color: "var(--cl-accent-text)",
+          background: loading ? "#0a5560" : "var(--cl-accent, #1a73e8)",
+          color: "var(--cl-accent-text, #ffffff)",
           border: "none",
-          borderRadius: t.btnRadius,
-          padding: `${t.btnPaddingY}px ${t.btnPaddingX}px`,
+          borderRadius: 100,
+          padding: "18px 36px",
           fontSize: 16,
-          fontWeight: 500,
+          fontWeight: 700,
           cursor: loading ? "not-allowed" : "pointer",
-          letterSpacing: "0.03em",
-          boxShadow: loading ? "none" : t.accentGlow ? `0 0 32px -2px ${t.accent}66` : "none",
+          letterSpacing: "0.04em",
+          boxShadow: loading ? "none" : "0 4px 20px rgba(26, 115, 232, 0.35)",
           marginTop: 8,
           opacity: loading ? 0.7 : 1,
-          transition: "all 0.2s",
+          transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
+        onMouseOver={(e) => { if (!loading) e.currentTarget.style.backgroundColor = "#1557b0"; }}
+        onMouseOut={(e) => { if (!loading) e.currentTarget.style.backgroundColor = "var(--cl-accent, #1a73e8)"; }}
       >
         {loading ? "⏳ ĐANG XỬ LÝ..." : "ĐĂNG KÝ VÀ THANH TOÁN"}
       </button>
-      <p style={{ textAlign: "center", fontSize: 13, color: "#666", fontStyle: "italic", marginTop: 4 }}>
-        Thông tin của bạn được bảo mật tuyệt đối
+      <p style={{ textAlign: "center", fontSize: 13, color: "#64748b", fontStyle: "italic", marginTop: 4 }}>
+        🔒 Thông tin của bạn được bảo mật tuyệt đối
       </p>
     </form>
   );
