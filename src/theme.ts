@@ -89,7 +89,7 @@ export const ACTIVE_THEME: Theme = {
   cardRadius: 20,
   fontDisplay: "'SVN-Acta', 'Acta Display', 'Acta', Georgia, serif",
   fontBody: "'Aeonik', 'Inter', sans-serif",
-  fontMono: "'Google Sans Code', 'JetBrains Mono', monospace",
+  fontMono: "'SVN-Sonoma', 'Sonoma', -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif",
   fontAccent: "'SVN-Acta', 'Acta Display', 'Acta', Georgia, serif",
   typeScaleBase: 16,
   typeScaleRatio: 1.25,

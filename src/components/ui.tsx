@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import { useTheme } from "../theme";
 import { useContent } from "../content";
 
-export const MONO = "'JetBrains Mono', 'SFMono-Regular', Consolas, monospace";
+export const MONO = "'SVN-Sonoma', 'Sonoma', -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif";
 
 export function useIsMobile(breakpoint = 768) {
   const [mobile, setMobile] = useState(() => window.innerWidth < breakpoint);

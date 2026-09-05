@@ -108,3 +108,62 @@
   font-display: swap;
   src: url('/fonts/SVN-AEONIK-BLACK.TTF') format('truetype');
 }
+
+/* ─── SVN-Sonoma (Đầy đủ tiếng Việt cho Tag, Meta, Badge, Accent) ─── */
+@font-face {
+  font-family: 'SVN-Sonoma';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local('SVN-Sonoma'), local('SVN-Sonoma-Regular'), url('/fonts/SVN-Sonoma-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SVN-Sonoma';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: local('SVN-Sonoma-Medium'), url('/fonts/SVN-Sonoma-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SVN-Sonoma';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: local('SVN-Sonoma-SemiBold'), url('/fonts/SVN-Sonoma-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SVN-Sonoma';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local('SVN-Sonoma-Bold'), url('/fonts/SVN-Sonoma-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sonoma';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: local('SVN-Sonoma'), local('SVN-Sonoma-Regular'), url('/fonts/SVN-Sonoma-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Sonoma';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: local('SVN-Sonoma-Medium'), url('/fonts/SVN-Sonoma-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Sonoma';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: local('SVN-Sonoma-SemiBold'), url('/fonts/SVN-Sonoma-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Sonoma';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local('SVN-Sonoma-Bold'), url('/fonts/SVN-Sonoma-Bold.ttf') format('truetype');
+}

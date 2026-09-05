@@ -10,7 +10,7 @@
 ## 2. Hệ Phông Chữ (Typography Stack)
 - **Heading (Tiêu đề chính)**: `Noe Display` (`fontDisplay`). Độ đậm khóa ở mức `500 (Medium)`, tuyệt đối không dùng 700/800/900.
 - **Body (Văn bản dài, mô tả)**: `Aeonik` / `Inter` (`fontBody`). Độ đậm `400 (Regular)`.
-- **Accent / Meta (Nhãn tag, Label, Mã giảm giá, Header cột)**: `JetBrains Mono` (`fontMono`). Bắt buộc IN HOA và `letter-spacing: 0.15em` đến `0.18em`.
+- **Accent / Meta (Nhãn tag, Label, Mã giảm giá, Header cột)**: `SVN-Sonoma` / `Sonoma` (`fontMono`). Bắt buộc IN HOA và `letter-spacing: 0.12em` đến `0.16em`.
 
 ## 3. Tiêu đề & Cân bằng dọc (Vertical Rhythm)
 - **Line-Height (Chiều cao dòng)**: Khóa ở mức `1.15` cho tiêu đề Noe Display.
