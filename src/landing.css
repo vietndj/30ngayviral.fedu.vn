@@ -1450,7 +1450,58 @@
   }
 }
 
-/* ═══ GOAL 02 HYBRID: CONTRAST BOX & ZALO CAROUSEL ══════════════ */
+/* ═══ GOALS SPLIT ROWS (PHƯƠNG ÁN 1: BỐ CỤC DỌC 2 HÀNG) ══════════════ */
+.cl-goals-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.cl-goal-row {
+  background: #ffffff;
+  border: 1px solid var(--cl-line, rgba(0, 0, 0, 0.08));
+  border-radius: var(--cl-radius, 20px);
+  padding: clamp(24px, 4vw, 38px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s var(--apple-spring), border-color 0.25s ease, box-shadow 0.35s ease;
+}
+
+.cl-goal-row:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.08);
+}
+
+.cl-goal-row-grid {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .cl-goal-row-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.cl-goal-row-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cl-goal-row-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* ═══ CONTRAST BOX (THE MINIMAL APPLE-STYLE CONTRAST STRIP) ═══════ */
 .cl-contrast-box {
   background: var(--cl-card, #f8f9fa);
   border: 1px solid var(--cl-line, rgba(0, 0, 0, 0.08));
@@ -1549,24 +1600,23 @@
   color: #15803d;
 }
 
-/* Zalo Carousel */
+/* ═══ MINIMAL ZALO CAROUSEL (CLEAN PHONE ONLY) ══════════════════ */
 .cl-zalo-carousel {
   position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
-  margin-top: 6px;
+  gap: 12px;
 }
 
 .cl-carousel-viewport {
   width: 100%;
-  max-width: 320px;
+  max-width: 290px;
   position: relative;
   overflow: hidden;
-  border-radius: 18px;
-  box-shadow: 0 14px 32px -10px rgba(0, 0, 0, 0.28);
+  border-radius: 22px;
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.3);
   border: 1px solid var(--cl-line);
   background: #0f1117;
   user-select: none;
@@ -1596,7 +1646,7 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 12px;
+  border-radius: 16px;
 }
 
 .cl-carousel-nav {
@@ -1604,13 +1654,14 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 320px;
+  max-width: 290px;
   gap: 10px;
+  padding: 0 4px;
 }
 
 .cl-carousel-btn {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: 1px solid var(--cl-line);
   background: var(--cl-card, #ffffff);
@@ -1658,51 +1709,5 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--cl-text-muted);
-}
-
-.cl-carousel-card-info {
-  width: 100%;
-  background: #ffffff;
-  border: 1px solid var(--cl-line);
-  border-radius: 12px;
-  padding: 12px 14px;
-  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.05);
-}
-
-.cl-carousel-info-tag {
-  font-family: var(--cl-font-mono);
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #16a34a;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  display: block;
-}
-
-.cl-carousel-info-title {
-  font-family: var(--cl-font-body);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--cl-text-base);
-  margin: 0 0 3px;
-}
-
-.cl-carousel-info-desc {
-  font-family: var(--cl-font-body);
-  font-size: 12.5px;
-  line-height: 1.5;
-  color: var(--cl-text-body);
-  margin: 0;
-}
-
-.cl-carousel-footer-note {
-  font-family: var(--cl-font-body);
-  font-size: 11.5px;
-  line-height: 1.45;
-  color: var(--cl-text-muted);
-  text-align: center;
-  font-style: italic;
-  max-width: 340px;
 }
 

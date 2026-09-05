@@ -45,27 +45,15 @@ export function CorePillarsSection() {
       </FadeIn>
 
       {/* ════════ TẦNG 1: 2 KẾT QUẢ ĐẦU RA (HERO OUTCOMES - 50/50 DUAL GRID) ════════ */}
+      {/* ════════ TẦNG 1: 2 KẾT QUẢ ĐẦU RA (HERO OUTCOMES - BỐ CỤC DỌC 2 HÀNG) ════════ */}
       <FadeIn delay={100}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 460px), 1fr))",
-          gap: 28,
-          marginBottom: 32,
-          alignItems: "stretch",
-        }}>
+        <div className="cl-goals-stack">
           {c.coreGoals?.map((g, idx) => (
             <div
               key={g.id}
-              className="cl-glow-card apple-card-stagger"
+              className="cl-goal-row apple-card-stagger"
               style={{
-                "--card-delay": `${idx * 90}ms`,
-                padding: "clamp(24px, 3.5vw, 34px)",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                gap: 22,
-                position: "relative",
-                overflow: "hidden",
+                "--card-delay": `${idx * 120}ms`,
               } as React.CSSProperties}
             >
               {/* Top Accent Strip */}
@@ -80,172 +68,169 @@ export function CorePillarsSection() {
                   : "linear-gradient(90deg, #16a34a, transparent)",
               }} />
 
-              <div>
-                {/* Tag & Highlight Badge */}
-                <div style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 10,
-                  marginBottom: 16,
-                  flexWrap: "wrap",
-                }}>
-                  <span style={{
-                    fontFamily: t.fontMono,
-                    fontSize: 11,
-                    fontWeight: 700,
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
-                    background: idx === 0 ? "rgba(26, 115, 232, 0.08)" : "rgba(22, 163, 74, 0.08)",
-                    border: `1px solid ${idx === 0 ? "rgba(26, 115, 232, 0.25)" : "rgba(22, 163, 74, 0.25)"}`,
-                    borderRadius: 6,
-                    padding: "4px 10px",
+              <div className="cl-goal-row-grid">
+                {/* ── Left Column: Content & Description (55%) ── */}
+                <div className="cl-goal-row-content">
+                  {/* Tag & Highlight Badge */}
+                  <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
+                    flexWrap: "wrap",
                   }}>
-                    {g.tag}
-                  </span>
-                  {g.highlight && (
                     <span style={{
                       fontFamily: t.fontMono,
                       fontSize: 11,
-                      fontWeight: 600,
-                      letterSpacing: "0.1em",
+                      fontWeight: 700,
+                      letterSpacing: "0.16em",
                       textTransform: "uppercase",
                       color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 4,
+                      background: idx === 0 ? "rgba(26, 115, 232, 0.08)" : "rgba(22, 163, 74, 0.08)",
+                      border: `1px solid ${idx === 0 ? "rgba(26, 115, 232, 0.25)" : "rgba(22, 163, 74, 0.25)"}`,
+                      borderRadius: 6,
+                      padding: "4px 10px",
                     }}>
-                      ✓ {g.highlight}
+                      {g.tag}
                     </span>
+                    {g.highlight && (
+                      <span style={{
+                        fontFamily: t.fontMono,
+                        fontSize: 11,
+                        fontWeight: 600,
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 4,
+                      }}>
+                        ✓ {g.highlight}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="cl-sh" style={{
+                    fontSize: "clamp(22px, 2.5vw, 28px)",
+                    fontWeight: 500,
+                    letterSpacing: "-0.018em",
+                    lineHeight: 1.22,
+                    color: "var(--cl-text-base, #111827)",
+                    margin: 0,
+                    textWrap: "balance",
+                  }}>
+                    {g.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p style={{
+                    fontFamily: t.fontBody,
+                    fontSize: "clamp(15.5px, 1.7vw, 17px)",
+                    lineHeight: 1.75,
+                    color: "var(--cl-text-body, #374151)",
+                    margin: 0,
+                  }}>
+                    {g.desc}
+                  </p>
+
+                  {/* Bullets */}
+                  {g.bullets && g.bullets.length > 0 && (
+                    <div style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 11,
+                      padding: "16px 0 4px",
+                      borderTop: "1px dashed var(--cl-line, rgba(0,0,0,0.08))",
+                    }}>
+                      {g.bullets.map((b, bIdx) => (
+                        <div key={bIdx} style={{
+                          display: "flex",
+                          alignItems: "flex-start",
+                          gap: 12,
+                          fontSize: 15,
+                          lineHeight: 1.6,
+                          color: "var(--cl-text-base, #1f2937)",
+                        }}>
+                          <span style={{
+                            width: 20,
+                            height: 20,
+                            borderRadius: "50%",
+                            background: idx === 0 ? "rgba(26, 115, 232, 0.12)" : "rgba(22, 163, 74, 0.12)",
+                            color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            fontSize: 12,
+                            fontWeight: 700,
+                            flexShrink: 0,
+                            marginTop: 2,
+                          }}>
+                            ✓
+                          </span>
+                          <span style={{ fontWeight: 400 }}>{b}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Optional Contrast Box (PA2: Triệu view vs Chuẩn FEDU) */}
+                  {g.contrast && (
+                    <div style={{ marginTop: 6 }}>
+                      <GoalContrastBox contrast={g.contrast} />
+                    </div>
                   )}
                 </div>
 
-                {/* Title */}
-                <h3 style={{
-                  fontFamily: t.fontDisplay,
-                  fontSize: "clamp(22px, 2.5vw, 26px)",
-                  fontWeight: 500,
-                  letterSpacing: "-0.018em",
-                  lineHeight: 1.25,
-                  color: "var(--cl-text-base, #111827)",
-                  margin: "0 0 14px 0",
-                  textWrap: "balance",
-                }}>
-                  {g.title}
-                </h3>
-
-                {/* Description */}
-                <p style={{
-                  fontFamily: t.fontBody,
-                  fontSize: "clamp(15.5px, 1.7vw, 17px)",
-                  lineHeight: 1.75,
-                  color: "var(--cl-text-body, #374151)",
-                  margin: "0 0 20px 0",
-                }}>
-                  {g.desc}
-                </p>
-
-                {/* Bullets */}
-                {g.bullets && g.bullets.length > 0 && (
-                  <div style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 12,
-                    padding: "18px 0 16px",
-                    borderTop: "1px dashed var(--cl-line, rgba(0,0,0,0.08))",
-                  }}>
-                    {g.bullets.map((b, bIdx) => (
-                      <div key={bIdx} style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: 12,
-                        fontSize: 15,
-                        lineHeight: 1.65,
-                        color: "var(--cl-text-base, #1f2937)",
-                      }}>
-                        <span style={{
-                          width: 20,
-                          height: 20,
-                          borderRadius: "50%",
-                          background: idx === 0 ? "rgba(26, 115, 232, 0.12)" : "rgba(22, 163, 74, 0.12)",
-                          color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
-                          display: "inline-flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          fontSize: 12,
-                          fontWeight: 700,
-                          flexShrink: 0,
-                          marginTop: 2,
-                        }}>
-                          ✓
-                        </span>
-                        <span style={{ fontWeight: 400 }}>{b}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Optional Contrast Box (PA2: Triệu view vs Chuẩn FEDU) */}
-                {g.contrast && (
-                  <div style={{ marginTop: 8, marginBottom: 16 }}>
-                    <GoalContrastBox contrast={g.contrast} />
-                  </div>
-                )}
-              </div>
-
-              {/* Visual Mockup Frame / Video / Carousel */}
-              {g.video ? (
-                <div style={{
-                  width: "100%",
-                  borderRadius: 14,
-                  overflow: "hidden",
-                  border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
-                  background: "#0a0a0c",
-                  boxShadow: "0 12px 30px -8px rgba(0, 0, 0, 0.2)",
-                  padding: "10px 10px 4px",
-                  marginTop: 6,
-                }}>
-                  <AppYTEmbed
-                    url={g.video}
-                    caption={g.videoCaption || "Video thị phạm thực tế"}
-                    maxWidth={280}
-                  />
-                </div>
-              ) : g.carousel && g.carousel.length > 0 ? (
-                <GoalZaloCarousel
-                  items={g.carousel}
-                  note={g.carouselNote}
-                  theme={t}
-                />
-              ) : g.image ? (
-                <div style={{
-                  width: "100%",
-                  borderRadius: 14,
-                  overflow: "hidden",
-                  border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
-                  background: "#0a0a0c",
-                  boxShadow: "0 12px 30px -8px rgba(0, 0, 0, 0.2)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "10px 10px 14px",
-                  marginTop: 6,
-                }}>
-                  <img
-                    src={g.image}
-                    alt={g.title}
-                    loading="lazy"
-                    style={{
+                {/* ── Right Column: Visual Showcase (45%) ── */}
+                <div className="cl-goal-row-visual">
+                  {g.video ? (
+                    <div style={{
                       width: "100%",
-                      maxWidth: 320,
-                      height: "auto",
-                      display: "block",
-                      borderRadius: 10,
-                    }}
-                  />
+                      maxWidth: 290,
+                      borderRadius: 22,
+                      overflow: "hidden",
+                      border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
+                      background: "#0a0a0c",
+                      boxShadow: "0 16px 36px -12px rgba(0, 0, 0, 0.3)",
+                      padding: "10px 10px 6px",
+                    }}>
+                      <AppYTEmbed
+                        url={g.video}
+                        caption={g.videoCaption || "Video thị phạm thực tế"}
+                        maxWidth={280}
+                      />
+                    </div>
+                  ) : g.carousel && g.carousel.length > 0 ? (
+                    <GoalZaloCarousel items={g.carousel} />
+                  ) : g.image ? (
+                    <div style={{
+                      width: "100%",
+                      maxWidth: 290,
+                      borderRadius: 22,
+                      overflow: "hidden",
+                      border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
+                      background: "#0a0a0c",
+                      boxShadow: "0 16px 36px -12px rgba(0, 0, 0, 0.3)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: "8px",
+                    }}>
+                      <img
+                        src={g.image}
+                        alt={g.title}
+                        loading="lazy"
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          display: "block",
+                          borderRadius: 16,
+                        }}
+                      />
+                    </div>
+                  ) : null}
                 </div>
-              ) : null}
+              </div>
             </div>
           ))}
         </div>
@@ -438,15 +423,7 @@ function GoalContrastBox({ contrast }: { contrast: GoalContrast }) {
 }
 
 // ── Goal Zalo Carousel (PA1: 4 Demo Hội Thoại Tư Vấn Chuyên Môn) ──
-function GoalZaloCarousel({
-  items,
-  note,
-  theme,
-}: {
-  items: GoalCarouselItem[];
-  note?: string;
-  theme: any;
-}) {
+function GoalZaloCarousel({ items }: { items: GoalCarouselItem[] }) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
@@ -501,7 +478,7 @@ function GoalZaloCarousel({
         </div>
       </div>
 
-      {/* Navigation Controls: Prev, Dots, Next */}
+      {/* Navigation Controls: Prev, Dots, Counter, Next */}
       <div className="cl-carousel-nav">
         <button
           type="button"
@@ -539,20 +516,6 @@ function GoalZaloCarousel({
           ›
         </button>
       </div>
-
-      {/* Active Case Summary Card */}
-      <div className="cl-carousel-card-info">
-        <span className="cl-carousel-info-tag">{current.tag}</span>
-        <div className="cl-carousel-info-title">{current.title}</div>
-        <p className="cl-carousel-info-desc">{current.desc}</p>
-      </div>
-
-      {/* Footnote for User */}
-      {note && (
-        <div className="cl-carousel-footer-note">
-          💡 {note}
-        </div>
-      )}
     </div>
   );
 }
