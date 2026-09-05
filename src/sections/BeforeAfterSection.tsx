@@ -314,7 +314,7 @@ export function BeforeAfterSection() {
                         ✕
                       </div>
                       <div style={{
-                        fontSize: "clamp(15.5px, 1.6vw, 16.5px)",
+                        fontSize: "clamp(16px, 1.7vw, 17.5px)",
                         lineHeight: 1.65,
                         color: "#475569",
                         fontFamily: t.fontBody,
@@ -324,7 +324,7 @@ export function BeforeAfterSection() {
                             display: "block",
                             fontWeight: 700,
                             color: "#991b1b",
-                            fontSize: "clamp(16px, 1.7vw, 17px)",
+                            fontSize: "clamp(16.5px, 1.8vw, 18px)",
                             marginBottom: 3,
                           }}>
                             {title}
@@ -405,7 +405,7 @@ export function BeforeAfterSection() {
                         ✓
                       </div>
                       <div style={{
-                        fontSize: "clamp(15.5px, 1.6vw, 16.5px)",
+                        fontSize: "clamp(16px, 1.7vw, 17.5px)",
                         lineHeight: 1.65,
                         color: "#0f172a",
                         fontWeight: 500,
@@ -416,7 +416,7 @@ export function BeforeAfterSection() {
                             display: "block",
                             fontWeight: 700,
                             color: "#1a73e8",
-                            fontSize: "clamp(16px, 1.7vw, 17px)",
+                            fontSize: "clamp(16.5px, 1.8vw, 18px)",
                             marginBottom: 3,
                           }}>
                             {title}

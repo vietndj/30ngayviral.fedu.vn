@@ -93,9 +93,9 @@ export function BonusSection() {
                     <div
                       style={{
                         fontFamily: t.fontBody,
-                        fontSize: "15.5px",
+                        fontSize: "16.5px",
                         lineHeight: 1.75,
-                        color: "var(--cl-text-body, #64748b)",
+                        color: "var(--cl-text-body, #374151)",
                         margin: 0,
                       }}
                       dangerouslySetInnerHTML={{ __html: item.desc }}

@@ -37,7 +37,7 @@ export function VideoPreviewSection({ demoCardRef }: VideoPreviewSectionProps) {
           <p
             style={{
               fontFamily: t.fontBody,
-              fontSize: "clamp(15px, 1.7vw, 17px)",
+              fontSize: "clamp(16.5px, 1.8vw, 18px)",
               lineHeight: 1.8,
               color: "var(--cl-text-body, #4b5563)",
               maxWidth: 640,

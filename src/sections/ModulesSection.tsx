@@ -172,11 +172,11 @@ export function ModulesSection() {
       <FadeIn>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <Label>{c.modulesLabel || "5 KHÓA HỌC THỰC CHIẾN TỪ A ĐẾN Z"}</Label>
-          <SH typed>{c.modulesHeading || "Đủ 5 mắt xích khép kín để tự làm trọn vẹn video bán hàng ngay trên chiếc điện thoại:"}</SH>
+          <SH>{c.modulesHeading || "Đủ 5 mắt xích khép kín để tự làm trọn vẹn video bán hàng ngay trên chiếc điện thoại:"}</SH>
           {c.modulesSub && (
             <p style={{
               fontFamily: t.fontBody,
-              fontSize: "clamp(15px, 1.7vw, 17px)",
+              fontSize: "clamp(16.5px, 1.8vw, 18px)",
               lineHeight: 1.7,
               color: "var(--cl-text-muted, #64748b)",
               maxWidth: 760,
@@ -336,9 +336,9 @@ export function ModulesSection() {
                     display: "flex",
                     alignItems: "flex-start",
                     gap: 10,
-                    fontSize: 15,
+                    fontSize: 16,
                     lineHeight: 1.65,
-                    color: "var(--cl-text-body, #64748b)",
+                    color: "var(--cl-text-body, #374151)",
                   }}
                 >
                   <span style={{ color: t.accent, fontWeight: 700, fontSize: 16, marginTop: 2 }}>✦</span>
@@ -355,7 +355,7 @@ export function ModulesSection() {
                     key={idx}
                     style={{
                       fontFamily: t.fontBody,
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: 600,
                       color: "#16a34a",
                       background: "rgba(22, 163, 74, 0.08)",

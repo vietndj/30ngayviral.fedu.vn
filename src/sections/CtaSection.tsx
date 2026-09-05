@@ -222,14 +222,14 @@ export function CtaSection() {
 
               {c.valueStack.map(({ label, price }, i) => (
                 <div key={i} style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 12, alignItems: "baseline" }}>
-                  <span style={{ fontSize: 15, color: "var(--cl-text-body, #475569)", lineHeight: 1.6 }}>{label}</span>
-                  <span style={{ fontSize: 14, color: "var(--cl-text-muted, #64748b)", fontFamily: t.fontMono, flexShrink: 0, fontWeight: 500 }}>{price}</span>
+                  <span style={{ fontSize: 16, color: "var(--cl-text-body, #374151)", lineHeight: 1.6 }}>{label}</span>
+                  <span style={{ fontSize: 15, color: "var(--cl-text-muted, #64748b)", fontFamily: t.fontMono, flexShrink: 0, fontWeight: 500 }}>{price}</span>
                 </div>
               ))}
 
               <div style={{ borderTop: `1px solid var(--cl-line)`, marginTop: 14, paddingTop: 16 }}>
                 <p style={{
-                  fontSize: 11.5,
+                  fontSize: 12.5,
                   fontWeight: 700,
                   color: t.accent,
                   letterSpacing: "0.14em",
@@ -241,7 +241,7 @@ export function CtaSection() {
                 </p>
                 {(c as any).bonusItems?.map((item: any, i: number) => (
                   <div key={i} style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 10, alignItems: "baseline" }}>
-                    <span style={{ fontSize: 14, color: "var(--cl-text-body, #475569)", lineHeight: 1.6, display: "flex", gap: 8 }}>
+                    <span style={{ fontSize: 15.5, color: "var(--cl-text-body, #374151)", lineHeight: 1.6, display: "flex", gap: 8 }}>
                       <span style={{ color: t.accent, flexShrink: 0 }}>✓</span>
                       {item.title}
                     </span>
@@ -297,8 +297,8 @@ export function CtaSection() {
                 <IconGuarantee accent={t.accent} />
               </div>
               <p style={{
-                fontSize: 15,
-                color: "var(--cl-text-body, #64748b)",
+                fontSize: 16,
+                color: "var(--cl-text-body, #374151)",
                 lineHeight: 1.7,
                 maxWidth: 520,
                 margin: "0 auto",

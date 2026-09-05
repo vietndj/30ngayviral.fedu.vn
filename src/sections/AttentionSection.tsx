@@ -71,10 +71,10 @@ export function AttentionSection() {
                     transform: "translateX(-50%)",
                     background: t.accent,
                     color: "#ffffff",
-                    padding: "4px 18px",
+                    padding: "5px 18px",
                     borderRadius: 20,
                     fontFamily: t.fontMono,
-                    fontSize: 11.5,
+                    fontSize: 13,
                     fontWeight: 700,
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
@@ -89,7 +89,7 @@ export function AttentionSection() {
                   {/* Badge Thẻ */}
                   <div style={{
                     fontFamily: t.fontMono,
-                    fontSize: 11.5,
+                    fontSize: 13,
                     fontWeight: 700,
                     color: isBest ? t.accent : "var(--cl-text-muted, #64748b)",
                     textTransform: "uppercase",
@@ -113,7 +113,7 @@ export function AttentionSection() {
                   {/* Chi phí (Cost) */}
                   <div style={{
                     fontFamily: t.fontMono,
-                    fontSize: 15,
+                    fontSize: 16,
                     fontWeight: 700,
                     color: isBest ? t.accent : "#ef4444",
                     background: isBest ? `${t.accent}14` : "rgba(239, 68, 68, 0.08)",
@@ -129,7 +129,7 @@ export function AttentionSection() {
                   {/* Tag Cái giá thực tế */}
                   {item.tag && (
                     <div style={{
-                      fontSize: 13,
+                      fontSize: 15,
                       fontWeight: 600,
                       color: isBest ? "#059669" : "var(--cl-text-muted, #64748b)",
                       marginBottom: 14,
@@ -140,7 +140,7 @@ export function AttentionSection() {
 
                   {/* Mô tả thực tế (Story) */}
                   <p style={{
-                    fontSize: "clamp(15px, 1.6vw, 16px)",
+                    fontSize: "clamp(16.5px, 1.8vw, 18px)",
                     lineHeight: 1.75,
                     color: "var(--cl-text-body, #374151)",
                     margin: 0,

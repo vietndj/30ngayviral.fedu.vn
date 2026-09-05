@@ -115,7 +115,7 @@ export function InstructorSection() {
               border: "1.5px solid rgba(16, 185, 129, 0.25)",
               borderRadius: 100,
               padding: "6px 16px",
-              fontSize: 15,
+              fontSize: 16,
               color: "#059669",
               fontWeight: 600,
               marginBottom: 22,
@@ -149,7 +149,7 @@ export function InstructorSection() {
                   </span>
                   <span style={{
                     fontFamily: t.fontMono,
-                    fontSize: 17,
+                    fontSize: 17.5,
                     fontWeight: 700,
                     color: "var(--cl-accent, #1a73e8)",
                     flexShrink: 0,
@@ -181,9 +181,9 @@ export function InstructorSection() {
             }}>
               <span style={{
                 fontFamily: t.fontMono,
-                fontSize: 11,
+                fontSize: 13,
                 fontWeight: 700,
-                letterSpacing: "0.15em",
+                letterSpacing: "0.14em",
                 textTransform: "uppercase",
                 color: "var(--cl-accent, #1a73e8)",
                 display: "block",
@@ -194,8 +194,8 @@ export function InstructorSection() {
               <blockquote style={{
                 fontFamily: t.fontDisplay,
                 fontStyle: "italic",
-                fontSize: "clamp(17px, 2.2vw, 20px)",
-                lineHeight: 1.55,
+                fontSize: "clamp(18px, 2.2vw, 21px)",
+                lineHeight: 1.6,
                 color: "var(--cl-text-base, #111827)",
                 margin: 0,
                 fontWeight: 500,
@@ -208,27 +208,26 @@ export function InstructorSection() {
             <div style={{ height: 1, background: "var(--cl-line, rgba(0, 0, 0, 0.08))", width: "100%" }} />
 
             {/* 3 Đoạn Tự Sự Liền Mạch (Không Đóng Khung Nhỏ, Đọc Cực Êm) */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
               {storyList.map((item, idx) => (
-                <div key={idx} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {/* Tiêu Đề Bài Học Kèm Số Thứ Tự Nhẹ Nhàng */}
+                <div key={idx} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {/* Tiêu Đề Bài Học Kèm Số Thứ Tự */}
                   <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
                     <span style={{
                       fontFamily: t.fontMono,
-                      fontSize: 12,
+                      fontSize: 17,
                       fontWeight: 700,
                       color: "var(--cl-accent, #1a73e8)",
-                      opacity: 0.65,
-                      letterSpacing: "0.08em",
+                      letterSpacing: "0.02em",
                       flexShrink: 0,
                     }}>
                       0{idx + 1}.
                     </span>
                     <h4 style={{
                       fontFamily: t.fontBody,
-                      fontSize: "clamp(16.5px, 1.9vw, 18.5px)",
+                      fontSize: "clamp(18px, 2.2vw, 21px)",
                       fontWeight: 700,
-                      lineHeight: 1.4,
+                      lineHeight: 1.35,
                       color: "var(--cl-text-base, #111827)",
                       margin: 0,
                     }}>
@@ -239,11 +238,11 @@ export function InstructorSection() {
                   {/* Nội Dung Trải Lòng Đời Thực */}
                   <p style={{
                     fontFamily: t.fontBody,
-                    fontSize: "clamp(15px, 1.6vw, 16px)",
+                    fontSize: "clamp(16.5px, 1.8vw, 18px)",
                     lineHeight: 1.8,
-                    color: "var(--cl-text-body, #4b5563)",
-                    margin: "2px 0 0 0",
-                    paddingLeft: 24,
+                    color: "var(--cl-text-body, #374151)",
+                    margin: 0,
+                    paddingLeft: 0,
                   }}>
                     {item.desc}
                   </p>
