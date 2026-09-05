@@ -251,6 +251,7 @@ export interface PageContent {
   checkoutTitle?: string;
   checkoutSub?: string;
   checkoutFeatures?: string[];
+  checkoutFaqs?: { q: string; a: string }[];
 
   // ── Extracted Components Data (Single Source of Truth) ──
   philosophyFoundations?: { icon: string; tag: string; title: string; desc: string }[];
@@ -277,6 +278,7 @@ export const DEFAULT_CONTENT: PageContent = {
   checkoutTitle: `Bạn chỉ còn cách video đầu tiên<br /><span style="color: var(--cl-accent)">đúng một lượt quét mã</span>`,
   checkoutSub: `Mình giữ chỗ này cho bạn rồi. Chuyển khoản xong là hệ thống gửi tài khoản vào thẳng Skool, kéo ghế ngồi xuống là mình cùng bắt tay vào làm luôn, không phải chờ đợi.`,
   checkoutFeatures: courseConfig.checkoutFeatures,
+  checkoutFaqs: courseConfig.checkoutFaqs,
 
   // ── Hero ──
   heroBadge: "TÍCH HỢP AI 2026 — DÀNH CHO NGƯỜI MỚI & CHỦ KINH DOANH",

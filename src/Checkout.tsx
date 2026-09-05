@@ -293,6 +293,7 @@ function CheckoutContent() {
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showVideoModal, setShowVideoModal] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
   const isMobile = useIsMobile();
 
   const rawCustomer = localStorage.getItem("video_customer");
@@ -592,6 +593,84 @@ function CheckoutContent() {
                 </span>
               </div>
             </div>
+
+            {/* AUDITED CHECKOUT FAQ ACCORDION */}
+            <Card>
+              <Lbl>Giải đáp thắc mắc</Lbl>
+              <H>Những câu anh em hay hỏi trước khi vào lớp</H>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {(c.checkoutFaqs || []).map((faq, i) => {
+                  const isOpen = openFaq === i;
+                  return (
+                    <div
+                      key={i}
+                      style={{
+                        borderBottom: i < (c.checkoutFaqs?.length || 0) - 1 ? `1px solid ${t.line}` : "none",
+                        padding: "2px 0"
+                      }}
+                    >
+                      <button
+                        onClick={() => setOpenFaq(isOpen ? null : i)}
+                        style={{
+                          width: "100%",
+                          background: "none",
+                          border: "none",
+                          color: isOpen ? t.accent : (t.textBase ?? "#fff"),
+                          cursor: "pointer",
+                          padding: "14px 0",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          gap: 12,
+                          textAlign: "left",
+                          fontSize: 15,
+                          fontWeight: 500,
+                          lineHeight: 1.5,
+                          fontFamily: "inherit",
+                          transition: "color 0.15s ease"
+                        }}
+                      >
+                        <span style={{ flex: 1 }}>
+                          {i + 1}. "{faq.q}"
+                        </span>
+                        <span
+                          style={{
+                            color: isOpen ? t.accent : (t.textMuted ?? "#64748b"),
+                            fontSize: 18,
+                            fontWeight: 600,
+                            flexShrink: 0,
+                            transition: "transform 0.2s",
+                            transform: isOpen ? "rotate(45deg)" : "rotate(0deg)"
+                          }}
+                        >
+                          +
+                        </span>
+                      </button>
+                      {isOpen && (
+                        <div
+                          style={{
+                            fontSize: 14.5,
+                            color: t.textBody ?? "#475569",
+                            lineHeight: 1.7,
+                            padding: "0 0 16px",
+                            animation: "fadeIn 0.2s ease"
+                          }}
+                        >
+                          <div style={{
+                            background: t.card2,
+                            borderRadius: 10,
+                            padding: "12px 16px",
+                            borderLeft: `3px solid ${t.accent}`
+                          }}>
+                            {faq.a}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </Card>
 
           </div>
 
