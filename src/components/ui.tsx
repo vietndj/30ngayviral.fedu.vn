@@ -251,6 +251,27 @@ export function ThemeSyncer() {
 }
 
 export function AppYTEmbed({ url, caption, maxWidth, style }: { url: string; caption?: string; maxWidth?: number | string; style?: React.CSSProperties }) {
+  if (!url) return null;
+
+  if (url.includes("facebook.com")) {
+    return (
+      <div style={{ maxWidth: maxWidth || 320, margin: "0 auto", ...style }}>
+        <div style={{ position: "relative", width: "100%", paddingBottom: "177.78%", height: 0, background: "#0c0a0a", borderRadius: 12, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
+          <iframe
+            src={`https://www.facebook.com/plugins/video.php?height=476&href=${encodeURIComponent(url)}&show_text=false&width=267&t=0`}
+            title={caption || "Facebook Video"}
+            loading="lazy"
+            scrolling="no"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            allowFullScreen
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+          />
+        </div>
+        {caption && <p style={{ fontSize: 12.5, color: "var(--cl-text-muted)", textAlign: "center", padding: "10px 14px 4px", fontStyle: "italic", fontFamily: MONO }}>{caption}</p>}
+      </div>
+    );
+  }
+
   const ytId = url.match(
     /(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|v\/|shorts\/|live\/))([a-zA-Z0-9_-]{11})/
   )?.[1];
