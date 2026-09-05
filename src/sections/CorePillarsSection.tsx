@@ -13,7 +13,7 @@ export function CorePillarsSection() {
       <FadeIn>
         <div style={{ textAlign: "center", marginBottom: 44 }}>
           <Label>{c.coreGoalsLabel || "KHÔNG CẦN LÀ CHUYÊN GIA"}</Label>
-          <SH typed>{c.coreGoalsHeading || "Bạn không cần khiếu ăn nói hay máy ảnh đắt tiền để có một video chuyên nghiệp."}</SH>
+          <SH>{c.coreGoalsHeading || "Bạn không cần khiếu ăn nói hay máy ảnh đắt tiền để có một video chuyên nghiệp."}</SH>
           {c.coreGoalsSub && (
             <div style={{
               maxWidth: 720,
@@ -29,7 +29,7 @@ export function CorePillarsSection() {
                   style={{
                     margin: 0,
                     fontFamily: t.fontBody,
-                    fontSize: "clamp(16px, 1.8vw, 18px)",
+                    fontSize: "clamp(17px, 1.85vw, 19px)",
                     lineHeight: 1.8,
                     color: pIdx === 0 ? "var(--cl-text-muted, #64748b)" : "var(--cl-text-body, #374151)",
                     fontWeight: pIdx === 1 ? 500 : 400,
@@ -44,17 +44,13 @@ export function CorePillarsSection() {
         </div>
       </FadeIn>
 
-      {/* ════════ TẦNG 1: 2 KẾT QUẢ ĐẦU RA (HERO OUTCOMES - 50/50 DUAL GRID) ════════ */}
       {/* ════════ TẦNG 1: 2 KẾT QUẢ ĐẦU RA (HERO OUTCOMES - BỐ CỤC DỌC 2 HÀNG) ════════ */}
       <FadeIn delay={100}>
         <div className="cl-goals-stack">
           {c.coreGoals?.map((g, idx) => (
             <div
               key={g.id}
-              className="cl-goal-row apple-card-stagger"
-              style={{
-                "--card-delay": `${idx * 120}ms`,
-              } as React.CSSProperties}
+              className="cl-goal-row"
             >
               {/* Top Accent Strip */}
               <div style={{
@@ -80,29 +76,29 @@ export function CorePillarsSection() {
                   }}>
                     <span style={{
                       fontFamily: t.fontMono,
-                      fontSize: 11,
+                      fontSize: 16,
                       fontWeight: 700,
-                      letterSpacing: "0.16em",
+                      letterSpacing: "0.14em",
                       textTransform: "uppercase",
                       color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
                       background: idx === 0 ? "rgba(26, 115, 232, 0.08)" : "rgba(22, 163, 74, 0.08)",
-                      border: `1px solid ${idx === 0 ? "rgba(26, 115, 232, 0.25)" : "rgba(22, 163, 74, 0.25)"}`,
-                      borderRadius: 6,
-                      padding: "4px 10px",
+                      border: `1.5px solid ${idx === 0 ? "rgba(26, 115, 232, 0.25)" : "rgba(22, 163, 74, 0.25)"}`,
+                      borderRadius: 8,
+                      padding: "6px 14px",
                     }}>
                       {g.tag}
                     </span>
                     {g.highlight && (
                       <span style={{
                         fontFamily: t.fontMono,
-                        fontSize: 11,
+                        fontSize: 16,
                         fontWeight: 600,
                         letterSpacing: "0.12em",
                         textTransform: "uppercase",
                         color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
                         display: "inline-flex",
                         alignItems: "center",
-                        gap: 4,
+                        gap: 6,
                       }}>
                         ✓ {g.highlight}
                       </span>
@@ -111,10 +107,10 @@ export function CorePillarsSection() {
 
                   {/* Title */}
                   <h3 className="cl-sh" style={{
-                    fontSize: "clamp(22px, 2.5vw, 28px)",
+                    fontSize: "clamp(24px, 2.8vw, 32px)",
                     fontWeight: 500,
                     letterSpacing: "-0.018em",
-                    lineHeight: 1.22,
+                    lineHeight: 1.25,
                     color: "var(--cl-text-base, #111827)",
                     margin: 0,
                     textWrap: "balance",
@@ -125,7 +121,7 @@ export function CorePillarsSection() {
                   {/* Description */}
                   <p style={{
                     fontFamily: t.fontBody,
-                    fontSize: "clamp(15.5px, 1.7vw, 17px)",
+                    fontSize: "clamp(17px, 1.85vw, 19px)",
                     lineHeight: 1.75,
                     color: "var(--cl-text-body, #374151)",
                     margin: 0,
@@ -138,29 +134,29 @@ export function CorePillarsSection() {
                     <div style={{
                       display: "flex",
                       flexDirection: "column",
-                      gap: 11,
-                      padding: "16px 0 4px",
-                      borderTop: "1px dashed var(--cl-line, rgba(0,0,0,0.08))",
+                      gap: 14,
+                      padding: "18px 0 4px",
+                      borderTop: "1px dashed var(--cl-line, rgba(0,0,0,0.1))",
                     }}>
                       {g.bullets.map((b, bIdx) => (
                         <div key={bIdx} style={{
                           display: "flex",
                           alignItems: "flex-start",
-                          gap: 12,
-                          fontSize: 15,
-                          lineHeight: 1.6,
+                          gap: 14,
+                          fontSize: 17,
+                          lineHeight: 1.7,
                           color: "var(--cl-text-base, #1f2937)",
                         }}>
                           <span style={{
-                            width: 20,
-                            height: 20,
+                            width: 24,
+                            height: 24,
                             borderRadius: "50%",
                             background: idx === 0 ? "rgba(26, 115, 232, 0.12)" : "rgba(22, 163, 74, 0.12)",
                             color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
                             display: "inline-flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            fontSize: 12,
+                            fontSize: 14,
                             fontWeight: 700,
                             flexShrink: 0,
                             marginTop: 2,
@@ -242,8 +238,17 @@ export function CorePillarsSection() {
               {g.contrast && (
                 <div className="cl-goal-contrast-section">
                   <div className="cl-goal-contrast-header">
-                    <span className="cl-goal-contrast-tag">// BẢN CHẤT CHUYỂN ĐỔI BỀN VỮNG</span>
-                    <h4 className="cl-goal-contrast-title">Tại sao chúng tôi không dạy bạn đua "triệu view" vô nghĩa?</h4>
+                    <span className="cl-goal-contrast-tag">// CHIẾN LƯỢC NỘI DUNG THỰC CHIẾN</span>
+                    <h4 className="cl-goal-contrast-title">Làm chủ công thức Viral nhưng giữ trọn vị thế người làm nghề</h4>
+                    <p style={{
+                      fontFamily: t.fontBody,
+                      fontSize: 17,
+                      lineHeight: 1.7,
+                      color: "var(--cl-text-body, #4b5563)",
+                      margin: "6px 0 0",
+                    }}>
+                      Viral để bán hàng hoàn toàn khác với làm trò lố để câu view giải trí. Khóa học dạy bạn cách chạm thuật toán để video tiếp cận hàng trăm nghìn người — nhưng mỗi người xem đều là một khách hàng tiềm năng thực sự.
+                    </p>
                   </div>
                   <GoalContrastBox contrast={g.contrast} />
                 </div>
@@ -279,19 +284,19 @@ export function CorePillarsSection() {
               <div>
                 <span style={{
                   fontFamily: t.fontMono,
-                  fontSize: 11,
-                  letterSpacing: "0.16em",
+                  fontSize: 16,
+                  letterSpacing: "0.14em",
                   textTransform: "uppercase",
                   color: "#d97706",
                   fontWeight: 700,
                   display: "block",
-                  marginBottom: 2,
+                  marginBottom: 4,
                 }}>
                   {c.corePillarsLabel || "3 ĐIỂM TỰA THỰC CHIẾN"}
                 </span>
                 <h4 style={{
                   fontFamily: t.fontBody,
-                  fontSize: 16,
+                  fontSize: 20,
                   fontWeight: 700,
                   color: "var(--cl-text-base, #111827)",
                   margin: 0,
@@ -303,7 +308,7 @@ export function CorePillarsSection() {
             </div>
             <span style={{
               fontFamily: t.fontMono,
-              fontSize: 11,
+              fontSize: 16,
               fontWeight: 600,
               letterSpacing: "0.12em",
               color: "var(--cl-text-muted, #6b7280)",
@@ -319,22 +324,21 @@ export function CorePillarsSection() {
             gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 270px), 1fr))",
             gap: 16,
           }}>
-            {c.corePillars?.map((p, pIdx) => (
+            {c.corePillars?.map((p) => (
               <div
                 key={p.id}
-                className="apple-pill-card apple-card-stagger"
+                className="apple-pill-card"
                 style={{
-                  "--card-delay": `${60 + pIdx * 70}ms`,
                   background: "#ffffff",
                   border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                   borderRadius: 14,
-                  padding: "18px 20px",
+                  padding: "20px 22px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
-                  gap: 10,
+                  gap: 12,
                   boxShadow: "0 2px 8px -2px rgba(0, 0, 0, 0.04)",
-                } as React.CSSProperties}
+                }}
               >
                 <div>
                   <div style={{
@@ -342,11 +346,11 @@ export function CorePillarsSection() {
                     alignItems: "center",
                     justifyContent: "space-between",
                     gap: 6,
-                    marginBottom: 8,
+                    marginBottom: 10,
                   }}>
                     <span style={{
                       fontFamily: t.fontMono,
-                      fontSize: 10.5,
+                      fontSize: 16,
                       fontWeight: 700,
                       letterSpacing: "0.14em",
                       color: "#d97706",
@@ -357,7 +361,7 @@ export function CorePillarsSection() {
                     {p.highlight && (
                       <span style={{
                         fontFamily: t.fontMono,
-                        fontSize: 10.5,
+                        fontSize: 16,
                         color: "var(--cl-text-muted, #6b7280)",
                         fontWeight: 600,
                       }}>
@@ -368,10 +372,10 @@ export function CorePillarsSection() {
 
                   <h5 style={{
                     fontFamily: t.fontBody,
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: 700,
                     color: "var(--cl-text-base, #111827)",
-                    margin: "0 0 6px",
+                    margin: "0 0 8px",
                     lineHeight: 1.35,
                   }}>
                     {p.title}
@@ -379,8 +383,8 @@ export function CorePillarsSection() {
 
                   <p style={{
                     fontFamily: t.fontBody,
-                    fontSize: 14.5,
-                    lineHeight: 1.65,
+                    fontSize: 16.5,
+                    lineHeight: 1.7,
                     color: "var(--cl-text-body, #374151)",
                     margin: 0,
                   }}>
@@ -396,7 +400,7 @@ export function CorePillarsSection() {
   );
 }
 
-// ── Goal Contrast Box (PA2: Bẫy 1.2M view vs Chuẩn 480 view FEDU) ──
+// ── Goal Contrast Box (Chiến lược Viral chuyển đổi chuẩn nghề) ──
 function GoalContrastBox({ contrast }: { contrast: GoalContrast }) {
   return (
     <div className="cl-contrast-box">
@@ -409,7 +413,7 @@ function GoalContrastBox({ contrast }: { contrast: GoalContrast }) {
             <div className="cl-contrast-list">
               {contrast.badItems.map((item, i) => (
                 <div key={i} className="cl-contrast-list-item">
-                  <span style={{ color: "#dc2626", fontWeight: 700, fontSize: 13, flexShrink: 0 }}>✕</span>
+                  <span style={{ color: "#dc2626", fontWeight: 700, fontSize: 16, flexShrink: 0 }}>✕</span>
                   <span>{item}</span>
                 </div>
               ))}
@@ -426,7 +430,7 @@ function GoalContrastBox({ contrast }: { contrast: GoalContrast }) {
             <div className="cl-contrast-list">
               {contrast.goodItems.map((item, i) => (
                 <div key={i} className="cl-contrast-list-item">
-                  <span style={{ color: "#16a34a", fontWeight: 700, fontSize: 13, flexShrink: 0 }}>✓</span>
+                  <span style={{ color: "#16a34a", fontWeight: 700, fontSize: 16, flexShrink: 0 }}>✓</span>
                   <span>{item}</span>
                 </div>
               ))}

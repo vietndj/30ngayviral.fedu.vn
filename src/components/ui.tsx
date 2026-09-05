@@ -267,7 +267,7 @@ export function AppYTEmbed({ url, caption, maxWidth, style }: { url: string; cap
             style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
           />
         </div>
-        {caption && <p style={{ fontSize: 12.5, color: "var(--cl-text-muted)", textAlign: "center", padding: "10px 14px 4px", fontStyle: "italic", fontFamily: MONO }}>{caption}</p>}
+        {caption && <p style={{ fontSize: 16, color: "var(--cl-text-muted)", textAlign: "center", padding: "10px 14px 4px", fontStyle: "normal", fontFamily: MONO }}>{caption}</p>}
       </div>
     );
   }
@@ -290,7 +290,7 @@ export function AppYTEmbed({ url, caption, maxWidth, style }: { url: string; cap
           style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
         />
       </div>
-      {caption && <p style={{ fontSize: 13, color: "var(--cl-text-muted)", textAlign: "center", padding: "10px 16px 4px", fontStyle: "italic", fontFamily: MONO }}>{caption}</p>}
+      {caption && <p style={{ fontSize: 16, color: "var(--cl-text-muted)", textAlign: "center", padding: "12px 16px 4px", fontStyle: "normal", fontFamily: MONO }}>{caption}</p>}
     </div>
   );
 }

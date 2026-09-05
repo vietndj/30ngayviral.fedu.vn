@@ -179,9 +179,9 @@
 /* ═══ LABEL BADGE ══════════════════════════════════════════════ */
 .cl-label {
   font-family: var(--cl-font-mono);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--cl-accent);
   margin-bottom: 20px;
@@ -1733,12 +1733,12 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.04);
-  transition: transform 0.4s var(--apple-spring), border-color 0.25s ease, box-shadow 0.35s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .cl-goal-row:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.08);
+  border-color: rgba(26, 115, 232, 0.25);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.08);
 }
 
 .cl-goal-row-grid {
@@ -1771,13 +1771,13 @@
 /* ═══ PRO-TIP CALLOUT BOX (CÂN BẰNG THỊ GIÁC CHO KHỐI 01) ═══ */
 .cl-goal-tip-box {
   margin-top: 6px;
-  padding: 14px 18px;
+  padding: 16px 20px;
   background: rgba(26, 115, 232, 0.04);
   border: 1px solid rgba(26, 115, 232, 0.16);
-  border-radius: 12px;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .cl-goal-tip-header {
@@ -1785,7 +1785,7 @@
   align-items: center;
   gap: 8px;
   font-family: var(--cl-font-mono);
-  font-size: 11.5px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--cl-accent, #1a73e8);
@@ -1794,8 +1794,8 @@
 
 .cl-goal-tip-text {
   font-family: var(--cl-font-body);
-  font-size: 13.5px;
-  line-height: 1.6;
+  font-size: 16.5px;
+  line-height: 1.7;
   color: var(--cl-text-body, #374151);
   margin: 0;
   font-style: italic;
@@ -1803,23 +1803,23 @@
 
 /* ═══ FULL-WIDTH CONTRAST SECTION (ĐƯA RA CHÂN KHỐI 02) ═══ */
 .cl-goal-contrast-section {
-  margin-top: 32px;
-  padding-top: 26px;
-  border-top: 1px dashed var(--cl-line, rgba(0, 0, 0, 0.1));
+  margin-top: 36px;
+  padding-top: 30px;
+  border-top: 1px dashed var(--cl-line, rgba(0, 0, 0, 0.12));
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .cl-goal-contrast-header {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .cl-goal-contrast-tag {
   font-family: var(--cl-font-mono);
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: #16a34a;
@@ -1828,60 +1828,60 @@
 
 .cl-goal-contrast-title {
   font-family: var(--cl-font-display, 'Noe Display', Georgia, serif);
-  font-size: clamp(17px, 2vw, 21px);
+  font-size: clamp(22px, 2.5vw, 28px);
   font-weight: 500;
   color: var(--cl-text-base, #111827);
   margin: 0;
   line-height: 1.3;
 }
 
-/* ═══ CONTRAST BOX (THE MINIMAL APPLE-STYLE CONTRAST STRIP) ═══════ */
+/* ═══ CONTRAST BOX (CHIẾN LƯỢC VIRAL CHUYỂN ĐỔI CHUẨN NGHỀ) ═══════ */
 .cl-contrast-box {
   background: var(--cl-card, #f8f9fa);
   border: 1px solid var(--cl-line, rgba(0, 0, 0, 0.08));
-  border-radius: 14px;
-  padding: 16px;
+  border-radius: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .cl-contrast-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 16px;
 }
 
-@media (max-width: 580px) {
+@media (max-width: 720px) {
   .cl-contrast-grid {
     grid-template-columns: 1fr;
   }
 }
 
 .cl-contrast-card {
-  border-radius: 10px;
-  padding: 12px 14px;
+  border-radius: 12px;
+  padding: 18px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 10px;
+  gap: 14px;
 }
 
 .cl-contrast-card--bad {
   background: rgba(220, 38, 38, 0.04);
-  border: 1px solid rgba(220, 38, 38, 0.16);
+  border: 1.5px solid rgba(220, 38, 38, 0.2);
 }
 
 .cl-contrast-card--good {
   background: rgba(22, 163, 74, 0.05);
-  border: 1px solid rgba(22, 163, 74, 0.22);
+  border: 1.5px solid rgba(22, 163, 74, 0.25);
 }
 
 .cl-contrast-title {
   font-family: var(--cl-font-mono);
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -1895,35 +1895,36 @@
 
 .cl-contrast-views {
   font-family: var(--cl-font-display);
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
   letter-spacing: -0.018em;
-  line-height: 1.25;
-  margin: 4px 0 8px;
+  line-height: 1.3;
+  margin: 6px 0 12px;
   color: var(--cl-text-base);
 }
 
 .cl-contrast-list {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  font-size: 12.5px;
-  line-height: 1.45;
+  gap: 12px;
+  font-size: 16.5px;
+  line-height: 1.65;
   color: var(--cl-text-body);
 }
 
 .cl-contrast-list-item {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
+  gap: 10px;
 }
 
 .cl-contrast-conclusion {
   font-family: var(--cl-font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  padding-top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  padding-top: 14px;
   border-top: 1px dashed var(--cl-line);
+  letter-spacing: 0.02em;
 }
 
 .cl-contrast-card--bad .cl-contrast-conclusion {
@@ -1963,7 +1964,7 @@
 
 .cl-carousel-stage {
   display: flex;
-  transition: transform 0.4s var(--apple-spring);
+  transition: transform 0.35s ease;
   width: 100%;
 }
 
@@ -1993,17 +1994,17 @@
   position: absolute;
   top: 14px;
   right: 14px;
-  background: rgba(15, 23, 42, 0.78);
+  background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
   font-family: var(--cl-font-mono);
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  padding: 6px 12px;
+  letter-spacing: 0.04em;
+  padding: 8px 16px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -2016,7 +2017,6 @@
   background: #16a34a;
   border-color: #16a34a;
   color: #ffffff;
-  transform: translateY(-1px);
 }
 
 .cl-carousel-nav {
@@ -2030,13 +2030,13 @@
 }
 
 .cl-carousel-btn {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   border: 1px solid var(--cl-line);
   background: var(--cl-card, #ffffff);
   color: var(--cl-text-base);
-  font-size: 16px;
+  font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2048,7 +2048,6 @@
   background: #16a34a;
   color: #ffffff;
   border-color: #16a34a;
-  transform: scale(1.08);
 }
 
 .cl-carousel-dots {
@@ -2058,8 +2057,8 @@
 }
 
 .cl-carousel-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 4px;
   background: rgba(0, 0, 0, 0.16);
   border: none;
@@ -2069,13 +2068,13 @@
 }
 
 .cl-carousel-dot.is-active {
-  width: 24px;
+  width: 26px;
   background: #16a34a;
 }
 
 .cl-carousel-counter {
   font-family: var(--cl-font-mono);
-  font-size: 11.5px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--cl-text-muted);
@@ -2087,37 +2086,37 @@
   max-width: 380px;
   background: var(--cl-card, #f8f9fa);
   border: 1px solid var(--cl-line, rgba(0, 0, 0, 0.08));
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 14px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   text-align: left;
   box-sizing: border-box;
 }
 
 .cl-carousel-caption-tag {
   font-family: var(--cl-font-mono);
-  font-size: 10.5px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #16a34a;
 }
 
 .cl-carousel-caption-title {
   font-family: var(--cl-font-body);
-  font-size: 13.5px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 700;
   color: var(--cl-text-base, #111827);
   line-height: 1.35;
 }
 
 .cl-carousel-caption-desc {
   font-family: var(--cl-font-body);
-  font-size: 12.5px;
-  color: var(--cl-text-muted, #64748b);
-  line-height: 1.5;
+  font-size: 16px;
+  color: var(--cl-text-muted, #4b5563);
+  line-height: 1.6;
 }
 
 /* ═══ REAL ZALO LIGHTBOX MODAL ══════════════════════════════════ */
