@@ -835,7 +835,7 @@ export const DEFAULT_CONTENT: PageContent = {
   valueStack: [
     { label: "Trọn bộ 5 Khóa học thực chiến (Kịch bản, Góc máy, CapCut, AI, Ra đơn)", price: "2.500.000 VNĐ" },
     { label: "Đặc quyền nộp bài & Thầy Nguyễn Đức Việt trực tiếp soi timeline trên Skool", price: "2.000.000 VNĐ" },
-    { label: "Tủ đồ nghề 4 món (Nhạc sạch, Preset CapCut, Prompt AI, 30 Hook)", price: "ĐI KÈM MIỄN PHÍ" }
+    { label: "Tủ đồ nghề 3 món (Nhạc sạch, Preset CapCut, Prompt AI)", price: "ĐI KÈM MIỄN PHÍ" }
   ],
   guarantee: "⚡ Quy trình 1-Chạm: Chuyển khoản xong → Vào học NGAY LẬP TỨC trên Skool. Thầy đồng hành hướng dẫn thực hành trực tiếp.",
 

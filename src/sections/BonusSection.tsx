@@ -13,7 +13,7 @@ export function BonusSection() {
       <FadeIn>
         <div style={{ textAlign: "center", marginBottom: 54 }}>
           <Label>{c.bonusLabel || "TỦ ĐỒ NGHỀ THỰC CHIẾN ĐI KÈM"}</Label>
-          <SH typed>{c.bonusHeading || "Mở máy lên là có sẵn đồ nghề để làm — Khỏi mất công đi nhặt nhạnh từng file rác trên mạng"}</SH>
+          <SH>{c.bonusHeading || "Mở máy lên là có sẵn đồ nghề để làm — Khỏi mất công đi nhặt nhạnh từng file rác trên mạng"}</SH>
           <p style={{
             fontFamily: t.fontBody,
             fontSize: "clamp(16px, 1.8vw, 18px)",

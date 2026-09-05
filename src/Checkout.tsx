@@ -106,14 +106,14 @@ function PaymentSuccessModal({ onClose }: { onClose: () => void }) {
           Mình đã nhận được chuyển khoản thành công của bạn rồi nhé.
         </p>
         <div style={{ background: "#f8fafc", border: "1px solid var(--cl-line, #e2e8f0)", borderRadius: 12, padding: "18px 20px", marginBottom: 20 }}>
-          <p style={{ fontSize: 14.5, color: "var(--cl-text-base, #111827)", marginBottom: 6, fontWeight: 700 }}>📧 Tài khoản Skool &amp; 4 Tủ đồ nghề thực chiến:</p>
+          <p style={{ fontSize: 14.5, color: "var(--cl-text-base, #111827)", marginBottom: 6, fontWeight: 700 }}>📧 Tài khoản Skool &amp; Tủ đồ nghề thực chiến:</p>
           <p style={{ fontSize: 15.5, fontWeight: 700, color: GREEN, margin: "0 0 4px" }}>Đã gửi thẳng vào email của bạn</p>
           <p style={{ fontSize: 13, color: "var(--cl-text-muted, #64748b)" }}>Mở hòm thư (kiểm tra cả mục Spam/Quảng cáo) để kích hoạt tài khoản và vào chào anh em nhé!</p>
         </div>
         <div style={{ background: "#f1f5f9", borderRadius: 10, padding: "14px 18px", marginBottom: 24 }}>
           {[
             `🎬 ${c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"}`,
-            "🎁 Trọn bộ 4 Tủ đồ nghề thực chiến (Nhạc AI, SFX, Prompt, 30 Hook)",
+            "🎁 Trọn bộ Tủ đồ nghề thực chiến (Nhạc sạch, SFX, Preset CapCut, Prompt AI)",
             "♾ Sở hữu trọn đời & Cập nhật kỹ thuật AI mới liên tục"
           ].map((item) => (
             <div key={item} style={{ fontSize: 14, color: "var(--cl-text-body, #374151)", padding: "4px 0", textAlign: "left" }}>{item}</div>
@@ -154,7 +154,7 @@ function ConfirmBanner({ onReset }: { onReset: () => void }) {
       <div style={{ display: "inline-flex", flexDirection: "column", gap: 10, background: "#f8fafc", border: "1px solid var(--cl-line, #e2e8f0)", borderRadius: 12, padding: "18px 22px", marginBottom: 20, textAlign: "left" }}>
         {[
           `🎬 ${c.courseName || "Lộ Trình 30 Ngày Làm Chủ Video Ngắn"}`,
-          "🎁 Trọn bộ 4 Tủ đồ nghề thực chiến (Nhạc AI, SFX, Prompt, 30 Hook)",
+          "🎁 Trọn bộ Tủ đồ nghề thực chiến (Nhạc sạch, SFX, Preset CapCut, Prompt AI)",
           "♾ Sở hữu trọn đời & Cập nhật kỹ thuật AI mới liên tục"
         ].map((item) => (
           <span key={item} style={{ fontSize: 14.5, color: "var(--cl-text-body, #374151)" }}>{item}</span>
