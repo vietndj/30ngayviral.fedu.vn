@@ -1,8 +1,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { google } from 'googleapis';
 import courseConfig from '../../course.config.json';
+import { sendCourseActivationEmail } from '../services/emailService';
 
-const DEFAULT_TELEGRAM_BOT_TOKEN = "8964853536:AAHuRNm_hY-YQtveBD1HlmthN4I5xpVzM8U";
+const DEFAULT_TELEGRAM_BOT_TOKEN = "8796389265:AAH-QkaZNIrOKiMLJexprI5EboUJplL7a3c";
 const DEFAULT_TELEGRAM_CHAT_ID = "2050406425";
 const DEFAULT_GOOGLE_CLIENT_EMAIL = "form-feedback-offline@vietndj-git-cms.iam.gserviceaccount.com";
 const DEFAULT_PRIMARY_SPREADSHEET_ID = "1PaHkFMdY615FasQDcqqeia94L1662YKES7cPuFIpKhg";
@@ -30,19 +31,24 @@ function getGoogleSheetsClient() {
   }
 }
 
-async function sendTelegramAlert(text: string) {
+async function sendTelegramAlert(text: string, replyMarkup?: any) {
   const botToken = process.env.TELEGRAM_BOT_TOKEN || DEFAULT_TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID || DEFAULT_TELEGRAM_CHAT_ID;
   if (!botToken || !chatId) return;
 
   try {
+    const payload: any = {
+      chat_id: chatId,
+      text,
+      parse_mode: "HTML",
+    };
+    if (replyMarkup) {
+      payload.reply_markup = replyMarkup;
+    }
     await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text,
-      }),
+      body: JSON.stringify(payload),
     });
   } catch (err) {
     console.error("Failed to send Telegram alert:", err);
@@ -112,33 +118,42 @@ export default async function handler(
     }
 
     // ── 2. Bắn thông báo Telegram ──
-    const teleMsg = `💰 [THANH TOÁN THÀNH CÔNG] ${courseConfig.courseName}
-👤 Học viên: ${name || "Khách hàng"}
-📱 SĐT: ${normalizedPhone}
-📧 Email: ${email}
-💵 Học phí: ${courseConfig.price} ${courseConfig.currency}
-🔖 Mã GD: ${transactionId || "Chuyển khoản VietQR"}
-⚡ Đã kích hoạt quyền vào học trên Skool!`;
+    const teleMsg = `💰 <b>[THANH TOÁN THÀNH CÔNG]</b>
+━━━━━━━━━━━━━━━━━━━━
+👤 <b>Học viên:</b> ${name || "Khách hàng"}
+📱 <b>SĐT:</b> ${normalizedPhone}
+📧 <b>Email:</b> ${email || "Chưa cung cấp"}
+💵 <b>Học phí:</b> ${courseConfig.price} ${courseConfig.currency}
+🔖 <b>Mã GD:</b> ${transactionId || "Chuyển khoản VietQR"}
+📚 <b>Khóa học:</b> ${courseConfig.courseName}
+━━━━━━━━━━━━━━━━━━━━
+⚡ <b>Lệnh Skool:</b> Tự động mời qua hệ thống Mac...`;
 
-    await sendTelegramAlert(teleMsg);
+    const replyMarkup = email ? {
+      inline_keyboard: [
+        [
+          { text: "⚡ Duyệt Skool (Tự động)", callback_data: `invite:${email.trim()}` },
+          { text: "📋 Copy Email", copy_text: { text: email.trim() } }
+        ],
+        [
+          { text: "🌐 Mở trang Invite Skool", url: "https://www.skool.com/nguyenducviet-8640" }
+        ]
+      ]
+    } : undefined;
 
-    // ── 3. Trigger Make.com Webhook ──
+    await sendTelegramAlert(teleMsg, replyMarkup);
+
+    // ── 3. Gửi Email kích hoạt qua Resend API ──
     if (email) {
       try {
-        await fetch(MAKE_WEBHOOK_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name,
-            email,
-            phone: normalizedPhone,
-            course: "30 Ngày Làm Chủ Video Ngắn",
-            transactionId,
-            paidAt: new Date().toISOString(),
-          }),
+        await sendCourseActivationEmail({
+          name,
+          email,
+          phone: normalizedPhone,
+          transactionId,
         });
-      } catch (makeErr) {
-        console.error("Make webhook error:", makeErr);
+      } catch (mailErr) {
+        console.error("Resend email error:", mailErr);
       }
     }
 
