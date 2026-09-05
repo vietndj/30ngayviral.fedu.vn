@@ -45,8 +45,8 @@ export default function ZaloChatWidget() {
                   src="/ava.jpg" 
                   alt="Nguyễn Đức Việt"
                   style={{ 
-                    width: "42px", 
-                    height: "42px", 
+                    width: "48px", 
+                    height: "48px", 
                     borderRadius: "50%", 
                     objectFit: "cover",
                     display: "block",

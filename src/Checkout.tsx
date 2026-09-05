@@ -629,11 +629,13 @@ function CheckoutContent() {
                 src="/ava.jpg"
                 alt="Nguyễn Đức Việt"
                 style={{
-                  width: 48,
-                  height: 48,
+                  width: 58,
+                  height: 58,
                   borderRadius: "50%",
                   objectFit: "cover",
-                  flexShrink: 0
+                  flexShrink: 0,
+                  boxShadow: "0 4px 14px rgba(0, 104, 255, 0.25)",
+                  border: "2px solid rgba(255, 255, 255, 0.9)"
                 }}
               />
               <div>
