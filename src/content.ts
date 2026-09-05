@@ -125,6 +125,8 @@ export interface PageContent {
   heroCta: string;
   heroSubPrice?: string;
   heroVideoYoutubeId?: string;
+  heroVideoUrl?: string;
+  heroVideoPoster?: string;
   heroVideoLabel?: string;
   heroVideoHeading?: string;
   heroVideoSub?: string;
@@ -298,10 +300,12 @@ export const DEFAULT_CONTENT: PageContent = {
   heroAccentLine: "Bạn không cần máy quay chục triệu, không cần ekip cồng kềnh hay ngoại hình xuất chúng.",
   heroSub: "Không cần máy quay đắt tiền, không cần biết kỹ thuật từ trước. Bạn học cách làm chủ góc quay và kịch bản giữ chân người xem bằng chiếc điện thoại — kết hợp trợ lực AI giúp rút ngắn 80% thời gian dựng video.",
   heroCta: "KHÁM PHÁ LỘ TRÌNH 30 NGÀY →",
+  heroVideoUrl: "/assets/video_intro_30ngay_1080p.mp4",
+  heroVideoPoster: "/assets/video_intro_poster.jpg",
   heroVideoYoutubeId: "pmEpqI2gFpo",
-  heroVideoLabel: "// XEM TRƯỚC BÀI GIẢNG THỰC TẾ",
+  heroVideoLabel: "// XEM TRƯỚC LỘ TRÌNH THỰC CHIẾN",
   heroVideoHeading: "Chỉ cần chiếc điện thoại trên tay — Đây là cách bạn bắt đầu ra đơn",
-  heroVideoSub: "Xem video 90 giây: Quy trình quay dựng thực tế từ số 0 của anh Nguyễn Đức Việt — Tự tay làm video hoàn chỉnh mà không cần máy cơ hay kỹ thuật phức tạp.",
+  heroVideoSub: "Xem video 75 giây: Quy trình 5 chặng thực tế từ giảng viên FPT 15 năm kinh nghiệm — Tự tay làm video hoàn chỉnh mà không cần máy cơ hay kỹ thuật phức tạp.",
   heroVideoNote: "🎥 100% cảnh quay và edit thực hiện trên điện thoại cá nhân · Trợ lực kịch bản AI",
   heroSubPrice: "⚡ Giảng viên FPT 15 năm kinh nghiệm • Cầm máy lên là làm được • Học online trọn đời",
 
