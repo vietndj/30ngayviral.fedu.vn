@@ -33,7 +33,7 @@ export function BeforeAfterSection() {
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
           {/* Video Minh Họa Thành Phẩm Thực Tế (Tự động chạy sạch sẽ như offline.fedu.vn) */}
           <div style={{
-            maxWidth: 380,
+            maxWidth: 460,
             width: "100%",
             margin: "0 auto",
             display: "flex",
@@ -154,7 +154,9 @@ export function BeforeAfterSection() {
             <div style={{
               marginTop: 14,
               textAlign: "center",
-              maxWidth: 340,
+              maxWidth: 440,
+              width: "100%",
+              padding: "0 8px",
             }}>
               <div style={{
                 fontFamily: t.fontBody,
@@ -162,14 +164,16 @@ export function BeforeAfterSection() {
                 fontWeight: 700,
                 color: "var(--cl-text-base, #0f172a)",
                 marginBottom: 4,
+                textWrap: "balance",
               }}>
-                Học viên thực hành Walk &amp; Talk tự quay 1 mình
+                Học viên thực hành Walk &amp; Talk tự quay 1&nbsp;mình
               </div>
               <div style={{
                 fontFamily: t.fontBody,
                 fontSize: 15,
                 color: "var(--cl-text-body, #64748b)",
                 lineHeight: 1.55,
+                textWrap: "balance",
               }}>
                 Vừa đi vừa nói chuyện tự nhiên bằng điện thoại, không học vẹt kịch bản, cuốn hút người xem từ đầu đến cuối.
               </div>

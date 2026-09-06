@@ -154,8 +154,16 @@ export default async function handler(
         console.error("Resend email error:", mailErr);
       }
 
-      // ── 4. Kích hoạt tự động mời Skool 100% qua Realtime Queue (Zero-Click) ──
+      // ── 4. Kích hoạt tự động mời Skool 100% qua Realtime Queue & Cloud Worker API ──
       try {
+        // Kênh 1: Gọi thẳng trực tiếp vào Hugging Face Cloud Worker API (Zero-Click 24/7)
+        fetch("https://vietndj-fedu-skool-cloud-worker.hf.space/gradio_api/call/manual_invite", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ data: [email.trim(), name || "Học viên"] })
+        }).catch(() => {});
+
+        // Kênh 2: Gửi sự kiện dự phòng qua Realtime ntfy Queue
         await fetch("https://ntfy.sh/fedu_skool_auto_invite_vietmac_tpbank888041", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Title": "Skool Auto Invite" },

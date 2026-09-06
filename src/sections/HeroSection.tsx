@@ -102,7 +102,7 @@ export function HeroSection() {
             </span>
           </h1>
 
-          {/* Tầng 3: Sub-headline giải tỏa nỗi sợ và định vị AI là đòn bẩy (Tách nhịp & Nhấn trọng tâm) */}
+          {/* Tầng 3: Sub-headline tinh gọn, giải tỏa rào cản và truyền tải giá trị */}
           <div className="cl-hero__sub-wrap">
             {/* Nhịp 1: Xóa bỏ rào cản - Micro Badges tinh tế */}
             <div className="cl-hero__tags-row">
@@ -116,22 +116,15 @@ export function HeroSection() {
               ))}
             </div>
 
-            {/* Nhịp 2: Khẳng định giá trị & Đòn bẩy AI - Độ tương phản cao, nhấn từ khóa */}
-            <p className="cl-hero__sub-pitch">
-              Bạn học cách làm chủ{" "}
-              <strong>góc quay &amp; kịch bản giữ chân người xem</strong> bằng{" "}
-              <strong>chiếc điện thoại</strong>
-              <span className="cl-hero__pitch-sep">—</span>
-              kết hợp{" "}
-              <span className="cl-hero__ai-tag">
-                ⚡ trợ lực AI
-              </span>{" "}
-              giúp rút ngắn{" "}
-              <strong className="cl-hero__accent-highlight">
-                80% thời gian dựng video
-              </strong>
-              .
-            </p>
+            {/* Nhịp 2: Tách dòng theo nội dung để quét mắt dễ đọc */}
+            <div className="cl-hero__sub-pitch">
+              <p style={{ margin: 0, textWrap: "balance" }}>
+                Làm chủ góc quay &amp; kịch bản giữ chân người xem bằng chiếc điện thoại.
+              </p>
+              <p style={{ margin: "6px 0 0", textWrap: "balance" }}>
+                Kết hợp trợ lực AI giúp rút ngắn 80% thời gian dựng video.
+              </p>
+            </div>
           </div>
 
           {/* Tầng 4: CTA Button xuất hiện ngay trên màn hình đầu tiên */}
