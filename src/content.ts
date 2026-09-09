@@ -251,7 +251,19 @@ export interface PageContent {
   bonusLabel: string;
   bonusHeading: string;
   bonusSub: string;
-  bonusItems: { id: string; badge?: string; title: string; desc: string; audioDemo?: string; youtubeDemo?: string; gifDemo?: string; videoDemo?: string }[];
+  bonusItems: {
+    id: string;
+    badge?: string;
+    title: string;
+    desc: string;
+    pain?: string;
+    solution?: string;
+    bullets?: string[];
+    audioDemo?: string;
+    youtubeDemo?: string;
+    gifDemo?: string;
+    videoDemo?: string;
+  }[];
   footerCopyright: string;
 
   // ── Checkout & Course Meta (Single Source of Truth) ──
@@ -310,7 +322,7 @@ export const DEFAULT_CONTENT: PageContent = {
   heroVideoYoutubeId: "pmEpqI2gFpo",
   heroVideoLabel: "// XEM TRƯỚC LỘ TRÌNH THỰC CHIẾN",
   heroVideoHeading: "Chỉ cần chiếc điện thoại trên tay — Đây là cách bạn bắt đầu ra đơn",
-  heroVideoSub: "Xem video 75 giây: Quy trình 5 chặng thực tế từ giảng viên FPT 15 năm kinh nghiệm — Tự tay làm video hoàn chỉnh mà không cần máy cơ hay kỹ thuật phức tạp.",
+  heroVideoSub: "Quy trình 5 chặng thực tế từ giảng viên FPT 15 năm kinh nghiệm — Tự tay làm video hoàn chỉnh mà không cần máy cơ hay kỹ thuật phức tạp.",
   heroSubPrice: "⚡ Giảng viên FPT 15 năm kinh nghiệm • Cầm máy lên là làm được • Học online trọn đời",
 
   // ── Pain (Nỗi đau & 6 bế tắc chuẩn Tầng 2.5 - Văn phong Anh Việt) ──
@@ -319,34 +331,34 @@ export const DEFAULT_CONTENT: PageContent = {
   painSub: "Cái khó của người lớn đi làm không phải là thiếu chữ. Mà là muốn giữ cái chất đàng hoàng của mình... nhưng nếu không làm video thì không có khách.",
   painItems: [
     {
-      title: "Ngoài đời nói vanh vách, bật camera lên là cứng họng:",
-      desc: "Ngồi cà phê tư vấn khách hàng cả tiếng không hết chuyện. Nhưng cứ chĩa máy vào mặt là quên sạch chữ, nói câu nào nghe cũng đơ đơ như đang trả bài.",
-      highlight: "cứng họng"
+      title: "Ngoài đời tư vấn rất có duyên, bật camera lên lại đơ chữ",
+      desc: "Ngồi cà phê tư vấn cho khách thì nói cả buổi không hết chuyện, lời nào ra lời nấy.\n\nNhưng cứ bấm máy quay là tự nhiên người cứng đơ, nói câu nào cũng thấy gượng... sợ người quen hay đối tác xem được lại thấy mình không tự nhiên.",
+      highlight: "đơ chữ"
     },
     {
-      title: "Nói sâu thì không ai xem, làm trò lố thì tự mình thấy ngượng:",
-      desc: "Chia sẻ kiến thức thật thì video lẹt đẹt; bảo giật tít câu view nhảm nhí thì bản thân không cho phép mình làm rác mạng. Cứ dùng dằng mãi rồi lại cất máy vào túi.",
-      highlight: "thấy ngượng"
+      title: "Nói sâu thì ít người xem, bảo làm màu theo trend thì ngượng miệng",
+      desc: "Chia sẻ kiến thức đàng hoàng thì lèo tèo vài lượt xem.\n\nBảo giật tít, diễn theo trào lưu để câu tương tác thì thấy ngượng, làm không nổi... cứ dùng dằng ở giữa: làm thì thấy không phải là mình, mà không làm thì nhìn người ta tiếp cận hết khách.",
+      highlight: "ngượng miệng"
     },
     {
-      title: "Ngoài đời đĩnh đạc, lên video nhìn ngô nghê như học việc:",
-      desc: "Bao năm làm nghề có uy tín với khách. Tự quay xong xem lại thấy mặt tối om, mắt đảo như rang lạc, dáng ngồi co ro... chỉ sợ người quen nhìn thấy họ cười cho.",
-      highlight: "nhìn ngô nghê"
+      title: "Ngoài đời đĩnh đạc có tiếng, lên video nhìn lại lúng túng",
+      desc: "Bao năm làm nghề có uy tín với khách hàng.\n\nTự quay xong xem lại thấy góc quay lóng ngóng, người gồng cứng... chỉ sợ người quen nhìn thấy lại thắc mắc dạo này sao lóng ngóng thế này.",
+      highlight: "nhìn lúng túng"
     },
     {
-      title: "Cặm cụi làm cả buổi tối, nhận về vài chục view... thấy ức chứ!",
-      desc: "Bỏ cả buổi căn từng câu, cắt từng đoạn. Đăng lên lén lút F5 liên tục... vẫn đứng im lẹt đẹt. Nhìn sang mấy clip nhảy nhót xàm xí view triệu triệu, vừa nản vừa tức.",
-      highlight: "thấy ức chứ!"
+      title: "Cặm cụi quay dựng cả tối, nhận về vài chục view... thấy hụt hẫng",
+      desc: "Bỏ cả buổi tối ngồi nắn từng câu, cắt từng đoạn vì sợ nói gì sơ suất thì mang tiếng với anh em trong nghề.\n\nĐăng lên hồi hộp mở ra xem liên tục, mà view vẫn đứng im... thấy công sức mình bỏ ra chẳng đi đến đâu.",
+      highlight: "thấy hụt hẫng"
     },
     {
-      title: "Ngại bán hàng vì sợ mang tiếng, nhưng không bán thì lấy gì nuôi quân?",
-      desc: "Chia sẻ thì có người like dạo, nhưng hễ nhắc đến bán hàng là người ta lướt ngay. Sợ bị mang tiếng chèo kéo lùa gà, nhưng tiền nhà, tiền lương nhân viên mỗi tháng có đợi ai đâu?",
-      highlight: "lấy gì nuôi quân?"
+      title: "Ngại chào mời vì sợ mất giá, nhưng không bán hàng thì lấy gì duy trì?",
+      desc: "Làm ăn xưa nay coi trọng chữ tín, sợ nhất cảm giác lên mạng nói chuyện bán hàng làm người ta nghĩ mình chèo kéo.\n\nNhưng nếu cứ giữ thanh cao thì tiền mặt bằng, tiền lương nhân viên mỗi tháng vẫn phải lo... muốn giới thiệu đàng hoàng mà không biết mở lời sao cho tự nhiên.",
+      highlight: "lấy gì duy trì?"
     },
     {
-      title: "Mua khóa học về vứt đó, vì không có ai ngồi sửa bài cùng:",
-      desc: "Xem video quay sẵn thì gật gù hay đấy, đến lúc làm cho ngành mình thì tắc tị. Người lớn ngại hỏi sợ mang tiếng ngây ngô, tự mò một mình thì làm ra clip vẫn phèn nguyên.",
-      highlight: "không có ai ngồi sửa bài"
+      title: "Mua khóa học về xem xong để đó, vì không có người sửa bài cho ngành của mình",
+      desc: "Xem video bài giảng thì thấy người ta làm dễ lắm, nhưng đến lúc tự cầm máy làm cho ngành mình thì không biết bắt đầu từ đâu.\n\nNgười lớn đi làm rồi, đi hỏi mấy thao tác nhỏ nhặt cũng ngại... tự mò mẫm thì mất thời gian mà video làm ra nhìn vẫn vụng về.",
+      highlight: "không có người sửa bài"
     }
   ],
   pains: [],
@@ -359,22 +371,22 @@ export const DEFAULT_CONTENT: PageContent = {
     {
       icon: "📺",
       title: "Cày nát YouTube học mót từng mẹo",
-      desc: "Xem thì thấy người ta làm dễ ợt, đến lượt mình cầm máy lên là tắc. Toàn mẹo vặt chắp vá, không thành bài bản."
+      desc: "Xem thì thấy người ta làm dễ ợt, đến lượt mình cầm máy lên là tắc.\nToàn mẹo vặt chắp vá, không thành bài bản."
     },
     {
       icon: "💸",
       title: "Thuê ngoài làm hộ cho nhanh",
-      desc: "Tốn tiền triệu mỗi tháng nhưng nhận về toàn video công nghiệp vô hồn. Họ có hiểu sản phẩm với khách của bạn đâu mà nói trúng được."
+      desc: "Tốn tiền triệu mỗi tháng nhưng nhận về toàn video công nghiệp vô hồn.\nHọ có hiểu sản phẩm với khách của bạn đâu mà nói trúng được."
     },
     {
       icon: "👥",
       title: "Lên mạng hỏi han trong mấy hội nhóm",
-      desc: "Đăng bài thì gặp mồi chài bán tool kéo view; đọc bình luận thì toàn khoe tiền tỷ. Càng đọc càng thấy hoang mang."
+      desc: "Đăng bài thì gặp mồi chài bán tool kéo view; đọc bình luận thì toàn khoe tiền tỷ.\nCàng đọc càng thấy hoang mang."
     },
     {
       icon: "🤖",
       title: "Nhờ AI viết hộ kịch bản",
-      desc: "Bấm một nút nó nhả ra cả trang văn mẫu sáo rỗng. Đem đi quay nghe giả trân, khán giả ngửi thấy mùi AI là họ lướt ngay trong 1 giây."
+      desc: "Bấm một nút nó nhả ra cả trang văn mẫu sáo rỗng.\nĐem đi quay nghe giả trân, khán giả ngửi thấy mùi AI là họ lướt ngay trong 1 giây."
     }
   ],
   painReframeHeading: "...Và kết quả cuối cùng vẫn là con số 0 tròn trĩnh?",
@@ -382,9 +394,9 @@ export const DEFAULT_CONTENT: PageContent = {
   painConclusion: "",
 
   // ── Core Goals & 3 Pillars (2 Mục tiêu sống còn & 3 Đòn bẩy thực chiến) ──
-  coreGoalsLabel: "KHÔNG CẦN LÀ CHUYÊN GIA",
-  coreGoalsHeading: "Bạn không cần khiếu ăn nói hay máy ảnh đắt tiền để có một video chuyên nghiệp.",
-  coreGoalsSub: "Rào cản lớn nhất khi làm video không phải là thiết bị, mà là cảm giác sợ bị 'gượng': Ngoài đời tư vấn chắc tay bao nhiêu, đứng trước máy lại gồng mình bấy nhiêu.\n\nBạn không cần đổi vai diễn và càng không cần đánh đổi uy tín lấy vài cái view nhảm. Người mua hàng chỉ cần thấy một người làm nghề đàng hoàng, nói đúng việc trong khung hình sáng sủa. Lộ trình này chỉ tập trung vào 2 kết quả thực tế:",
+  coreGoalsLabel: "2 KẾT QUẢ THỰC TẾ",
+  coreGoalsHeading: "Không cần khiếu ăn nói hay máy ảnh đắt tiền để có một video đàng hoàng.",
+  coreGoalsSub: "Cái khó của người lớn đi làm không phải là thiếu chữ. Mà là cảm giác sợ bị 'gượng': ngoài đời tư vấn chắc tay bao nhiêu, đứng trước máy lại thấy mình bị gồng bấy nhiêu.\n\nBạn không cần phải đổi vai hay diễn kịch câu view. Người mua hàng chỉ cần thấy một người làm nghề đàng hoàng, nói đúng việc trong khung hình sáng rõ. Lộ trình này chỉ tập trung vào đúng 2 kết quả thực tế:",
   coreGoalsLeftTitle: "2 KẾT QUẢ ĐẦU RA THỰC TẾ",
   coreGoalsRightTitle: "Làm video đàng hoàng không cần phải gồng",
   corePillarsLabel: "3 ĐIỂM TỰA THỰC CHIẾN",
@@ -393,27 +405,26 @@ export const DEFAULT_CONTENT: PageContent = {
     {
       id: "01",
       tag: "MỤC TIÊU 01",
-      highlight: "XÓA SẠCH TỰ TI · KHÔNG CẦN LỘ MẶT",
-      title: "Tự tay làm được video đầu tay, tự tin bấm máy",
-      desc: "Không cần nhớ kịch bản dài dòng, không sợ nói vấp, không sợ người quen chê cười. Xuất xưởng ngay sản phẩm đầu tay không còn thấy ngượng ngùng.",
+      highlight: "XÓA BỎ NỖI NGƯỢNG · KHÔNG CẦN DIỄN",
+      title: "Tự tay làm xong video đầu tay, đàng hoàng và không còn thấy gượng",
+      desc: "Ngoài đời tư vấn chắc tay bao nhiêu, trước ống kính lại thấy mình bị gồng bấy nhiêu. Nỗi sợ lớn nhất không phải thiếu chữ, mà là sợ người quen nhìn vào thấy mình đang diễn kịch.\n\nChỉ cần biết cách bẻ nhỏ câu chữ và quay mộc mạc, bạn sẽ hoàn thành ngay video đầu tay chỉn chu ngay trong tuần đầu tiên.",
       video: "https://youtube.com/shorts/lG4Q518RIdw",
-      videoCaption: "Thầy Việt thị phạm: Tự tin bấm máy & quay B-roll mộc mạc",
       bullets: [
-        "Làm chủ cách quay 'không cần lộ mặt' hoặc nói chuyện tự nhiên như đang thở",
-        "Xóa bỏ hoàn toàn nỗi sợ bị người quen hay đối tác xì xào phán xét",
-        "Xuất xưởng ngay video đầu tay: Có sản phẩm thực tế đăng kênh ngay tuần đầu tiên",
+        "Không cần thuộc kịch bản: Nói từng câu ngắn 5–7 từ rồi nghỉ, đắp B-roll che sạch các đoạn nói vấp",
+        "Không sợ người quen phán xét: Giữ nguyên cách nói chuyện đời thường, không gồng mình làm chuyên gia",
+        "Có sản phẩm thật đăng kênh: Tự tay bấm máy, hoàn thành video đầu tay sáng rõ ngay trong tuần đầu",
       ]
     },
     {
       id: "02",
       tag: "MỤC TIÊU 02",
-      highlight: "KẾT QUẢ THẬT · KHÁCH HÀNG TÔN TRỌNG",
-      title: "Kênh có khách hàng thật, ra đơn đàng hoàng trên Zalo",
-      desc: "Đừng đánh đổi thể diện 10 năm làm nghề lấy vài cái view nhảm của những người xem chùa rồi lướt. Người có tiền cần một chuyên gia tử tế và đáng tin cậy. Chỉ cần 300 – 500 view đúng tệp, khách sẽ chủ động nhắn tin Zalo xin tư vấn lịch thiệp.",
+      highlight: "GIỮ TRỌN THỂ DIỆN · RA ĐƠN THẬT",
+      title: "Kênh có khách hàng thật, chủ động nhắn tin Zalo xin tư vấn",
+      desc: "Bảo làm trò câu view thì lòng tự trọng không cho phép, mà chia sẻ nghiêm túc thì lại ít người xem. Nhưng người có tiền họ không mua hàng từ những người diễn trò.\n\nHọ chỉ cần thấy một người làm nghề đàng hoàng, nói đúng việc. Chỉ cần 300 – 500 view đúng tệp, khách sẽ chủ động nhắn tin Zalo lịch thiệp.",
       bullets: [
-        "Giữ trọn phong thái chuyên môn: Đĩnh đạc, tử tế, không đánh đổi uy tín lấy vài giây lướt qua",
-        "Khách tự tìm đến Zalo: Khách hỏi tư vấn lịch sự, không chèo kéo, không kỳ kèo mặc cả",
-        "Ra đơn thực tế: Mỗi video là một lời chào đàng hoàng, bền bỉ mang khách về Zalo cả khi bạn đang ngủ",
+        "Bảo toàn uy tín làm nghề: Không giật tít câu view nhảm, giữ trọn vị thế chuyên môn tích lũy nhiều năm",
+        "Khách tự tìm đến Zalo: Người xem chủ động hỏi tư vấn lịch sự, không chèo kéo, không kỳ kèo mặc cả",
+        "Đơn hàng đến đàng hoàng: Mỗi video là một lời chào tử tế, bền bỉ mang khách về Zalo cả khi bạn đang ngủ",
       ],
       contrast: {
         badTitle: "MÔ HÌNH CÂU VIEW RÁC",
@@ -545,14 +556,9 @@ export const DEFAULT_CONTENT: PageContent = {
       ],
       videos: [
         {
-          title: "Quy tắc 3 cảnh Toàn – Trung – Cận bằng 1 điện thoại",
-          desc: "Chỉ với một chiếc điện thoại, luân chuyển 3 cỡ cảnh để video sinh động mà không cần máy cơ.",
-          url: "https://www.facebook.com/reel/775157861537584/"
-        },
-        {
-          title: "Mẹo căn khung hình chuẩn bằng camera sau",
-          desc: "Tận dụng camera sau sắc nét, cách căn góc ngồi và đón sáng tự nhiên không bị lệch hình.",
-          url: "https://www.facebook.com/reel/1417987499856423/"
+          title: "3 Quy tắc chuyển cảnh điện ảnh giữ chân người xem",
+          desc: "Luân phiên cỡ cảnh (Trung sang Cận), đổi góc máy linh hoạt và quy tắc lệch 30° để nhát cắt liền mạch, cuốn hút đến giây cuối cùng.",
+          url: "https://www.facebook.com/reel/1325397876020922/"
         }
       ]
     },
@@ -598,9 +604,9 @@ export const DEFAULT_CONTENT: PageContent = {
           url: "https://www.facebook.com/reel/2162457291248635/"
         },
         {
-          title: "2 thao tác Tách & Xóa xử lý video trong 15 phút",
-          desc: "Phóng to dòng thời gian để cắt bỏ đoạn ngập ngừng, xuất xưởng video gọn gàng ngay trên điện thoại.",
-          url: "https://www.facebook.com/reel/1946728119575375/"
+          title: "Hiệu ứng Fake Flycam miễn phí với AI",
+          desc: "Tạo góc máy trên cao giả lập Flycam bằng AI cực nhanh, làm video sinh động và mãn nhãn.",
+          url: "https://www.facebook.com/reel/4368036586809650/"
         }
       ]
     },
@@ -881,9 +887,9 @@ export const DEFAULT_CONTENT: PageContent = {
     },
     {
       badge: "LỰA CHỌN 3 — KHUYÊN DÙNG",
-      title: "Làm Chủ Trên Điện Thoại Cùng Thầy Việt",
+      title: "Làm Chủ Trên Điện Thoại Cùng FEDU",
       cost: "Chỉ 999.000 VNĐ (Bằng 1 bữa lẩu)",
-      desc: "Tự làm chủ trọn vẹn từ Kịch bản 1 dòng → Góc sáng 3D → Dựng CapCut → AI ngay trên chiếc điện thoại. Có Thầy Việt trực tiếp soi timeline chữa bài thực tế. Bạn sở hữu kỹ năng làm video ra đơn cả đời.",
+      desc: "Tự làm chủ trọn vẹn từ Kịch bản 1 dòng → Góc sáng 3D → Dựng CapCut → AI ngay trên chiếc điện thoại. Được trực tiếp soi timeline chữa bài thực tế. Bạn sở hữu kỹ năng làm video ra đơn cả đời.",
       isBest: true,
       tag: "🏆 Lựa chọn khôn ngoan nhất"
     }
@@ -945,7 +951,7 @@ export const DEFAULT_CONTENT: PageContent = {
     },
     {
       q: "Điện thoại đời cũ, không có máy ảnh xịn hay đèn studio thì video có bị mờ tối không?",
-      a: "Toàn bộ bài giảng trong khóa học này tôi đều thị phạm bằng chính chiếc điện thoại thông thường. Chỉ cần biết cách kê máy cách mặt 1 sải tay và tận dụng ánh sáng tự nhiên từ cửa sổ, khung hình của bạn đã sáng rõ và nổi khối 3D đĩnh đạc hơn rất nhiều người mua đèn đắt tiền."
+      a: "Toàn bộ bài giảng trong khóa học này tôi đều quay trực tiếp bằng chính chiếc điện thoại thông thường. Chỉ cần biết cách kê máy cách mặt 1 sải tay và tận dụng ánh sáng tự nhiên từ cửa sổ, khung hình của bạn đã sáng rõ và nổi khối 3D đĩnh đạc hơn rất nhiều người mua đèn đắt tiền."
     },
     {
       q: "Mỗi ngày tôi bận đi làm / kinh doanh, chỉ rảnh 30-45 phút thì có theo kịp lớp không?",

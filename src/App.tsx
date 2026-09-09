@@ -18,6 +18,7 @@ import { MidCtaSection } from "./sections/MidCtaSection";
 import { BeforeAfterSection } from "./sections/BeforeAfterSection";
 import { RoadmapSection } from "./sections/RoadmapSection";
 import { InstructorSection } from "./sections/InstructorSection";
+import { ProofSection } from "./sections/ProofSection";
 import { BonusSection } from "./sections/BonusSection";
 import { FaqSection } from "./sections/FaqSection";
 import { CtaSection } from "./sections/CtaSection";
@@ -111,6 +112,7 @@ export const SECTION_COMPONENTS: Record<string, React.ComponentType<any>> = {
   philosophy: CorePillarsSection,
   pillars: CorePillarsSection,
   modules: ModulesSection,
+  proof: ProofSection,
   skills: SkillsSection,
   "before-after": BeforeAfterSection,
   attention: AttentionSection,
@@ -128,7 +130,8 @@ export const SECTION_COMPONENTS: Record<string, React.ComponentType<any>> = {
   roadmap: RoadmapSection,
 };
 
-export const DEFAULT_SECTION_ORDER = [
+// ── BẢN GỐC V1 (11 Khối hiện tại) ──
+export const V1_SECTION_ORDER = [
   "hero",
   "video",
   "pain",
@@ -142,13 +145,172 @@ export const DEFAULT_SECTION_ORDER = [
   "cta",
 ];
 
+// ── BẢN TINH GỌN V2 (7 Khối đề xuất tối ưu) ──
+export const V2_SECTION_ORDER = [
+  "hero",
+  "video",
+  "pain",
+  "pillars",
+  "modules",
+  "instructor",
+  "proof",
+  "bonus",
+  "faq",
+  "cta",
+];
+
+function VersionSwitcher({ version, onToggle }: { version: "v2" | "v1"; onToggle: (v: "v2" | "v1") => void }) {
+  const [minimized, setMinimized] = useState(false);
+
+  if (minimized) {
+    return (
+      <button
+        type="button"
+        onClick={() => setMinimized(false)}
+        style={{
+          position: "fixed",
+          bottom: 24,
+          left: 20,
+          zIndex: 999999,
+          background: "#0f172a",
+          color: "#ffffff",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
+          borderRadius: 100,
+          padding: "8px 16px",
+          fontSize: 12.5,
+          fontWeight: 700,
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.3)",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+        }}
+      >
+        <span>⚡ Đổi Bản ({version.toUpperCase()})</span>
+      </button>
+    );
+  }
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        bottom: 24,
+        left: 20,
+        zIndex: 999999,
+        background: "rgba(15, 23, 42, 0.94)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
+        border: "1px solid rgba(255, 255, 255, 0.15)",
+        borderRadius: 18,
+        padding: "10px 14px",
+        boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(26, 115, 232, 0.2)",
+        display: "flex",
+        flexDirection: "column",
+        gap: 8,
+        maxWidth: 340,
+        animation: "fadeInUp 0.3s ease",
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9ca3af" }}>
+            SO SÁNH BẢN LOCAL
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={() => setMinimized(true)}
+          style={{ background: "transparent", border: "none", color: "#9ca3af", cursor: "pointer", fontSize: 14, padding: "0 4px" }}
+          title="Thu nhỏ thanh công cụ"
+        >
+          ─
+        </button>
+      </div>
+
+      <div style={{ display: "flex", gap: 6, background: "rgba(255, 255, 255, 0.06)", padding: 4, borderRadius: 12 }}>
+        <button
+          type="button"
+          onClick={() => onToggle("v2")}
+          style={{
+            flex: 1,
+            padding: "8px 12px",
+            borderRadius: 8,
+            border: "none",
+            background: version === "v2" ? "#1a73e8" : "transparent",
+            color: version === "v2" ? "#ffffff" : "#d1d5db",
+            fontWeight: 700,
+            fontSize: 12,
+            cursor: "pointer",
+            transition: "all 0.2s ease",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          <span>⚡ BẢN TINH GỌN (V2)</span>
+          <span style={{ fontSize: 9.5, opacity: 0.8, fontWeight: 500 }}>8 Mắt Xích · Gọn 35%</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => onToggle("v1")}
+          style={{
+            flex: 1,
+            padding: "8px 12px",
+            borderRadius: 8,
+            border: "none",
+            background: version === "v1" ? "#334155" : "transparent",
+            color: version === "v1" ? "#ffffff" : "#9ca3af",
+            fontWeight: 700,
+            fontSize: 12,
+            cursor: "pointer",
+            transition: "all 0.2s ease",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          <span>BẢN GỐC (V1)</span>
+          <span style={{ fontSize: 9.5, opacity: 0.8, fontWeight: 500 }}>11 Khối · Bản cũ</span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const t = useTheme();
   const c = useContent();
+
+  const [version, setVersion] = useState<"v2" | "v1">(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlV = urlParams.get("v");
+      if (urlV === "v1" || urlV === "v2") return urlV;
+      const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+      if (isLocal) {
+        const saved = localStorage.getItem("30ngay_site_version");
+        if (saved === "v1" || saved === "v2") return saved;
+      }
+    }
+    return "v2";
+  });
+
+  const toggleVersion = (v: "v2" | "v1") => {
+    setVersion(v);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("30ngay_site_version", v);
+    }
+  };
+
   const isHidden = (id: string) => c.blocksMeta?.hidden?.includes(id) ?? false;
 
-  // Ensure video section is included right after hero if not explicitly listed
-  let baseOrder = (c.blocksMeta?.order?.length) ? [...c.blocksMeta.order] : DEFAULT_SECTION_ORDER;
+  const activeDefaultOrder = version === "v2" ? V2_SECTION_ORDER : V1_SECTION_ORDER;
+  let baseOrder = (version === "v1" && c.blocksMeta?.order?.length) ? [...c.blocksMeta.order] : [...activeDefaultOrder];
   if (!baseOrder.includes("video") && !baseOrder.includes("preview")) {
     const heroIdx = baseOrder.indexOf("hero");
     if (heroIdx !== -1) {
@@ -243,12 +405,15 @@ export default function App() {
 
           return (
             <div
-              key={key}
+              key={`${version}-${key}`}
               id={`sec-${key}`}
               data-section={key}
               className={`cl-zebra-section ${isZebra ? "cl-zebra--tint" : "cl-zebra--light"}`}
             >
-              <Comp {...(key === "video" || key === "preview" ? { demoCardRef } : {})} />
+              <Comp
+                {...(key === "video" || key === "preview" ? { demoCardRef } : {})}
+                isV2={version === "v2"}
+              />
             </div>
           );
         })}
@@ -376,6 +541,9 @@ export default function App() {
       </div>
 
       <StickyRegisterBar />
+      {(typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.search.includes("switcher=1"))) && (
+        <VersionSwitcher version={version} onToggle={toggleVersion} />
+      )}
       {/* <LiveSocialProof /> */}
     </div>
   );

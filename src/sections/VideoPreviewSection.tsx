@@ -34,20 +34,24 @@ export function VideoPreviewSection({ demoCardRef }: VideoPreviewSectionProps) {
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <Label>{c.heroVideoLabel || "// XEM TRƯỚC LỘ TRÌNH THỰC CHIẾN"}</Label>
           <SH>{c.heroVideoHeading || "Chỉ cần chiếc điện thoại trên tay — Đây là cách bạn bắt đầu ra đơn"}</SH>
-          <p
+          <div
             style={{
               fontFamily: t.fontBody,
-              fontSize: "clamp(16.5px, 1.8vw, 18px)",
-              lineHeight: 1.8,
-              color: "var(--cl-text-body, #4b5563)",
+              fontSize: "clamp(16px, 1.8vw, 18px)",
+              lineHeight: 1.65,
+              color: "var(--cl-text-body, #475569)",
               maxWidth: 640,
               margin: "14px auto 0",
-              textWrap: "balance",
+              textAlign: "center",
             }}
           >
-            {c.heroVideoSub ||
-              "Xem video 75 giây: Quy trình 5 chặng thực tế từ giảng viên FPT 15 năm kinh nghiệm — Tự tay làm video hoàn chỉnh mà không cần máy cơ hay kỹ thuật phức tạp."}
-          </p>
+            <p style={{ margin: 0, textWrap: "balance" }}>
+              Quy trình 5 chặng thực tế từ giảng viên FPT 15 năm kinh nghiệm.
+            </p>
+            <p style={{ margin: "6px 0 0", textWrap: "balance" }}>
+              Tự tay làm video hoàn chỉnh mà không cần máy cơ hay kỹ thuật phức tạp.
+            </p>
+          </div>
         </div>
       </FadeIn>
 

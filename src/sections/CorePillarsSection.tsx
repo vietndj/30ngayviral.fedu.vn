@@ -3,7 +3,7 @@ import { useContent, GoalCarouselItem, GoalContrast } from "../content";
 import { useTheme } from "../theme";
 import { FadeIn, Label, SH, Sec, AppYTEmbed } from "../components/ui";
 
-export function CorePillarsSection() {
+export function CorePillarsSection({ isV2 = false }: { isV2?: boolean }) {
   const c = useContent();
   const t = useTheme();
 
@@ -12,8 +12,8 @@ export function CorePillarsSection() {
       {/* ── Section Header ── */}
       <FadeIn>
         <div style={{ textAlign: "center", marginBottom: 44 }}>
-          <Label>{c.coreGoalsLabel || "KHÔNG CẦN LÀ CHUYÊN GIA"}</Label>
-          <SH>{c.coreGoalsHeading || "Bạn không cần khiếu ăn nói hay máy ảnh đắt tiền để có một video chuyên nghiệp."}</SH>
+          <Label>{c.coreGoalsLabel || "2 KẾT QUẢ THỰC TẾ"}</Label>
+          <SH>{c.coreGoalsHeading || "Không cần khiếu ăn nói hay máy ảnh đắt tiền để có một video đàng hoàng."}</SH>
           {c.coreGoalsSub && (
             <div style={{
               maxWidth: 720,
@@ -118,16 +118,22 @@ export function CorePillarsSection() {
                     {g.title}
                   </h3>
 
-                  {/* Description */}
-                  <p style={{
+                  {/* Description: Tách đoạn theo nhịp đọc */}
+                  <div style={{
                     fontFamily: t.fontBody,
-                    fontSize: "clamp(17px, 1.85vw, 19px)",
+                    fontSize: "clamp(16.5px, 1.8vw, 18.5px)",
                     lineHeight: 1.75,
                     color: "var(--cl-text-body, #374151)",
-                    margin: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 8,
                   }}>
-                    {g.desc}
-                  </p>
+                    {g.desc.split("\n\n").map((para, pIdx) => (
+                      <p key={pIdx} style={{ margin: 0, textWrap: "pretty" }}>
+                        {para}
+                      </p>
+                    ))}
+                  </div>
 
                   {/* Bullets */}
                   {g.bullets && g.bullets.length > 0 && (
@@ -138,34 +144,50 @@ export function CorePillarsSection() {
                       padding: "18px 0 4px",
                       borderTop: "1px dashed var(--cl-line, rgba(0,0,0,0.1))",
                     }}>
-                      {g.bullets.map((b, bIdx) => (
-                        <div key={bIdx} style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: 14,
-                          fontSize: 17,
-                          lineHeight: 1.7,
-                          color: "var(--cl-text-base, #1f2937)",
-                        }}>
-                          <span style={{
-                            width: 24,
-                            height: 24,
-                            borderRadius: "50%",
-                            background: idx === 0 ? "rgba(26, 115, 232, 0.12)" : "rgba(22, 163, 74, 0.12)",
-                            color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
-                            display: "inline-flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            fontSize: 14,
-                            fontWeight: 700,
-                            flexShrink: 0,
-                            marginTop: 2,
+                      {g.bullets.map((b, bIdx) => {
+                        const colonIdx = b.indexOf(":");
+                        const hasColon = colonIdx > -1;
+                        const boldPart = hasColon ? b.slice(0, colonIdx + 1) : "";
+                        const restPart = hasColon ? b.slice(colonIdx + 1) : b;
+
+                        return (
+                          <div key={bIdx} style={{
+                            display: "flex",
+                            alignItems: "flex-start",
+                            gap: 14,
+                            fontSize: 16.5,
+                            lineHeight: 1.65,
+                            color: "var(--cl-text-base, #1f2937)",
                           }}>
-                            ✓
-                          </span>
-                          <span style={{ fontWeight: 400 }}>{b}</span>
-                        </div>
-                      ))}
+                            <span style={{
+                              width: 22,
+                              height: 22,
+                              borderRadius: "50%",
+                              background: idx === 0 ? "rgba(26, 115, 232, 0.12)" : "rgba(22, 163, 74, 0.12)",
+                              color: idx === 0 ? "var(--cl-accent, #1a73e8)" : "#16a34a",
+                              display: "inline-flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              fontSize: 13,
+                              fontWeight: 700,
+                              flexShrink: 0,
+                              marginTop: 2,
+                            }}>
+                              ✓
+                            </span>
+                            <span style={{ textWrap: "pretty" }}>
+                              {hasColon ? (
+                                <>
+                                  <strong style={{ fontWeight: 600, color: "var(--cl-text-base, #111827)" }}>{boldPart}</strong>
+                                  {restPart}
+                                </>
+                              ) : (
+                                b
+                              )}
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
                   )}
 
@@ -174,10 +196,10 @@ export function CorePillarsSection() {
                     <div className="cl-goal-tip-box">
                       <div className="cl-goal-tip-header">
                         <span>💡</span>
-                        <strong>LỜI KHUYÊN THỰC CHIẾN TỪ GIẢNG VIÊN</strong>
+                        <strong>LỜI KHUYÊN THỰC CHIẾN</strong>
                       </div>
                       <p className="cl-goal-tip-text">
-                        "Chỉ cần 1 góc bàn đủ sáng và chiếc điện thoại kê chắc chắn. Video đầu tiên là để phá vỡ nỗi sợ bấm máy — tập trung vào thao tác tay mộc mạc và nói đúng việc, không cần mặt đẹp, không cần phòng thu."
+                        "Chỉ cần một góc bàn đủ sáng và chiếc điện thoại kê chắc chắn. Video đầu tiên là để vượt qua cảm giác ngượng ngùng — tập trung vào thao tác tay mộc mạc và nói đúng việc, không cần phòng thu, không cần diễn."
                       </p>
                     </div>
                   )}
@@ -198,7 +220,7 @@ export function CorePillarsSection() {
                     }}>
                       <AppYTEmbed
                         url={g.video}
-                        caption={g.videoCaption || "Video thị phạm thực tế"}
+                        caption={g.videoCaption}
                         maxWidth={260}
                       />
                     </div>
@@ -234,8 +256,8 @@ export function CorePillarsSection() {
                 </div>
               </div>
 
-              {/* ── Dải So Sánh Toàn Cảnh: Trải rộng Full-Width dưới chân Khối 02 ── */}
-              {g.contrast && (
+              {/* ── Dải So Sánh Toàn Cảnh: Trải rộng Full-Width dưới chân Khối 02 (Chỉ hiện ở bản V1, ẩn ở bản V2 để cân đối) ── */}
+              {g.contrast && !isV2 && (
                 <div className="cl-goal-contrast-section">
                   <div className="cl-goal-contrast-header">
                     <span className="cl-goal-contrast-tag">// CHIẾN LƯỢC NỘI DUNG THỰC CHIẾN</span>
@@ -564,13 +586,6 @@ function GoalZaloCarousel({ items }: { items: GoalCarouselItem[] }) {
         </button>
       </div>
 
-      {/* Real Case Description Strip */}
-      <div className="cl-carousel-caption">
-        <span className="cl-carousel-caption-tag">{current.tag}</span>
-        <div className="cl-carousel-caption-title">{current.title}</div>
-        <div className="cl-carousel-caption-desc">{current.desc}</div>
-      </div>
-
       {/* Fullscreen Lightbox Modal */}
       {isLightboxOpen && (
         <div
@@ -605,8 +620,7 @@ function GoalZaloCarousel({ items }: { items: GoalCarouselItem[] }) {
               />
             </div>
 
-            <div className="cl-lightbox-footer">
-              <p className="cl-lightbox-desc">{current.desc}</p>
+            <div className="cl-lightbox-footer" style={{ justifyContent: "center" }}>
               <div className="cl-lightbox-controls">
                 <button
                   type="button"

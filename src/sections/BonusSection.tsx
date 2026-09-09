@@ -29,7 +29,7 @@ export function BonusSection() {
       
       {/* ── Bonus Cards ── */}
       <FadeIn delay={100}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           {c.bonusItems.map((item, i) => {
             const Icon = BONUS_ICONS[i % BONUS_ICONS.length];
             const hasSideMedia = !!item.videoDemo || !!item.gifDemo || !!item.youtubeDemo || !!item.audioDemo;
@@ -37,23 +37,13 @@ export function BonusSection() {
             return (
               <div
                 key={item.id || i}
-                className="cl-glow-card"
-                style={{
-                  padding: "clamp(24px, 4vw, 36px)",
-                  borderRadius: "var(--cl-radius, 16px)",
-                  background: "var(--cl-card, #ffffff)",
-                  border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
-                  display: "grid",
-                  gridTemplateColumns: hasSideMedia ? "repeat(auto-fit, minmax(min(100%, 360px), 1fr))" : "1fr",
-                  gap: 32,
-                  alignItems: "center",
-                }}
+                className={`cl-bonus-card ${hasSideMedia ? "has-media" : ""}`}
               >
-                {/* Cột Trái: Icon + Badge + Tiêu đề + Mô tả */}
-                <div style={{ display: "flex", alignItems: "flex-start", gap: 20 }}>
+                {/* Cột Trái: Icon + Badge + Tiêu đề + Khối BOCUC 3 Nhịp */}
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 18, width: "100%" }}>
                   <div style={{
-                    width: 52,
-                    height: 52,
+                    width: 48,
+                    height: 48,
                     borderRadius: 14,
                     background: `linear-gradient(135deg, ${t.accent}22, transparent)`,
                     border: `1px solid ${t.accent}44`,
@@ -62,55 +52,109 @@ export function BonusSection() {
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0,
+                    marginTop: 2,
                   }}>
                     <Icon accent={t.accent} />
                   </div>
 
                   <div style={{ flex: 1, minWidth: 0 }}>
+                    {/* Nhịp 1: Micro-Badge */}
                     <div style={{
                       fontFamily: t.fontMono,
                       fontSize: 12,
                       fontWeight: 700,
                       color: t.accent,
-                      letterSpacing: "0.15em",
+                      letterSpacing: "0.14em",
                       textTransform: "uppercase",
-                      marginBottom: 8,
+                      marginBottom: 6,
                     }}>
                       {item.badge || `ĐỒ NGHỀ THỰC CHIẾN 0${i + 1}`}
                     </div>
 
+                    {/* Nhịp 2: Tiêu đề đanh thép */}
                     <h4 style={{
                       fontFamily: t.fontBody,
-                      fontSize: "clamp(18px, 2vw, 21px)",
+                      fontSize: "clamp(18px, 2.2vw, 22px)",
                       fontWeight: 700,
                       color: "var(--cl-text-head, #0f172a)",
-                      margin: "0 0 12px 0",
+                      margin: "0 0 10px 0",
                       lineHeight: 1.35,
+                      textWrap: "balance",
                     }}>
                       {item.title}
                     </h4>
 
-                    <div
-                      style={{
-                        fontFamily: t.fontBody,
-                        fontSize: "16.5px",
-                        lineHeight: 1.75,
-                        color: "var(--cl-text-body, #374151)",
-                        margin: 0,
-                      }}
-                      dangerouslySetInnerHTML={{ __html: item.desc }}
-                    />
+                    {/* Nhịp 3: Khối nội dung ngắn gọn & Tick list */}
+                    {item.pain && (
+                      <div style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 8,
+                        fontSize: "clamp(14.5px, 1.6vw, 16px)",
+                        lineHeight: 1.6,
+                        color: "var(--cl-text-muted, #64748b)",
+                        marginBottom: 8,
+                      }}>
+                        <span style={{ color: "#dc2626", fontWeight: 700, fontSize: 13, flexShrink: 0, marginTop: 3 }}>✕</span>
+                        <span>{item.pain}</span>
+                      </div>
+                    )}
+
+                    {item.solution && (
+                      <div style={{
+                        fontSize: "clamp(14.5px, 1.6vw, 16px)",
+                        lineHeight: 1.6,
+                        color: "var(--cl-text-head, #111827)",
+                        fontWeight: 600,
+                        marginBottom: 6,
+                      }}>
+                        {item.solution}
+                      </div>
+                    )}
+
+                    {item.bullets && item.bullets.length > 0 ? (
+                      <div className="cl-bonus-tick-list">
+                        {item.bullets.map((b, bIdx) => {
+                          const colonIdx = b.indexOf(":");
+                          const hasColon = colonIdx > -1;
+                          const boldPart = hasColon ? b.slice(0, colonIdx + 1) : "";
+                          const restPart = hasColon ? b.slice(colonIdx + 1) : b;
+
+                          return (
+                            <div key={bIdx} className="cl-bonus-tick-item">
+                              <span className="cl-bonus-tick-icon">✓</span>
+                              <div>
+                                {hasColon ? (
+                                  <>
+                                    <strong style={{ fontWeight: 700, color: "var(--cl-text-head, #0f172a)" }}>{boldPart}</strong>
+                                    {restPart}
+                                  </>
+                                ) : (
+                                  b
+                                )}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <div
+                        style={{
+                          fontFamily: t.fontBody,
+                          fontSize: "15.5px",
+                          lineHeight: 1.7,
+                          color: "var(--cl-text-body, #374151)",
+                          margin: 0,
+                        }}
+                        dangerouslySetInnerHTML={{ __html: item.desc }}
+                      />
+                    )}
                   </div>
                 </div>
 
                 {/* Cột Phải: Visual Media Thật (Audio / Video / GIF / Embed) */}
                 {hasSideMedia && (
-                  <div style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 14,
-                    width: "100%",
-                  }}>
+                  <div className="cl-bonus-media-wrap">
                     {/* 1. Trình phát Audio Player cho Món 01 */}
                     {item.audioDemo && (
                       <div style={{
@@ -224,7 +268,7 @@ export function BonusSection() {
                       </div>
                     )}
 
-                    {/* 4. YouTube Embed (Ví dụ: Thầy Việt hướng dẫn hoặc Shorts thị phạm) */}
+                    {/* 4. YouTube Embed (Ví dụ: Video hướng dẫn hoặc Shorts) */}
                     {item.youtubeDemo && (
                       <div style={{
                         borderRadius: 14,

@@ -234,7 +234,7 @@ function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo
         boxShadow: "0 4px 20px rgba(16, 185, 129, 0.15)"
       }}>
         <div style={{ fontSize: 12.5, fontWeight: 700, color: "#10b981", letterSpacing: "0.03em", textTransform: "uppercase" }}>
-          ✨ BẢO CHỨNG CHÍNH CHỦ TỪ THẦY NGUYỄN ĐỨC VIỆT
+          ✨ BẢO CHỨNG CHÍNH CHỦ TỪ NGUYỄN ĐỨC VIỆT
         </div>
         <div style={{ fontSize: 12, color: "var(--cl-text-body, #374151)", marginTop: 3 }}>
           Đồng hành chữa bài trực tiếp trên Skool · Bản cập nhật 2026
@@ -549,7 +549,7 @@ function CheckoutContent() {
       {/* ── URGENCY BAR ── */}
       <div style={{ background: t.accent, padding: "10px 16px", textAlign: "center" }}>
         <p style={{ fontSize: 13, fontWeight: 500, letterSpacing: "0.04em", lineHeight: 1.4, color: t.accentText }}>
-          ⚡ SUẤT HỌC ĐỒNG HÀNH 30 NGÀY CÙNG THẦY VIỆT — QUÉT MÃ ĐỂ KÍCH HOẠT TÀI KHOẢN SKOOL &amp; NHẬN BỘ ĐỒ NGHỀ HÔM NAY
+          ⚡ SUẤT HỌC ĐỒNG HÀNH 30 NGÀY — QUÉT MÃ ĐỂ KÍCH HOẠT TÀI KHOẢN SKOOL &amp; NHẬN BỘ ĐỒ NGHỀ HÔM NAY
         </p>
       </div>
 

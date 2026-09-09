@@ -53,46 +53,52 @@ function FailedIcon({ index, color = "var(--cl-danger, #d93025)" }: { index: num
   );
 }
 
-export function PainSection() {
+export function PainSection({ isV2 = false }: { isV2?: boolean }) {
   const c = useContent();
   const t = useTheme();
 
+  // Giữ trọn đủ 6 bế tắc đời thật của người có nghề ở cả 2 bản V1 và V2
+  const painList = c.painItems;
+
   return (
-    <Sec maxWidth={1020}>
-      {/* ── Phần 1: 6 Bế Tắc Thực Tế ── */}
+    <Sec maxWidth={1020} id="sec-pain">
+      {/* ── Phần 1: Các Bế Tắc Thực Tế ── */}
       <FadeIn>
         <div style={{ textAlign: "center", marginBottom: 44 }}>
           <Label>{c.painLabel || "// NỖI KHỔ NGƯỜI CÓ NGHỀ"}</Label>
           <SH typed>{c.painHeading || "Ngoài đời làm nghề rất giỏi, nhưng lên mạng lại chẳng ai biết bạn là ai?"}</SH>
-          {c.painSub && (
-            <p style={{
-              fontFamily: t.fontBody,
-              fontSize: "clamp(16px, 1.8vw, 18px)",
-              lineHeight: 1.8,
-              color: "var(--cl-text-body, #4b5563)",
-              maxWidth: 720,
-              margin: "16px auto 0",
-              textWrap: "balance",
-            }}>
-              {c.painSub}
+          <div style={{
+            fontFamily: t.fontBody,
+            fontSize: "clamp(16px, 1.8vw, 18.5px)",
+            lineHeight: 1.7,
+            color: "var(--cl-text-body, #4b5563)",
+            maxWidth: 680,
+            margin: "16px auto 0",
+            textAlign: "center",
+          }}>
+            <p style={{ margin: 0, textWrap: "balance" }}>
+              Cái khó của người lớn đi làm không phải là thiếu chữ.
             </p>
-          )}
+            <p style={{ margin: "6px 0 0", textWrap: "balance" }}>
+              Mà là muốn giữ cái chất đàng hoàng của mình... nhưng nếu không làm video thì không có khách.
+            </p>
+          </div>
         </div>
       </FadeIn>
 
-      {/* Grid 6 Thẻ Bế Tắc */}
+      {/* Grid Thẻ Bế Tắc */}
       <FadeIn delay={100}>
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 460px), 1fr))",
           gap: 20,
-          marginBottom: 72,
+          marginBottom: isV2 ? 40 : 72,
         }}>
-          {c.painItems?.map((item, i) => (
+          {painList?.map((item, i) => (
             <div
               key={i}
               style={{
-                background: "var(--cl-card, #f8f9fa)",
+                background: "var(--cl-card, #ffffff)",
                 border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                 borderRadius: t.cardRadius || 16,
                 padding: "24px 28px",
@@ -121,132 +127,144 @@ export function PainSection() {
                   <line x1="11" y1="3" x2="3" y2="11" />
                 </svg>
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <h3 style={{
                   fontFamily: t.fontBody,
-                  fontSize: "clamp(17px, 1.9vw, 19px)",
+                  fontSize: "clamp(17px, 1.8vw, 18.5px)",
                   fontWeight: 700,
                   color: "var(--cl-text-base, #111827)",
                   margin: 0,
-                  lineHeight: 1.45,
+                  lineHeight: 1.4,
+                  textWrap: "balance",
                 }}>
                   {item.title}
                 </h3>
+                <div style={{
+                  fontFamily: t.fontBody,
+                  fontSize: "clamp(15px, 1.6vw, 16px)",
+                  lineHeight: 1.7,
+                  color: "var(--cl-text-body, #4b5563)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                }}>
+                  {item.desc.split("\n\n").map((paragraph, pIdx) => (
+                    <p key={pIdx} style={{ margin: 0, textWrap: "pretty" }}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
+
+      {/* ── Phần 2: 4 Ngõ Cụt Đã Thử (Chỉ hiện ở bản V1) ── */}
+      {!isV2 && (
+        <FadeIn delay={150}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <span style={{
+              fontFamily: t.fontMono,
+              fontSize: 13,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              color: "var(--cl-accent, #1a73e8)",
+              fontWeight: 700,
+              display: "inline-block",
+              marginBottom: 12,
+            }}>
+              // NHỮNG LỐI TẮT BẾ TẮC
+            </span>
+            <h3 style={{
+              fontFamily: t.fontDisplay,
+              fontSize: "clamp(24px, 3.2vw, 36px)",
+              fontWeight: 500,
+              color: "var(--cl-text-base, #111827)",
+              maxWidth: 780,
+              margin: "0 auto 12px",
+              lineHeight: 1.25,
+              letterSpacing: "-0.018em",
+              textWrap: "balance",
+            }}>
+              Có phải bạn cũng từng thử đủ cách này rồi... nhưng đâu vẫn hoàn&nbsp;đấy?
+            </h3>
+            <p style={{
+              fontFamily: t.fontBody,
+              fontSize: "clamp(16px, 1.7vw, 17px)",
+              color: "var(--cl-text-body, #4b5563)",
+              maxWidth: 660,
+              margin: "0 auto",
+              fontStyle: "italic",
+              lineHeight: 1.75,
+            }}>
+              {c.failedSolutionsSub || "Những cách chắp vá chỉ làm bạn mất thêm thời gian và thêm nản lòng."}
+            </p>
+          </div>
+
+          {/* Grid 4 Thẻ Giải Pháp Sai */}
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
+            gap: 16,
+            marginBottom: 52,
+          }}>
+            {c.failedSolutions?.map((sol, i) => (
+              <div
+                key={i}
+                style={{
+                  background: "var(--cl-card, #f8f9fa)",
+                  border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
+                  borderRadius: t.cardRadius || 16,
+                  padding: "26px 22px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 14,
+                  textAlign: "left",
+                  transition: "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
+                }}
+              >
+                {/* Icon Container đồng bộ với style web */}
+                <div style={{
+                  width: 44,
+                  height: 44,
+                  borderRadius: 12,
+                  background: "rgba(217, 48, 37, 0.06)",
+                  border: "1px solid rgba(217, 48, 37, 0.18)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#d93025",
+                  flexShrink: 0,
+                }}>
+                  <FailedIcon index={i} color="#d93025" />
+                </div>
+
+                <h4 style={{
+                  fontFamily: t.fontBody,
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "var(--cl-text-base, #111827)",
+                  margin: 0,
+                  lineHeight: 1.4,
+                }}>
+                  {sol.title}
+                </h4>
                 <p style={{
                   fontFamily: t.fontBody,
-                  fontSize: "clamp(16px, 1.6vw, 17px)",
+                  fontSize: "16px",
                   lineHeight: 1.75,
                   color: "var(--cl-text-body, #4b5563)",
                   margin: 0,
+                  whiteSpace: "pre-line",
                 }}>
-                  {item.desc}
+                  {sol.desc}
                 </p>
               </div>
-            </div>
-          ))}
-        </div>
-      </FadeIn>
-
-      {/* ── Phần 2: 4 Ngõ Cụt Đã Thử ── */}
-      <FadeIn delay={150}>
-        <div style={{ textAlign: "center", marginBottom: 36 }}>
-          <span style={{
-            fontFamily: t.fontMono,
-            fontSize: 13,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "var(--cl-accent, #1a73e8)",
-            fontWeight: 700,
-            display: "inline-block",
-            marginBottom: 12,
-          }}>
-            // NHỮNG LỐI TẮT BẾ TẮC
-          </span>
-          <h3 style={{
-            fontFamily: t.fontDisplay,
-            fontSize: "clamp(24px, 3.2vw, 36px)",
-            fontWeight: 500,
-            color: "var(--cl-text-base, #111827)",
-            margin: "0 0 12px",
-            lineHeight: 1.25,
-            letterSpacing: "-0.018em",
-          }}>
-            {c.failedSolutionsHeading || "Có phải bạn cũng từng thử đủ cách này rồi... nhưng đâu vẫn hoàn đấy?"}
-          </h3>
-          <p style={{
-            fontFamily: t.fontBody,
-            fontSize: "clamp(16px, 1.7vw, 17px)",
-            color: "var(--cl-text-body, #4b5563)",
-            maxWidth: 660,
-            margin: "0 auto",
-            fontStyle: "italic",
-            lineHeight: 1.75,
-          }}>
-            {c.failedSolutionsSub || "Những cách chắp vá chỉ làm bạn mất thêm thời gian và thêm nản lòng."}
-          </p>
-        </div>
-
-        {/* Grid 4 Thẻ Giải Pháp Sai */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
-          gap: 16,
-          marginBottom: 52,
-        }}>
-          {c.failedSolutions?.map((sol, i) => (
-            <div
-              key={i}
-              style={{
-                background: "var(--cl-card, #f8f9fa)",
-                border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
-                borderRadius: t.cardRadius || 16,
-                padding: "26px 22px",
-                display: "flex",
-                flexDirection: "column",
-                gap: 14,
-                textAlign: "left",
-                transition: "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
-              }}
-            >
-              {/* Icon Container đồng bộ với style web */}
-              <div style={{
-                width: 44,
-                height: 44,
-                borderRadius: 12,
-                background: "rgba(217, 48, 37, 0.06)",
-                border: "1px solid rgba(217, 48, 37, 0.18)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#d93025",
-                flexShrink: 0,
-              }}>
-                <FailedIcon index={i} color="#d93025" />
-              </div>
-
-              <h4 style={{
-                fontFamily: t.fontBody,
-                fontSize: "18px",
-                fontWeight: 700,
-                color: "var(--cl-text-base, #111827)",
-                margin: 0,
-                lineHeight: 1.4,
-              }}>
-                {sol.title}
-              </h4>
-              <p style={{
-                fontFamily: t.fontBody,
-                fontSize: "16px",
-                lineHeight: 1.75,
-                color: "var(--cl-text-body, #4b5563)",
-                margin: 0,
-              }}>
-                {sol.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </FadeIn>
+            ))}
+          </div>
+        </FadeIn>
+      )}
 
       {/* ── Phần 3: Cú Bẻ Lái & Tẩy Trắng Tội Lỗi (The Reframe) ── */}
       {c.painReframeBody && (
@@ -272,16 +290,82 @@ export function PainSection() {
             }}>
               {c.painReframeHeading || "...Và kết quả cuối cùng vẫn là con số 0 tròn trĩnh?"}
             </h4>
-            <p style={{
+            <div style={{
               fontFamily: t.fontBody,
-              fontSize: "clamp(17px, 1.9vw, 19px)",
-              lineHeight: 1.85,
+              fontSize: "clamp(16.5px, 1.8vw, 18.5px)",
+              lineHeight: 1.8,
               color: "var(--cl-text-base, #111827)",
-              margin: 0,
-              textWrap: "balance",
+              maxWidth: 720,
+              margin: "0 auto",
             }}>
-              {c.painReframeBody}
-            </p>
+              <p style={{ margin: "0 0 16px", textWrap: "balance" }}>
+                Bạn chưa làm được video không phải vì bạn dở,<br className="hidden md:inline" />
+                và càng không phải do bạn thiếu chuyên môn.
+              </p>
+              <p style={{
+                margin: "0 0 18px",
+                fontWeight: 600,
+                color: "var(--cl-accent, #1a73e8)",
+              }}>
+                Bạn chỉ đang thiếu đúng 2 thứ:
+              </p>
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+                gap: 12,
+                textAlign: "left",
+                marginTop: 14,
+              }}>
+                <div style={{
+                  background: "var(--cl-card, #ffffff)",
+                  border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
+                  borderRadius: 12,
+                  padding: "16px 18px",
+                  display: "flex",
+                  gap: 12,
+                  alignItems: "flex-start",
+                }}>
+                  <span style={{
+                    fontFamily: t.fontMono,
+                    fontWeight: 700,
+                    fontSize: 13,
+                    color: "var(--cl-accent, #1a73e8)",
+                    background: "rgba(26, 115, 232, 0.08)",
+                    padding: "2px 8px",
+                    borderRadius: 6,
+                    flexShrink: 0,
+                    marginTop: 2,
+                  }}>01</span>
+                  <span style={{ fontSize: "15.5px", lineHeight: 1.6, color: "var(--cl-text-base, #111827)" }}>
+                    Biết cách <strong>mở đầu trong 3 giây đầu</strong> để người ta chịu dừng lại nghe bạn nói.
+                  </span>
+                </div>
+                <div style={{
+                  background: "var(--cl-card, #ffffff)",
+                  border: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
+                  borderRadius: 12,
+                  padding: "16px 18px",
+                  display: "flex",
+                  gap: 12,
+                  alignItems: "flex-start",
+                }}>
+                  <span style={{
+                    fontFamily: t.fontMono,
+                    fontWeight: 700,
+                    fontSize: 13,
+                    color: "var(--cl-accent, #1a73e8)",
+                    background: "rgba(26, 115, 232, 0.08)",
+                    padding: "2px 8px",
+                    borderRadius: 6,
+                    flexShrink: 0,
+                    marginTop: 2,
+                  }}>02</span>
+                  <span style={{ fontSize: "15.5px", lineHeight: 1.6, color: "var(--cl-text-base, #111827)" }}>
+                    Một <strong>người làm nghề ngồi cạnh</strong>, soi từng khung hình và chỉ thẳng bạn đang vấp ở giây nào.
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </FadeIn>
       )}
