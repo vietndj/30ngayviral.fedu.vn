@@ -827,12 +827,12 @@ export const DEFAULT_CONTENT: PageContent = {
 
   // ── Bonus (Đồ nghề thực chiến đi kèm) ──
   bonusLabel: "TỦ ĐỒ NGHỀ THỰC CHIẾN ĐI KÈM",
-  bonusHeading: "Mở máy lên là có sẵn đồ nghề để làm — Khỏi mất công đi nhặt nhạnh từng file rác trên mạng",
-  bonusSub: "Làm video nản nhất không phải là quay, mà là lúc dựng thiếu bản nhạc phải đi tìm, tải font về thì gãy dấu tiếng Việt, đăng lên kênh thì bị nền tảng tắt tiếng vì dính bản quyền. Toàn bộ đồ nghề này tôi đã gom sẵn 1 link Drive gọn gàng, bạn chỉ việc tải về và kéo vào CapCut dùng ngay:",
+  bonusHeading: "Mở máy lên là có sẵn đồ nghề — Không mất công nhặt nhạnh trên mạng",
+  bonusSub: "Gom sẵn 1 link Drive gọn gàng. Bạn chỉ việc tải về, kéo vào CapCut và dựng ngay:",
   bonusItems: courseConfig.bonuses,
 
   // ── Section 11: Final CTA ──
-  urgencyBar: "⚠ HỌC PHÍ ƯU ĐÃI CHỈ DÀNH CHO LỚP THỰC CHIẾN THÁNG NÀY (GIỚI HẠN SỐ LƯỢNG ĐỂ THẦY SOI TIMELINE)",
+  urgencyBar: "⚡ HỌC PHÍ ƯU ĐÃI 999.000Đ (TIẾT KIỆM 78%) · TRỌN BỘ 5 KHÓA HỌC & TỦ ĐỒ NGHỀ DÙNG TRỌN ĐỜI",
   ctaLabel: "// BẮT ĐẦU HÀNH TRÌNH",
   ctaHeading: "Tự làm chủ kỹ năng video ngắn — Không còn phụ thuộc vào ai",
   ctaSub: "Một bữa lẩu bạn ăn rồi cũng hết. Nhưng 999.000đ đầu tư cho kỹ năng này sẽ giúp bạn tự tin làm video cả đời, có khách hàng thật và tự tay xây dựng tài sản cho chính mình.",
@@ -840,7 +840,7 @@ export const DEFAULT_CONTENT: PageContent = {
   valueStackTitle: "TỔNG GIÁ TRỊ THỰC TẾ BẠN NHẬN ĐƯỢC:",
   valueStack: [
     { label: "Trọn bộ 5 Khóa học thực chiến (Kịch bản, Góc máy, CapCut, AI, Ra đơn)", price: "2.500.000 VNĐ" },
-    { label: "Đặc quyền nộp bài & Thầy Nguyễn Đức Việt trực tiếp soi timeline trên Skool", price: "2.000.000 VNĐ" },
+    { label: "Đặc quyền nộp bài & Thầy Nguyễn Đức Việt trực tiếp nhận xét, sửa bài trên Skool", price: "2.000.000 VNĐ" },
     { label: "Tủ đồ nghề 3 món (Nhạc sạch, Preset CapCut, Prompt AI)", price: "ĐI KÈM MIỄN PHÍ" }
   ],
   guarantee: "⚡ Quy trình 1-Chạm: Chuyển khoản xong → Vào học NGAY LẬP TỨC trên Skool. Thầy đồng hành hướng dẫn thực hành trực tiếp.",

@@ -175,7 +175,7 @@ export function BonusSection() {
                           alignItems: "center",
                           gap: 8,
                         }}>
-                          <span>🎧</span> BẤM NGHE THỬ CHẤT NHẠC ĐĨNH ĐẠC (NO COPYRIGHT):
+                          <span>🎧</span> NGHE THỬ NHẠC MỘC (NO COPYRIGHT):
                         </div>
                         <audio
                           controls
@@ -193,7 +193,7 @@ export function BonusSection() {
                           marginTop: 10,
                           lineHeight: 1.5,
                         }}>
-                          ✓ Âm trầm dày, mộc mạc · Không lo bị Facebook/TikTok tắt tiếng
+                          ✓ Âm trầm ấm · Sạch bản quyền Facebook & TikTok
                         </div>
                       </div>
                     )}
@@ -230,7 +230,7 @@ export function BonusSection() {
                           background: "var(--cl-card2, #f1f3f4)",
                           borderTop: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                         }}>
-                          ▶ Thực tế: AI lọc sạch 7 lỗi văn mẫu & nhả kịch bản 2 cột
+                          ▶ Thực tế: AI nhả kịch bản 2 cột, không sáo rỗng
                         </div>
                       </div>
                     )}
@@ -263,7 +263,7 @@ export function BonusSection() {
                           background: "var(--cl-card2, #f1f3f4)",
                           borderTop: "1px solid var(--cl-line, rgba(0, 0, 0, 0.08))",
                         }}>
-                          ✦ Kéo - thả dùng ngay: Chữ hiển thị chuẩn vùng an toàn trên điện thoại
+                          ✦ Kéo - thả dùng ngay: Chuẩn vùng an toàn điện thoại
                         </div>
                       </div>
                     )}
