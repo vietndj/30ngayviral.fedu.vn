@@ -217,7 +217,7 @@ export function ProofSection() {
       <FadeIn>
         <div style={{ textAlign: "center", marginBottom: 44 }}>
           <Label>// BẰNG CHỨNG NGƯỜI THẬT VIỆC THẬT</Label>
-          <SH typed>Học bài nào — Cầm máy lên ra ngay video có khách hỏi mua bài đó</SH>
+          <SH typed>Tự tay làm được clip thật — Và luôn có Thầy đồng hành sửa từng nhát cắt</SH>
           <p style={{
             fontFamily: t.fontBody,
             fontSize: "clamp(16.5px, 1.8vw, 18.5px)",
@@ -227,7 +227,7 @@ export function ProofSection() {
             margin: "16px auto 0",
             textWrap: "balance",
           }}>
-            Không cần máy cơ chục triệu, không diễn trò câu view rẻ tiền. Đây là thành phẩm học viên tự làm bằng 1 điện thoại và những dòng khách thật chủ động nhắn tin Zalo xin tư vấn:
+            Không sợ bị đem con bỏ chợ hay mò mẫm một mình. Đây là thành phẩm học viên tự quay bằng 1 điện thoại và những tin nhắn Thầy Việt trực tiếp đồng hành, sửa bài và video call hỗ trợ:
           </p>
         </div>
       </FadeIn>
@@ -404,7 +404,7 @@ export function ProofSection() {
               textTransform: "uppercase",
               letterSpacing: "0.1em",
             }}>
-              <span>💬</span> 02 · KHÁCH HÀNG THẬT &amp; ĐƠN VỀ ZALO
+              <span>💬</span> 02 · ĐẶC QUYỀN ĐỒNG HÀNH: THẦY TRỰC TIẾP HỖ TRỢ
             </div>
 
             <ZaloProofCarousel items={zaloItems} />
@@ -423,7 +423,7 @@ export function ProofSection() {
           {[
             { icon: "🛡️", title: "Không giật tít, làm màu", desc: "Bảo toàn 100% thể diện & uy tín làm nghề nhiều năm của bạn." },
             { icon: "🎯", title: "300–500 view đúng tệp", desc: "Khách có tiền họ xem kỹ và chủ động nhắn tin Zalo xin tư vấn lịch thiệp." },
-            { icon: "👨‍🏫", title: "Thầy trực tiếp sửa timeline", desc: "Nộp clip lên Skool là thầy chỉ từng nhát cắt, câu thừa để hoàn thiện ngay." },
+            { icon: "👨‍🏫", title: "Thầy trực tiếp sửa bài", desc: "Nộp clip lên là Thầy chỉ từng câu thừa, nhát vấp, cần là mở Video Call chỉ ngay." },
           ].map((item, idx) => (
             <div
               key={idx}
