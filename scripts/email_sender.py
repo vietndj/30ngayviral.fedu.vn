@@ -19,7 +19,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 RESEND_API_KEY = os.getenv("RESEND_API_KEY", "").strip()
 RESEND_FROM_EMAIL = os.getenv("RESEND_FROM_EMAIL", "Lớp 30 ngày làm nội dung viral <viet@fedu.vn>").strip()
 
-DEFAULT_SKOOL_URL = "https://www.skool.com/nguyenducviet-8640"
+DEFAULT_SKOOL_URL = "https://www.skool.com/nguyenducviet-8640?invite=39f444acd4f041e78b8c1c0c2a223faf"
 DEFAULT_ZALO_PHONE = "0934.688.632"
 DEFAULT_ZALO_URL = "https://zalo.me/0934688632"
 DEFAULT_PRICE = "999.000đ"
@@ -124,10 +124,10 @@ def generate_activation_html(
 
           <!-- CTA Button Chính: Vào lớp học Skool -->
           <tr>
-            <td style="padding: 0 28px 28px 28px;">
+            <td style="padding: 0 28px 24px 28px;">
               <div style="background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px 20px; text-align: center;">
                 <p style="margin: 0 0 16px 0; font-size: 15px; font-weight: 600; color: #0f172a;">
-                  Bấm vào nút bên dưới để vào thẳng lớp học trên Skool:
+                  Bấm vào nút bên dưới để vào thẳng lớp học & nhận đủ 4 khóa trên Skool:
                 </p>
                 <a href="{skool_url}" target="_blank" class="cta-btn" style="display: inline-block; background-color: #1a73e8; color: #ffffff !important; text-decoration: none !important; font-size: 15px; font-weight: 700; padding: 15px 36px; border-radius: 10px; letter-spacing: 0.03em; box-shadow: 0 4px 16px rgba(26, 115, 232, 0.35);">
                   <span style="color: #ffffff !important; text-decoration: none !important;">THAM GIA LỚP HỌC TRÊN SKOOL →</span>
@@ -135,6 +135,34 @@ def generate_activation_html(
                 <p style="margin: 12px 0 0 0; font-size: 13px; color: #64748b;">
                   Đăng nhập bằng email: <a href="mailto:{clean_email}" style="color: #1a73e8 !important; text-decoration: underline !important; font-weight: 600;"><span style="color: #1a73e8 !important; text-decoration: underline !important;">{clean_email}</span></a>
                 </p>
+              </div>
+            </td>
+          </tr>
+
+          <!-- TRỌN BỘ 4 KHÓA HỌC THỰC CHIẾN ĐƯỢC MỞ KHÓA -->
+          <tr>
+            <td style="padding: 0 28px 26px 28px;">
+              <div style="font-family: 'SVN-Sonoma', 'Sonoma', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #1a73e8; margin-bottom: 12px;">
+                <span style="opacity: 0.4;">// </span>ĐẶC QUYỀN MỞ KHÓA TRỌN BỘ 4 KHÓA HỌC SKOOL
+              </div>
+              <div style="background-color: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 18px 20px;">
+                <div style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-bottom: 12px;">
+                  Tài khoản của bạn đã được kích hoạt quyền truy cập trọn bộ 4 khóa học:
+                </div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 14px; line-height: 1.7; color: #334155;">
+                  <tr>
+                    <td style="padding: 5px 0;">🎬 <strong>1. Làm video với Capcut</strong> — Tích lũy giờ bay, làm chủ công cụ từ con số 0</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 5px 0;">📐 <strong>2. Logic quay, Kỹ Thuật Chuyển Cảnh & Kịch Bản AI</strong> — Ma trận cỡ cảnh, nhịp điệu & chuyển cảnh tàng hình</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 5px 0;">💡 <strong>3. Từ Ý Tưởng Đến Kịch Bản Viral</strong> — Khai phá ý tưởng, bẻ khóa cấu trúc kịch bản giữ chân người xem</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 5px 0;">⚡ <strong>4. Ứng dụng AI Edit Video Marketing</strong> — Đòn bẩy AI tự động hóa sản xuất & tối ưu thời gian dựng phim</td>
+                  </tr>
+                </table>
               </div>
             </td>
           </tr>

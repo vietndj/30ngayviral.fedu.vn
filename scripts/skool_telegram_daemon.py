@@ -294,9 +294,11 @@ def execute_skool_invite(
                     f"👤 <b>Học viên:</b> {display_name}\n"
                     f"📧 <b>Email:</b> <code>{clean_email}</code>\n"
                     f"⏰ <b>Thời gian gửi:</b> {now}\n\n"
-                    f"📚 <b>Đã phân quyền 2 khóa học:</b>\n"
+                    f"📚 <b>Đã phân quyền trọn bộ 4 khóa học thực chiến:</b>\n"
                     f"  1. Làm video với Capcut\n"
-                    f"  2. Logic quay, Kỹ Thuật Chuyển Cảnh & Kịch Bản AI\n\n"
+                    f"  2. Logic quay, Kỹ Thuật Chuyển Cảnh & Kịch Bản AI\n"
+                    f"  3. Từ Ý Tưởng Đến Kịch Bản Viral\n"
+                    f"  4. Ứng dụng AI Edit Video Marketing\n\n"
                     f"⚡ <i>Hệ thống Mac sẽ tự động theo dõi và báo qua Telegram ngay khi học viên bấm JOIN NOW vào nhóm!</i>"
                 )
             return True
@@ -359,7 +361,7 @@ def handle_student_activation(
         f"⏰ <b>Thời gian nhận:</b> {now_str}\n\n"
         f"<i>Đang tự động thực hiện:</i>\n"
         f"• Gửi email xác nhận học phí & link vào lớp (viet@fedu.vn)...\n"
-        f"• Mời vào nhóm Skool và cấp quyền 2 khóa học...\n"
+        f"• Mời vào nhóm Skool và cấp quyền trọn bộ 4 khóa học...\n"
         f"• Ghi nhận vào Google Sheets..."
     )
 
@@ -383,7 +385,7 @@ def handle_student_activation(
     mail_status_text = "Đã gửi thành công (viet@fedu.vn)" if mail_ok else f"Lỗi: {mail_res.get('error', 'Không xác định')}"
 
     skool_status_icon = "✅" if skool_ok else "⏳"
-    skool_status_text = "Đã gửi lời mời & phân quyền 2 khóa học" if skool_ok else "Đang hàng đợi / Đã đẩy lên Cloud Worker"
+    skool_status_text = "Đã gửi lời mời & phân quyền 4 khóa học" if skool_ok else "Đang hàng đợi / Đã đẩy lên Cloud Worker"
 
     sheet_action_desc = "Đã cập nhật hàng có sẵn" if sheet_res.get("action") == "updated" else "Đã thêm dòng mới vào sổ"
 
@@ -397,6 +399,9 @@ def handle_student_activation(
         f"{skool_status_icon} <b>Lời mời Skool:</b> {skool_status_text}\n"
         f"   1. Làm video với Capcut\n"
         f"   2. Logic quay, Kỹ Thuật Chuyển Cảnh & Kịch Bản AI\n"
+        f"   3. Từ Ý Tưởng Đến Kịch Bản Viral\n"
+        f"   4. Ứng dụng AI Edit Video Marketing\n"
+        f"🔗 <b>Link 4 khóa Skool:</b> https://www.skool.com/nguyenducviet-8640?invite=39f444acd4f041e78b8c1c0c2a223faf\n"
         f"📝 <b>Google Sheets:</b> {sheet_action_desc} (Cột K)\n"
         f"━━━━━━━━━━━━━━━━━━━━\n"
         f"⚡ <i>Hệ thống Mac sẽ tự động theo dõi và báo qua Telegram ngay khi học viên bấm JOIN NOW vào nhóm!</i>"

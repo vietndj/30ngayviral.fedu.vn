@@ -123,9 +123,9 @@ export default async function handler(
 📧 <b>Email:</b> ${email || "Chưa cung cấp"}
 💵 <b>Học phí:</b> ${courseConfig.price} ${courseConfig.currency}
 🔖 <b>Mã GD:</b> ${transactionId || "Chuyển khoản VietQR"}
-📚 <b>Khóa học:</b> ${courseConfig.courseName}
+📚 <b>Khóa học:</b> ${courseConfig.courseName} (Trọn bộ 4 khóa Skool)
 ━━━━━━━━━━━━━━━━━━━━
-⚡ <b>Lệnh Skool:</b> Tự động mời qua hệ thống Mac...`;
+⚡ <b>Lệnh Skool:</b> Tự động mời & cấp quyền 4 khóa...`;
 
     const replyMarkup = email ? {
       inline_keyboard: [
@@ -134,7 +134,7 @@ export default async function handler(
           { text: "📋 Copy Email", copy_text: { text: email.trim() } }
         ],
         [
-          { text: "🌐 Mở trang Invite Skool", url: "https://www.skool.com/nguyenducviet-8640" }
+          { text: "🌐 Mở Link 4 Khóa Skool", url: "https://www.skool.com/nguyenducviet-8640?invite=39f444acd4f041e78b8c1c0c2a223faf" }
         ]
       ]
     } : undefined;

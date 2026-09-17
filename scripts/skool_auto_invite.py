@@ -18,8 +18,12 @@ GROUP_URL = "https://www.skool.com/nguyenducviet-8640"
 
 TARGET_COURSES = [
     "Làm video với Capcut",
-    "Logic quay, Kỹ Thuật Chuyển Cảnh & Kịch Bản AI"
+    "Logic quay, Kỹ Thuật Chuyển Cảnh & Kịch Bản AI",
+    "Từ Ý Tưởng Đến Kịch Bản Viral",
+    "Ứng dụng AI Edit Video Marketing"
 ]
+
+MASTER_INVITE_URL = "https://www.skool.com/nguyenducviet-8640?invite=39f444acd4f041e78b8c1c0c2a223faf"
 
 def invite_member_to_skool(email: str, headless: bool = True) -> bool:
     email = email.strip()
@@ -90,14 +94,24 @@ def invite_member_to_skool(email: str, headless: bool = True) -> bool:
                 access_text = course_access_link.inner_text().strip()
                 print(f"📚 Trạng thái khóa học hiện tại: {access_text}")
                 
-                # Nếu chưa phải (2/19 courses), bấm vào để chọn 2 khóa
-                if "(2/" not in access_text:
-                    print("⚙️ Cấu hình lại cấp quyền 2 khóa học...")
+                # Nếu chưa phải (4/19 courses), bấm vào để chọn đủ 4 khóa
+                if "(4/" not in access_text:
+                    print("⚙️ Cấu hình lại cấp quyền trọn bộ 4 khóa học...")
                     course_access_link.click()
                     page.wait_for_timeout(1500)
 
                     for course_title in TARGET_COURSES:
-                        short_title = "Làm video với Capcut" if "Capcut" in course_title else "Logic quay"
+                        if "Capcut" in course_title:
+                            short_title = "Làm video với Capcut"
+                        elif "Logic quay" in course_title:
+                            short_title = "Logic quay"
+                        elif "Từ Ý Tưởng" in course_title:
+                            short_title = "Từ Ý Tưởng"
+                        elif "Ứng dụng AI" in course_title:
+                            short_title = "Ứng dụng AI Edit"
+                        else:
+                            short_title = course_title
+
                         row = page.locator(f"//div[contains(text(), '{short_title}')]/ancestor::div[@checkboxcolor]").first
                         if row.is_visible(timeout=2000):
                             btn = row.locator("button").first
@@ -121,7 +135,7 @@ def invite_member_to_skool(email: str, headless: bool = True) -> bool:
                             cancel_btn.click()
                             page.wait_for_timeout(1000)
                 else:
-                    print("✅ Đã sẵn sàng cấu hình cấp đúng 2/19 khóa học.")
+                    print("✅ Đã sẵn sàng cấu hình cấp đúng 4/19 khóa học.")
 
             # 4. Tìm ô nhập Email và điền
             print(f"✍️ Đang điền email: {email}...")
@@ -140,7 +154,7 @@ def invite_member_to_skool(email: str, headless: bool = True) -> bool:
             if send_btn.is_enabled():
                 send_btn.click()
                 page.wait_for_timeout(3500)
-                print(f"🎉 HOÀN TẤT THÀNH CÔNG: Đã gửi lời mời Skool (kèm 2 khóa học) cho {email}!")
+                print(f"🎉 HOÀN TẤT THÀNH CÔNG: Đã gửi lời mời Skool (kèm trọn bộ 4 khóa học) cho {email}!")
                 context.close()
                 return True
             else:
