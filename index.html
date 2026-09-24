@@ -113,6 +113,9 @@
     </div>
     <script>
       window.addEventListener('error', function(e) {
+        if (e.message && (e.message.includes('ResizeObserver') || e.message.includes('Script error'))) {
+          return;
+        }
         var display = document.getElementById('error-display');
         var message = document.getElementById('error-message');
         if (display && message) {
