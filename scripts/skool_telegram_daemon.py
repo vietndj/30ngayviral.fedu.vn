@@ -38,7 +38,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 BOT_TOKEN = (
     os.getenv("SKOOL_BOT_TOKEN") or 
     os.getenv("TELEGRAM_BOT_TOKEN") or 
-    "8796389265:AAH-QkaZNIrOKiMLJexprI5EboUJplL7a3c"
+    ""
 ).strip().strip('"').strip("'")
 
 ALLOWED_CHAT_ID = int(os.getenv("TELEGRAM_CHAT_ID", "2050406425"))

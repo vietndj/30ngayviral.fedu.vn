@@ -346,14 +346,14 @@ export const DEFAULT_CONTENT: PageContent = {
       highlight: "nhìn lúng túng"
     },
     {
-      title: "Cặm cụi quay dựng cả tối, nhận về vài chục view... thấy hụt hẫng",
-      desc: "Bỏ cả buổi tối ngồi nắn từng câu, cắt từng đoạn vì sợ nói gì sơ suất thì mang tiếng với anh em trong nghề.\n\nĐăng lên hồi hộp mở ra xem liên tục, mà view vẫn đứng im... thấy công sức mình bỏ ra chẳng đi đến đâu.",
-      highlight: "thấy hụt hẫng"
+      title: "Setup lỉnh kỉnh, quay đi quay lại nhiều lần đến tụt cả năng lượng",
+      desc: "Mỗi lần định làm video là vật vã setup, cặm cụi ngồi nói rồi cắt ghép cả tối. Vừa làm đạo diễn vừa làm diễn viên đến kiệt sức.\n\nĐăng lên hồi hộp chờ đợi mà view vẫn đứng im... công sức bỏ ra không thấy kết quả, hụt hẫng và chẳng còn năng lượng duy trì kênh.",
+      highlight: "tụt cả năng lượng"
     },
     {
-      title: "Ngại chào mời vì sợ mất giá, nhưng không bán hàng thì lấy gì duy trì?",
-      desc: "Làm ăn xưa nay coi trọng chữ tín, sợ nhất cảm giác lên mạng nói chuyện bán hàng làm người ta nghĩ mình chèo kéo.\n\nNhưng nếu cứ giữ thanh cao thì tiền mặt bằng, tiền lương nhân viên mỗi tháng vẫn phải lo... muốn giới thiệu đàng hoàng mà không biết mở lời sao cho tự nhiên.",
-      highlight: "lấy gì duy trì?"
+      title: "Ngại chào mời vì sợ mất giá, không biết mở lời sao để hút sỉ, tuyển đại lý?",
+      desc: "Làm ăn xưa nay coi trọng chữ tín, sợ nhất cảm giác lên mạng nói chuyện bán hàng làm người ta nghĩ mình chèo kéo.\n\nNhưng nếu cứ giữ thanh cao thì lấy gì duy trì? Muốn mở rộng kinh doanh, tuyển F1, tìm khách sỉ (B2B) mà không có video định vị uy tín thì không ai tin theo.",
+      highlight: "hút sỉ, tuyển đại lý"
     },
     {
       title: "Mua khóa học về xem xong để đó, vì không có người sửa bài cho ngành của mình",
@@ -897,14 +897,14 @@ export const DEFAULT_CONTENT: PageContent = {
 
   solutionsTabs: [
     {
-      title: "🤖 Chủ Shop / SMEs (Bán Ads)",
-      subtitle: "Thoát cảnh quảng cáo lôm côm không ra đơn",
-      pain: "Quay video bán hàng đặt máy chết một góc, review như đọc vẹt. Sản phẩm nhìn kém sang, 'hàng chợ', đổ tiền chạy quảng cáo là lỗ.",
-      solution: "Dạy Ma trận Cỡ Cảnh (Toàn - Trung - Cận) để điều hướng mắt khán giả. Dùng Cảnh Cận (Close-up - Nam châm chi tiết) để khoe giá trị tinh hoa của sản phẩm, kích thích sự khao khát. Dùng ánh sáng khối làm sản phẩm nhìn đắt tiền. Dùng B-roll làm bằng chứng chốt sale.",
-      leftLabel: "LÔM CÔM / HÀNG CHỢ",
-      leftDesc: "Đặt máy từ xa góc tĩnh, nói đều đều, đánh sáng phòng phẳng lì rọi thẳng mặt.",
-      rightLabel: "CHỈN CHU / ĐẤT TIỀN",
-      rightDesc: "Luân chuyển cỡ cảnh theo nhịp nói, cận cảnh đặc tả giọt nước/đường nét sắc nét, setup ánh sáng ven nổi khối.",
+      title: "🤖 Chủ Doanh Nghiệp (Bán Lẻ & Tuyển Sỉ)",
+      subtitle: "Thoát cảnh quảng cáo lôm côm, xây uy tín hút đại lý",
+      pain: "Quay video bán hàng như đọc vẹt, hình ảnh kém sang. Muốn hút khách sỉ, tuyển F1 hoặc làm B2B nhưng video nhìn không toát lên vẻ đáng tin cậy.",
+      solution: "Dạy Ma trận Cỡ Cảnh để điều hướng mắt khán giả. Dùng Cảnh Cận để khoe giá trị tinh hoa, kết hợp Ánh sáng khối làm hình ảnh đắt tiền. Dùng kịch bản chia sẻ tầm nhìn và B-roll quy trình để đối tác (F1) tin tưởng chốt sale ngay.",
+      leftLabel: "LÔM CÔM / CHÈO KÉO",
+      leftDesc: "Đặt máy từ xa góc tĩnh, nói đều đều bán lẻ, hình ảnh phẳng lì thiếu độ sâu.",
+      rightLabel: "CHỈN CHU / UY TÍN",
+      rightDesc: "Luân chuyển cỡ cảnh chuyên nghiệp, đặc tả chi tiết đắt tiền, setup ánh sáng nổi khối định vị chuyên gia.",
       icon: "🏪"
     },
     {
