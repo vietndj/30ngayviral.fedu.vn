@@ -162,7 +162,7 @@ function ConfirmBanner({ onReset }: { onReset: () => void }) {
       </div>
       <p style={{ fontSize: 14, color: "var(--cl-text-muted, #64748b)", lineHeight: 1.6 }}>Cần hỗ trợ gấp hoặc sau 5 phút chưa thấy email? Nhắn thẳng Zalo Việt: <a href="https://zalo.me/0934688632" style={{ color: t.accent, fontWeight: 700 }}>0934.688.632</a> (hỗ trợ ngay)</p>
       <button onClick={onReset} style={{ marginTop: 20, background: "transparent", border: `1px solid ${t.line}`, borderRadius: t.btnRadius, padding: "10px 24px", color: t.textMuted ?? "#555", fontSize: 13, cursor: "pointer" }}>
-        Quay lại trang thanh toán
+        Quay lại
       </button>
     </div>
   );
@@ -211,143 +211,107 @@ function CopyButton({ text, label = "Copy" }: { text: string; label?: string }) 
 function PaymentPanel({ bank, qrUrl, onConfirm, onVideoClick }: { bank: BankInfo; qrUrl: string; onConfirm: () => void; onVideoClick: () => void }) {
   const c = useContent();
   const t = useTheme();
-  const priceVal = parseInt(c.price.replace(/\./g, ""), 10);
-  const originalVal = parseInt(c.value.replace(/\./g, ""), 10);
-  const savingVal = originalVal - priceVal;
-  const formattedSaving = new Intl.NumberFormat("vi-VN").format(savingVal);
-  const prefix = (c as any).transferPrefix || "VIDEO";
+  
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [note, setNote] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !phone) {
+      alert("Vui lòng điền họ tên và số điện thoại.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const botToken = "8796389265:AAH-QkaZNIrOKiMLJexprI5EboUJplL7a3c";
+      const chatId = "2050406425";
+      const payload = {
+        chat_id: chatId,
+        text: `🔥 <b>CÓ KHÁCH CẦN TƯ VẤN! (30ngayviral)</b>
+
+👤 Tên: ${name}
+📞 SĐT: ${phone}
+📝 Vấn đề: ${note}`,
+        parse_mode: "HTML",
+      };
+
+      await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      onConfirm(); // Chuyển sang màn hình ConfirmBanner
+    } catch (err) {
+      alert("Có lỗi xảy ra, vui lòng thử lại sau.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <Card highlight style={{ padding: "24px 20px" }}>
-
-
-      <Lbl>Quét mã vào lớp</Lbl>
-
-      {/* ✨ [POSITION 2 BADGE] */}
-      <div style={{
-        background: "linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(16, 185, 129, 0.04))",
-        border: "1px solid rgba(16, 185, 129, 0.4)",
-        borderRadius: 12,
-        padding: "10px 14px",
-        marginBottom: 16,
-        textAlign: "center",
-        boxShadow: "0 4px 20px rgba(16, 185, 129, 0.15)"
-      }}>
-        <div style={{ fontSize: 12.5, fontWeight: 700, color: "#10b981", letterSpacing: "0.03em", textTransform: "uppercase" }}>
-          ✨ BẢO CHỨNG CHÍNH CHỦ TỪ NGUYỄN ĐỨC VIỆT
-        </div>
-        <div style={{ fontSize: 12, color: "var(--cl-text-body, #374151)", marginTop: 3 }}>
-          Đồng hành chữa bài trực tiếp trên Skool · Bản cập nhật 2026
-        </div>
-      </div>
-
-      {/* Pricing block */}
-      <div style={{ textAlign: "center", marginBottom: 18, paddingBottom: 18, borderBottom: "1px solid var(--cl-line, #e2e8f0)" }}>
-        <div style={{ fontSize: 15, color: "var(--cl-text-muted, #64748b)", textDecoration: "line-through" }}>{c.value} VNĐ</div>
-        <div style={{ fontSize: 36, fontWeight: 700, color: "var(--cl-text-base, #111827)" }}>{c.price} <span style={{ fontSize: 16 }}>VNĐ</span></div>
-        <div style={{ fontSize: 14.5, color: t.accent, fontWeight: 700 }}>Tiết kiệm {formattedSaving} VNĐ</div>
-      </div>
-
-      {/* 📱 [Khối Mã QR & Thanh Toán] (Ở giữa, to nhất - Không có chữ VIET QR) */}
+    <Card highlight={true} style={{ padding: "24px 20px" }}>
       <div style={{ textAlign: "center", marginBottom: 20 }}>
-        <p style={{ fontSize: 13, fontWeight: 700, color: t.accent, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.08em" }}>
-          📱 QUÉT MÃ VÀO LỚP NGAY
-        </p>
-        <div style={{ 
-          width: "100%",
-          maxWidth: 320,
-          margin: "0 auto",
-          background: "#fff", 
-          borderRadius: 16, 
-          boxShadow: `0 4px 24px rgba(0, 0, 0, 0.06)`,
-          border: `1px solid var(--cl-line, #e2e8f0)`,
-          overflow: "hidden",
-          padding: "16px 16px 18px",
-          textAlign: "center"
-        }}>
-          <div style={{ width: "100%", aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <img
-              src={qrUrl}
-              alt="Mã QR chuyển khoản Khóa học"
-              style={{ 
-                display: "block", 
-                width: "100%", 
-                height: "100%",
-                objectFit: "contain",
-                borderRadius: 8 
-              }}
-              onError={(e) => {
-                const img = e.currentTarget as HTMLImageElement;
-                img.style.display = "none";
-                const parent = img.parentElement;
-                if (parent) {
-                  parent.innerHTML = `<div style="width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#141417;border-radius:8px;font-size:12px;color:#fff;text-align:center;padding:16px;">QR lỗi</div>`;
-                }
-              }}
-            />
-          </div>
-
-          <div style={{ marginTop: 12, paddingTop: 12, borderTop: "1px solid #e2e8f0", textAlign: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 6 }}>
-              <span style={{ fontSize: 12, fontWeight: 700, color: "#0284c7", letterSpacing: "0.04em" }}>NAPAS 247</span>
-              <span style={{ color: "#cbd5e1" }}>|</span>
-              <span style={{ fontSize: 13, fontWeight: 700, color: "#ea580c", letterSpacing: "0.02em" }}>TPBank</span>
-            </div>
-            <div style={{ fontSize: 13.5, fontWeight: 600, color: "#0f172a", textTransform: "uppercase", letterSpacing: "0.02em" }}>
-              {bank.holder}
-            </div>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 4 }}>
-              <span style={{ fontSize: 14.5, fontWeight: 700, color: "#0f172a", letterSpacing: "0.03em" }}>
-                {bank.account}
-              </span>
-              <CopyButton text={bank.account} label="Copy STK" />
-            </div>
-            <div style={{ fontSize: 13, color: "#64748b", marginTop: 4 }}>
-              Số tiền: <strong style={{ color: "#0f172a", fontWeight: 700 }}>{bank.amount} VNĐ</strong>
-            </div>
-          </div>
+        <div style={{ fontSize: 24, fontWeight: 800, color: "var(--cl-text-base, #111827)", marginBottom: 8 }}>
+          Đăng ký tư vấn lộ trình 30 Ngày Viral
         </div>
-        <p style={{ fontSize: 13.5, color: "var(--cl-text-muted, #64748b)", marginTop: 10 }}>Tương thích: Mọi app ngân hàng &amp; Ví Momo (quét là tự điền đúng tiền và cú pháp)</p>
-      </div>
-
-      {/* 2-STEP INSTRUCTIONS */}
-      <div style={{ marginBottom: 18, background: "#f8fafc", borderRadius: 12, padding: "14px 16px", border: "1px solid var(--cl-line, #e2e8f0)" }}>
-        <p style={{ fontSize: 12, fontWeight: 700, color: "var(--cl-text-muted, #64748b)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 12 }}>Hướng dẫn 2 bước</p>
-        <div style={{ display: "flex", gap: 10, marginBottom: 12, alignItems: "center" }}>
-          <span style={{ background: t.accent, color: "#ffffff", fontSize: 12, fontWeight: 700, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>1</span>
-          <span style={{ fontSize: 14.5, color: "var(--cl-text-body, #374151)" }}>Mở app ngân hàng quét mã QR (đã tự điền đúng {c.price}đ).</span>
-        </div>
-        <div style={{ display: "flex", gap: 10, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
-          <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-            <span style={{ background: t.accent, color: "#ffffff", fontSize: 12, fontWeight: 700, borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>2</span>
-            <span style={{ fontSize: 14.5, color: "var(--cl-text-body, #374151)" }}>
-              Kiểm tra nội dung: <strong style={{ color: "var(--cl-text-base, #111827)", wordBreak: "break-all" }}>{bank.content}</strong>
-            </span>
-          </div>
-          <CopyButton text={bank.content} label="Copy cú pháp" />
+        <div style={{ fontSize: 14.5, color: "var(--cl-text-body, #374151)" }}>
+          Đội ngũ của Nguyễn Đức Việt sẽ liên hệ trực tiếp để tư vấn xem lộ trình có phù hợp với thực tế của bạn không.
         </div>
       </div>
 
-      <button
-        onClick={onConfirm}
-        style={{
-          width: "100%", background: t.accent, color: t.accentText, border: "none",
-          borderRadius: "var(--cl-radius-btn, 12px)", padding: "16px 16px",
-          fontSize: 15, fontWeight: 700, cursor: "pointer",
-          letterSpacing: "0.04em", textTransform: "uppercase",
-          boxShadow: `0 4px 20px ${t.accent}44`,
-          transition: "all 0.15s ease",
-        }}
-      >
-        ✅ TÔI ĐÃ CHUYỂN KHOẢN XONG
-      </button>
-
-      <p style={{ fontSize: 13.5, color: t.textMuted ?? "#64748b", textAlign: "center", marginTop: 14, marginBottom: 14, lineHeight: 1.5 }}>
-        ⚡ Hệ thống tự động kích hoạt tài khoản Skool qua Email &amp; SMS ngay khi ngân hàng báo có (thường mất 1 - 2 phút).
-      </p>
-
-      <div style={{ display: "flex", gap: 12, justifyContent: "center", paddingTop: 14, borderTop: `1px solid ${t.line}`, flexWrap: "wrap" }}>
-        {[["🔒", "Thanh toán bảo mật 24/7"], ["🤝", "Đồng hành thật, người thật"], ["⚡", "Vào học ngay"]].map(([icon, label]) => (
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <div>
+          <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--cl-text-base, #111827)", marginBottom: 6 }}>Họ và tên *</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Nhập họ tên của bạn..."
+            style={{ width: "100%", padding: "12px 14px", borderRadius: 8, border: "1px solid #e2e8f0", fontSize: 15, boxSizing: "border-box" }}
+          />
+        </div>
+        <div>
+          <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--cl-text-base, #111827)", marginBottom: 6 }}>Số điện thoại (Zalo) *</label>
+          <input
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Ví dụ: 0912345678"
+            style={{ width: "100%", padding: "12px 14px", borderRadius: 8, border: "1px solid #e2e8f0", fontSize: 15, boxSizing: "border-box" }}
+          />
+        </div>
+        <div>
+          <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "var(--cl-text-base, #111827)", marginBottom: 6 }}>Vấn đề lớn nhất của bạn hiện tại là gì?</label>
+          <textarea
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="Tụt năng lượng khi tự quay, muốn tuyển F1, xây thương hiệu cá nhân..."
+            rows={3}
+            style={{ width: "100%", padding: "12px 14px", borderRadius: 8, border: "1px solid #e2e8f0", fontSize: 15, boxSizing: "border-box", fontFamily: "inherit" }}
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={loading}
+          style={{
+            width: "100%", background: t.accent, color: t.accentText, border: "none",
+            borderRadius: "var(--cl-radius-btn, 12px)", padding: "16px 16px",
+            fontSize: 15, fontWeight: 700, cursor: loading ? "not-allowed" : "pointer",
+            letterSpacing: "0.04em", textTransform: "uppercase",
+            boxShadow: `0 4px 20px ${t.accent}44`,
+            transition: "all 0.15s ease",
+            marginTop: 10,
+            opacity: loading ? 0.7 : 1
+          }}
+        >
+          {loading ? "ĐANG GỬI..." : "🚀 NHẬN TƯ VẤN NGAY"}
+        </button>
+      </form>
+      
+      <div style={{ display: "flex", gap: 12, justifyContent: "center", paddingTop: 18, marginTop: 24, borderTop: `1px solid ${t.line}`, flexWrap: "wrap" }}>
+        {[["🔒", "Bảo mật thông tin 100%"], ["🤝", "Đồng hành thật, người thật"]].map(([icon, label]) => (
           <div key={label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 13, color: t.textMuted ?? "#64748b", fontWeight: 500 }}>
             <span>{icon}</span><span>{label}</span>
           </div>
@@ -542,7 +506,7 @@ function CheckoutContent() {
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span style={{ fontSize: 18 }}>🔒</span>
-          <span style={{ fontSize: 15, color: t.textMuted ?? "#555" }}>Thanh toán bảo mật</span>
+          <span style={{ fontSize: 15, color: t.textMuted ?? "#555" }}>Bảo mật thông tin</span>
         </div>
       </header>
 
@@ -606,8 +570,8 @@ function CheckoutContent() {
                   <div style={{ fontSize: 14, color: t.textMuted ?? "#666", marginTop: 4 }}>5 chặng thực chiến từ bóc kịch bản đời thường đến dựng CapCut Pro &amp; trợ lực AI</div>
                 </div>
                 <div style={{ textAlign: "right", flexShrink: 0 }}>
-                  <div style={{ fontSize: 13, color: t.accent, fontWeight: 600 }}>Tiết kiệm {formattedSaving} VNĐ</div>
-                  <div style={{ fontSize: 28, fontWeight: 700, color: t.textBase ?? "#fff" }}>{c.price}<span style={{ fontSize: 15, fontWeight: 500 }}> VNĐ</span></div>
+                  <div style={{ fontSize: 13, color: t.accent, fontWeight: 600 }}>Liên hệ để nhận</div>
+                  <div style={{ fontSize: 28, fontWeight: 700, color: t.textBase ?? "#fff" }}>Tư vấn báo giá</div>
                 </div>
               </div>
             </Card>

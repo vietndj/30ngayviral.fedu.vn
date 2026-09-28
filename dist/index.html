@@ -110,7 +110,7 @@
     fbq('init', '1308452894697686');
     fbq('track', 'PageView');
     </script>
-    <script type="module" crossorigin src="/assets/index-BC_J-v9j.js"></script>
+    <script type="module" crossorigin src="/assets/index-CFDoti1E.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DKmx2E3Z.css">
   </head>
   <body>
@@ -123,6 +123,9 @@
     </div>
     <script>
       window.addEventListener('error', function(e) {
+        if (e.message && (e.message.includes('ResizeObserver') || e.message.includes('Script error'))) {
+          return;
+        }
         var display = document.getElementById('error-display');
         var message = document.getElementById('error-message');
         if (display && message) {

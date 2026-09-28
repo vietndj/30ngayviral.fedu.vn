@@ -649,7 +649,7 @@ export const DEFAULT_CONTENT: PageContent = {
 
   // ── Attention (Bài toán kinh tế & 3 lựa chọn) ──
   attentionLabel: "BÀI TOÁN KINH TẾ",
-  attentionHeading: "999.000đ là đắt hay rẻ? Hãy đặt 3 con đường này lên bàn cân:",
+  attentionHeading: "Khoản đầu tư cho kỹ năng này là đắt hay rẻ? Hãy đặt 3 con đường này lên bàn cân:",
   attentionPara: "Tiền bạc mất đi có thể kiếm lại được, nhưng 3–6 tháng mò mẫm trong bế tắc thì không ai bù đắp cho bạn:",
   attentionItems: [
     {
@@ -755,7 +755,7 @@ export const DEFAULT_CONTENT: PageContent = {
   // ── Mid CTA ──
   midCtaHeading: "Sẵn sàng làm chủ kỹ năng sản xuất video ngắn trong 30 ngày tới?",
   midCtaSub: "Sở hữu toàn bộ Bản thiết kế + Kho Template CapCut + Bộ Prompt AI + Không gian Skool chữa bài chuyên môn.",
-  midCtaBtn: "SỞ HỮU BẢN THIẾT KẾ 30 NGÀY — CHỈ 999K",
+  midCtaBtn: "ĐĂNG KÝ NHẬN TƯ VẤN LỘ TRÌNH 30 NGÀY",
 
   // ── Before & After ──
   baLabel: "KẾT QUẢ SAU 30 NGÀY",
@@ -832,10 +832,10 @@ export const DEFAULT_CONTENT: PageContent = {
   bonusItems: courseConfig.bonuses,
 
   // ── Section 11: Final CTA ──
-  urgencyBar: "⚡ HỌC PHÍ ƯU ĐÃI 999.000Đ (TIẾT KIỆM 78%) · TRỌN BỘ 5 KHÓA HỌC & TỦ ĐỒ NGHỀ DÙNG TRỌN ĐỜI",
+  urgencyBar: "⚡ ĐỂ LẠI THÔNG TIN, CHÚNG TÔI SẼ GỌI ĐIỆN TƯ VẤN LỘ TRÌNH DÀNH RIÊNG CHO BẠN",
   ctaLabel: "// BẮT ĐẦU HÀNH TRÌNH",
   ctaHeading: "Tự làm chủ kỹ năng video ngắn — Không còn phụ thuộc vào ai",
-  ctaSub: "Một bữa lẩu bạn ăn rồi cũng hết. Nhưng 999.000đ đầu tư cho kỹ năng này sẽ giúp bạn tự tin làm video cả đời, có khách hàng thật và tự tay xây dựng tài sản cho chính mình.",
+  ctaSub: "Khoản đầu tư cho kỹ năng này sẽ giúp bạn tự tin làm video cả đời, có khách hàng thật và tự tay xây dựng tài sản cho chính mình.",
   countdownLabel: "⏳ Ưu đãi kết thúc sau:",
   valueStackTitle: "TỔNG GIÁ TRỊ THỰC TẾ BẠN NHẬN ĐƯỢC:",
   valueStack: [
@@ -888,7 +888,7 @@ export const DEFAULT_CONTENT: PageContent = {
     {
       badge: "LỰA CHỌN 3 — KHUYÊN DÙNG",
       title: "Làm Chủ Trên Điện Thoại Cùng FEDU",
-      cost: "Chỉ 999.000 VNĐ (Bằng 1 bữa lẩu)",
+      cost: "Liên hệ để nhận tư vấn & báo giá",
       desc: "Tự làm chủ trọn vẹn từ Kịch bản 1 dòng → Góc sáng 3D → Dựng CapCut → AI ngay trên chiếc điện thoại. Được trực tiếp soi timeline chữa bài thực tế. Bạn sở hữu kỹ năng làm video ra đơn cả đời.",
       isBest: true,
       tag: "🏆 Lựa chọn khôn ngoan nhất"
@@ -958,7 +958,7 @@ export const DEFAULT_CONTENT: PageContent = {
       a: "Mỗi bài học được thiết kế cô đọng trong 10–15 phút, vào thẳng vấn đề không lý thuyết dài dòng. Quy trình 45 phút/clip giúp bạn tận dụng đúng giờ nghỉ trưa hoặc buổi tối là có thể hoàn thành xong 1 video để nộp bài."
     },
     {
-      q: "Sau khi thanh toán xong thì tôi bắt đầu học như thế nào và ai hỗ trợ tôi?",
+      q: "Sau khi đăng ký thành công thì tôi bắt đầu học như thế nào và ai hỗ trợ tôi?",
       a: "Sau khi chuyển khoản, hệ thống tự động kích hoạt tài khoản để bạn vào lớp học ngay lập tức trên Skool. Bạn làm xong bài tập nào thì đăng trực tiếp lên đó. Tôi là người trực tiếp xem bài, soi từng đoạn timeline để chỉ cho bạn chỗ cần sửa cho đến khi video chuẩn mới thôi."
     }
   ],

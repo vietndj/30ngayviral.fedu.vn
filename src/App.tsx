@@ -97,7 +97,7 @@ function StickyRegisterBar() {
         onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#1557b0"; }}
         onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#1a73e8"; }}
       >
-        SỞ HỮU LỘ TRÌNH 999K →
+        LIÊN HỆ TƯ VẤN →
       </a>
     </div>
   );

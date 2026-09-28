@@ -17,10 +17,10 @@ const PROOFS = [
 
   // NHÓM 3: POP-UP "GIAO DỊCH THỰC TẾ & SỰ ĐỒNG HÀNH" (Tăng độ Trust tuyệt đối)
   "Hải Đăng (Kinh doanh TMĐT) vừa thiết lập xong Góc quay Talking Head cố định 🎙️",
-  "Chị Trâm Anh (Đà Lạt) vừa chốt cọc 500k để giữ vĩnh viễn Ưu đãi Quà tặng AI ⚡",
+  "Chị Trâm Anh (Đà Lạt) vừa đăng ký để nhận tư vấn lộ trình 30 ngày ⚡",
   "Anh Sơn (Nha Trang) vừa được hệ thống cấp quyền vào Nhóm hỗ trợ sửa video trực tiếp 🤝",
   "Bác sĩ Khánh (Hà Nội) vừa nâng cấp lên Gói Expert để chuẩn hóa kênh nhân hiệu 🚀",
-  "Chị Phương (Đồng Nai) vừa quét QR thanh toán tự động, nhận ID đăng nhập sau 2 phút 📩"
+  "Chị Phương (Đồng Nai) vừa để lại thông tin cần tư vấn để xây kênh nhân hiệu 📩"
 ];
 
 const TIME_LABELS = [
